@@ -165,13 +165,13 @@ class DemandModel:
     def _create_daily_factors(self):
         """Create day of week adjustment factors"""
         return {
-            0: 0.9,   # Monday: 90% of typical weekday
-            1: 1.0,   # Tuesday: baseline weekday
+            0: 1.1,   # Monday: 110% of typical weekday
+            1: 0.9,   # Tuesday: a bit quiet
             2: 1.05,  # Wednesday: slightly higher
             3: 1.1,   # Thursday: higher
             4: 1.3,   # Friday: significantly higher
             5: 1.2,   # Saturday: weekend high
-            6: 1.0    # Sunday: typical weekend
+            6: 0.9    # Sunday: wind-off before new week
         }
     
     def _create_monthly_factors(self):
@@ -184,8 +184,8 @@ class DemandModel:
             5: 1.05,  # May: improving weather
             6: 1.1,   # June: summer begins
             7: 1.2,   # July: summer peak
-            8: 1.15,  # August: summer
-            9: 1.05,  # September: back to school
+            8: 1.1,  # August: summer
+            9: 1.2,  # September: back to school craze
             10: 1.0,  # October: baseline
             11: 0.95, # November: pre-holiday
             12: 1.15  # December: holiday season
@@ -586,71 +586,81 @@ class TrafficModel:
         return filename
 
 
-# Function to generate US holidays for a given year
-def generate_us_holidays(year):
-    """Generate common US holidays for a given year"""
+# Function to generate Spanish holidays for a given year
+def generate_spanish_holidays(year):
+    """Generate common Spanish holidays for a given year"""
     holidays = []
     
-    # New Year's Day
+    # Año Nuevo (New Year's Day)
     holidays.append(datetime(year, 1, 1))
     
-    # Martin Luther King Jr. Day (3rd Monday in January)
-    mlk_day = datetime(year, 1, 1)
-    while mlk_day.weekday() != 0:  # 0 = Monday
-        mlk_day += timedelta(days=1)
-    mlk_day += timedelta(days=14)  # Move to 3rd Monday
-    holidays.append(mlk_day)
+    # Día de Reyes (Epiphany)
+    holidays.append(datetime(year, 1, 6))
     
-    # Presidents' Day (3rd Monday in February)
-    presidents_day = datetime(year, 2, 1)
-    while presidents_day.weekday() != 0:
-        presidents_day += timedelta(days=1)
-    presidents_day += timedelta(days=14)
-    holidays.append(presidents_day)
+    # Calculate Easter Sunday (needed for several holidays)
+    # Using Butcher's algorithm for Easter calculation
+    a = year % 19
+    b = year // 100
+    c = year % 100
+    d = b // 4
+    e = b % 4
+    f = (b + 8) // 25
+    g = (b - f + 1) // 3
+    h = (19 * a + b - d - g + 15) % 30
+    i = c // 4
+    k = c % 4
+    l = (32 + 2 * e + 2 * i - h - k) % 7
+    m = (a + 11 * h + 22 * l) // 451
+    month = (h + l - 7 * m + 114) // 31
+    day = ((h + l - 7 * m + 114) % 31) + 1
     
-    # Memorial Day (Last Monday in May)
-    memorial_day = datetime(year, 5, 31)
-    while memorial_day.weekday() != 0:
-        memorial_day -= timedelta(days=1)
-    holidays.append(memorial_day)
+    easter = datetime(year, month, day)
     
-    # Independence Day
-    holidays.append(datetime(year, 7, 4))
+    # Viernes Santo (Good Friday)
+    good_friday = easter - timedelta(days=2)
+    holidays.append(good_friday)
     
-    # Labor Day (1st Monday in September)
-    labor_day = datetime(year, 9, 1)
-    while labor_day.weekday() != 0:
-        labor_day += timedelta(days=1)
-    holidays.append(labor_day)
+    # Jueves Santo (Maundy Thursday) - regional but widely observed
+    maundy_thursday = easter - timedelta(days=3)
+    holidays.append(maundy_thursday)
     
-    # Columbus Day (2nd Monday in October)
-    columbus_day = datetime(year, 10, 1)
-    while columbus_day.weekday() != 0:
-        columbus_day += timedelta(days=1)
-    columbus_day += timedelta(days=7)
-    holidays.append(columbus_day)
+    # Día del Trabajador (Labor Day)
+    holidays.append(datetime(year, 5, 1))
     
-    # Veterans Day
-    holidays.append(datetime(year, 11, 11))
+    # Asunción de la Virgen (Assumption Day)
+    holidays.append(datetime(year, 8, 15))
     
-    # Thanksgiving (4th Thursday in November)
-    thanksgiving = datetime(year, 11, 1)
-    while thanksgiving.weekday() != 3:  # 3 = Thursday
-        thanksgiving += timedelta(days=1)
-    thanksgiving += timedelta(days=21)
-    holidays.append(thanksgiving)
+    # Fiesta Nacional de España (Spanish National Day)
+    holidays.append(datetime(year, 10, 12))
     
-    # Day after Thanksgiving
-    holidays.append(thanksgiving + timedelta(days=1))
+    # Día de Todos los Santos (All Saints' Day)
+    holidays.append(datetime(year, 11, 1))
     
-    # Christmas Eve
-    holidays.append(datetime(year, 12, 24))
+    # Día de la Constitución (Constitution Day)
+    holidays.append(datetime(year, 12, 6))
     
-    # Christmas Day
+    # Inmaculada Concepción (Immaculate Conception)
+    holidays.append(datetime(year, 12, 8))
+    
+    # Navidad (Christmas Day)
     holidays.append(datetime(year, 12, 25))
     
-    # New Year's Eve
+    # Nochebuena (Christmas Eve) - not official but widely observed
+    holidays.append(datetime(year, 12, 24))
+    
+    # Nochevieja (New Year's Eve) - not official but widely observed
     holidays.append(datetime(year, 12, 31))
+    
+    # San José (St. Joseph's Day) - regional holiday in some communities
+    holidays.append(datetime(year, 3, 19))
+    
+    # Santiago Apóstol (St. James Day) - important in some regions
+    holidays.append(datetime(year, 7, 25))
+    
+    # Corpus Christi - 60 days after Easter Sunday, regional
+    corpus_christi = easter + timedelta(days=60)
+    holidays.append(corpus_christi)
+    
     
     return holidays
 
