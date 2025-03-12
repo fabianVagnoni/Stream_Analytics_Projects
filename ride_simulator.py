@@ -144,18 +144,9 @@ class RideSimulator:
         # More sophisticated surge pricing based on demand and supply
         hour = start_time.hour
         day_of_week = start_time.weekday()
+        demand_factor = self.demand_model.get_demand_multiplier(start_time)
         
-        # Determine if it's a peak hour or weekend
-        is_peak_hour = (7 <= hour <= 9) or (16 <= hour <= 19)
-        is_weekend = day_of_week >= 5  # Saturday and Sunday
 
-        # Adjust demand factor for peak hours or weekends
-        if is_peak_hour:
-            demand_factor = 1.5
-        elif is_weekend:
-            demand_factor = 0.8
-        else:
-            demand_factor = 1.0
 
         # Calculate surge multiplier with adjusted demand factor
         surge_multiplier = self.calculate_surge_multiplier(demand_factor, len(self.drivers) - len(self.active_drivers))
