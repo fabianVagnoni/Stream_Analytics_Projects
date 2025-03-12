@@ -39,6 +39,14 @@ class RideSimulator:
         self.city_map = city_map
         self.demand_model = demand_model
         self.traffic_model = traffic_model
+        self.active_drivers = {}
+        self.payment_methods = ["CARD"] * 4 + ["CASH"]
+        self.vehicle_pricing = {
+            "Economy": 1.0,
+            "Comfort": 1.5,
+            "Premium": 2.2,
+            "XL": 1.8
+        }
         
         # App version and platform distributions
         self.app_versions = {
@@ -53,12 +61,40 @@ class RideSimulator:
             "Android": [0.05, 0.1, 0.25, 0.25, 0.35],
             "Web": [0.2, 0.3, 0.5]
         }
+    
+    def calculate_fare(self, distance_km, vehicle_type, surge_multiplier):
+
+        base_fare = 5.0 + distance_km * 1.2
+        vehicle_price_factor = self.vehicle_pricing.get(vehicle_type, 1.0)
+        total_fare = base_fare * vehicle_price_factor * surge_multiplier
+        return round(total_fare, 2)
+
+    def calculate_surge_multiplier(self, demand_factor, available_drivers):
+        """Realistic surge pricing based on demand vs. available drivers."""
+        if available_drivers == 0:
+            return 3.0  # Max surge
+
+        surge_multiplier = 1.0 + min(2.0, max(0, (demand_factor - 1) + (0.5 / available_drivers)))
+        return round(surge_multiplier, 1)
+
+    def calculate_user_rating(self, estimated_duration, actual_duration, surge_multiplier, traffic_descriptor, user, driver):
+        """Realistic calculation of user rating."""
+        rating = 5.0
+
+        duration_ratio = actual_duration / estimated_duration
+        if duration_ratio > 1.3:
+            rating -= 1.0
+        elif duration_ratio > 1.1:
+            rating -= 0.5
+
+        traffic_penalties = {"MEDIUM": -0.5, "HIGH": -1.0, "SEVERE": -1.5}
+        rating += traffic_penalties.get(traffic_descriptor, 0)
+
+        rating -= 0.5 * (surge_multiplier - 1)
+        rating += (driver.get("rating", 4.5) - 4.5) / 2
+
+        return round(max(1.0, min(5.0, rating)) * 2) / 2
         
-        # Payment method distribution
-        self.payment_methods = ["CARD", "CARD", "CARD", "CARD", "CASH"]  # 80% card, 20% cash
-        
-        # Keep track of active drivers and their status
-        self.active_drivers = {}
     
     def generate_ride_events(self, user, start_time):
         """
@@ -108,33 +144,25 @@ class RideSimulator:
         # More sophisticated surge pricing based on demand and supply
         hour = start_time.hour
         day_of_week = start_time.weekday()
-        demand_factor = self.demand_model.get_demand_multiplier(start_time)
         
-        # Surge pricing model - combine time and location factors
-        surge_multiplier = 1.0
-        if demand_factor > 1.5:
-            surge_multiplier += (demand_factor - 1.5) * 0.5
-        
-        # Round surge to nearest 0.1
-        surge_multiplier = round(surge_multiplier * 10) / 10
+        # Determine if it's a peak hour or weekend
+        is_peak_hour = (7 <= hour <= 9) or (16 <= hour <= 19)
+        is_weekend = day_of_week >= 5  # Saturday and Sunday
+
+        # Adjust demand factor for peak hours or weekends
+        if is_peak_hour:
+            demand_factor = 1.5
+        elif is_weekend:
+            demand_factor = 0.8
+        else:
+            demand_factor = 1.0
+
+        # Calculate surge multiplier with adjusted demand factor
+        surge_multiplier = self.calculate_surge_multiplier(demand_factor, len(self.drivers) - len(self.active_drivers))
         
         # Calculate fare
-        base_fare = 5.0 + distance_km * 1.2
-        
-        # Different vehicle types have different base prices
-        vehicle_type = user.get("preferred_vehicle_type", random.choice(
-            ["Economy", "Economy", "Economy", "Comfort", "Comfort", "Premium", "XL"]
-        ))  # Weighted distribution
-        
-        # Adjust base fare by vehicle type
-        if vehicle_type == "Comfort":
-            base_fare *= 1.5
-        elif vehicle_type == "Premium":
-            base_fare *= 2.2
-        elif vehicle_type == "XL":
-            base_fare *= 1.8
-        
-        total_fare = base_fare * surge_multiplier
+        vehicle_type = user.get("preferred_vehicle_type", random.choice(list(self.vehicle_pricing.keys())))
+        total_fare = self.calculate_fare(distance_km, vehicle_type, surge_multiplier)
         
         # Generate traffic conditions based on time of day
         traffic_level = self.traffic_model.get_traffic_level(start_time)
@@ -168,7 +196,7 @@ class RideSimulator:
                 "estimated_duration_minutes": estimated_duration_minutes,
                 "actual_duration_minutes": None,
                 "vehicle_type": vehicle_type,
-                "base_fare": round(base_fare, 2),
+                "base_fare": round(self.calculate_fare(distance_km, vehicle_type, 1.0), 2),
                 "surge_multiplier": surge_multiplier,
                 "total_fare": round(total_fare, 2)
             },
@@ -215,7 +243,7 @@ class RideSimulator:
                         "Found alternative transportation",
                         "Price too high"  # More likely during surge
                     ]),
-                    "cancellation_fee": 0.0 if random.random() < 0.7 else round(base_fare * 0.25, 2)
+                    "cancellation_fee": 0.0 if random.random() < 0.7 else round(total_fare * 0.25, 2)
                 },
                 "traffic_conditions": traffic_conditions,
                 "driver_location": None,
@@ -600,13 +628,12 @@ class RideSimulator:
             rating_adjustment = duration_factor + traffic_factor + surge_factor + user_rating_tendency + driver_factor
             
             # Ensure the adjusted rating is within bounds
-            final_rating = max(1.0, min(5.0, base_rating + rating_adjustment))
-            final_rating = round(final_rating * 2) / 2  # Round to nearest 0.5
+            rating = max(1.0, min(5.0, base_rating + rating_adjustment))
             
             # Generate a comment sometimes
             comment = None
             if random.random() < 0.3:  # 30% chance of comment
-                if final_rating >= 4.5:
+                if rating >= 4.5:
                     comment = random.choice([
                         "Great driver, very professional!",
                         "Excellent service!",
@@ -615,7 +642,7 @@ class RideSimulator:
                         "On time and efficient!",
                         "Perfect ride, thank you!"
                     ])
-                elif final_rating >= 3.5:
+                elif rating >= 3.5:
                     comment = random.choice([
                         "Good ride overall.",
                         "Decent service.",
@@ -634,7 +661,7 @@ class RideSimulator:
                     ])
             
             rating_info = {
-                "user_to_driver_rating": final_rating,
+                "user_to_driver_rating": rating,
                 "driver_to_user_rating": None,
                 "user_comment": comment,
                 "driver_comment": None
@@ -692,7 +719,6 @@ class RideSimulator:
             
             # Ensure rating is within bounds
             driver_rating = max(1.0, min(5.0, driver_rating))
-            driver_rating = round(driver_rating * 2) / 2  # Round to nearest 0.5
             
             # Generate comment occasionally
             driver_comment = None
@@ -759,6 +785,14 @@ class RideSimulator:
         # Mark driver as available again
         if driver["driver_id"] in self.active_drivers:
             del self.active_drivers[driver["driver_id"]]
+        
+        # After ride completion, calculate user rating
+        actual_duration_minutes = ride_details["actual_duration_minutes"]  # Assuming this is calculated earlier
+        traffic_descriptor = self.traffic_model.get_traffic_descriptor(traffic_level)
+        user_rating = self.calculate_user_rating(estimated_duration_minutes, actual_duration_minutes, surge_multiplier, traffic_descriptor, user, driver)
+
+        # Update ratings in the event
+        ride_completed_event["ratings"] = {"user_to_driver_rating": user_rating}
         
         return events
     
@@ -1000,6 +1034,7 @@ class RideSimulator:
         return heading
 
 
+
 # Example usage
 if __name__ == "__main__":
     import argparse
@@ -1013,7 +1048,7 @@ if __name__ == "__main__":
                 "latitude": 37.7749 + random.uniform(-0.1, 0.1),
                 "longitude": -122.4194 + random.uniform(-0.1, 0.1),
                 "address": f"{random.randint(1, 999)} Mock Street",
-                "city": "San Francisco"
+                "city": "Madrid"
             }
         
         def calculate_distance(self, loc1, loc2):
@@ -1061,7 +1096,7 @@ if __name__ == "__main__":
             return 1 + level
     
     parser = argparse.ArgumentParser(description='Generate ride simulation data')
-    parser.add_argument('--output', type=str, default='rides.json', help='Output JSON file')
+    parser.add_argument('--output', type=str, default='data/ride_events.json', help='Output JSON file')
     parser.add_argument('--start_date', type=str, default=None, help='Start date (YYYY-MM-DD)')
     parser.add_argument('--end_date', type=str, default=None, help='End date (YYYY-MM-DD)')
     parser.add_argument('--duration_hours', type=int, default=24, help='Duration in hours (if not using start/end)')
