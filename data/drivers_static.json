@@ -1,0 +1,5002 @@
+[
+  {
+    "driver_id": "D000000",
+    "first_name": "Jason",
+    "last_name": "Jackson",
+    "phone_number": "001-647-740-6657",
+    "email": "jason.jackson974@carpenter.net",
+    "license_number": "MP15074",
+    "vehicle": "Toyota Corolla 2018",
+    "account_creation_date": "2024-05-19"
+  },
+  {
+    "driver_id": "D000001",
+    "first_name": "Kimberly",
+    "last_name": "Eaton",
+    "phone_number": "(264)204-0931x1208",
+    "email": "kimberly.eaton860@smith-aguilar.com",
+    "license_number": "IN82846",
+    "vehicle": "Lexus ES 2019",
+    "account_creation_date": "2025-02-25"
+  },
+  {
+    "driver_id": "D000002",
+    "first_name": "Jason",
+    "last_name": "Clark",
+    "phone_number": "724-672-7678x4053",
+    "email": "jason.clark439@freeman-preston.com",
+    "license_number": "CA33906",
+    "vehicle": "Toyota Corolla 2021",
+    "account_creation_date": "2025-01-14"
+  },
+  {
+    "driver_id": "D000003",
+    "first_name": "James",
+    "last_name": "Leon",
+    "phone_number": "001-209-359-3432x9339",
+    "email": "james.leon284@sullivan.biz",
+    "license_number": "MO94880",
+    "vehicle": "Honda Civic 2017",
+    "account_creation_date": "2020-04-18"
+  },
+  {
+    "driver_id": "D000004",
+    "first_name": "Kimberly",
+    "last_name": "Patterson",
+    "phone_number": "312.575.0942x223",
+    "email": "kimberly.patterson760@kim.net",
+    "license_number": "PW80281",
+    "vehicle": "Kia Forte 2019",
+    "account_creation_date": "2022-04-07"
+  },
+  {
+    "driver_id": "D000005",
+    "first_name": "William",
+    "last_name": "Valentine",
+    "phone_number": "+1-857-698-0560x1460",
+    "email": "william.valentine540@lee.biz",
+    "license_number": "WY78533",
+    "vehicle": "Ford Explorer 2018",
+    "account_creation_date": "2024-04-25"
+  },
+  {
+    "driver_id": "D000006",
+    "first_name": "Shawn",
+    "last_name": "Hubbard",
+    "phone_number": "(894)419-7456",
+    "email": "shawn.hubbard590@alexander-garcia.com",
+    "license_number": "WA69560",
+    "vehicle": "Nissan Sentra 2022",
+    "account_creation_date": "2024-06-02"
+  },
+  {
+    "driver_id": "D000007",
+    "first_name": "Timothy",
+    "last_name": "Roman",
+    "phone_number": "001-654-286-3905x0572",
+    "email": "timothy.roman717@rice-nelson.com",
+    "license_number": "MS20582",
+    "vehicle": "Honda Accord 2019",
+    "account_creation_date": "2022-12-13"
+  },
+  {
+    "driver_id": "D000008",
+    "first_name": "Robert",
+    "last_name": "Roberts",
+    "phone_number": "9296249887",
+    "email": "robert.roberts277@garcia.info",
+    "license_number": "PW33361",
+    "vehicle": "Toyota Corolla 2021",
+    "account_creation_date": "2021-08-25"
+  },
+  {
+    "driver_id": "D000009",
+    "first_name": "Patrick",
+    "last_name": "Jones",
+    "phone_number": "(264)932-1342x782",
+    "email": "patrick.jones118@adams.net",
+    "license_number": "RI66498",
+    "vehicle": "Kia Forte 2023",
+    "account_creation_date": "2022-11-17"
+  },
+  {
+    "driver_id": "D000010",
+    "first_name": "Zoe",
+    "last_name": "Roberts",
+    "phone_number": "(786)268-5474x167",
+    "email": "zoe.roberts933@carter-burns.net",
+    "license_number": "MD50759",
+    "vehicle": "Toyota Corolla 2017",
+    "account_creation_date": "2024-10-29"
+  },
+  {
+    "driver_id": "D000011",
+    "first_name": "Courtney",
+    "last_name": "Hinton",
+    "phone_number": "257-931-6752x827",
+    "email": "courtney.hinton391@whitaker.com",
+    "license_number": "MI81010",
+    "vehicle": "Toyota Corolla 2020",
+    "account_creation_date": "2024-01-13"
+  },
+  {
+    "driver_id": "D000012",
+    "first_name": "Patrick",
+    "last_name": "Waters",
+    "phone_number": "(656)677-8113x48648",
+    "email": "patrick.waters618@odom-lopez.com",
+    "license_number": "AK48616",
+    "vehicle": "Toyota Corolla 2020",
+    "account_creation_date": "2024-10-23"
+  },
+  {
+    "driver_id": "D000013",
+    "first_name": "Michelle",
+    "last_name": "Johnson",
+    "phone_number": "001-352-821-2553",
+    "email": "michelle.johnson890@ruiz-hicks.com",
+    "license_number": "KS33472",
+    "vehicle": "Honda Accord 2020",
+    "account_creation_date": "2022-12-06"
+  },
+  {
+    "driver_id": "D000014",
+    "first_name": "Natalie",
+    "last_name": "Williams",
+    "phone_number": "001-902-473-9107x14817",
+    "email": "natalie.williams467@may-romero.com",
+    "license_number": "MD91538",
+    "vehicle": "Hyundai Elantra 2023",
+    "account_creation_date": "2023-01-11"
+  },
+  {
+    "driver_id": "D000015",
+    "first_name": "Christina",
+    "last_name": "Ewing",
+    "phone_number": "001-558-528-0874x554",
+    "email": "christina.ewing285@harris.biz",
+    "license_number": "KY54395",
+    "vehicle": "Nissan Sentra 2023",
+    "account_creation_date": "2023-10-24"
+  },
+  {
+    "driver_id": "D000016",
+    "first_name": "Brian",
+    "last_name": "Zimmerman",
+    "phone_number": "281-963-0273",
+    "email": "brian.zimmerman704@roberts.net",
+    "license_number": "VI64088",
+    "vehicle": "Hyundai Elantra 2020",
+    "account_creation_date": "2024-01-14"
+  },
+  {
+    "driver_id": "D000017",
+    "first_name": "Heather",
+    "last_name": "Smith",
+    "phone_number": "(475)940-0394x47088",
+    "email": "heather.smith834@gomez.info",
+    "license_number": "SD24165",
+    "vehicle": "Volvo S60 2018",
+    "account_creation_date": "2024-11-04"
+  },
+  {
+    "driver_id": "D000018",
+    "first_name": "Shelly",
+    "last_name": "Buck",
+    "phone_number": "697.350.2288x0272",
+    "email": "shelly.buck865@rodriguez.com",
+    "license_number": "WY99154",
+    "vehicle": "Hyundai Elantra 2023",
+    "account_creation_date": "2024-06-01"
+  },
+  {
+    "driver_id": "D000019",
+    "first_name": "Cody",
+    "last_name": "Thomas",
+    "phone_number": "(663)274-6343",
+    "email": "cody.thomas405@harris.com",
+    "license_number": "OK48762",
+    "vehicle": "Chevrolet Suburban 2022",
+    "account_creation_date": "2020-05-03"
+  },
+  {
+    "driver_id": "D000020",
+    "first_name": "Cassandra",
+    "last_name": "Simpson",
+    "phone_number": "001-399-613-1222x4547",
+    "email": "cassandra.simpson460@welch.com",
+    "license_number": "SD40557",
+    "vehicle": "Kia Forte 2021",
+    "account_creation_date": "2023-01-03"
+  },
+  {
+    "driver_id": "D000021",
+    "first_name": "Michelle",
+    "last_name": "Adams",
+    "phone_number": "+1-782-918-1818",
+    "email": "michelle.adams124@hanson.info",
+    "license_number": "PR70207",
+    "vehicle": "Toyota Corolla 2021",
+    "account_creation_date": "2025-03-05"
+  },
+  {
+    "driver_id": "D000022",
+    "first_name": "Kari",
+    "last_name": "Chandler",
+    "phone_number": "(730)977-1633",
+    "email": "kari.chandler506@walsh-gomez.org",
+    "license_number": "NV39667",
+    "vehicle": "Mazda 6 2018",
+    "account_creation_date": "2023-06-10"
+  },
+  {
+    "driver_id": "D000023",
+    "first_name": "Erin",
+    "last_name": "Robinson",
+    "phone_number": "001-999-409-1211",
+    "email": "erin.robinson324@jefferson.info",
+    "license_number": "FL14920",
+    "vehicle": "Toyota Camry 2022",
+    "account_creation_date": "2024-11-08"
+  },
+  {
+    "driver_id": "D000024",
+    "first_name": "Cynthia",
+    "last_name": "Smith",
+    "phone_number": "539-954-5635x72801",
+    "email": "cynthia.smith427@miller-morris.com",
+    "license_number": "GA75549",
+    "vehicle": "Mazda 6 2022",
+    "account_creation_date": "2022-12-24"
+  },
+  {
+    "driver_id": "D000025",
+    "first_name": "Edward",
+    "last_name": "Hicks",
+    "phone_number": "856.879.0794",
+    "email": "edward.hicks101@thomas.com",
+    "license_number": "NE75433",
+    "vehicle": "Honda Civic 2022",
+    "account_creation_date": "2023-02-09"
+  },
+  {
+    "driver_id": "D000026",
+    "first_name": "Julie",
+    "last_name": "Gould",
+    "phone_number": "(720)941-5367x607",
+    "email": "julie.gould866@spencer-phillips.info",
+    "license_number": "FM44280",
+    "vehicle": "Nissan Sentra 2018",
+    "account_creation_date": "2022-04-19"
+  },
+  {
+    "driver_id": "D000027",
+    "first_name": "April",
+    "last_name": "Murray",
+    "phone_number": "(431)271-8484",
+    "email": "april.murray518@odom.biz",
+    "license_number": "MS75880",
+    "vehicle": "Toyota Corolla 2017",
+    "account_creation_date": "2022-01-25"
+  },
+  {
+    "driver_id": "D000028",
+    "first_name": "Nicole",
+    "last_name": "Watkins",
+    "phone_number": "(873)771-4002",
+    "email": "nicole.watkins499@brock.com",
+    "license_number": "VT35583",
+    "vehicle": "Hyundai Elantra 2021",
+    "account_creation_date": "2024-05-21"
+  },
+  {
+    "driver_id": "D000029",
+    "first_name": "Vickie",
+    "last_name": "Alvarado",
+    "phone_number": "001-865-764-3441",
+    "email": "vickie.alvarado852@chang.com",
+    "license_number": "HI74910",
+    "vehicle": "Mercedes C-Class 2023",
+    "account_creation_date": "2024-07-27"
+  },
+  {
+    "driver_id": "D000030",
+    "first_name": "Jonathan",
+    "last_name": "Cunningham",
+    "phone_number": "001-311-707-7107x367",
+    "email": "jonathan.cunningham633@francis-collins.biz",
+    "license_number": "TX99540",
+    "vehicle": "Kia Forte 2017",
+    "account_creation_date": "2024-11-28"
+  },
+  {
+    "driver_id": "D000031",
+    "first_name": "Cheryl",
+    "last_name": "Barker",
+    "phone_number": "(319)611-8103",
+    "email": "cheryl.barker139@diaz.biz",
+    "license_number": "ID84062",
+    "vehicle": "Honda Accord 2022",
+    "account_creation_date": "2022-06-03"
+  },
+  {
+    "driver_id": "D000032",
+    "first_name": "Dylan",
+    "last_name": "Navarro",
+    "phone_number": "9107476995",
+    "email": "dylan.navarro307@rios.org",
+    "license_number": "WV92460",
+    "vehicle": "Honda Accord 2021",
+    "account_creation_date": "2024-05-24"
+  },
+  {
+    "driver_id": "D000033",
+    "first_name": "Lucas",
+    "last_name": "Sellers",
+    "phone_number": "(676)214-1135",
+    "email": "lucas.sellers482@evans-russell.com",
+    "license_number": "KY75453",
+    "vehicle": "Kia Forte 2021",
+    "account_creation_date": "2022-05-25"
+  },
+  {
+    "driver_id": "D000034",
+    "first_name": "Paul",
+    "last_name": "Barron",
+    "phone_number": "(668)787-3988x0594",
+    "email": "paul.barron88@wright.net",
+    "license_number": "AS25695",
+    "vehicle": "Kia Forte 2021",
+    "account_creation_date": "2025-02-15"
+  },
+  {
+    "driver_id": "D000035",
+    "first_name": "Judy",
+    "last_name": "Maddox",
+    "phone_number": "+1-966-292-9844x7047",
+    "email": "judy.maddox705@massey.com",
+    "license_number": "FM45718",
+    "vehicle": "Hyundai Elantra 2023",
+    "account_creation_date": "2022-09-29"
+  },
+  {
+    "driver_id": "D000036",
+    "first_name": "Kelsey",
+    "last_name": "Russell",
+    "phone_number": "+1-663-345-2732x6672",
+    "email": "kelsey.russell490@torres.com",
+    "license_number": "MA57439",
+    "vehicle": "Nissan Sentra 2019",
+    "account_creation_date": "2023-11-05"
+  },
+  {
+    "driver_id": "D000037",
+    "first_name": "James",
+    "last_name": "Moyer",
+    "phone_number": "993.638.8480x737",
+    "email": "james.moyer171@hayes-thomas.com",
+    "license_number": "SD18964",
+    "vehicle": "Mazda 6 2018",
+    "account_creation_date": "2021-02-12"
+  },
+  {
+    "driver_id": "D000038",
+    "first_name": "Brandon",
+    "last_name": "Scott",
+    "phone_number": "001-771-605-4732x716",
+    "email": "brandon.scott503@george-lee.com",
+    "license_number": "RI83124",
+    "vehicle": "Toyota Camry 2021",
+    "account_creation_date": "2022-08-26"
+  },
+  {
+    "driver_id": "D000039",
+    "first_name": "Desiree",
+    "last_name": "Lee",
+    "phone_number": "314-736-2211x95166",
+    "email": "desiree.lee222@sandoval-jones.com",
+    "license_number": "IN69567",
+    "vehicle": "Hyundai Elantra 2020",
+    "account_creation_date": "2021-06-29"
+  },
+  {
+    "driver_id": "D000040",
+    "first_name": "Yolanda",
+    "last_name": "Jackson",
+    "phone_number": "+1-295-316-4342x47592",
+    "email": "yolanda.jackson245@ramirez.com",
+    "license_number": "AS21058",
+    "vehicle": "Subaru Legacy 2017",
+    "account_creation_date": "2020-12-30"
+  },
+  {
+    "driver_id": "D000041",
+    "first_name": "Stephanie",
+    "last_name": "Mitchell",
+    "phone_number": "+1-289-496-3646",
+    "email": "stephanie.mitchell6@clark.com",
+    "license_number": "IL62243",
+    "vehicle": "Nissan Sentra 2023",
+    "account_creation_date": "2022-11-02"
+  },
+  {
+    "driver_id": "D000042",
+    "first_name": "Sherri",
+    "last_name": "Martinez",
+    "phone_number": "936.725.8102",
+    "email": "sherri.martinez149@nelson-mayo.com",
+    "license_number": "CT72413",
+    "vehicle": "Toyota Corolla 2022",
+    "account_creation_date": "2024-10-24"
+  },
+  {
+    "driver_id": "D000043",
+    "first_name": "Wanda",
+    "last_name": "Parks",
+    "phone_number": "+1-455-822-8208",
+    "email": "wanda.parks391@hahn.com",
+    "license_number": "MP95461",
+    "vehicle": "Nissan Sentra 2021",
+    "account_creation_date": "2024-12-11"
+  },
+  {
+    "driver_id": "D000044",
+    "first_name": "Matthew",
+    "last_name": "Gates",
+    "phone_number": "001-558-586-7840",
+    "email": "matthew.gates868@bennett.org",
+    "license_number": "GA32210",
+    "vehicle": "Mazda 6 2021",
+    "account_creation_date": "2023-09-12"
+  },
+  {
+    "driver_id": "D000045",
+    "first_name": "Latoya",
+    "last_name": "Douglas",
+    "phone_number": "671.542.0088x19656",
+    "email": "latoya.douglas209@wilson-sanders.com",
+    "license_number": "MN84462",
+    "vehicle": "Lexus ES 2017",
+    "account_creation_date": "2025-01-01"
+  },
+  {
+    "driver_id": "D000046",
+    "first_name": "Lori",
+    "last_name": "Gross",
+    "phone_number": "609.506.7333x100",
+    "email": "lori.gross113@lucas.com",
+    "license_number": "GA62555",
+    "vehicle": "BMW 3 Series 2018",
+    "account_creation_date": "2023-12-27"
+  },
+  {
+    "driver_id": "D000047",
+    "first_name": "Elizabeth",
+    "last_name": "Johnson",
+    "phone_number": "001-756-424-3049x8789",
+    "email": "elizabeth.johnson892@clark.com",
+    "license_number": "WI89118",
+    "vehicle": "Toyota Corolla 2019",
+    "account_creation_date": "2023-07-24"
+  },
+  {
+    "driver_id": "D000048",
+    "first_name": "Joseph",
+    "last_name": "Green",
+    "phone_number": "597-666-6916x40188",
+    "email": "joseph.green941@chan-oneill.net",
+    "license_number": "GA34911",
+    "vehicle": "Nissan Sentra 2022",
+    "account_creation_date": "2023-05-21"
+  },
+  {
+    "driver_id": "D000049",
+    "first_name": "James",
+    "last_name": "Randall",
+    "phone_number": "+1-992-700-0025x6224",
+    "email": "james.randall430@juarez.com",
+    "license_number": "CT24190",
+    "vehicle": "Kia Forte 2017",
+    "account_creation_date": "2024-12-11"
+  },
+  {
+    "driver_id": "D000050",
+    "first_name": "Judith",
+    "last_name": "Green",
+    "phone_number": "334.730.2621x151",
+    "email": "judith.green70@norman.com",
+    "license_number": "NE99570",
+    "vehicle": "Toyota Corolla 2017",
+    "account_creation_date": "2024-12-07"
+  },
+  {
+    "driver_id": "D000051",
+    "first_name": "Nicole",
+    "last_name": "Olsen",
+    "phone_number": "603.303.3582",
+    "email": "nicole.olsen658@martin-ramirez.biz",
+    "license_number": "MP56709",
+    "vehicle": "Honda Civic 2017",
+    "account_creation_date": "2025-03-10"
+  },
+  {
+    "driver_id": "D000052",
+    "first_name": "Mark",
+    "last_name": "Oliver",
+    "phone_number": "511.874.6963x131",
+    "email": "mark.oliver595@weeks.com",
+    "license_number": "AR22135",
+    "vehicle": "Toyota Camry 2017",
+    "account_creation_date": "2024-05-04"
+  },
+  {
+    "driver_id": "D000053",
+    "first_name": "Curtis",
+    "last_name": "Walker",
+    "phone_number": "507.638.2091x0267",
+    "email": "curtis.walker79@johnson-long.com",
+    "license_number": "TN77897",
+    "vehicle": "Toyota Corolla 2021",
+    "account_creation_date": "2024-01-17"
+  },
+  {
+    "driver_id": "D000054",
+    "first_name": "John",
+    "last_name": "Avila",
+    "phone_number": "313.843.5374x57212",
+    "email": "john.avila374@sullivan.net",
+    "license_number": "AK72699",
+    "vehicle": "Mazda 6 2019",
+    "account_creation_date": "2021-09-20"
+  },
+  {
+    "driver_id": "D000055",
+    "first_name": "Kelsey",
+    "last_name": "Cabrera",
+    "phone_number": "+1-621-664-2027x56034",
+    "email": "kelsey.cabrera892@golden.com",
+    "license_number": "ME60854",
+    "vehicle": "Kia Forte 2018",
+    "account_creation_date": "2021-11-20"
+  },
+  {
+    "driver_id": "D000056",
+    "first_name": "Jesse",
+    "last_name": "Ward",
+    "phone_number": "001-215-878-2650",
+    "email": "jesse.ward344@smith.net",
+    "license_number": "KY79491",
+    "vehicle": "Honda Civic 2019",
+    "account_creation_date": "2021-03-08"
+  },
+  {
+    "driver_id": "D000057",
+    "first_name": "Margaret",
+    "last_name": "Ford",
+    "phone_number": "287-279-3835",
+    "email": "margaret.ford234@nelson.com",
+    "license_number": "RI88368",
+    "vehicle": "Toyota Corolla 2023",
+    "account_creation_date": "2023-02-19"
+  },
+  {
+    "driver_id": "D000058",
+    "first_name": "Benjamin",
+    "last_name": "Johnson",
+    "phone_number": "5886307084",
+    "email": "benjamin.johnson812@gordon.info",
+    "license_number": "NY97282",
+    "vehicle": "Toyota Corolla 2022",
+    "account_creation_date": "2024-11-12"
+  },
+  {
+    "driver_id": "D000059",
+    "first_name": "Jill",
+    "last_name": "Patrick",
+    "phone_number": "+1-475-702-9750",
+    "email": "jill.patrick931@orozco-weber.info",
+    "license_number": "MH29034",
+    "vehicle": "Mercedes C-Class 2022",
+    "account_creation_date": "2024-04-24"
+  },
+  {
+    "driver_id": "D000060",
+    "first_name": "Keith",
+    "last_name": "Gordon",
+    "phone_number": "+1-660-477-0319x693",
+    "email": "keith.gordon11@gutierrez.info",
+    "license_number": "KY55668",
+    "vehicle": "Kia Forte 2022",
+    "account_creation_date": "2024-02-23"
+  },
+  {
+    "driver_id": "D000061",
+    "first_name": "Justin",
+    "last_name": "Castaneda",
+    "phone_number": "001-225-787-0140x14010",
+    "email": "justin.castaneda951@perkins-james.org",
+    "license_number": "HI96996",
+    "vehicle": "Toyota Corolla 2019",
+    "account_creation_date": "2023-12-08"
+  },
+  {
+    "driver_id": "D000062",
+    "first_name": "Jennifer",
+    "last_name": "Jensen",
+    "phone_number": "001-447-258-3359x8256",
+    "email": "jennifer.jensen794@taylor.com",
+    "license_number": "UT17111",
+    "vehicle": "Toyota Corolla 2022",
+    "account_creation_date": "2023-09-19"
+  },
+  {
+    "driver_id": "D000063",
+    "first_name": "Sherry",
+    "last_name": "Richardson",
+    "phone_number": "+1-480-950-2875x590",
+    "email": "sherry.richardson663@wells-howell.biz",
+    "license_number": "DE62005",
+    "vehicle": "Honda Civic 2017",
+    "account_creation_date": "2025-02-11"
+  },
+  {
+    "driver_id": "D000064",
+    "first_name": "Nathan",
+    "last_name": "Vasquez",
+    "phone_number": "378.985.2417x7614",
+    "email": "nathan.vasquez828@peters-vasquez.com",
+    "license_number": "VI40880",
+    "vehicle": "Volvo S60 2018",
+    "account_creation_date": "2022-11-01"
+  },
+  {
+    "driver_id": "D000065",
+    "first_name": "Sarah",
+    "last_name": "White",
+    "phone_number": "(922)485-1883x80751",
+    "email": "sarah.white362@lam-gallagher.com",
+    "license_number": "NC55687",
+    "vehicle": "Nissan Sentra 2022",
+    "account_creation_date": "2020-12-05"
+  },
+  {
+    "driver_id": "D000066",
+    "first_name": "Shelly",
+    "last_name": "Woods",
+    "phone_number": "682.821.7633x570",
+    "email": "shelly.woods596@perez.com",
+    "license_number": "ME42866",
+    "vehicle": "Honda Civic 2023",
+    "account_creation_date": "2024-10-25"
+  },
+  {
+    "driver_id": "D000067",
+    "first_name": "Garrett",
+    "last_name": "Harper",
+    "phone_number": "(231)905-4683x781",
+    "email": "garrett.harper609@schneider-flores.com",
+    "license_number": "AS93456",
+    "vehicle": "Toyota Corolla 2017",
+    "account_creation_date": "2024-03-12"
+  },
+  {
+    "driver_id": "D000068",
+    "first_name": "Allison",
+    "last_name": "Haynes",
+    "phone_number": "+1-272-252-6577x3160",
+    "email": "allison.haynes569@smith-lopez.com",
+    "license_number": "NJ60682",
+    "vehicle": "Toyota Corolla 2022",
+    "account_creation_date": "2022-08-05"
+  },
+  {
+    "driver_id": "D000069",
+    "first_name": "Gail",
+    "last_name": "Yates",
+    "phone_number": "(886)349-1982",
+    "email": "gail.yates659@robinson.org",
+    "license_number": "RI14122",
+    "vehicle": "Kia Forte 2020",
+    "account_creation_date": "2023-05-27"
+  },
+  {
+    "driver_id": "D000070",
+    "first_name": "Brandi",
+    "last_name": "Schultz",
+    "phone_number": "(536)966-8666x790",
+    "email": "brandi.schultz349@adams.com",
+    "license_number": "PW23837",
+    "vehicle": "Volvo S60 2018",
+    "account_creation_date": "2021-01-14"
+  },
+  {
+    "driver_id": "D000071",
+    "first_name": "William",
+    "last_name": "Wyatt",
+    "phone_number": "001-961-467-9983",
+    "email": "william.wyatt352@mitchell.com",
+    "license_number": "LA10905",
+    "vehicle": "Lexus ES 2019",
+    "account_creation_date": "2022-10-09"
+  },
+  {
+    "driver_id": "D000072",
+    "first_name": "Brandon",
+    "last_name": "Arnold",
+    "phone_number": "985-920-3021",
+    "email": "brandon.arnold514@davis-bass.info",
+    "license_number": "OH63451",
+    "vehicle": "Toyota Camry 2020",
+    "account_creation_date": "2024-10-23"
+  },
+  {
+    "driver_id": "D000073",
+    "first_name": "Jason",
+    "last_name": "Navarro",
+    "phone_number": "+1-886-994-3700x2642",
+    "email": "jason.navarro815@parsons.com",
+    "license_number": "OH28592",
+    "vehicle": "Toyota Corolla 2020",
+    "account_creation_date": "2024-01-06"
+  },
+  {
+    "driver_id": "D000074",
+    "first_name": "Robert",
+    "last_name": "Jackson",
+    "phone_number": "290-355-9592x548",
+    "email": "robert.jackson139@williams.com",
+    "license_number": "DE25350",
+    "vehicle": "Kia Forte 2018",
+    "account_creation_date": "2023-05-23"
+  },
+  {
+    "driver_id": "D000075",
+    "first_name": "Shannon",
+    "last_name": "Cabrera",
+    "phone_number": "+1-749-586-8576x669",
+    "email": "shannon.cabrera871@morgan.com",
+    "license_number": "OK60806",
+    "vehicle": "Hyundai Elantra 2018",
+    "account_creation_date": "2024-01-29"
+  },
+  {
+    "driver_id": "D000076",
+    "first_name": "Christopher",
+    "last_name": "Doyle",
+    "phone_number": "+1-718-230-5738x373",
+    "email": "christopher.doyle535@barrett.info",
+    "license_number": "MT19605",
+    "vehicle": "Hyundai Elantra 2017",
+    "account_creation_date": "2022-06-24"
+  },
+  {
+    "driver_id": "D000077",
+    "first_name": "James",
+    "last_name": "Vang",
+    "phone_number": "(428)805-8998x188",
+    "email": "james.vang672@jones-shields.com",
+    "license_number": "NH28932",
+    "vehicle": "Audi A4 2020",
+    "account_creation_date": "2023-08-08"
+  },
+  {
+    "driver_id": "D000078",
+    "first_name": "Mary",
+    "last_name": "Torres",
+    "phone_number": "2136353253",
+    "email": "mary.torres247@olsen.com",
+    "license_number": "FL51075",
+    "vehicle": "Honda Civic 2023",
+    "account_creation_date": "2023-01-06"
+  },
+  {
+    "driver_id": "D000079",
+    "first_name": "Diana",
+    "last_name": "Maddox",
+    "phone_number": "+1-474-751-7558x42194",
+    "email": "diana.maddox812@willis.com",
+    "license_number": "VT10331",
+    "vehicle": "Toyota Corolla 2018",
+    "account_creation_date": "2024-08-30"
+  },
+  {
+    "driver_id": "D000080",
+    "first_name": "Leslie",
+    "last_name": "Davis",
+    "phone_number": "294-231-2649x49787",
+    "email": "leslie.davis960@ramos.net",
+    "license_number": "FL44218",
+    "vehicle": "Kia Forte 2023",
+    "account_creation_date": "2024-11-27"
+  },
+  {
+    "driver_id": "D000081",
+    "first_name": "Erin",
+    "last_name": "Hill",
+    "phone_number": "685.272.5785",
+    "email": "erin.hill841@sandoval.biz",
+    "license_number": "VT83945",
+    "vehicle": "GMC Yukon 2021",
+    "account_creation_date": "2023-05-29"
+  },
+  {
+    "driver_id": "D000082",
+    "first_name": "Mary",
+    "last_name": "Giles",
+    "phone_number": "894-276-6260x625",
+    "email": "mary.giles87@williams.org",
+    "license_number": "FL36319",
+    "vehicle": "Toyota Corolla 2018",
+    "account_creation_date": "2022-09-24"
+  },
+  {
+    "driver_id": "D000083",
+    "first_name": "Brent",
+    "last_name": "Henderson",
+    "phone_number": "001-853-522-4319x881",
+    "email": "brent.henderson820@dominguez.biz",
+    "license_number": "PA49896",
+    "vehicle": "Nissan Sentra 2020",
+    "account_creation_date": "2022-11-13"
+  },
+  {
+    "driver_id": "D000084",
+    "first_name": "Paul",
+    "last_name": "Jones",
+    "phone_number": "(714)853-3760x80636",
+    "email": "paul.jones821@booker.net",
+    "license_number": "AR48660",
+    "vehicle": "Kia Forte 2020",
+    "account_creation_date": "2022-02-01"
+  },
+  {
+    "driver_id": "D000085",
+    "first_name": "Stephanie",
+    "last_name": "Gilbert",
+    "phone_number": "381-874-2970",
+    "email": "stephanie.gilbert502@jimenez.net",
+    "license_number": "MN75674",
+    "vehicle": "Kia Forte 2020",
+    "account_creation_date": "2024-06-28"
+  },
+  {
+    "driver_id": "D000086",
+    "first_name": "Jonathan",
+    "last_name": "Bell",
+    "phone_number": "(352)641-1888x27090",
+    "email": "jonathan.bell356@ross.com",
+    "license_number": "AS48346",
+    "vehicle": "Toyota Corolla 2019",
+    "account_creation_date": "2023-09-08"
+  },
+  {
+    "driver_id": "D000087",
+    "first_name": "Erin",
+    "last_name": "Lang",
+    "phone_number": "420-808-6520x8794",
+    "email": "erin.lang684@jones.com",
+    "license_number": "OR20912",
+    "vehicle": "Kia Forte 2020",
+    "account_creation_date": "2021-04-26"
+  },
+  {
+    "driver_id": "D000088",
+    "first_name": "Jill",
+    "last_name": "Ortiz",
+    "phone_number": "540-568-5438",
+    "email": "jill.ortiz695@christian-burke.com",
+    "license_number": "VI60870",
+    "vehicle": "Toyota Corolla 2021",
+    "account_creation_date": "2020-05-02"
+  },
+  {
+    "driver_id": "D000089",
+    "first_name": "Ashley",
+    "last_name": "Edwards",
+    "phone_number": "001-602-608-0353x6227",
+    "email": "ashley.edwards972@hanson.info",
+    "license_number": "TX45659",
+    "vehicle": "Toyota Corolla 2020",
+    "account_creation_date": "2024-01-18"
+  },
+  {
+    "driver_id": "D000090",
+    "first_name": "Bryan",
+    "last_name": "Harmon",
+    "phone_number": "426.506.3064",
+    "email": "bryan.harmon362@taylor.com",
+    "license_number": "AK70871",
+    "vehicle": "Kia Forte 2021",
+    "account_creation_date": "2023-07-21"
+  },
+  {
+    "driver_id": "D000091",
+    "first_name": "Jack",
+    "last_name": "Bailey",
+    "phone_number": "(412)490-9134",
+    "email": "jack.bailey342@johnson.com",
+    "license_number": "WI93407",
+    "vehicle": "Toyota Camry 2018",
+    "account_creation_date": "2024-11-19"
+  },
+  {
+    "driver_id": "D000092",
+    "first_name": "Haley",
+    "last_name": "Mueller",
+    "phone_number": "992-233-3766",
+    "email": "haley.mueller467@diaz.com",
+    "license_number": "NM47671",
+    "vehicle": "Honda Civic 2021",
+    "account_creation_date": "2023-08-19"
+  },
+  {
+    "driver_id": "D000093",
+    "first_name": "Jonathan",
+    "last_name": "Dougherty",
+    "phone_number": "934-335-3863",
+    "email": "jonathan.dougherty365@lewis.biz",
+    "license_number": "MH32312",
+    "vehicle": "Nissan Sentra 2018",
+    "account_creation_date": "2020-10-19"
+  },
+  {
+    "driver_id": "D000094",
+    "first_name": "Julie",
+    "last_name": "Rice",
+    "phone_number": "(455)894-3224x6798",
+    "email": "julie.rice232@russell.biz",
+    "license_number": "IN45884",
+    "vehicle": "Nissan Sentra 2018",
+    "account_creation_date": "2023-10-22"
+  },
+  {
+    "driver_id": "D000095",
+    "first_name": "Eric",
+    "last_name": "Williams",
+    "phone_number": "+1-517-520-2615",
+    "email": "eric.williams402@jones.com",
+    "license_number": "WV55615",
+    "vehicle": "Toyota Corolla 2018",
+    "account_creation_date": "2022-12-02"
+  },
+  {
+    "driver_id": "D000096",
+    "first_name": "Carla",
+    "last_name": "Taylor",
+    "phone_number": "001-781-529-1030x349",
+    "email": "carla.taylor488@lee-nguyen.org",
+    "license_number": "HI94130",
+    "vehicle": "Honda Odyssey 2023",
+    "account_creation_date": "2023-08-21"
+  },
+  {
+    "driver_id": "D000097",
+    "first_name": "Danielle",
+    "last_name": "Perez",
+    "phone_number": "+1-771-560-7214x60013",
+    "email": "danielle.perez248@sawyer-nguyen.com",
+    "license_number": "NH39763",
+    "vehicle": "Honda Civic 2019",
+    "account_creation_date": "2021-09-29"
+  },
+  {
+    "driver_id": "D000098",
+    "first_name": "Cynthia",
+    "last_name": "Rice",
+    "phone_number": "+1-556-832-9352",
+    "email": "cynthia.rice99@ashley-rivers.info",
+    "license_number": "PA81912",
+    "vehicle": "Mazda 6 2020",
+    "account_creation_date": "2020-09-19"
+  },
+  {
+    "driver_id": "D000099",
+    "first_name": "Victoria",
+    "last_name": "Shelton",
+    "phone_number": "5528316432",
+    "email": "victoria.shelton956@patton.info",
+    "license_number": "SD89718",
+    "vehicle": "Subaru Legacy 2021",
+    "account_creation_date": "2024-04-06"
+  },
+  {
+    "driver_id": "D000100",
+    "first_name": "Rebecca",
+    "last_name": "Boyd",
+    "phone_number": "+1-444-354-9780x115",
+    "email": "rebecca.boyd908@higgins-ray.com",
+    "license_number": "PA88011",
+    "vehicle": "Volkswagen Passat 2021",
+    "account_creation_date": "2022-09-29"
+  },
+  {
+    "driver_id": "D000101",
+    "first_name": "Denise",
+    "last_name": "Montgomery",
+    "phone_number": "+1-819-883-3164x97050",
+    "email": "denise.montgomery401@richardson.com",
+    "license_number": "SD37437",
+    "vehicle": "Chevrolet Suburban 2018",
+    "account_creation_date": "2020-05-29"
+  },
+  {
+    "driver_id": "D000102",
+    "first_name": "James",
+    "last_name": "Ellis",
+    "phone_number": "001-613-443-4226x020",
+    "email": "james.ellis68@richardson.com",
+    "license_number": "VT87276",
+    "vehicle": "Kia Forte 2020",
+    "account_creation_date": "2023-04-28"
+  },
+  {
+    "driver_id": "D000103",
+    "first_name": "Paul",
+    "last_name": "Thomas",
+    "phone_number": "001-344-542-6596x31916",
+    "email": "paul.thomas912@brewer.org",
+    "license_number": "MD73188",
+    "vehicle": "Volkswagen Passat 2020",
+    "account_creation_date": "2024-08-31"
+  },
+  {
+    "driver_id": "D000104",
+    "first_name": "Sandra",
+    "last_name": "Foster",
+    "phone_number": "+1-481-903-3190x924",
+    "email": "sandra.foster496@weiss.com",
+    "license_number": "TX82065",
+    "vehicle": "Audi A4 2017",
+    "account_creation_date": "2023-07-30"
+  },
+  {
+    "driver_id": "D000105",
+    "first_name": "Kimberly",
+    "last_name": "Brooks",
+    "phone_number": "384.200.7213x44043",
+    "email": "kimberly.brooks601@garcia.info",
+    "license_number": "NM60655",
+    "vehicle": "Nissan Sentra 2020",
+    "account_creation_date": "2025-02-09"
+  },
+  {
+    "driver_id": "D000106",
+    "first_name": "Mario",
+    "last_name": "Nelson",
+    "phone_number": "358.457.7440",
+    "email": "mario.nelson688@miller-scott.com",
+    "license_number": "KS69047",
+    "vehicle": "Volkswagen Passat 2023",
+    "account_creation_date": "2025-03-09"
+  },
+  {
+    "driver_id": "D000107",
+    "first_name": "Chad",
+    "last_name": "Quinn",
+    "phone_number": "665-891-9634",
+    "email": "chad.quinn899@murillo-schneider.com",
+    "license_number": "IN73669",
+    "vehicle": "Nissan Sentra 2017",
+    "account_creation_date": "2024-02-03"
+  },
+  {
+    "driver_id": "D000108",
+    "first_name": "Tracy",
+    "last_name": "West",
+    "phone_number": "(320)985-5738",
+    "email": "tracy.west837@roberts-wallace.com",
+    "license_number": "MD62954",
+    "vehicle": "Nissan Sentra 2023",
+    "account_creation_date": "2021-07-04"
+  },
+  {
+    "driver_id": "D000109",
+    "first_name": "Helen",
+    "last_name": "Moore",
+    "phone_number": "001-876-773-8626",
+    "email": "helen.moore190@collier.info",
+    "license_number": "CO19414",
+    "vehicle": "Toyota Camry 2021",
+    "account_creation_date": "2021-11-10"
+  },
+  {
+    "driver_id": "D000110",
+    "first_name": "Jose",
+    "last_name": "Wilcox",
+    "phone_number": "629.551.9245x52666",
+    "email": "jose.wilcox158@dean-kaiser.com",
+    "license_number": "NM43718",
+    "vehicle": "Kia Forte 2022",
+    "account_creation_date": "2024-06-28"
+  },
+  {
+    "driver_id": "D000111",
+    "first_name": "Shelby",
+    "last_name": "Martin",
+    "phone_number": "+1-491-435-0584x552",
+    "email": "shelby.martin427@morgan-johnson.com",
+    "license_number": "KY49856",
+    "vehicle": "Mazda 6 2020",
+    "account_creation_date": "2020-07-12"
+  },
+  {
+    "driver_id": "D000112",
+    "first_name": "Kerry",
+    "last_name": "Dean",
+    "phone_number": "771-900-8529x34527",
+    "email": "kerry.dean35@carlson-mcmillan.com",
+    "license_number": "CA63643",
+    "vehicle": "Volkswagen Passat 2019",
+    "account_creation_date": "2023-02-10"
+  },
+  {
+    "driver_id": "D000113",
+    "first_name": "James",
+    "last_name": "Contreras",
+    "phone_number": "964.761.4234",
+    "email": "james.contreras239@burke-hays.com",
+    "license_number": "RI34446",
+    "vehicle": "Nissan Sentra 2021",
+    "account_creation_date": "2020-06-28"
+  },
+  {
+    "driver_id": "D000114",
+    "first_name": "Jennifer",
+    "last_name": "Snyder",
+    "phone_number": "6237614517",
+    "email": "jennifer.snyder500@wilson.info",
+    "license_number": "AK51405",
+    "vehicle": "Subaru Legacy 2017",
+    "account_creation_date": "2023-02-01"
+  },
+  {
+    "driver_id": "D000115",
+    "first_name": "Jenny",
+    "last_name": "Bell",
+    "phone_number": "465-329-0113x20482",
+    "email": "jenny.bell966@taylor.com",
+    "license_number": "CT33391",
+    "vehicle": "Nissan Sentra 2021",
+    "account_creation_date": "2024-06-24"
+  },
+  {
+    "driver_id": "D000116",
+    "first_name": "Daniel",
+    "last_name": "Rosales",
+    "phone_number": "2719267349",
+    "email": "daniel.rosales844@rogers-hill.com",
+    "license_number": "AS72104",
+    "vehicle": "Chevrolet Suburban 2021",
+    "account_creation_date": "2023-12-03"
+  },
+  {
+    "driver_id": "D000117",
+    "first_name": "Anthony",
+    "last_name": "Hatfield",
+    "phone_number": "374.836.2388x036",
+    "email": "anthony.hatfield488@humphrey.com",
+    "license_number": "NJ83919",
+    "vehicle": "Kia Forte 2017",
+    "account_creation_date": "2023-08-03"
+  },
+  {
+    "driver_id": "D000118",
+    "first_name": "Lisa",
+    "last_name": "Parker",
+    "phone_number": "904.655.7415",
+    "email": "lisa.parker137@jennings.com",
+    "license_number": "HI52857",
+    "vehicle": "Honda Civic 2022",
+    "account_creation_date": "2022-12-29"
+  },
+  {
+    "driver_id": "D000119",
+    "first_name": "Tanner",
+    "last_name": "Pierce",
+    "phone_number": "+1-558-734-3472x211",
+    "email": "tanner.pierce382@lopez.com",
+    "license_number": "GA39316",
+    "vehicle": "BMW 3 Series 2017",
+    "account_creation_date": "2023-12-04"
+  },
+  {
+    "driver_id": "D000120",
+    "first_name": "Gary",
+    "last_name": "Singleton",
+    "phone_number": "(739)469-9496x4522",
+    "email": "gary.singleton239@mcdaniel-finley.com",
+    "license_number": "ME46078",
+    "vehicle": "Honda Accord 2018",
+    "account_creation_date": "2025-02-09"
+  },
+  {
+    "driver_id": "D000121",
+    "first_name": "Keith",
+    "last_name": "Hughes",
+    "phone_number": "7029007408",
+    "email": "keith.hughes49@hamilton-cameron.com",
+    "license_number": "SC83710",
+    "vehicle": "Hyundai Elantra 2017",
+    "account_creation_date": "2021-10-15"
+  },
+  {
+    "driver_id": "D000122",
+    "first_name": "Kristina",
+    "last_name": "Hart",
+    "phone_number": "001-287-667-4353x11167",
+    "email": "kristina.hart855@ortega-owens.biz",
+    "license_number": "MN74355",
+    "vehicle": "Mazda 6 2022",
+    "account_creation_date": "2023-02-25"
+  },
+  {
+    "driver_id": "D000123",
+    "first_name": "David",
+    "last_name": "Gray",
+    "phone_number": "3246154363",
+    "email": "david.gray877@lewis.net",
+    "license_number": "ME23085",
+    "vehicle": "Nissan Sentra 2023",
+    "account_creation_date": "2021-11-25"
+  },
+  {
+    "driver_id": "D000124",
+    "first_name": "Rachel",
+    "last_name": "Smith",
+    "phone_number": "001-534-807-6434x69441",
+    "email": "rachel.smith424@cook-porter.net",
+    "license_number": "TX26306",
+    "vehicle": "Honda Civic 2017",
+    "account_creation_date": "2024-05-05"
+  },
+  {
+    "driver_id": "D000125",
+    "first_name": "Justin",
+    "last_name": "Wright",
+    "phone_number": "356.482.0395x60039",
+    "email": "justin.wright992@harris.com",
+    "license_number": "MT35066",
+    "vehicle": "Volkswagen Passat 2020",
+    "account_creation_date": "2022-11-16"
+  },
+  {
+    "driver_id": "D000126",
+    "first_name": "Robert",
+    "last_name": "Pena",
+    "phone_number": "(579)967-4328x34580",
+    "email": "robert.pena388@neal-rogers.com",
+    "license_number": "OR55483",
+    "vehicle": "Honda Civic 2020",
+    "account_creation_date": "2023-11-30"
+  },
+  {
+    "driver_id": "D000127",
+    "first_name": "Brittany",
+    "last_name": "Ritter",
+    "phone_number": "(399)551-8214",
+    "email": "brittany.ritter266@baldwin.com",
+    "license_number": "IL48504",
+    "vehicle": "Subaru Legacy 2018",
+    "account_creation_date": "2020-07-08"
+  },
+  {
+    "driver_id": "D000128",
+    "first_name": "Kimberly",
+    "last_name": "Arnold",
+    "phone_number": "+1-975-590-6976x49846",
+    "email": "kimberly.arnold594@kelly.info",
+    "license_number": "AL36471",
+    "vehicle": "Volvo S60 2020",
+    "account_creation_date": "2023-12-15"
+  },
+  {
+    "driver_id": "D000129",
+    "first_name": "David",
+    "last_name": "Lopez",
+    "phone_number": "284-648-0737",
+    "email": "david.lopez729@schmitt.info",
+    "license_number": "NY72348",
+    "vehicle": "Hyundai Elantra 2021",
+    "account_creation_date": "2023-08-13"
+  },
+  {
+    "driver_id": "D000130",
+    "first_name": "Anthony",
+    "last_name": "Williams",
+    "phone_number": "428.393.0355",
+    "email": "anthony.williams262@sandoval.com",
+    "license_number": "DC53001",
+    "vehicle": "Toyota Corolla 2018",
+    "account_creation_date": "2022-11-27"
+  },
+  {
+    "driver_id": "D000131",
+    "first_name": "Jonathan",
+    "last_name": "Harris",
+    "phone_number": "8822893076",
+    "email": "jonathan.harris724@perez.com",
+    "license_number": "VA16638",
+    "vehicle": "Honda Civic 2022",
+    "account_creation_date": "2023-10-27"
+  },
+  {
+    "driver_id": "D000132",
+    "first_name": "Judy",
+    "last_name": "Smith",
+    "phone_number": "001-467-572-4145x807",
+    "email": "judy.smith717@key-webster.com",
+    "license_number": "KY24483",
+    "vehicle": "Hyundai Elantra 2017",
+    "account_creation_date": "2023-08-03"
+  },
+  {
+    "driver_id": "D000133",
+    "first_name": "Joshua",
+    "last_name": "Melton",
+    "phone_number": "588-495-3757",
+    "email": "joshua.melton917@peterson.org",
+    "license_number": "RI29658",
+    "vehicle": "Toyota Corolla 2019",
+    "account_creation_date": "2024-11-09"
+  },
+  {
+    "driver_id": "D000134",
+    "first_name": "Margaret",
+    "last_name": "Davis",
+    "phone_number": "001-757-235-1779x1189",
+    "email": "margaret.davis624@jordan-stevenson.com",
+    "license_number": "FM98527",
+    "vehicle": "Honda Civic 2020",
+    "account_creation_date": "2020-12-31"
+  },
+  {
+    "driver_id": "D000135",
+    "first_name": "Tracy",
+    "last_name": "Jordan",
+    "phone_number": "001-543-216-9014x350",
+    "email": "tracy.jordan662@flowers-jones.com",
+    "license_number": "OR57481",
+    "vehicle": "Toyota Corolla 2022",
+    "account_creation_date": "2022-10-10"
+  },
+  {
+    "driver_id": "D000136",
+    "first_name": "Gregory",
+    "last_name": "Mullins",
+    "phone_number": "(230)561-4530",
+    "email": "gregory.mullins577@hughes-owens.com",
+    "license_number": "FM21734",
+    "vehicle": "Toyota Corolla 2022",
+    "account_creation_date": "2024-08-24"
+  },
+  {
+    "driver_id": "D000137",
+    "first_name": "James",
+    "last_name": "Salas",
+    "phone_number": "890-798-6136",
+    "email": "james.salas924@perez.com",
+    "license_number": "GU87785",
+    "vehicle": "Subaru Legacy 2020",
+    "account_creation_date": "2023-07-29"
+  },
+  {
+    "driver_id": "D000138",
+    "first_name": "Alexandra",
+    "last_name": "Johnson",
+    "phone_number": "+1-300-301-1652x5091",
+    "email": "alexandra.johnson271@rodriguez-mayer.org",
+    "license_number": "KS50949",
+    "vehicle": "Toyota Camry 2022",
+    "account_creation_date": "2020-08-28"
+  },
+  {
+    "driver_id": "D000139",
+    "first_name": "Shirley",
+    "last_name": "Martinez",
+    "phone_number": "8285754352",
+    "email": "shirley.martinez949@williams.com",
+    "license_number": "AS61238",
+    "vehicle": "Lexus ES 2022",
+    "account_creation_date": "2022-11-05"
+  },
+  {
+    "driver_id": "D000140",
+    "first_name": "Michael",
+    "last_name": "Newman",
+    "phone_number": "940.909.4371x62599",
+    "email": "michael.newman302@barber.org",
+    "license_number": "OR96870",
+    "vehicle": "Kia Forte 2022",
+    "account_creation_date": "2024-11-13"
+  },
+  {
+    "driver_id": "D000141",
+    "first_name": "Rebecca",
+    "last_name": "Hess",
+    "phone_number": "200.484.6967",
+    "email": "rebecca.hess763@brown.com",
+    "license_number": "PA25122",
+    "vehicle": "Lexus ES 2023",
+    "account_creation_date": "2024-06-15"
+  },
+  {
+    "driver_id": "D000142",
+    "first_name": "Cheryl",
+    "last_name": "Malone",
+    "phone_number": "(326)878-8730x07318",
+    "email": "cheryl.malone925@schwartz.biz",
+    "license_number": "NY27185",
+    "vehicle": "Kia Forte 2018",
+    "account_creation_date": "2023-09-11"
+  },
+  {
+    "driver_id": "D000143",
+    "first_name": "Anne",
+    "last_name": "Gilbert",
+    "phone_number": "785.481.1785x48315",
+    "email": "anne.gilbert224@richardson.net",
+    "license_number": "AK93068",
+    "vehicle": "Hyundai Elantra 2022",
+    "account_creation_date": "2020-05-20"
+  },
+  {
+    "driver_id": "D000144",
+    "first_name": "Charlotte",
+    "last_name": "Melton",
+    "phone_number": "(424)859-0755",
+    "email": "charlotte.melton523@jordan-thomas.com",
+    "license_number": "FL96381",
+    "vehicle": "Ford Explorer 2020",
+    "account_creation_date": "2025-02-07"
+  },
+  {
+    "driver_id": "D000145",
+    "first_name": "Aaron",
+    "last_name": "Carroll",
+    "phone_number": "398-207-9427",
+    "email": "aaron.carroll229@price-young.biz",
+    "license_number": "SC13984",
+    "vehicle": "Hyundai Elantra 2019",
+    "account_creation_date": "2022-06-02"
+  },
+  {
+    "driver_id": "D000146",
+    "first_name": "Ian",
+    "last_name": "Aguirre",
+    "phone_number": "+1-829-547-2148x42685",
+    "email": "ian.aguirre864@summers-grant.com",
+    "license_number": "FM56014",
+    "vehicle": "Toyota Camry 2018",
+    "account_creation_date": "2023-09-04"
+  },
+  {
+    "driver_id": "D000147",
+    "first_name": "Anita",
+    "last_name": "Fields",
+    "phone_number": "2472772818",
+    "email": "anita.fields418@todd.com",
+    "license_number": "MN16575",
+    "vehicle": "Toyota Camry 2020",
+    "account_creation_date": "2024-01-03"
+  },
+  {
+    "driver_id": "D000148",
+    "first_name": "Patricia",
+    "last_name": "Hood",
+    "phone_number": "880-973-5971x2171",
+    "email": "patricia.hood24@miranda.com",
+    "license_number": "RI96672",
+    "vehicle": "Honda Civic 2017",
+    "account_creation_date": "2022-05-28"
+  },
+  {
+    "driver_id": "D000149",
+    "first_name": "Stacey",
+    "last_name": "Santos",
+    "phone_number": "942-527-8802x89612",
+    "email": "stacey.santos364@rojas.com",
+    "license_number": "TN76279",
+    "vehicle": "Toyota Corolla 2023",
+    "account_creation_date": "2024-06-27"
+  },
+  {
+    "driver_id": "D000150",
+    "first_name": "Reginald",
+    "last_name": "Ortiz",
+    "phone_number": "626.808.6683x129",
+    "email": "reginald.ortiz915@levine.com",
+    "license_number": "RI86825",
+    "vehicle": "Subaru Legacy 2023",
+    "account_creation_date": "2024-02-26"
+  },
+  {
+    "driver_id": "D000151",
+    "first_name": "Joshua",
+    "last_name": "Macias",
+    "phone_number": "001-413-301-2820",
+    "email": "joshua.macias205@thomas-zhang.com",
+    "license_number": "UT68685",
+    "vehicle": "Honda Civic 2020",
+    "account_creation_date": "2023-06-16"
+  },
+  {
+    "driver_id": "D000152",
+    "first_name": "Kim",
+    "last_name": "Griffith",
+    "phone_number": "001-544-978-5041",
+    "email": "kim.griffith779@porter-hansen.com",
+    "license_number": "PA82278",
+    "vehicle": "Toyota Corolla 2020",
+    "account_creation_date": "2023-09-08"
+  },
+  {
+    "driver_id": "D000153",
+    "first_name": "Kelly",
+    "last_name": "Brown",
+    "phone_number": "464-861-9415",
+    "email": "kelly.brown511@doyle.com",
+    "license_number": "NH90447",
+    "vehicle": "Lexus ES 2017",
+    "account_creation_date": "2021-08-23"
+  },
+  {
+    "driver_id": "D000154",
+    "first_name": "Cheryl",
+    "last_name": "Mcbride",
+    "phone_number": "+1-951-935-5095x19687",
+    "email": "cheryl.mcbride607@walker.info",
+    "license_number": "MN52404",
+    "vehicle": "Honda Civic 2018",
+    "account_creation_date": "2023-04-24"
+  },
+  {
+    "driver_id": "D000155",
+    "first_name": "Corey",
+    "last_name": "Rivera",
+    "phone_number": "363.376.0406x422",
+    "email": "corey.rivera279@ramos.com",
+    "license_number": "AL19727",
+    "vehicle": "Lexus ES 2021",
+    "account_creation_date": "2022-10-29"
+  },
+  {
+    "driver_id": "D000156",
+    "first_name": "Kevin",
+    "last_name": "Smith",
+    "phone_number": "934.930.5768x04913",
+    "email": "kevin.smith872@davis.com",
+    "license_number": "IL10512",
+    "vehicle": "Nissan Sentra 2021",
+    "account_creation_date": "2023-05-08"
+  },
+  {
+    "driver_id": "D000157",
+    "first_name": "John",
+    "last_name": "Watson",
+    "phone_number": "759-630-9398x9915",
+    "email": "john.watson244@simpson-clements.com",
+    "license_number": "VT53002",
+    "vehicle": "Hyundai Elantra 2022",
+    "account_creation_date": "2023-05-14"
+  },
+  {
+    "driver_id": "D000158",
+    "first_name": "Pamela",
+    "last_name": "Burton",
+    "phone_number": "+1-981-335-4741x802",
+    "email": "pamela.burton437@lowery.com",
+    "license_number": "ID12139",
+    "vehicle": "Volkswagen Passat 2018",
+    "account_creation_date": "2023-03-09"
+  },
+  {
+    "driver_id": "D000159",
+    "first_name": "Dawn",
+    "last_name": "Jacobson",
+    "phone_number": "7925445061",
+    "email": "dawn.jacobson40@porter.com",
+    "license_number": "IL87034",
+    "vehicle": "Toyota Corolla 2023",
+    "account_creation_date": "2023-09-04"
+  },
+  {
+    "driver_id": "D000160",
+    "first_name": "Timothy",
+    "last_name": "Zamora",
+    "phone_number": "383.911.1679",
+    "email": "timothy.zamora668@austin.com",
+    "license_number": "KS96075",
+    "vehicle": "Kia Forte 2023",
+    "account_creation_date": "2021-12-26"
+  },
+  {
+    "driver_id": "D000161",
+    "first_name": "Angela",
+    "last_name": "Rios",
+    "phone_number": "001-662-458-2067x848",
+    "email": "angela.rios658@carter.com",
+    "license_number": "OK40451",
+    "vehicle": "Kia Forte 2018",
+    "account_creation_date": "2023-08-13"
+  },
+  {
+    "driver_id": "D000162",
+    "first_name": "Michelle",
+    "last_name": "Larsen",
+    "phone_number": "4608467980",
+    "email": "michelle.larsen809@lee-jones.com",
+    "license_number": "GU95024",
+    "vehicle": "Subaru Legacy 2022",
+    "account_creation_date": "2021-11-10"
+  },
+  {
+    "driver_id": "D000163",
+    "first_name": "Stephanie",
+    "last_name": "Cooper",
+    "phone_number": "668.357.9998",
+    "email": "stephanie.cooper788@nunez-gallegos.com",
+    "license_number": "RI28819",
+    "vehicle": "Toyota Corolla 2020",
+    "account_creation_date": "2023-12-12"
+  },
+  {
+    "driver_id": "D000164",
+    "first_name": "Michelle",
+    "last_name": "Patrick",
+    "phone_number": "+1-499-623-2385x8119",
+    "email": "michelle.patrick738@morgan.com",
+    "license_number": "HI46440",
+    "vehicle": "Subaru Legacy 2019",
+    "account_creation_date": "2022-12-30"
+  },
+  {
+    "driver_id": "D000165",
+    "first_name": "Tiffany",
+    "last_name": "Hampton",
+    "phone_number": "497.320.9099x212",
+    "email": "tiffany.hampton294@haley.biz",
+    "license_number": "KS32669",
+    "vehicle": "Kia Forte 2022",
+    "account_creation_date": "2023-12-01"
+  },
+  {
+    "driver_id": "D000166",
+    "first_name": "David",
+    "last_name": "Anderson",
+    "phone_number": "896-312-0935",
+    "email": "david.anderson330@harris-travis.com",
+    "license_number": "NJ36937",
+    "vehicle": "Volkswagen Passat 2021",
+    "account_creation_date": "2023-10-31"
+  },
+  {
+    "driver_id": "D000167",
+    "first_name": "Erin",
+    "last_name": "Boyd",
+    "phone_number": "304-839-6844x251",
+    "email": "erin.boyd351@gonzalez.net",
+    "license_number": "MT67072",
+    "vehicle": "Nissan Sentra 2019",
+    "account_creation_date": "2022-12-04"
+  },
+  {
+    "driver_id": "D000168",
+    "first_name": "Jonathan",
+    "last_name": "Cooke",
+    "phone_number": "6718088106",
+    "email": "jonathan.cooke618@summers.com",
+    "license_number": "AL82420",
+    "vehicle": "Nissan Sentra 2019",
+    "account_creation_date": "2024-09-30"
+  },
+  {
+    "driver_id": "D000169",
+    "first_name": "Randy",
+    "last_name": "Obrien",
+    "phone_number": "001-790-786-8276",
+    "email": "randy.obrien412@keith.com",
+    "license_number": "AR72391",
+    "vehicle": "Honda Civic 2023",
+    "account_creation_date": "2024-11-04"
+  },
+  {
+    "driver_id": "D000170",
+    "first_name": "George",
+    "last_name": "Kennedy",
+    "phone_number": "978.886.8216",
+    "email": "george.kennedy13@rice.com",
+    "license_number": "FM25850",
+    "vehicle": "Toyota Corolla 2017",
+    "account_creation_date": "2023-01-13"
+  },
+  {
+    "driver_id": "D000171",
+    "first_name": "Wayne",
+    "last_name": "Lucas",
+    "phone_number": "(600)399-5586x730",
+    "email": "wayne.lucas847@lee-ho.com",
+    "license_number": "MP45737",
+    "vehicle": "Hyundai Elantra 2020",
+    "account_creation_date": "2023-04-01"
+  },
+  {
+    "driver_id": "D000172",
+    "first_name": "David",
+    "last_name": "Rodriguez",
+    "phone_number": "318.320.8949x580",
+    "email": "david.rodriguez757@hayes.com",
+    "license_number": "OK85425",
+    "vehicle": "Nissan Sentra 2018",
+    "account_creation_date": "2024-10-17"
+  },
+  {
+    "driver_id": "D000173",
+    "first_name": "Rebekah",
+    "last_name": "Kirby",
+    "phone_number": "001-274-788-1669x4429",
+    "email": "rebekah.kirby352@brown.com",
+    "license_number": "MO94878",
+    "vehicle": "Honda Civic 2023",
+    "account_creation_date": "2021-11-27"
+  },
+  {
+    "driver_id": "D000174",
+    "first_name": "Leslie",
+    "last_name": "Hamilton",
+    "phone_number": "+1-780-924-6439x5963",
+    "email": "leslie.hamilton235@woods.net",
+    "license_number": "LA64008",
+    "vehicle": "Honda Civic 2022",
+    "account_creation_date": "2024-03-10"
+  },
+  {
+    "driver_id": "D000175",
+    "first_name": "Kevin",
+    "last_name": "Adams",
+    "phone_number": "389.861.8980x600",
+    "email": "kevin.adams782@briggs.biz",
+    "license_number": "NM41770",
+    "vehicle": "Volkswagen Passat 2018",
+    "account_creation_date": "2021-06-05"
+  },
+  {
+    "driver_id": "D000176",
+    "first_name": "Carolyn",
+    "last_name": "Carter",
+    "phone_number": "(695)338-2726x3771",
+    "email": "carolyn.carter158@hurst-simmons.com",
+    "license_number": "VA42428",
+    "vehicle": "Hyundai Elantra 2022",
+    "account_creation_date": "2022-01-31"
+  },
+  {
+    "driver_id": "D000177",
+    "first_name": "Keith",
+    "last_name": "Carson",
+    "phone_number": "7579183363",
+    "email": "keith.carson588@berger-baker.net",
+    "license_number": "NM38425",
+    "vehicle": "Hyundai Elantra 2022",
+    "account_creation_date": "2025-01-22"
+  },
+  {
+    "driver_id": "D000178",
+    "first_name": "Spencer",
+    "last_name": "Jones",
+    "phone_number": "815.876.0933",
+    "email": "spencer.jones125@wolf.org",
+    "license_number": "VA89311",
+    "vehicle": "Volkswagen Passat 2023",
+    "account_creation_date": "2022-07-19"
+  },
+  {
+    "driver_id": "D000179",
+    "first_name": "Maria",
+    "last_name": "Hall",
+    "phone_number": "+1-353-402-6093x364",
+    "email": "maria.hall80@cox.com",
+    "license_number": "MA42863",
+    "vehicle": "Honda Civic 2022",
+    "account_creation_date": "2024-11-23"
+  },
+  {
+    "driver_id": "D000180",
+    "first_name": "Kelly",
+    "last_name": "Miller",
+    "phone_number": "8094941042",
+    "email": "kelly.miller525@hall.com",
+    "license_number": "HI31375",
+    "vehicle": "Subaru Legacy 2023",
+    "account_creation_date": "2024-06-13"
+  },
+  {
+    "driver_id": "D000181",
+    "first_name": "Felicia",
+    "last_name": "Banks",
+    "phone_number": "(871)293-5694x93118",
+    "email": "felicia.banks400@sanchez-oconnor.com",
+    "license_number": "ID77189",
+    "vehicle": "Volkswagen Passat 2021",
+    "account_creation_date": "2020-06-13"
+  },
+  {
+    "driver_id": "D000182",
+    "first_name": "Carol",
+    "last_name": "Harvey",
+    "phone_number": "533-930-3004",
+    "email": "carol.harvey278@garcia.com",
+    "license_number": "WI80693",
+    "vehicle": "Hyundai Elantra 2017",
+    "account_creation_date": "2024-06-13"
+  },
+  {
+    "driver_id": "D000183",
+    "first_name": "Patricia",
+    "last_name": "Dougherty",
+    "phone_number": "+1-575-239-3886x030",
+    "email": "patricia.dougherty451@blanchard.com",
+    "license_number": "MO75826",
+    "vehicle": "Toyota Corolla 2020",
+    "account_creation_date": "2024-03-19"
+  },
+  {
+    "driver_id": "D000184",
+    "first_name": "Brittany",
+    "last_name": "Sanchez",
+    "phone_number": "+1-722-814-9020",
+    "email": "brittany.sanchez777@warner.com",
+    "license_number": "MT65618",
+    "vehicle": "Nissan Sentra 2017",
+    "account_creation_date": "2021-10-27"
+  },
+  {
+    "driver_id": "D000185",
+    "first_name": "Lisa",
+    "last_name": "Estrada",
+    "phone_number": "+1-990-575-3777",
+    "email": "lisa.estrada797@rich-perez.com",
+    "license_number": "MT68372",
+    "vehicle": "Honda Civic 2019",
+    "account_creation_date": "2022-05-24"
+  },
+  {
+    "driver_id": "D000186",
+    "first_name": "Alexander",
+    "last_name": "Cole",
+    "phone_number": "9289715268",
+    "email": "alexander.cole44@cross.biz",
+    "license_number": "MN88105",
+    "vehicle": "Toyota Corolla 2021",
+    "account_creation_date": "2023-08-20"
+  },
+  {
+    "driver_id": "D000187",
+    "first_name": "Tyler",
+    "last_name": "Martin",
+    "phone_number": "+1-935-741-7596x68828",
+    "email": "tyler.martin890@solis.org",
+    "license_number": "NY86686",
+    "vehicle": "Nissan Sentra 2017",
+    "account_creation_date": "2023-09-22"
+  },
+  {
+    "driver_id": "D000188",
+    "first_name": "Nathan",
+    "last_name": "Russo",
+    "phone_number": "214-362-6082",
+    "email": "nathan.russo495@nguyen-phillips.com",
+    "license_number": "MP80264",
+    "vehicle": "Subaru Legacy 2019",
+    "account_creation_date": "2024-06-19"
+  },
+  {
+    "driver_id": "D000189",
+    "first_name": "Micheal",
+    "last_name": "Hudson",
+    "phone_number": "375-444-0371",
+    "email": "micheal.hudson277@jones.com",
+    "license_number": "MN68030",
+    "vehicle": "Kia Forte 2019",
+    "account_creation_date": "2023-02-08"
+  },
+  {
+    "driver_id": "D000190",
+    "first_name": "Edward",
+    "last_name": "Yang",
+    "phone_number": "(281)435-5520x4081",
+    "email": "edward.yang665@morrison.com",
+    "license_number": "PA64084",
+    "vehicle": "Hyundai Elantra 2017",
+    "account_creation_date": "2020-08-02"
+  },
+  {
+    "driver_id": "D000191",
+    "first_name": "Jacob",
+    "last_name": "Yates",
+    "phone_number": "+1-391-749-9750",
+    "email": "jacob.yates130@gutierrez.com",
+    "license_number": "HI67611",
+    "vehicle": "Hyundai Elantra 2019",
+    "account_creation_date": "2024-11-25"
+  },
+  {
+    "driver_id": "D000192",
+    "first_name": "Paige",
+    "last_name": "Miller",
+    "phone_number": "695.298.9596x83654",
+    "email": "paige.miller577@jones-hendrix.com",
+    "license_number": "WV11006",
+    "vehicle": "Toyota Corolla 2023",
+    "account_creation_date": "2023-12-09"
+  },
+  {
+    "driver_id": "D000193",
+    "first_name": "Jennifer",
+    "last_name": "Perez",
+    "phone_number": "+1-210-264-6247x116",
+    "email": "jennifer.perez688@taylor.com",
+    "license_number": "SD15645",
+    "vehicle": "Nissan Sentra 2017",
+    "account_creation_date": "2024-09-23"
+  },
+  {
+    "driver_id": "D000194",
+    "first_name": "Sheila",
+    "last_name": "Rodriguez",
+    "phone_number": "563-959-9483",
+    "email": "sheila.rodriguez809@williams.com",
+    "license_number": "CO58225",
+    "vehicle": "Kia Forte 2023",
+    "account_creation_date": "2021-05-20"
+  },
+  {
+    "driver_id": "D000195",
+    "first_name": "Tiffany",
+    "last_name": "Bryan",
+    "phone_number": "001-423-725-4667x583",
+    "email": "tiffany.bryan891@hawkins-allen.com",
+    "license_number": "AK77041",
+    "vehicle": "Nissan Sentra 2018",
+    "account_creation_date": "2023-12-01"
+  },
+  {
+    "driver_id": "D000196",
+    "first_name": "Oscar",
+    "last_name": "Thomas",
+    "phone_number": "216.871.9191",
+    "email": "oscar.thomas368@sweeney-armstrong.com",
+    "license_number": "DC44317",
+    "vehicle": "Subaru Legacy 2018",
+    "account_creation_date": "2021-03-26"
+  },
+  {
+    "driver_id": "D000197",
+    "first_name": "Angela",
+    "last_name": "Wells",
+    "phone_number": "(344)896-9016x8190",
+    "email": "angela.wells269@henry.net",
+    "license_number": "GU57551",
+    "vehicle": "Toyota Corolla 2017",
+    "account_creation_date": "2023-02-03"
+  },
+  {
+    "driver_id": "D000198",
+    "first_name": "Gerald",
+    "last_name": "Cook",
+    "phone_number": "273-810-3993",
+    "email": "gerald.cook360@pierce-bass.com",
+    "license_number": "PA75913",
+    "vehicle": "Kia Forte 2017",
+    "account_creation_date": "2024-02-28"
+  },
+  {
+    "driver_id": "D000199",
+    "first_name": "Timothy",
+    "last_name": "Lopez",
+    "phone_number": "4435226904",
+    "email": "timothy.lopez891@alvarado.org",
+    "license_number": "GA66416",
+    "vehicle": "Hyundai Elantra 2020",
+    "account_creation_date": "2023-08-26"
+  },
+  {
+    "driver_id": "D000200",
+    "first_name": "Emily",
+    "last_name": "Brown",
+    "phone_number": "582.635.6046",
+    "email": "emily.brown494@horton.com",
+    "license_number": "VI44358",
+    "vehicle": "Toyota Corolla 2019",
+    "account_creation_date": "2023-11-13"
+  },
+  {
+    "driver_id": "D000201",
+    "first_name": "Jasmine",
+    "last_name": "Wang",
+    "phone_number": "(367)322-4430",
+    "email": "jasmine.wang836@murray.com",
+    "license_number": "WA67438",
+    "vehicle": "Kia Forte 2019",
+    "account_creation_date": "2024-11-04"
+  },
+  {
+    "driver_id": "D000202",
+    "first_name": "Christine",
+    "last_name": "Parrish",
+    "phone_number": "(463)593-0791",
+    "email": "christine.parrish492@johnson-thomas.biz",
+    "license_number": "CO91447",
+    "vehicle": "Lexus ES 2020",
+    "account_creation_date": "2023-08-08"
+  },
+  {
+    "driver_id": "D000203",
+    "first_name": "John",
+    "last_name": "Williams",
+    "phone_number": "+1-479-703-1039x742",
+    "email": "john.williams300@newton.com",
+    "license_number": "UT27912",
+    "vehicle": "Volvo S60 2018",
+    "account_creation_date": "2024-11-13"
+  },
+  {
+    "driver_id": "D000204",
+    "first_name": "Rhonda",
+    "last_name": "Berry",
+    "phone_number": "001-383-246-4928x8767",
+    "email": "rhonda.berry487@lewis-hensley.org",
+    "license_number": "CT30950",
+    "vehicle": "Toyota Corolla 2020",
+    "account_creation_date": "2023-11-16"
+  },
+  {
+    "driver_id": "D000205",
+    "first_name": "Erica",
+    "last_name": "Caldwell",
+    "phone_number": "001-741-936-2616x245",
+    "email": "erica.caldwell381@escobar.com",
+    "license_number": "NH21871",
+    "vehicle": "Hyundai Elantra 2021",
+    "account_creation_date": "2022-08-17"
+  },
+  {
+    "driver_id": "D000206",
+    "first_name": "Amber",
+    "last_name": "Smith",
+    "phone_number": "+1-700-887-1527",
+    "email": "amber.smith430@williams-garcia.org",
+    "license_number": "WV78991",
+    "vehicle": "Subaru Legacy 2018",
+    "account_creation_date": "2025-02-26"
+  },
+  {
+    "driver_id": "D000207",
+    "first_name": "David",
+    "last_name": "Smith",
+    "phone_number": "(567)528-0676x0286",
+    "email": "david.smith580@tate-simpson.com",
+    "license_number": "WV59938",
+    "vehicle": "Toyota Sienna 2018",
+    "account_creation_date": "2024-05-01"
+  },
+  {
+    "driver_id": "D000208",
+    "first_name": "Evan",
+    "last_name": "Fletcher",
+    "phone_number": "5533740021",
+    "email": "evan.fletcher202@escobar-carlson.com",
+    "license_number": "VT37680",
+    "vehicle": "Honda Accord 2017",
+    "account_creation_date": "2023-08-25"
+  },
+  {
+    "driver_id": "D000209",
+    "first_name": "Jessica",
+    "last_name": "Delgado",
+    "phone_number": "+1-864-948-6270x40337",
+    "email": "jessica.delgado454@wright.info",
+    "license_number": "AZ23907",
+    "vehicle": "Honda Accord 2020",
+    "account_creation_date": "2023-05-05"
+  },
+  {
+    "driver_id": "D000210",
+    "first_name": "Christian",
+    "last_name": "Young",
+    "phone_number": "6492305480",
+    "email": "christian.young612@martin.com",
+    "license_number": "VT61500",
+    "vehicle": "Kia Forte 2020",
+    "account_creation_date": "2023-06-09"
+  },
+  {
+    "driver_id": "D000211",
+    "first_name": "Lori",
+    "last_name": "Collier",
+    "phone_number": "(652)612-8535",
+    "email": "lori.collier371@kennedy-avila.org",
+    "license_number": "NJ85136",
+    "vehicle": "Honda Civic 2019",
+    "account_creation_date": "2022-12-03"
+  },
+  {
+    "driver_id": "D000212",
+    "first_name": "Pamela",
+    "last_name": "Peck",
+    "phone_number": "701.483.0054x6971",
+    "email": "pamela.peck13@gonzalez.info",
+    "license_number": "DC31959",
+    "vehicle": "Honda Accord 2020",
+    "account_creation_date": "2024-01-01"
+  },
+  {
+    "driver_id": "D000213",
+    "first_name": "Joshua",
+    "last_name": "Cooper",
+    "phone_number": "(878)211-4878",
+    "email": "joshua.cooper918@smith.com",
+    "license_number": "VA48294",
+    "vehicle": "Honda Civic 2018",
+    "account_creation_date": "2023-02-26"
+  },
+  {
+    "driver_id": "D000214",
+    "first_name": "Daniel",
+    "last_name": "Bennett",
+    "phone_number": "001-598-291-0458x0800",
+    "email": "daniel.bennett669@chavez.com",
+    "license_number": "KY20879",
+    "vehicle": "Kia Forte 2019",
+    "account_creation_date": "2024-02-11"
+  },
+  {
+    "driver_id": "D000215",
+    "first_name": "Kevin",
+    "last_name": "Lewis",
+    "phone_number": "(396)555-8682",
+    "email": "kevin.lewis619@zavala.com",
+    "license_number": "KS57297",
+    "vehicle": "Nissan Sentra 2019",
+    "account_creation_date": "2020-06-24"
+  },
+  {
+    "driver_id": "D000216",
+    "first_name": "Jill",
+    "last_name": "Sosa",
+    "phone_number": "(281)930-6053",
+    "email": "jill.sosa373@fox.info",
+    "license_number": "FM58979",
+    "vehicle": "BMW 3 Series 2023",
+    "account_creation_date": "2024-07-02"
+  },
+  {
+    "driver_id": "D000217",
+    "first_name": "Stephanie",
+    "last_name": "Palmer",
+    "phone_number": "+1-587-225-1819",
+    "email": "stephanie.palmer862@daniels-ferrell.net",
+    "license_number": "WI36100",
+    "vehicle": "Mazda 6 2020",
+    "account_creation_date": "2024-01-16"
+  },
+  {
+    "driver_id": "D000218",
+    "first_name": "Daniel",
+    "last_name": "Hancock",
+    "phone_number": "487-701-6095x812",
+    "email": "daniel.hancock602@thomas.org",
+    "license_number": "AZ31683",
+    "vehicle": "Hyundai Elantra 2019",
+    "account_creation_date": "2025-01-22"
+  },
+  {
+    "driver_id": "D000219",
+    "first_name": "Candice",
+    "last_name": "Mccullough",
+    "phone_number": "001-242-518-5244x182",
+    "email": "candice.mccullough171@cruz.biz",
+    "license_number": "DE71845",
+    "vehicle": "Toyota Corolla 2020",
+    "account_creation_date": "2024-09-14"
+  },
+  {
+    "driver_id": "D000220",
+    "first_name": "Kathryn",
+    "last_name": "Mcdaniel",
+    "phone_number": "391.965.0446x36875",
+    "email": "kathryn.mcdaniel548@thompson.com",
+    "license_number": "LA77354",
+    "vehicle": "Mercedes C-Class 2023",
+    "account_creation_date": "2023-10-11"
+  },
+  {
+    "driver_id": "D000221",
+    "first_name": "James",
+    "last_name": "Arroyo",
+    "phone_number": "583.329.6894x69638",
+    "email": "james.arroyo2@robinson-lara.com",
+    "license_number": "FL43158",
+    "vehicle": "Honda Civic 2021",
+    "account_creation_date": "2025-01-03"
+  },
+  {
+    "driver_id": "D000222",
+    "first_name": "Sheryl",
+    "last_name": "Espinoza",
+    "phone_number": "843.573.2252x469",
+    "email": "sheryl.espinoza290@preston-bryant.net",
+    "license_number": "HI35444",
+    "vehicle": "Kia Forte 2021",
+    "account_creation_date": "2024-12-20"
+  },
+  {
+    "driver_id": "D000223",
+    "first_name": "Donna",
+    "last_name": "Black",
+    "phone_number": "(209)989-4945x56305",
+    "email": "donna.black725@gray.org",
+    "license_number": "WI91382",
+    "vehicle": "Kia Forte 2021",
+    "account_creation_date": "2020-11-21"
+  },
+  {
+    "driver_id": "D000224",
+    "first_name": "Rachael",
+    "last_name": "Miller",
+    "phone_number": "(793)695-2800x3763",
+    "email": "rachael.miller214@moore-morrow.biz",
+    "license_number": "PR35297",
+    "vehicle": "Honda Civic 2018",
+    "account_creation_date": "2022-12-19"
+  },
+  {
+    "driver_id": "D000225",
+    "first_name": "Peter",
+    "last_name": "Gonzalez",
+    "phone_number": "232-288-5623",
+    "email": "peter.gonzalez195@rodriguez-krueger.com",
+    "license_number": "SD49227",
+    "vehicle": "Toyota Camry 2018",
+    "account_creation_date": "2024-12-18"
+  },
+  {
+    "driver_id": "D000226",
+    "first_name": "Yvonne",
+    "last_name": "Williams",
+    "phone_number": "976.615.8199x850",
+    "email": "yvonne.williams748@thompson.com",
+    "license_number": "LA91263",
+    "vehicle": "Hyundai Elantra 2022",
+    "account_creation_date": "2021-01-03"
+  },
+  {
+    "driver_id": "D000227",
+    "first_name": "Cheryl",
+    "last_name": "Perez",
+    "phone_number": "881-729-5053x0243",
+    "email": "cheryl.perez915@potter-erickson.com",
+    "license_number": "OH54769",
+    "vehicle": "Honda Civic 2023",
+    "account_creation_date": "2023-09-06"
+  },
+  {
+    "driver_id": "D000228",
+    "first_name": "Marcus",
+    "last_name": "Harrison",
+    "phone_number": "460.637.9837x509",
+    "email": "marcus.harrison322@wood-kirby.biz",
+    "license_number": "MI40329",
+    "vehicle": "Honda Accord 2018",
+    "account_creation_date": "2024-12-15"
+  },
+  {
+    "driver_id": "D000229",
+    "first_name": "Linda",
+    "last_name": "Thompson",
+    "phone_number": "001-914-339-5527x790",
+    "email": "linda.thompson457@sanchez.com",
+    "license_number": "MD41640",
+    "vehicle": "Volkswagen Passat 2021",
+    "account_creation_date": "2021-05-14"
+  },
+  {
+    "driver_id": "D000230",
+    "first_name": "Joy",
+    "last_name": "Gomez",
+    "phone_number": "223.676.5796x39061",
+    "email": "joy.gomez39@watkins-cook.net",
+    "license_number": "WA92303",
+    "vehicle": "Kia Forte 2023",
+    "account_creation_date": "2021-10-18"
+  },
+  {
+    "driver_id": "D000231",
+    "first_name": "Dana",
+    "last_name": "Whitney",
+    "phone_number": "001-713-359-3768x293",
+    "email": "dana.whitney574@robles.info",
+    "license_number": "PA11994",
+    "vehicle": "Toyota Corolla 2018",
+    "account_creation_date": "2024-11-08"
+  },
+  {
+    "driver_id": "D000232",
+    "first_name": "Claudia",
+    "last_name": "Mclaughlin",
+    "phone_number": "353-610-6691x52320",
+    "email": "claudia.mclaughlin544@moran.com",
+    "license_number": "OR75997",
+    "vehicle": "Audi A4 2019",
+    "account_creation_date": "2024-10-01"
+  },
+  {
+    "driver_id": "D000233",
+    "first_name": "Joseph",
+    "last_name": "Gregory",
+    "phone_number": "524.944.0241",
+    "email": "joseph.gregory379@gomez-gallagher.com",
+    "license_number": "WA87116",
+    "vehicle": "Honda Odyssey 2020",
+    "account_creation_date": "2022-09-20"
+  },
+  {
+    "driver_id": "D000234",
+    "first_name": "Michael",
+    "last_name": "Dixon",
+    "phone_number": "+1-728-452-1877x002",
+    "email": "michael.dixon708@berry-bates.net",
+    "license_number": "PW72785",
+    "vehicle": "Hyundai Elantra 2023",
+    "account_creation_date": "2024-09-21"
+  },
+  {
+    "driver_id": "D000235",
+    "first_name": "Lisa",
+    "last_name": "Rogers",
+    "phone_number": "+1-753-934-5803",
+    "email": "lisa.rogers985@erickson.com",
+    "license_number": "SC97225",
+    "vehicle": "Chevrolet Suburban 2021",
+    "account_creation_date": "2022-12-01"
+  },
+  {
+    "driver_id": "D000236",
+    "first_name": "Jacqueline",
+    "last_name": "Cardenas",
+    "phone_number": "713.547.8337x725",
+    "email": "jacqueline.cardenas706@glover.com",
+    "license_number": "AK67627",
+    "vehicle": "Toyota Corolla 2018",
+    "account_creation_date": "2022-11-14"
+  },
+  {
+    "driver_id": "D000237",
+    "first_name": "Susan",
+    "last_name": "Tucker",
+    "phone_number": "001-340-564-5786",
+    "email": "susan.tucker172@olson.info",
+    "license_number": "CA37290",
+    "vehicle": "Toyota Camry 2019",
+    "account_creation_date": "2024-12-26"
+  },
+  {
+    "driver_id": "D000238",
+    "first_name": "Christopher",
+    "last_name": "Webster",
+    "phone_number": "(971)357-8134",
+    "email": "christopher.webster349@zimmerman.info",
+    "license_number": "IL76164",
+    "vehicle": "Mazda 6 2017",
+    "account_creation_date": "2023-12-20"
+  },
+  {
+    "driver_id": "D000239",
+    "first_name": "Stephen",
+    "last_name": "Brown",
+    "phone_number": "560-426-6593x930",
+    "email": "stephen.brown837@hatfield.org",
+    "license_number": "NC46455",
+    "vehicle": "Honda Odyssey 2021",
+    "account_creation_date": "2023-08-10"
+  },
+  {
+    "driver_id": "D000240",
+    "first_name": "Traci",
+    "last_name": "George",
+    "phone_number": "(235)976-5268",
+    "email": "traci.george748@crawford.com",
+    "license_number": "OK60539",
+    "vehicle": "Volkswagen Passat 2022",
+    "account_creation_date": "2023-09-25"
+  },
+  {
+    "driver_id": "D000241",
+    "first_name": "Kelly",
+    "last_name": "Lloyd",
+    "phone_number": "+1-954-444-8531x68495",
+    "email": "kelly.lloyd862@james.com",
+    "license_number": "UT83802",
+    "vehicle": "Toyota Camry 2017",
+    "account_creation_date": "2023-12-15"
+  },
+  {
+    "driver_id": "D000242",
+    "first_name": "Kristy",
+    "last_name": "Cook",
+    "phone_number": "942.799.6308",
+    "email": "kristy.cook309@fernandez.org",
+    "license_number": "LA12461",
+    "vehicle": "Toyota Corolla 2020",
+    "account_creation_date": "2021-02-01"
+  },
+  {
+    "driver_id": "D000243",
+    "first_name": "Andrew",
+    "last_name": "Leon",
+    "phone_number": "(680)450-4165",
+    "email": "andrew.leon582@williams-martin.com",
+    "license_number": "CT80907",
+    "vehicle": "Hyundai Elantra 2017",
+    "account_creation_date": "2022-03-21"
+  },
+  {
+    "driver_id": "D000244",
+    "first_name": "Stephanie",
+    "last_name": "Smith",
+    "phone_number": "737-404-6835",
+    "email": "stephanie.smith384@cross.com",
+    "license_number": "WV20660",
+    "vehicle": "Honda Accord 2020",
+    "account_creation_date": "2020-10-19"
+  },
+  {
+    "driver_id": "D000245",
+    "first_name": "Antonio",
+    "last_name": "Wagner",
+    "phone_number": "001-762-758-2689x58071",
+    "email": "antonio.wagner768@combs-townsend.biz",
+    "license_number": "CO86764",
+    "vehicle": "Honda Civic 2017",
+    "account_creation_date": "2024-09-22"
+  },
+  {
+    "driver_id": "D000246",
+    "first_name": "Beverly",
+    "last_name": "Lewis",
+    "phone_number": "+1-413-749-2016x7506",
+    "email": "beverly.lewis538@davis.com",
+    "license_number": "NY13576",
+    "vehicle": "Nissan Sentra 2023",
+    "account_creation_date": "2023-08-27"
+  },
+  {
+    "driver_id": "D000247",
+    "first_name": "Lauren",
+    "last_name": "Edwards",
+    "phone_number": "775.471.6116x738",
+    "email": "lauren.edwards301@neal-williams.com",
+    "license_number": "MI91267",
+    "vehicle": "Nissan Sentra 2022",
+    "account_creation_date": "2021-01-19"
+  },
+  {
+    "driver_id": "D000248",
+    "first_name": "David",
+    "last_name": "Thompson",
+    "phone_number": "2329042497",
+    "email": "david.thompson218@meyer.info",
+    "license_number": "LA75730",
+    "vehicle": "Volvo S60 2021",
+    "account_creation_date": "2024-12-30"
+  },
+  {
+    "driver_id": "D000249",
+    "first_name": "Christopher",
+    "last_name": "Garcia",
+    "phone_number": "(403)932-3350",
+    "email": "christopher.garcia867@smith.com",
+    "license_number": "WA61552",
+    "vehicle": "Nissan Sentra 2023",
+    "account_creation_date": "2023-04-26"
+  },
+  {
+    "driver_id": "D000250",
+    "first_name": "Nicole",
+    "last_name": "Pacheco",
+    "phone_number": "+1-276-540-5311x8203",
+    "email": "nicole.pacheco895@beltran.info",
+    "license_number": "SD49582",
+    "vehicle": "Nissan Sentra 2020",
+    "account_creation_date": "2023-12-10"
+  },
+  {
+    "driver_id": "D000251",
+    "first_name": "Brenda",
+    "last_name": "Ward",
+    "phone_number": "(902)918-5055x073",
+    "email": "brenda.ward96@reyes.biz",
+    "license_number": "WV25986",
+    "vehicle": "Honda Accord 2022",
+    "account_creation_date": "2023-11-19"
+  },
+  {
+    "driver_id": "D000252",
+    "first_name": "John",
+    "last_name": "Watson",
+    "phone_number": "+1-908-408-1585x68177",
+    "email": "john.watson292@brown.com",
+    "license_number": "MI81410",
+    "vehicle": "Subaru Legacy 2017",
+    "account_creation_date": "2025-01-12"
+  },
+  {
+    "driver_id": "D000253",
+    "first_name": "Diana",
+    "last_name": "Hill",
+    "phone_number": "5974270844",
+    "email": "diana.hill966@williams.com",
+    "license_number": "FM11860",
+    "vehicle": "Toyota Corolla 2018",
+    "account_creation_date": "2020-07-15"
+  },
+  {
+    "driver_id": "D000254",
+    "first_name": "Kimberly",
+    "last_name": "Garcia",
+    "phone_number": "001-705-701-7036x873",
+    "email": "kimberly.garcia263@spence.com",
+    "license_number": "CO39474",
+    "vehicle": "Honda Civic 2022",
+    "account_creation_date": "2022-04-27"
+  },
+  {
+    "driver_id": "D000255",
+    "first_name": "Anne",
+    "last_name": "Berger",
+    "phone_number": "(641)536-4525x20336",
+    "email": "anne.berger646@riggs-johnson.info",
+    "license_number": "CA45611",
+    "vehicle": "Honda Civic 2019",
+    "account_creation_date": "2022-09-18"
+  },
+  {
+    "driver_id": "D000256",
+    "first_name": "Samuel",
+    "last_name": "Gilbert",
+    "phone_number": "001-731-417-6380x12608",
+    "email": "samuel.gilbert577@vargas.com",
+    "license_number": "KS77411",
+    "vehicle": "Subaru Legacy 2021",
+    "account_creation_date": "2023-03-01"
+  },
+  {
+    "driver_id": "D000257",
+    "first_name": "Charles",
+    "last_name": "Hall",
+    "phone_number": "695.564.6884x951",
+    "email": "charles.hall360@adams.com",
+    "license_number": "UT14378",
+    "vehicle": "Toyota Corolla 2017",
+    "account_creation_date": "2023-01-24"
+  },
+  {
+    "driver_id": "D000258",
+    "first_name": "Courtney",
+    "last_name": "Hart",
+    "phone_number": "+1-764-604-7656x97207",
+    "email": "courtney.hart928@white.com",
+    "license_number": "DC32309",
+    "vehicle": "Honda Accord 2017",
+    "account_creation_date": "2024-12-16"
+  },
+  {
+    "driver_id": "D000259",
+    "first_name": "Tara",
+    "last_name": "Braun",
+    "phone_number": "7823897252",
+    "email": "tara.braun771@wilson.com",
+    "license_number": "MT14049",
+    "vehicle": "Nissan Sentra 2019",
+    "account_creation_date": "2020-04-17"
+  },
+  {
+    "driver_id": "D000260",
+    "first_name": "Tyler",
+    "last_name": "Hall",
+    "phone_number": "+1-354-781-0850x3517",
+    "email": "tyler.hall381@ball-bailey.com",
+    "license_number": "NY96503",
+    "vehicle": "Toyota Corolla 2020",
+    "account_creation_date": "2023-04-02"
+  },
+  {
+    "driver_id": "D000261",
+    "first_name": "Anthony",
+    "last_name": "Boyd",
+    "phone_number": "932-569-6720x7523",
+    "email": "anthony.boyd420@murphy-barker.com",
+    "license_number": "MP75629",
+    "vehicle": "Ford Explorer 2021",
+    "account_creation_date": "2024-02-16"
+  },
+  {
+    "driver_id": "D000262",
+    "first_name": "William",
+    "last_name": "Conley",
+    "phone_number": "596.415.9534x4854",
+    "email": "william.conley642@avila-ramos.info",
+    "license_number": "CA59680",
+    "vehicle": "Toyota Sienna 2017",
+    "account_creation_date": "2021-08-19"
+  },
+  {
+    "driver_id": "D000263",
+    "first_name": "Anthony",
+    "last_name": "Rogers",
+    "phone_number": "205.355.6061x20879",
+    "email": "anthony.rogers865@stone-kennedy.com",
+    "license_number": "CT21841",
+    "vehicle": "Subaru Legacy 2017",
+    "account_creation_date": "2023-05-25"
+  },
+  {
+    "driver_id": "D000264",
+    "first_name": "Jennifer",
+    "last_name": "Garcia",
+    "phone_number": "649.460.0131x65198",
+    "email": "jennifer.garcia668@marsh-hale.biz",
+    "license_number": "WI64829",
+    "vehicle": "Subaru Legacy 2021",
+    "account_creation_date": "2025-01-30"
+  },
+  {
+    "driver_id": "D000265",
+    "first_name": "Tiffany",
+    "last_name": "Holmes",
+    "phone_number": "207.202.7102",
+    "email": "tiffany.holmes933@boone.com",
+    "license_number": "CT70536",
+    "vehicle": "Mazda 6 2018",
+    "account_creation_date": "2024-10-07"
+  },
+  {
+    "driver_id": "D000266",
+    "first_name": "Raymond",
+    "last_name": "Pineda",
+    "phone_number": "+1-355-619-9651",
+    "email": "raymond.pineda567@jones.biz",
+    "license_number": "KS41474",
+    "vehicle": "Toyota Corolla 2021",
+    "account_creation_date": "2022-10-09"
+  },
+  {
+    "driver_id": "D000267",
+    "first_name": "Yvette",
+    "last_name": "Cunningham",
+    "phone_number": "703.502.5933x2105",
+    "email": "yvette.cunningham496@jordan.info",
+    "license_number": "LA54959",
+    "vehicle": "Honda Civic 2023",
+    "account_creation_date": "2024-10-23"
+  },
+  {
+    "driver_id": "D000268",
+    "first_name": "Thomas",
+    "last_name": "Davenport",
+    "phone_number": "(766)850-7469",
+    "email": "thomas.davenport44@lynch-riley.com",
+    "license_number": "ID43660",
+    "vehicle": "Toyota Corolla 2022",
+    "account_creation_date": "2024-12-27"
+  },
+  {
+    "driver_id": "D000269",
+    "first_name": "Mark",
+    "last_name": "Chandler",
+    "phone_number": "+1-903-835-7475x0767",
+    "email": "mark.chandler109@klein.com",
+    "license_number": "NY55579",
+    "vehicle": "Honda Accord 2021",
+    "account_creation_date": "2024-12-22"
+  },
+  {
+    "driver_id": "D000270",
+    "first_name": "Tracey",
+    "last_name": "Beasley",
+    "phone_number": "990-300-9032",
+    "email": "tracey.beasley973@brown.com",
+    "license_number": "PA63734",
+    "vehicle": "Toyota Corolla 2022",
+    "account_creation_date": "2022-12-20"
+  },
+  {
+    "driver_id": "D000271",
+    "first_name": "Mike",
+    "last_name": "Gates",
+    "phone_number": "(278)465-2819",
+    "email": "mike.gates127@moore.biz",
+    "license_number": "NH87608",
+    "vehicle": "Subaru Legacy 2019",
+    "account_creation_date": "2023-10-04"
+  },
+  {
+    "driver_id": "D000272",
+    "first_name": "Brian",
+    "last_name": "Cruz",
+    "phone_number": "(917)834-2868x69660",
+    "email": "brian.cruz701@walker.com",
+    "license_number": "IA85136",
+    "vehicle": "Kia Forte 2020",
+    "account_creation_date": "2020-08-08"
+  },
+  {
+    "driver_id": "D000273",
+    "first_name": "Michael",
+    "last_name": "Lambert",
+    "phone_number": "603.749.2517x69983",
+    "email": "michael.lambert242@murphy.com",
+    "license_number": "TN57307",
+    "vehicle": "Volkswagen Passat 2018",
+    "account_creation_date": "2023-12-12"
+  },
+  {
+    "driver_id": "D000274",
+    "first_name": "David",
+    "last_name": "Dean",
+    "phone_number": "001-886-669-7825x1739",
+    "email": "david.dean139@hodge.biz",
+    "license_number": "IA71523",
+    "vehicle": "Hyundai Elantra 2017",
+    "account_creation_date": "2021-03-02"
+  },
+  {
+    "driver_id": "D000275",
+    "first_name": "Jessica",
+    "last_name": "Willis",
+    "phone_number": "670-434-8039x078",
+    "email": "jessica.willis552@bradley-gutierrez.net",
+    "license_number": "RI51526",
+    "vehicle": "Kia Forte 2023",
+    "account_creation_date": "2024-10-25"
+  },
+  {
+    "driver_id": "D000276",
+    "first_name": "Brandon",
+    "last_name": "Hayes",
+    "phone_number": "(686)794-1533x501",
+    "email": "brandon.hayes155@smith.net",
+    "license_number": "AS31800",
+    "vehicle": "Toyota Corolla 2023",
+    "account_creation_date": "2024-02-19"
+  },
+  {
+    "driver_id": "D000277",
+    "first_name": "Terry",
+    "last_name": "Williams",
+    "phone_number": "274-862-5955",
+    "email": "terry.williams95@shannon.com",
+    "license_number": "GA55012",
+    "vehicle": "Kia Forte 2017",
+    "account_creation_date": "2024-11-11"
+  },
+  {
+    "driver_id": "D000278",
+    "first_name": "Dominique",
+    "last_name": "Guerrero",
+    "phone_number": "5335541318",
+    "email": "dominique.guerrero209@brown.org",
+    "license_number": "AS43309",
+    "vehicle": "Volvo S60 2021",
+    "account_creation_date": "2024-08-29"
+  },
+  {
+    "driver_id": "D000279",
+    "first_name": "Dustin",
+    "last_name": "Ward",
+    "phone_number": "(794)309-1887x743",
+    "email": "dustin.ward588@spencer-garcia.com",
+    "license_number": "TX83405",
+    "vehicle": "Honda Odyssey 2022",
+    "account_creation_date": "2022-04-07"
+  },
+  {
+    "driver_id": "D000280",
+    "first_name": "William",
+    "last_name": "Smith",
+    "phone_number": "(248)920-0429",
+    "email": "william.smith97@bowen.com",
+    "license_number": "PW78845",
+    "vehicle": "Toyota Corolla 2023",
+    "account_creation_date": "2022-11-10"
+  },
+  {
+    "driver_id": "D000281",
+    "first_name": "Kristin",
+    "last_name": "Scott",
+    "phone_number": "(559)510-2204",
+    "email": "kristin.scott239@johnson-peterson.com",
+    "license_number": "RI79173",
+    "vehicle": "Honda Odyssey 2022",
+    "account_creation_date": "2023-08-23"
+  },
+  {
+    "driver_id": "D000282",
+    "first_name": "Gregory",
+    "last_name": "Wilson",
+    "phone_number": "316-218-3487",
+    "email": "gregory.wilson768@daniel.info",
+    "license_number": "IN33466",
+    "vehicle": "Hyundai Elantra 2018",
+    "account_creation_date": "2022-03-11"
+  },
+  {
+    "driver_id": "D000283",
+    "first_name": "Taylor",
+    "last_name": "Davis",
+    "phone_number": "2732978613",
+    "email": "taylor.davis558@burns.net",
+    "license_number": "NC67658",
+    "vehicle": "Mazda 6 2020",
+    "account_creation_date": "2021-06-19"
+  },
+  {
+    "driver_id": "D000284",
+    "first_name": "Matthew",
+    "last_name": "Cruz",
+    "phone_number": "822.817.8971x75839",
+    "email": "matthew.cruz664@prince.info",
+    "license_number": "IN46137",
+    "vehicle": "Honda Civic 2022",
+    "account_creation_date": "2024-04-13"
+  },
+  {
+    "driver_id": "D000285",
+    "first_name": "Justin",
+    "last_name": "Reed",
+    "phone_number": "355-929-3774x7305",
+    "email": "justin.reed94@bell.com",
+    "license_number": "WA82809",
+    "vehicle": "Hyundai Elantra 2017",
+    "account_creation_date": "2021-11-11"
+  },
+  {
+    "driver_id": "D000286",
+    "first_name": "Kylie",
+    "last_name": "Smith",
+    "phone_number": "001-878-978-1581x024",
+    "email": "kylie.smith713@meyer.biz",
+    "license_number": "MH64251",
+    "vehicle": "Hyundai Elantra 2020",
+    "account_creation_date": "2022-08-22"
+  },
+  {
+    "driver_id": "D000287",
+    "first_name": "Alexandria",
+    "last_name": "Allen",
+    "phone_number": "(946)870-0020",
+    "email": "alexandria.allen843@golden.com",
+    "license_number": "IL29779",
+    "vehicle": "Toyota Corolla 2017",
+    "account_creation_date": "2022-04-28"
+  },
+  {
+    "driver_id": "D000288",
+    "first_name": "Amanda",
+    "last_name": "Hickman",
+    "phone_number": "975.370.7887x856",
+    "email": "amanda.hickman380@lynch.com",
+    "license_number": "NV21847",
+    "vehicle": "Nissan Sentra 2021",
+    "account_creation_date": "2021-07-05"
+  },
+  {
+    "driver_id": "D000289",
+    "first_name": "Emily",
+    "last_name": "Bradford",
+    "phone_number": "494.736.6282x21741",
+    "email": "emily.bradford78@parker.info",
+    "license_number": "MS61593",
+    "vehicle": "Chevrolet Suburban 2019",
+    "account_creation_date": "2023-11-14"
+  },
+  {
+    "driver_id": "D000290",
+    "first_name": "Hannah",
+    "last_name": "Henderson",
+    "phone_number": "590-376-3056",
+    "email": "hannah.henderson44@ballard.org",
+    "license_number": "IL53378",
+    "vehicle": "Honda Odyssey 2017",
+    "account_creation_date": "2022-11-04"
+  },
+  {
+    "driver_id": "D000291",
+    "first_name": "Shannon",
+    "last_name": "Zavala",
+    "phone_number": "001-542-425-2760",
+    "email": "shannon.zavala430@hickman.com",
+    "license_number": "OK42001",
+    "vehicle": "Toyota Camry 2022",
+    "account_creation_date": "2023-10-17"
+  },
+  {
+    "driver_id": "D000292",
+    "first_name": "Sara",
+    "last_name": "King",
+    "phone_number": "9447240394",
+    "email": "sara.king40@sanchez.com",
+    "license_number": "IN49167",
+    "vehicle": "Mazda 6 2023",
+    "account_creation_date": "2022-07-20"
+  },
+  {
+    "driver_id": "D000293",
+    "first_name": "Jeffrey",
+    "last_name": "Pena",
+    "phone_number": "377-776-6905",
+    "email": "jeffrey.pena571@jensen-roberts.com",
+    "license_number": "MN36994",
+    "vehicle": "Volvo S60 2021",
+    "account_creation_date": "2023-07-30"
+  },
+  {
+    "driver_id": "D000294",
+    "first_name": "April",
+    "last_name": "Jones",
+    "phone_number": "767.208.1415x609",
+    "email": "april.jones193@krause.biz",
+    "license_number": "WY71094",
+    "vehicle": "Kia Forte 2023",
+    "account_creation_date": "2021-06-11"
+  },
+  {
+    "driver_id": "D000295",
+    "first_name": "Kendra",
+    "last_name": "Garcia",
+    "phone_number": "860-738-3616x5830",
+    "email": "kendra.garcia426@wilson.biz",
+    "license_number": "AL38454",
+    "vehicle": "Toyota Corolla 2022",
+    "account_creation_date": "2021-03-19"
+  },
+  {
+    "driver_id": "D000296",
+    "first_name": "Danielle",
+    "last_name": "Morgan",
+    "phone_number": "+1-690-746-6926",
+    "email": "danielle.morgan393@spencer-sawyer.com",
+    "license_number": "SC49735",
+    "vehicle": "Nissan Sentra 2022",
+    "account_creation_date": "2024-05-15"
+  },
+  {
+    "driver_id": "D000297",
+    "first_name": "John",
+    "last_name": "Brewer",
+    "phone_number": "+1-661-461-2193x208",
+    "email": "john.brewer107@reyes.com",
+    "license_number": "HI73400",
+    "vehicle": "Hyundai Elantra 2018",
+    "account_creation_date": "2023-05-06"
+  },
+  {
+    "driver_id": "D000298",
+    "first_name": "John",
+    "last_name": "Fleming",
+    "phone_number": "512-629-6001x7166",
+    "email": "john.fleming883@bradley.com",
+    "license_number": "TX31274",
+    "vehicle": "Toyota Corolla 2019",
+    "account_creation_date": "2022-07-31"
+  },
+  {
+    "driver_id": "D000299",
+    "first_name": "Neil",
+    "last_name": "Villa",
+    "phone_number": "(399)359-2264x4635",
+    "email": "neil.villa863@reese-vincent.com",
+    "license_number": "AR37742",
+    "vehicle": "Toyota Corolla 2022",
+    "account_creation_date": "2024-10-02"
+  },
+  {
+    "driver_id": "D000300",
+    "first_name": "Jeanette",
+    "last_name": "Gardner",
+    "phone_number": "+1-780-333-6243x26389",
+    "email": "jeanette.gardner486@mitchell-duncan.info",
+    "license_number": "MS17136",
+    "vehicle": "Honda Accord 2018",
+    "account_creation_date": "2023-03-22"
+  },
+  {
+    "driver_id": "D000301",
+    "first_name": "Greg",
+    "last_name": "Bell",
+    "phone_number": "(366)364-0737x766",
+    "email": "greg.bell431@rivera.com",
+    "license_number": "RI91812",
+    "vehicle": "Subaru Legacy 2020",
+    "account_creation_date": "2023-09-19"
+  },
+  {
+    "driver_id": "D000302",
+    "first_name": "Alexis",
+    "last_name": "Thomas",
+    "phone_number": "+1-579-223-7267",
+    "email": "alexis.thomas654@hunt.com",
+    "license_number": "NY94192",
+    "vehicle": "Mercedes C-Class 2019",
+    "account_creation_date": "2022-06-04"
+  },
+  {
+    "driver_id": "D000303",
+    "first_name": "Lauren",
+    "last_name": "Powell",
+    "phone_number": "+1-969-485-5181x068",
+    "email": "lauren.powell150@lloyd.info",
+    "license_number": "PW81248",
+    "vehicle": "Kia Forte 2017",
+    "account_creation_date": "2022-11-05"
+  },
+  {
+    "driver_id": "D000304",
+    "first_name": "Michelle",
+    "last_name": "Williams",
+    "phone_number": "576.249.9599x299",
+    "email": "michelle.williams496@phelps.net",
+    "license_number": "NM21395",
+    "vehicle": "Honda Civic 2022",
+    "account_creation_date": "2023-10-25"
+  },
+  {
+    "driver_id": "D000305",
+    "first_name": "Sylvia",
+    "last_name": "Bennett",
+    "phone_number": "001-739-533-6661x5450",
+    "email": "sylvia.bennett106@miller-porter.com",
+    "license_number": "CA60579",
+    "vehicle": "BMW 3 Series 2018",
+    "account_creation_date": "2020-10-18"
+  },
+  {
+    "driver_id": "D000306",
+    "first_name": "Jacob",
+    "last_name": "Smith",
+    "phone_number": "742-350-7884",
+    "email": "jacob.smith501@thompson.net",
+    "license_number": "VT13285",
+    "vehicle": "Toyota Corolla 2023",
+    "account_creation_date": "2023-07-11"
+  },
+  {
+    "driver_id": "D000307",
+    "first_name": "Melissa",
+    "last_name": "Cortez",
+    "phone_number": "274.474.1671x63202",
+    "email": "melissa.cortez696@mcpherson-martinez.com",
+    "license_number": "SC95830",
+    "vehicle": "Honda Civic 2018",
+    "account_creation_date": "2024-01-20"
+  },
+  {
+    "driver_id": "D000308",
+    "first_name": "Kaitlin",
+    "last_name": "Whitney",
+    "phone_number": "702-703-5819",
+    "email": "kaitlin.whitney651@black.com",
+    "license_number": "TN20771",
+    "vehicle": "Toyota Corolla 2018",
+    "account_creation_date": "2022-05-04"
+  },
+  {
+    "driver_id": "D000309",
+    "first_name": "Shelia",
+    "last_name": "Taylor",
+    "phone_number": "+1-452-603-8859x3792",
+    "email": "shelia.taylor929@whitaker.com",
+    "license_number": "WI41206",
+    "vehicle": "Nissan Sentra 2022",
+    "account_creation_date": "2024-07-11"
+  },
+  {
+    "driver_id": "D000310",
+    "first_name": "Carly",
+    "last_name": "Jackson",
+    "phone_number": "(276)652-0972",
+    "email": "carly.jackson338@reilly.com",
+    "license_number": "SC47451",
+    "vehicle": "Toyota Corolla 2021",
+    "account_creation_date": "2023-12-20"
+  },
+  {
+    "driver_id": "D000311",
+    "first_name": "Aaron",
+    "last_name": "Bell",
+    "phone_number": "841.361.3756x19368",
+    "email": "aaron.bell237@chavez-mason.com",
+    "license_number": "PR11009",
+    "vehicle": "Toyota Corolla 2021",
+    "account_creation_date": "2024-12-12"
+  },
+  {
+    "driver_id": "D000312",
+    "first_name": "John",
+    "last_name": "Tran",
+    "phone_number": "001-453-293-7404",
+    "email": "john.tran768@bowen.net",
+    "license_number": "FM24338",
+    "vehicle": "Hyundai Elantra 2021",
+    "account_creation_date": "2023-08-30"
+  },
+  {
+    "driver_id": "D000313",
+    "first_name": "Cathy",
+    "last_name": "Matthews",
+    "phone_number": "+1-272-866-4971",
+    "email": "cathy.matthews608@lawson.com",
+    "license_number": "WV82682",
+    "vehicle": "Toyota Camry 2021",
+    "account_creation_date": "2024-05-30"
+  },
+  {
+    "driver_id": "D000314",
+    "first_name": "John",
+    "last_name": "Lopez",
+    "phone_number": "+1-800-438-7918x6672",
+    "email": "john.lopez921@diaz-garcia.net",
+    "license_number": "AK51701",
+    "vehicle": "Honda Civic 2018",
+    "account_creation_date": "2023-08-27"
+  },
+  {
+    "driver_id": "D000315",
+    "first_name": "Crystal",
+    "last_name": "Mccoy",
+    "phone_number": "5328425245",
+    "email": "crystal.mccoy14@rodriguez-smith.com",
+    "license_number": "IN35164",
+    "vehicle": "Hyundai Elantra 2018",
+    "account_creation_date": "2024-07-29"
+  },
+  {
+    "driver_id": "D000316",
+    "first_name": "Christy",
+    "last_name": "Fleming",
+    "phone_number": "+1-588-404-2626",
+    "email": "christy.fleming83@phillips.biz",
+    "license_number": "NV23996",
+    "vehicle": "Honda Accord 2020",
+    "account_creation_date": "2024-03-09"
+  },
+  {
+    "driver_id": "D000317",
+    "first_name": "James",
+    "last_name": "Cohen",
+    "phone_number": "2983967277",
+    "email": "james.cohen278@lewis.com",
+    "license_number": "HI15941",
+    "vehicle": "Nissan Sentra 2021",
+    "account_creation_date": "2022-05-13"
+  },
+  {
+    "driver_id": "D000318",
+    "first_name": "Lori",
+    "last_name": "Carey",
+    "phone_number": "878-955-5036x2653",
+    "email": "lori.carey153@benjamin.net",
+    "license_number": "GU22972",
+    "vehicle": "Mazda 6 2018",
+    "account_creation_date": "2020-04-23"
+  },
+  {
+    "driver_id": "D000319",
+    "first_name": "Larry",
+    "last_name": "Lamb",
+    "phone_number": "+1-771-238-7800x36756",
+    "email": "larry.lamb430@campbell.biz",
+    "license_number": "PR40953",
+    "vehicle": "Audi A4 2017",
+    "account_creation_date": "2020-06-06"
+  },
+  {
+    "driver_id": "D000320",
+    "first_name": "Allison",
+    "last_name": "Fuller",
+    "phone_number": "733.222.1479x642",
+    "email": "allison.fuller266@potter.info",
+    "license_number": "AL11173",
+    "vehicle": "Lexus ES 2020",
+    "account_creation_date": "2024-02-08"
+  },
+  {
+    "driver_id": "D000321",
+    "first_name": "Blake",
+    "last_name": "Jones",
+    "phone_number": "+1-423-791-1331x2371",
+    "email": "blake.jones467@cruz.org",
+    "license_number": "SC71181",
+    "vehicle": "Hyundai Elantra 2023",
+    "account_creation_date": "2021-02-23"
+  },
+  {
+    "driver_id": "D000322",
+    "first_name": "Laurie",
+    "last_name": "Jordan",
+    "phone_number": "916-564-1868x116",
+    "email": "laurie.jordan887@cummings.com",
+    "license_number": "IA43902",
+    "vehicle": "Hyundai Elantra 2023",
+    "account_creation_date": "2024-10-05"
+  },
+  {
+    "driver_id": "D000323",
+    "first_name": "Amanda",
+    "last_name": "Knight",
+    "phone_number": "001-685-552-0525x8182",
+    "email": "amanda.knight208@martin.info",
+    "license_number": "HI78192",
+    "vehicle": "Nissan Sentra 2018",
+    "account_creation_date": "2025-01-27"
+  },
+  {
+    "driver_id": "D000324",
+    "first_name": "Brian",
+    "last_name": "Thomas",
+    "phone_number": "306-941-8800x753",
+    "email": "brian.thomas370@payne.com",
+    "license_number": "MN46514",
+    "vehicle": "Honda Civic 2020",
+    "account_creation_date": "2023-12-15"
+  },
+  {
+    "driver_id": "D000325",
+    "first_name": "Corey",
+    "last_name": "Dodson",
+    "phone_number": "001-729-329-2669",
+    "email": "corey.dodson595@carlson.com",
+    "license_number": "DC56100",
+    "vehicle": "Nissan Sentra 2023",
+    "account_creation_date": "2024-09-05"
+  },
+  {
+    "driver_id": "D000326",
+    "first_name": "Jessica",
+    "last_name": "Johnson",
+    "phone_number": "778.862.9580x5602",
+    "email": "jessica.johnson439@leach.com",
+    "license_number": "NE84424",
+    "vehicle": "Volkswagen Passat 2020",
+    "account_creation_date": "2024-12-17"
+  },
+  {
+    "driver_id": "D000327",
+    "first_name": "Nicholas",
+    "last_name": "Wilson",
+    "phone_number": "001-635-652-7745x0598",
+    "email": "nicholas.wilson968@owens-evans.com",
+    "license_number": "MT91581",
+    "vehicle": "Kia Forte 2020",
+    "account_creation_date": "2021-07-18"
+  },
+  {
+    "driver_id": "D000328",
+    "first_name": "Steven",
+    "last_name": "Hoffman",
+    "phone_number": "8014194205",
+    "email": "steven.hoffman176@mitchell-miller.com",
+    "license_number": "KY25342",
+    "vehicle": "Toyota Corolla 2022",
+    "account_creation_date": "2022-12-30"
+  },
+  {
+    "driver_id": "D000329",
+    "first_name": "Amy",
+    "last_name": "Jenkins",
+    "phone_number": "601.941.7709",
+    "email": "amy.jenkins321@boone.com",
+    "license_number": "UT36171",
+    "vehicle": "BMW 3 Series 2022",
+    "account_creation_date": "2024-05-14"
+  },
+  {
+    "driver_id": "D000330",
+    "first_name": "Joseph",
+    "last_name": "Ritter",
+    "phone_number": "+1-885-503-9626x261",
+    "email": "joseph.ritter414@graves-williams.net",
+    "license_number": "CA58370",
+    "vehicle": "Kia Forte 2022",
+    "account_creation_date": "2023-10-23"
+  },
+  {
+    "driver_id": "D000331",
+    "first_name": "Shelby",
+    "last_name": "Montgomery",
+    "phone_number": "(475)589-9564",
+    "email": "shelby.montgomery761@vaughn.com",
+    "license_number": "AL93000",
+    "vehicle": "Hyundai Elantra 2023",
+    "account_creation_date": "2024-01-25"
+  },
+  {
+    "driver_id": "D000332",
+    "first_name": "Steven",
+    "last_name": "Butler",
+    "phone_number": "221.753.2751x69808",
+    "email": "steven.butler620@turner.net",
+    "license_number": "AZ95681",
+    "vehicle": "Hyundai Elantra 2019",
+    "account_creation_date": "2024-10-18"
+  },
+  {
+    "driver_id": "D000333",
+    "first_name": "Christina",
+    "last_name": "Cunningham",
+    "phone_number": "001-690-501-0544x233",
+    "email": "christina.cunningham394@crane-foster.org",
+    "license_number": "SC13739",
+    "vehicle": "Toyota Corolla 2021",
+    "account_creation_date": "2023-11-27"
+  },
+  {
+    "driver_id": "D000334",
+    "first_name": "Zachary",
+    "last_name": "Kennedy",
+    "phone_number": "878.316.8175x4568",
+    "email": "zachary.kennedy641@powell.com",
+    "license_number": "SC29282",
+    "vehicle": "Mercedes C-Class 2023",
+    "account_creation_date": "2020-10-16"
+  },
+  {
+    "driver_id": "D000335",
+    "first_name": "Charles",
+    "last_name": "Castaneda",
+    "phone_number": "001-479-336-7538x970",
+    "email": "charles.castaneda492@green.info",
+    "license_number": "OH14295",
+    "vehicle": "Mazda 6 2021",
+    "account_creation_date": "2022-06-01"
+  },
+  {
+    "driver_id": "D000336",
+    "first_name": "Adam",
+    "last_name": "Holland",
+    "phone_number": "001-793-647-1347",
+    "email": "adam.holland100@smith.com",
+    "license_number": "PR17192",
+    "vehicle": "Toyota Camry 2019",
+    "account_creation_date": "2023-08-21"
+  },
+  {
+    "driver_id": "D000337",
+    "first_name": "Edward",
+    "last_name": "Jones",
+    "phone_number": "+1-537-903-0223x4330",
+    "email": "edward.jones366@montoya.org",
+    "license_number": "DE75724",
+    "vehicle": "Kia Forte 2019",
+    "account_creation_date": "2022-12-04"
+  },
+  {
+    "driver_id": "D000338",
+    "first_name": "David",
+    "last_name": "Thomas",
+    "phone_number": "(850)479-0062x51980",
+    "email": "david.thomas777@white.biz",
+    "license_number": "NE79605",
+    "vehicle": "Toyota Sienna 2022",
+    "account_creation_date": "2021-08-03"
+  },
+  {
+    "driver_id": "D000339",
+    "first_name": "Deborah",
+    "last_name": "Ford",
+    "phone_number": "(873)584-3791x9100",
+    "email": "deborah.ford966@rocha.com",
+    "license_number": "OK98895",
+    "vehicle": "Audi A4 2020",
+    "account_creation_date": "2022-09-29"
+  },
+  {
+    "driver_id": "D000340",
+    "first_name": "Martha",
+    "last_name": "Watkins",
+    "phone_number": "+1-732-201-0936x40163",
+    "email": "martha.watkins74@washington.com",
+    "license_number": "MO35419",
+    "vehicle": "Kia Forte 2022",
+    "account_creation_date": "2024-05-11"
+  },
+  {
+    "driver_id": "D000341",
+    "first_name": "Robert",
+    "last_name": "Combs",
+    "phone_number": "7356495574",
+    "email": "robert.combs269@thomas.info",
+    "license_number": "AR97298",
+    "vehicle": "Toyota Camry 2017",
+    "account_creation_date": "2023-06-21"
+  },
+  {
+    "driver_id": "D000342",
+    "first_name": "Theresa",
+    "last_name": "Montgomery",
+    "phone_number": "001-284-298-2771x32582",
+    "email": "theresa.montgomery182@miller.com",
+    "license_number": "PA34338",
+    "vehicle": "Honda Accord 2018",
+    "account_creation_date": "2021-04-22"
+  },
+  {
+    "driver_id": "D000343",
+    "first_name": "Christopher",
+    "last_name": "Floyd",
+    "phone_number": "313.656.4625",
+    "email": "christopher.floyd598@graham.com",
+    "license_number": "WV43103",
+    "vehicle": "Audi A4 2022",
+    "account_creation_date": "2021-10-05"
+  },
+  {
+    "driver_id": "D000344",
+    "first_name": "Jeffrey",
+    "last_name": "Barrett",
+    "phone_number": "+1-503-819-7643x743",
+    "email": "jeffrey.barrett241@nicholson-noble.biz",
+    "license_number": "UT78613",
+    "vehicle": "Kia Forte 2023",
+    "account_creation_date": "2021-05-05"
+  },
+  {
+    "driver_id": "D000345",
+    "first_name": "Melissa",
+    "last_name": "Blair",
+    "phone_number": "(927)520-4310",
+    "email": "melissa.blair221@bishop.com",
+    "license_number": "AS63458",
+    "vehicle": "Subaru Legacy 2021",
+    "account_creation_date": "2023-06-19"
+  },
+  {
+    "driver_id": "D000346",
+    "first_name": "Samantha",
+    "last_name": "Torres",
+    "phone_number": "(930)282-9848",
+    "email": "samantha.torres371@downs-martinez.com",
+    "license_number": "WI65873",
+    "vehicle": "Audi A4 2020",
+    "account_creation_date": "2024-03-26"
+  },
+  {
+    "driver_id": "D000347",
+    "first_name": "Jeff",
+    "last_name": "Grant",
+    "phone_number": "(445)805-4748",
+    "email": "jeff.grant38@lewis.com",
+    "license_number": "KS18186",
+    "vehicle": "Honda Civic 2017",
+    "account_creation_date": "2024-11-03"
+  },
+  {
+    "driver_id": "D000348",
+    "first_name": "Theresa",
+    "last_name": "Robinson",
+    "phone_number": "(583)793-6496x64003",
+    "email": "theresa.robinson311@jordan.com",
+    "license_number": "NJ84409",
+    "vehicle": "Volkswagen Passat 2021",
+    "account_creation_date": "2025-02-11"
+  },
+  {
+    "driver_id": "D000349",
+    "first_name": "Daniel",
+    "last_name": "Thomas",
+    "phone_number": "001-442-236-3727x0081",
+    "email": "daniel.thomas637@lee.com",
+    "license_number": "FM83960",
+    "vehicle": "Honda Accord 2019",
+    "account_creation_date": "2023-01-24"
+  },
+  {
+    "driver_id": "D000350",
+    "first_name": "Bill",
+    "last_name": "Perez",
+    "phone_number": "(913)652-5009",
+    "email": "bill.perez901@williams.org",
+    "license_number": "MD13068",
+    "vehicle": "Kia Forte 2017",
+    "account_creation_date": "2022-03-23"
+  },
+  {
+    "driver_id": "D000351",
+    "first_name": "Kristin",
+    "last_name": "Bradley",
+    "phone_number": "511-215-5118x7895",
+    "email": "kristin.bradley802@humphrey.com",
+    "license_number": "MT41738",
+    "vehicle": "BMW 3 Series 2022",
+    "account_creation_date": "2021-02-23"
+  },
+  {
+    "driver_id": "D000352",
+    "first_name": "Nicole",
+    "last_name": "Durham",
+    "phone_number": "001-891-437-1725",
+    "email": "nicole.durham495@wallace.org",
+    "license_number": "VA20844",
+    "vehicle": "Honda Accord 2021",
+    "account_creation_date": "2024-02-09"
+  },
+  {
+    "driver_id": "D000353",
+    "first_name": "Stacey",
+    "last_name": "Oliver",
+    "phone_number": "826.238.2760x2016",
+    "email": "stacey.oliver403@davies.com",
+    "license_number": "TN86962",
+    "vehicle": "Nissan Sentra 2018",
+    "account_creation_date": "2023-03-22"
+  },
+  {
+    "driver_id": "D000354",
+    "first_name": "Tamara",
+    "last_name": "Smith",
+    "phone_number": "214.636.6217x3499",
+    "email": "tamara.smith559@brown.com",
+    "license_number": "MO75781",
+    "vehicle": "Toyota Camry 2018",
+    "account_creation_date": "2024-08-23"
+  },
+  {
+    "driver_id": "D000355",
+    "first_name": "Shawn",
+    "last_name": "Rush",
+    "phone_number": "+1-916-589-8200x00751",
+    "email": "shawn.rush646@stevenson-matthews.net",
+    "license_number": "WI50066",
+    "vehicle": "Nissan Sentra 2017",
+    "account_creation_date": "2023-09-24"
+  },
+  {
+    "driver_id": "D000356",
+    "first_name": "Shawn",
+    "last_name": "Cunningham",
+    "phone_number": "231-531-6202x50387",
+    "email": "shawn.cunningham478@williams.com",
+    "license_number": "GU17245",
+    "vehicle": "Toyota Corolla 2017",
+    "account_creation_date": "2022-08-06"
+  },
+  {
+    "driver_id": "D000357",
+    "first_name": "Anita",
+    "last_name": "Reed",
+    "phone_number": "001-915-790-6074x283",
+    "email": "anita.reed537@henderson-ryan.com",
+    "license_number": "DC84468",
+    "vehicle": "Kia Forte 2020",
+    "account_creation_date": "2022-12-02"
+  },
+  {
+    "driver_id": "D000358",
+    "first_name": "Michelle",
+    "last_name": "Wilson",
+    "phone_number": "+1-778-768-3526x74430",
+    "email": "michelle.wilson588@valentine.com",
+    "license_number": "NM45284",
+    "vehicle": "Subaru Legacy 2017",
+    "account_creation_date": "2023-04-08"
+  },
+  {
+    "driver_id": "D000359",
+    "first_name": "Joseph",
+    "last_name": "Schmidt",
+    "phone_number": "273-527-8450",
+    "email": "joseph.schmidt466@boyle-johnson.com",
+    "license_number": "IN90683",
+    "vehicle": "Honda Accord 2018",
+    "account_creation_date": "2025-01-22"
+  },
+  {
+    "driver_id": "D000360",
+    "first_name": "William",
+    "last_name": "Downs",
+    "phone_number": "371.648.3085x915",
+    "email": "william.downs13@martinez.com",
+    "license_number": "PA64946",
+    "vehicle": "Nissan Sentra 2021",
+    "account_creation_date": "2024-12-26"
+  },
+  {
+    "driver_id": "D000361",
+    "first_name": "Tracey",
+    "last_name": "Lyons",
+    "phone_number": "+1-710-209-2688x48103",
+    "email": "tracey.lyons734@mann.com",
+    "license_number": "SC41000",
+    "vehicle": "Chevrolet Suburban 2019",
+    "account_creation_date": "2025-01-12"
+  },
+  {
+    "driver_id": "D000362",
+    "first_name": "Katherine",
+    "last_name": "Neal",
+    "phone_number": "(567)448-9826",
+    "email": "katherine.neal829@scott.com",
+    "license_number": "RI41174",
+    "vehicle": "Mazda 6 2019",
+    "account_creation_date": "2024-11-25"
+  },
+  {
+    "driver_id": "D000363",
+    "first_name": "Jeffrey",
+    "last_name": "Johnson",
+    "phone_number": "601.390.6517x387",
+    "email": "jeffrey.johnson555@coleman.com",
+    "license_number": "ID94858",
+    "vehicle": "Subaru Legacy 2020",
+    "account_creation_date": "2023-11-04"
+  },
+  {
+    "driver_id": "D000364",
+    "first_name": "John",
+    "last_name": "Black",
+    "phone_number": "529-678-1698",
+    "email": "john.black727@hill.biz",
+    "license_number": "TN82718",
+    "vehicle": "Honda Civic 2022",
+    "account_creation_date": "2023-04-01"
+  },
+  {
+    "driver_id": "D000365",
+    "first_name": "Beverly",
+    "last_name": "Turner",
+    "phone_number": "624.581.0666x01474",
+    "email": "beverly.turner40@green.com",
+    "license_number": "RI77745",
+    "vehicle": "Subaru Legacy 2020",
+    "account_creation_date": "2024-03-26"
+  },
+  {
+    "driver_id": "D000366",
+    "first_name": "David",
+    "last_name": "Reyes",
+    "phone_number": "522.687.0605x365",
+    "email": "david.reyes87@moss.com",
+    "license_number": "CA20250",
+    "vehicle": "GMC Yukon 2019",
+    "account_creation_date": "2024-07-09"
+  },
+  {
+    "driver_id": "D000367",
+    "first_name": "Julie",
+    "last_name": "Stephens",
+    "phone_number": "794-462-0214x52058",
+    "email": "julie.stephens623@zuniga.com",
+    "license_number": "NY59034",
+    "vehicle": "Kia Forte 2019",
+    "account_creation_date": "2023-03-24"
+  },
+  {
+    "driver_id": "D000368",
+    "first_name": "Bruce",
+    "last_name": "Hill",
+    "phone_number": "001-877-324-3203x73512",
+    "email": "bruce.hill486@rogers.org",
+    "license_number": "DE91465",
+    "vehicle": "Mazda 6 2019",
+    "account_creation_date": "2024-12-13"
+  },
+  {
+    "driver_id": "D000369",
+    "first_name": "Charles",
+    "last_name": "Blevins",
+    "phone_number": "719-338-8461",
+    "email": "charles.blevins583@patton.com",
+    "license_number": "NJ14137",
+    "vehicle": "Honda Civic 2021",
+    "account_creation_date": "2023-11-07"
+  },
+  {
+    "driver_id": "D000370",
+    "first_name": "Cynthia",
+    "last_name": "Wilson",
+    "phone_number": "958-983-7973x849",
+    "email": "cynthia.wilson8@carson.com",
+    "license_number": "KY75519",
+    "vehicle": "Toyota Corolla 2017",
+    "account_creation_date": "2020-08-20"
+  },
+  {
+    "driver_id": "D000371",
+    "first_name": "Paul",
+    "last_name": "Hunter",
+    "phone_number": "(501)568-1122",
+    "email": "paul.hunter911@cherry.com",
+    "license_number": "AK34253",
+    "vehicle": "Honda Civic 2017",
+    "account_creation_date": "2023-03-11"
+  },
+  {
+    "driver_id": "D000372",
+    "first_name": "Aaron",
+    "last_name": "Morrison",
+    "phone_number": "001-840-226-1276x714",
+    "email": "aaron.morrison881@miller.com",
+    "license_number": "WI39586",
+    "vehicle": "Kia Forte 2017",
+    "account_creation_date": "2023-01-13"
+  },
+  {
+    "driver_id": "D000373",
+    "first_name": "Jean",
+    "last_name": "Matthews",
+    "phone_number": "(758)378-7960",
+    "email": "jean.matthews372@davis-kline.com",
+    "license_number": "AS77113",
+    "vehicle": "Toyota Corolla 2018",
+    "account_creation_date": "2022-12-05"
+  },
+  {
+    "driver_id": "D000374",
+    "first_name": "Joe",
+    "last_name": "Miller",
+    "phone_number": "332.261.5705",
+    "email": "joe.miller357@pratt.com",
+    "license_number": "UT17646",
+    "vehicle": "Nissan Sentra 2018",
+    "account_creation_date": "2021-07-05"
+  },
+  {
+    "driver_id": "D000375",
+    "first_name": "Steven",
+    "last_name": "Perez",
+    "phone_number": "964.687.8694",
+    "email": "steven.perez675@sanchez.org",
+    "license_number": "MO31934",
+    "vehicle": "Subaru Legacy 2017",
+    "account_creation_date": "2024-01-15"
+  },
+  {
+    "driver_id": "D000376",
+    "first_name": "Ryan",
+    "last_name": "Fox",
+    "phone_number": "264.346.2882x314",
+    "email": "ryan.fox620@turner-cruz.com",
+    "license_number": "LA95987",
+    "vehicle": "Hyundai Elantra 2021",
+    "account_creation_date": "2023-05-16"
+  },
+  {
+    "driver_id": "D000377",
+    "first_name": "Barbara",
+    "last_name": "Fox",
+    "phone_number": "201.610.1226",
+    "email": "barbara.fox456@flowers-jimenez.com",
+    "license_number": "LA57792",
+    "vehicle": "Honda Civic 2020",
+    "account_creation_date": "2021-09-02"
+  },
+  {
+    "driver_id": "D000378",
+    "first_name": "Jason",
+    "last_name": "Roberts",
+    "phone_number": "001-422-347-0722x00537",
+    "email": "jason.roberts722@robertson.com",
+    "license_number": "FL16052",
+    "vehicle": "Volkswagen Passat 2017",
+    "account_creation_date": "2022-07-11"
+  },
+  {
+    "driver_id": "D000379",
+    "first_name": "Erin",
+    "last_name": "White",
+    "phone_number": "252.590.9137",
+    "email": "erin.white782@huerta.net",
+    "license_number": "NV93015",
+    "vehicle": "Toyota Corolla 2021",
+    "account_creation_date": "2023-11-12"
+  },
+  {
+    "driver_id": "D000380",
+    "first_name": "Ruben",
+    "last_name": "Wilson",
+    "phone_number": "455-831-1277x579",
+    "email": "ruben.wilson40@king-white.com",
+    "license_number": "LA33886",
+    "vehicle": "Audi A4 2020",
+    "account_creation_date": "2023-10-03"
+  },
+  {
+    "driver_id": "D000381",
+    "first_name": "Stephen",
+    "last_name": "Le",
+    "phone_number": "797.436.9041x3207",
+    "email": "stephen.le698@davis-davis.com",
+    "license_number": "MI93986",
+    "vehicle": "Audi A4 2023",
+    "account_creation_date": "2025-02-21"
+  },
+  {
+    "driver_id": "D000382",
+    "first_name": "Fernando",
+    "last_name": "Flores",
+    "phone_number": "2804866436",
+    "email": "fernando.flores228@wright-fisher.com",
+    "license_number": "VA62601",
+    "vehicle": "Kia Forte 2021",
+    "account_creation_date": "2024-02-16"
+  },
+  {
+    "driver_id": "D000383",
+    "first_name": "Amber",
+    "last_name": "Cordova",
+    "phone_number": "784-710-0651x08773",
+    "email": "amber.cordova227@smith.com",
+    "license_number": "WY65340",
+    "vehicle": "Kia Forte 2018",
+    "account_creation_date": "2022-10-12"
+  },
+  {
+    "driver_id": "D000384",
+    "first_name": "Derek",
+    "last_name": "Moore",
+    "phone_number": "(320)730-3451x155",
+    "email": "derek.moore387@fitzgerald.com",
+    "license_number": "TX82057",
+    "vehicle": "Volkswagen Passat 2020",
+    "account_creation_date": "2023-09-02"
+  },
+  {
+    "driver_id": "D000385",
+    "first_name": "Lori",
+    "last_name": "Weber",
+    "phone_number": "001-237-406-6523x181",
+    "email": "lori.weber649@mcdaniel-griffin.com",
+    "license_number": "NE91905",
+    "vehicle": "Honda Accord 2019",
+    "account_creation_date": "2022-01-13"
+  },
+  {
+    "driver_id": "D000386",
+    "first_name": "Jeanne",
+    "last_name": "Cooper",
+    "phone_number": "(714)228-5253",
+    "email": "jeanne.cooper463@davis.com",
+    "license_number": "MP64524",
+    "vehicle": "Toyota Corolla 2018",
+    "account_creation_date": "2022-07-29"
+  },
+  {
+    "driver_id": "D000387",
+    "first_name": "Jennifer",
+    "last_name": "Diaz",
+    "phone_number": "001-551-378-0946",
+    "email": "jennifer.diaz660@smith-mcbride.com",
+    "license_number": "FM48251",
+    "vehicle": "Volkswagen Passat 2023",
+    "account_creation_date": "2023-06-28"
+  },
+  {
+    "driver_id": "D000388",
+    "first_name": "Brooke",
+    "last_name": "Young",
+    "phone_number": "001-821-314-5541x96742",
+    "email": "brooke.young901@kelly.net",
+    "license_number": "MI53135",
+    "vehicle": "Chevrolet Suburban 2021",
+    "account_creation_date": "2021-03-13"
+  },
+  {
+    "driver_id": "D000389",
+    "first_name": "Lauren",
+    "last_name": "Gaines",
+    "phone_number": "+1-692-549-9972",
+    "email": "lauren.gaines832@payne.com",
+    "license_number": "DE17894",
+    "vehicle": "Honda Civic 2022",
+    "account_creation_date": "2024-01-09"
+  },
+  {
+    "driver_id": "D000390",
+    "first_name": "Blake",
+    "last_name": "Hernandez",
+    "phone_number": "739.725.7543x2527",
+    "email": "blake.hernandez303@henderson.com",
+    "license_number": "WI98185",
+    "vehicle": "Honda Civic 2021",
+    "account_creation_date": "2022-03-22"
+  },
+  {
+    "driver_id": "D000391",
+    "first_name": "Scott",
+    "last_name": "Howard",
+    "phone_number": "672.490.4546x2441",
+    "email": "scott.howard268@allen-davis.com",
+    "license_number": "DE60960",
+    "vehicle": "Honda Civic 2019",
+    "account_creation_date": "2023-12-07"
+  },
+  {
+    "driver_id": "D000392",
+    "first_name": "Connie",
+    "last_name": "Little",
+    "phone_number": "262-483-2312x9698",
+    "email": "connie.little553@reed.net",
+    "license_number": "AZ42161",
+    "vehicle": "Subaru Legacy 2018",
+    "account_creation_date": "2023-12-19"
+  },
+  {
+    "driver_id": "D000393",
+    "first_name": "Stephanie",
+    "last_name": "Curry",
+    "phone_number": "(980)246-2380x305",
+    "email": "stephanie.curry772@erickson.com",
+    "license_number": "PA75909",
+    "vehicle": "Honda Civic 2017",
+    "account_creation_date": "2024-02-10"
+  },
+  {
+    "driver_id": "D000394",
+    "first_name": "Tamara",
+    "last_name": "Welch",
+    "phone_number": "3649417630",
+    "email": "tamara.welch879@wilson.com",
+    "license_number": "NM74310",
+    "vehicle": "Hyundai Elantra 2019",
+    "account_creation_date": "2024-05-02"
+  },
+  {
+    "driver_id": "D000395",
+    "first_name": "Rodney",
+    "last_name": "Jones",
+    "phone_number": "(524)453-8135x5718",
+    "email": "rodney.jones144@reynolds-brown.net",
+    "license_number": "FM36090",
+    "vehicle": "Audi A4 2021",
+    "account_creation_date": "2022-03-24"
+  },
+  {
+    "driver_id": "D000396",
+    "first_name": "Robin",
+    "last_name": "Newman",
+    "phone_number": "001-683-697-3853x67433",
+    "email": "robin.newman179@jones.org",
+    "license_number": "FM91916",
+    "vehicle": "Hyundai Elantra 2023",
+    "account_creation_date": "2024-04-06"
+  },
+  {
+    "driver_id": "D000397",
+    "first_name": "Jennifer",
+    "last_name": "Williams",
+    "phone_number": "+1-230-576-5907x093",
+    "email": "jennifer.williams93@cole.com",
+    "license_number": "MH50573",
+    "vehicle": "Toyota Camry 2023",
+    "account_creation_date": "2024-03-14"
+  },
+  {
+    "driver_id": "D000398",
+    "first_name": "Kerri",
+    "last_name": "Baker",
+    "phone_number": "3964568611",
+    "email": "kerri.baker515@bradford.com",
+    "license_number": "WA21877",
+    "vehicle": "Mazda 6 2017",
+    "account_creation_date": "2024-03-04"
+  },
+  {
+    "driver_id": "D000399",
+    "first_name": "Ricardo",
+    "last_name": "Mooney",
+    "phone_number": "001-625-314-8524x823",
+    "email": "ricardo.mooney587@gonzalez.com",
+    "license_number": "AR51101",
+    "vehicle": "Toyota Corolla 2017",
+    "account_creation_date": "2024-04-22"
+  },
+  {
+    "driver_id": "D000400",
+    "first_name": "Stephanie",
+    "last_name": "Cowan",
+    "phone_number": "+1-826-884-8226x61179",
+    "email": "stephanie.cowan908@martinez.com",
+    "license_number": "CT30317",
+    "vehicle": "Kia Forte 2022",
+    "account_creation_date": "2023-12-27"
+  },
+  {
+    "driver_id": "D000401",
+    "first_name": "Stephanie",
+    "last_name": "Carpenter",
+    "phone_number": "+1-860-916-5163x040",
+    "email": "stephanie.carpenter61@brooks.com",
+    "license_number": "KY88667",
+    "vehicle": "Hyundai Elantra 2021",
+    "account_creation_date": "2021-08-15"
+  },
+  {
+    "driver_id": "D000402",
+    "first_name": "Renee",
+    "last_name": "Adams",
+    "phone_number": "349-324-7861x96004",
+    "email": "renee.adams226@hart.net",
+    "license_number": "AS21554",
+    "vehicle": "Honda Accord 2020",
+    "account_creation_date": "2021-02-10"
+  },
+  {
+    "driver_id": "D000403",
+    "first_name": "Mackenzie",
+    "last_name": "Shannon",
+    "phone_number": "734.701.4178",
+    "email": "mackenzie.shannon682@logan.com",
+    "license_number": "IN93804",
+    "vehicle": "Nissan Sentra 2019",
+    "account_creation_date": "2024-07-24"
+  },
+  {
+    "driver_id": "D000404",
+    "first_name": "Kimberly",
+    "last_name": "Grant",
+    "phone_number": "(789)865-7922x817",
+    "email": "kimberly.grant807@gamble.org",
+    "license_number": "OH14886",
+    "vehicle": "Kia Forte 2019",
+    "account_creation_date": "2023-03-27"
+  },
+  {
+    "driver_id": "D000405",
+    "first_name": "Kent",
+    "last_name": "Jordan",
+    "phone_number": "531-257-8753x1416",
+    "email": "kent.jordan141@munoz.com",
+    "license_number": "AK31653",
+    "vehicle": "Kia Forte 2023",
+    "account_creation_date": "2023-02-14"
+  },
+  {
+    "driver_id": "D000406",
+    "first_name": "Kevin",
+    "last_name": "Cross",
+    "phone_number": "+1-523-934-1916x76007",
+    "email": "kevin.cross334@johnston.com",
+    "license_number": "WV14529",
+    "vehicle": "Hyundai Elantra 2018",
+    "account_creation_date": "2021-11-03"
+  },
+  {
+    "driver_id": "D000407",
+    "first_name": "Shane",
+    "last_name": "Nguyen",
+    "phone_number": "(351)826-4624",
+    "email": "shane.nguyen726@fowler-garcia.com",
+    "license_number": "DC73112",
+    "vehicle": "Mazda 6 2021",
+    "account_creation_date": "2024-03-06"
+  },
+  {
+    "driver_id": "D000408",
+    "first_name": "Amanda",
+    "last_name": "Silva",
+    "phone_number": "640.814.5613",
+    "email": "amanda.silva141@lawrence-hurley.com",
+    "license_number": "IA16779",
+    "vehicle": "Volkswagen Passat 2020",
+    "account_creation_date": "2022-08-03"
+  },
+  {
+    "driver_id": "D000409",
+    "first_name": "Catherine",
+    "last_name": "Hurley",
+    "phone_number": "691-406-4715x12215",
+    "email": "catherine.hurley607@harris-torres.com",
+    "license_number": "VT35935",
+    "vehicle": "Honda Odyssey 2019",
+    "account_creation_date": "2022-06-08"
+  },
+  {
+    "driver_id": "D000410",
+    "first_name": "Theresa",
+    "last_name": "Williams",
+    "phone_number": "+1-720-512-7759",
+    "email": "theresa.williams769@davis.com",
+    "license_number": "WV52931",
+    "vehicle": "Hyundai Elantra 2017",
+    "account_creation_date": "2025-01-13"
+  },
+  {
+    "driver_id": "D000411",
+    "first_name": "Paul",
+    "last_name": "Dyer",
+    "phone_number": "892.389.4416x24412",
+    "email": "paul.dyer548@hayes.info",
+    "license_number": "MD41691",
+    "vehicle": "Honda Civic 2022",
+    "account_creation_date": "2024-02-05"
+  },
+  {
+    "driver_id": "D000412",
+    "first_name": "Brian",
+    "last_name": "Keller",
+    "phone_number": "943.783.9189x30846",
+    "email": "brian.keller279@owens.org",
+    "license_number": "MN36530",
+    "vehicle": "Nissan Sentra 2019",
+    "account_creation_date": "2024-12-20"
+  },
+  {
+    "driver_id": "D000413",
+    "first_name": "Dustin",
+    "last_name": "Carter",
+    "phone_number": "(836)792-0061x827",
+    "email": "dustin.carter375@reed.com",
+    "license_number": "KY86246",
+    "vehicle": "Volkswagen Passat 2017",
+    "account_creation_date": "2024-05-26"
+  },
+  {
+    "driver_id": "D000414",
+    "first_name": "Michael",
+    "last_name": "Johnson",
+    "phone_number": "9702734784",
+    "email": "michael.johnson361@sanchez.com",
+    "license_number": "CT35777",
+    "vehicle": "Honda Civic 2020",
+    "account_creation_date": "2024-03-31"
+  },
+  {
+    "driver_id": "D000415",
+    "first_name": "Aaron",
+    "last_name": "Garcia",
+    "phone_number": "(781)237-8977",
+    "email": "aaron.garcia16@ramsey-nelson.com",
+    "license_number": "VA10845",
+    "vehicle": "Subaru Legacy 2019",
+    "account_creation_date": "2025-02-14"
+  },
+  {
+    "driver_id": "D000416",
+    "first_name": "Heather",
+    "last_name": "Moss",
+    "phone_number": "379.987.3827",
+    "email": "heather.moss688@colon-garrett.com",
+    "license_number": "DC40560",
+    "vehicle": "Toyota Corolla 2017",
+    "account_creation_date": "2022-04-17"
+  },
+  {
+    "driver_id": "D000417",
+    "first_name": "Stephanie",
+    "last_name": "Harvey",
+    "phone_number": "(581)728-9305",
+    "email": "stephanie.harvey901@kemp-joseph.biz",
+    "license_number": "ND15228",
+    "vehicle": "Toyota Camry 2022",
+    "account_creation_date": "2023-06-19"
+  },
+  {
+    "driver_id": "D000418",
+    "first_name": "Sharon",
+    "last_name": "Nguyen",
+    "phone_number": "9626339006",
+    "email": "sharon.nguyen645@swanson.com",
+    "license_number": "MS16293",
+    "vehicle": "Honda Civic 2017",
+    "account_creation_date": "2021-07-04"
+  },
+  {
+    "driver_id": "D000419",
+    "first_name": "Tristan",
+    "last_name": "Garcia",
+    "phone_number": "2252851572",
+    "email": "tristan.garcia901@brown.com",
+    "license_number": "AK45440",
+    "vehicle": "Mazda 6 2018",
+    "account_creation_date": "2024-11-27"
+  },
+  {
+    "driver_id": "D000420",
+    "first_name": "Cody",
+    "last_name": "Johnson",
+    "phone_number": "(207)306-2315x40621",
+    "email": "cody.johnson677@porter-barajas.com",
+    "license_number": "OR29348",
+    "vehicle": "Mazda 6 2022",
+    "account_creation_date": "2023-01-04"
+  },
+  {
+    "driver_id": "D000421",
+    "first_name": "Samantha",
+    "last_name": "Evans",
+    "phone_number": "001-701-613-1566",
+    "email": "samantha.evans624@rose.net",
+    "license_number": "DE90219",
+    "vehicle": "Mazda 6 2017",
+    "account_creation_date": "2022-02-05"
+  },
+  {
+    "driver_id": "D000422",
+    "first_name": "Tyler",
+    "last_name": "Rodriguez",
+    "phone_number": "651.692.5993",
+    "email": "tyler.rodriguez722@abbott.com",
+    "license_number": "OR97470",
+    "vehicle": "Mercedes C-Class 2019",
+    "account_creation_date": "2022-11-23"
+  },
+  {
+    "driver_id": "D000423",
+    "first_name": "Jennifer",
+    "last_name": "Roberson",
+    "phone_number": "(803)775-1782",
+    "email": "jennifer.roberson450@jackson-ruiz.net",
+    "license_number": "CT68448",
+    "vehicle": "Nissan Sentra 2019",
+    "account_creation_date": "2023-12-10"
+  },
+  {
+    "driver_id": "D000424",
+    "first_name": "Michael",
+    "last_name": "Villegas",
+    "phone_number": "(674)415-3149",
+    "email": "michael.villegas600@martinez.com",
+    "license_number": "RI64488",
+    "vehicle": "Hyundai Elantra 2017",
+    "account_creation_date": "2021-02-26"
+  },
+  {
+    "driver_id": "D000425",
+    "first_name": "Lisa",
+    "last_name": "Brown",
+    "phone_number": "001-828-760-3951x2748",
+    "email": "lisa.brown3@holmes.com",
+    "license_number": "VA99120",
+    "vehicle": "Mercedes C-Class 2017",
+    "account_creation_date": "2024-05-04"
+  },
+  {
+    "driver_id": "D000426",
+    "first_name": "Heather",
+    "last_name": "Smith",
+    "phone_number": "+1-682-521-5918x032",
+    "email": "heather.smith831@miller.biz",
+    "license_number": "PA69556",
+    "vehicle": "Nissan Sentra 2018",
+    "account_creation_date": "2021-01-15"
+  },
+  {
+    "driver_id": "D000427",
+    "first_name": "Lisa",
+    "last_name": "Johnson",
+    "phone_number": "+1-907-802-4657",
+    "email": "lisa.johnson876@rodriguez-velez.info",
+    "license_number": "NE49006",
+    "vehicle": "Volkswagen Passat 2021",
+    "account_creation_date": "2022-07-20"
+  },
+  {
+    "driver_id": "D000428",
+    "first_name": "Teresa",
+    "last_name": "Williams",
+    "phone_number": "(202)538-0974x84726",
+    "email": "teresa.williams601@gibson-turner.com",
+    "license_number": "KY81075",
+    "vehicle": "Volkswagen Passat 2017",
+    "account_creation_date": "2023-11-04"
+  },
+  {
+    "driver_id": "D000429",
+    "first_name": "Karen",
+    "last_name": "Jones",
+    "phone_number": "247-434-3778x95514",
+    "email": "karen.jones251@kelly.com",
+    "license_number": "GU36056",
+    "vehicle": "Lexus ES 2019",
+    "account_creation_date": "2022-04-18"
+  },
+  {
+    "driver_id": "D000430",
+    "first_name": "Zachary",
+    "last_name": "King",
+    "phone_number": "624.223.0135",
+    "email": "zachary.king32@tran-harris.info",
+    "license_number": "RI15613",
+    "vehicle": "Hyundai Elantra 2017",
+    "account_creation_date": "2023-09-26"
+  },
+  {
+    "driver_id": "D000431",
+    "first_name": "Allison",
+    "last_name": "Perkins",
+    "phone_number": "(844)765-1972x9644",
+    "email": "allison.perkins237@newman.com",
+    "license_number": "PW37574",
+    "vehicle": "Hyundai Elantra 2017",
+    "account_creation_date": "2021-10-06"
+  },
+  {
+    "driver_id": "D000432",
+    "first_name": "Lisa",
+    "last_name": "Hernandez",
+    "phone_number": "705.919.3781x307",
+    "email": "lisa.hernandez712@shaffer.info",
+    "license_number": "CT36501",
+    "vehicle": "Kia Forte 2021",
+    "account_creation_date": "2022-04-05"
+  },
+  {
+    "driver_id": "D000433",
+    "first_name": "Andrew",
+    "last_name": "Collier",
+    "phone_number": "001-661-957-7161x9543",
+    "email": "andrew.collier947@frazier.com",
+    "license_number": "WI57945",
+    "vehicle": "Audi A4 2019",
+    "account_creation_date": "2021-08-16"
+  },
+  {
+    "driver_id": "D000434",
+    "first_name": "Paula",
+    "last_name": "Hester",
+    "phone_number": "470-672-1355x75361",
+    "email": "paula.hester43@patton.com",
+    "license_number": "RI20360",
+    "vehicle": "BMW 3 Series 2019",
+    "account_creation_date": "2023-09-13"
+  },
+  {
+    "driver_id": "D000435",
+    "first_name": "Katrina",
+    "last_name": "Thomas",
+    "phone_number": "326.453.4255x39079",
+    "email": "katrina.thomas185@davis-smith.com",
+    "license_number": "GA73972",
+    "vehicle": "Honda Civic 2022",
+    "account_creation_date": "2023-04-07"
+  },
+  {
+    "driver_id": "D000436",
+    "first_name": "Cheryl",
+    "last_name": "White",
+    "phone_number": "301.923.1733x95739",
+    "email": "cheryl.white790@johnson.com",
+    "license_number": "DC89463",
+    "vehicle": "Nissan Sentra 2017",
+    "account_creation_date": "2024-05-10"
+  },
+  {
+    "driver_id": "D000437",
+    "first_name": "Eddie",
+    "last_name": "Rangel",
+    "phone_number": "+1-967-747-4873",
+    "email": "eddie.rangel439@gonzalez.info",
+    "license_number": "KS32940",
+    "vehicle": "Volkswagen Passat 2023",
+    "account_creation_date": "2020-08-08"
+  },
+  {
+    "driver_id": "D000438",
+    "first_name": "Stacy",
+    "last_name": "Tucker",
+    "phone_number": "729.487.2276",
+    "email": "stacy.tucker391@fowler-aguirre.com",
+    "license_number": "MT15373",
+    "vehicle": "Hyundai Elantra 2021",
+    "account_creation_date": "2023-12-25"
+  },
+  {
+    "driver_id": "D000439",
+    "first_name": "Jason",
+    "last_name": "Clark",
+    "phone_number": "+1-429-490-1875x21136",
+    "email": "jason.clark647@combs-owen.com",
+    "license_number": "GU78969",
+    "vehicle": "Honda Civic 2021",
+    "account_creation_date": "2022-10-21"
+  },
+  {
+    "driver_id": "D000440",
+    "first_name": "Lauren",
+    "last_name": "Cain",
+    "phone_number": "+1-921-412-1313x8760",
+    "email": "lauren.cain583@jennings-brown.com",
+    "license_number": "MT36265",
+    "vehicle": "Kia Forte 2017",
+    "account_creation_date": "2024-01-22"
+  },
+  {
+    "driver_id": "D000441",
+    "first_name": "Samantha",
+    "last_name": "Bailey",
+    "phone_number": "(435)567-4805x328",
+    "email": "samantha.bailey50@phillips-kelly.biz",
+    "license_number": "NE99762",
+    "vehicle": "Nissan Sentra 2021",
+    "account_creation_date": "2023-01-13"
+  },
+  {
+    "driver_id": "D000442",
+    "first_name": "David",
+    "last_name": "Kane",
+    "phone_number": "001-508-456-9119x14824",
+    "email": "david.kane204@franklin.net",
+    "license_number": "OK97784",
+    "vehicle": "Subaru Legacy 2020",
+    "account_creation_date": "2023-06-23"
+  },
+  {
+    "driver_id": "D000443",
+    "first_name": "Christopher",
+    "last_name": "Anderson",
+    "phone_number": "(896)263-0109x9213",
+    "email": "christopher.anderson686@bradford-santiago.com",
+    "license_number": "PR11279",
+    "vehicle": "Toyota Corolla 2017",
+    "account_creation_date": "2022-05-02"
+  },
+  {
+    "driver_id": "D000444",
+    "first_name": "Sandra",
+    "last_name": "Gay",
+    "phone_number": "852.684.9147",
+    "email": "sandra.gay300@leonard.biz",
+    "license_number": "PA12792",
+    "vehicle": "Audi A4 2023",
+    "account_creation_date": "2024-01-24"
+  },
+  {
+    "driver_id": "D000445",
+    "first_name": "Alyssa",
+    "last_name": "Page",
+    "phone_number": "001-673-435-3749x90983",
+    "email": "alyssa.page7@smith-berry.org",
+    "license_number": "FM65325",
+    "vehicle": "Subaru Legacy 2021",
+    "account_creation_date": "2023-10-05"
+  },
+  {
+    "driver_id": "D000446",
+    "first_name": "David",
+    "last_name": "Flores",
+    "phone_number": "001-978-207-2523x166",
+    "email": "david.flores409@nelson.com",
+    "license_number": "NC26552",
+    "vehicle": "Nissan Sentra 2018",
+    "account_creation_date": "2023-09-03"
+  },
+  {
+    "driver_id": "D000447",
+    "first_name": "Andres",
+    "last_name": "Robinson",
+    "phone_number": "5577391229",
+    "email": "andres.robinson545@jimenez.com",
+    "license_number": "WI47554",
+    "vehicle": "Toyota Corolla 2017",
+    "account_creation_date": "2024-12-05"
+  },
+  {
+    "driver_id": "D000448",
+    "first_name": "Belinda",
+    "last_name": "Rodriguez",
+    "phone_number": "001-557-938-8353x10350",
+    "email": "belinda.rodriguez427@durham.biz",
+    "license_number": "WI72701",
+    "vehicle": "Toyota Camry 2020",
+    "account_creation_date": "2022-07-03"
+  },
+  {
+    "driver_id": "D000449",
+    "first_name": "Michael",
+    "last_name": "Martin",
+    "phone_number": "330.843.9940",
+    "email": "michael.martin735@smith.com",
+    "license_number": "TN18556",
+    "vehicle": "Volkswagen Passat 2020",
+    "account_creation_date": "2023-04-01"
+  },
+  {
+    "driver_id": "D000450",
+    "first_name": "Melanie",
+    "last_name": "Cooper",
+    "phone_number": "770.351.7454x75842",
+    "email": "melanie.cooper338@knapp-lewis.com",
+    "license_number": "MH88814",
+    "vehicle": "Subaru Legacy 2021",
+    "account_creation_date": "2023-10-10"
+  },
+  {
+    "driver_id": "D000451",
+    "first_name": "Brian",
+    "last_name": "Garner",
+    "phone_number": "396-398-9173",
+    "email": "brian.garner22@hess.org",
+    "license_number": "DE23327",
+    "vehicle": "Toyota Corolla 2018",
+    "account_creation_date": "2024-02-04"
+  },
+  {
+    "driver_id": "D000452",
+    "first_name": "Laura",
+    "last_name": "Meadows",
+    "phone_number": "(743)718-1355",
+    "email": "laura.meadows540@sutton.com",
+    "license_number": "NM78797",
+    "vehicle": "Hyundai Elantra 2018",
+    "account_creation_date": "2024-05-11"
+  },
+  {
+    "driver_id": "D000453",
+    "first_name": "Diana",
+    "last_name": "Bell",
+    "phone_number": "+1-415-894-3354x807",
+    "email": "diana.bell745@little-gonzalez.com",
+    "license_number": "MA46756",
+    "vehicle": "Lexus ES 2017",
+    "account_creation_date": "2024-07-16"
+  },
+  {
+    "driver_id": "D000454",
+    "first_name": "Marie",
+    "last_name": "Meyer",
+    "phone_number": "001-453-238-4585x43542",
+    "email": "marie.meyer355@pineda.com",
+    "license_number": "NC73054",
+    "vehicle": "Toyota Camry 2020",
+    "account_creation_date": "2020-09-19"
+  },
+  {
+    "driver_id": "D000455",
+    "first_name": "Tracey",
+    "last_name": "Lang",
+    "phone_number": "001-576-376-6649",
+    "email": "tracey.lang522@aguirre-kelly.org",
+    "license_number": "IA10900",
+    "vehicle": "Audi A4 2023",
+    "account_creation_date": "2024-04-14"
+  },
+  {
+    "driver_id": "D000456",
+    "first_name": "James",
+    "last_name": "Booker",
+    "phone_number": "8433557246",
+    "email": "james.booker336@schmidt-adkins.com",
+    "license_number": "ND76044",
+    "vehicle": "Nissan Sentra 2022",
+    "account_creation_date": "2022-10-06"
+  },
+  {
+    "driver_id": "D000457",
+    "first_name": "Samantha",
+    "last_name": "Barker",
+    "phone_number": "(470)701-6183x75855",
+    "email": "samantha.barker866@lewis-carr.com",
+    "license_number": "ND71847",
+    "vehicle": "Nissan Sentra 2021",
+    "account_creation_date": "2022-03-30"
+  },
+  {
+    "driver_id": "D000458",
+    "first_name": "Isaiah",
+    "last_name": "Gomez",
+    "phone_number": "001-763-474-1107x2579",
+    "email": "isaiah.gomez124@ayers.net",
+    "license_number": "MI28036",
+    "vehicle": "Honda Accord 2023",
+    "account_creation_date": "2023-11-04"
+  },
+  {
+    "driver_id": "D000459",
+    "first_name": "Teresa",
+    "last_name": "Garcia",
+    "phone_number": "+1-378-459-9891",
+    "email": "teresa.garcia898@ewing-boyle.com",
+    "license_number": "MT18432",
+    "vehicle": "BMW 3 Series 2021",
+    "account_creation_date": "2023-01-27"
+  },
+  {
+    "driver_id": "D000460",
+    "first_name": "Mary",
+    "last_name": "Gaines",
+    "phone_number": "+1-743-203-8812x93814",
+    "email": "mary.gaines547@gaines.biz",
+    "license_number": "OK79025",
+    "vehicle": "Honda Odyssey 2020",
+    "account_creation_date": "2021-08-25"
+  },
+  {
+    "driver_id": "D000461",
+    "first_name": "Renee",
+    "last_name": "Jackson",
+    "phone_number": "+1-839-794-3371x8626",
+    "email": "renee.jackson120@alexander-sandoval.info",
+    "license_number": "VT73654",
+    "vehicle": "Kia Forte 2023",
+    "account_creation_date": "2023-09-01"
+  },
+  {
+    "driver_id": "D000462",
+    "first_name": "Jesse",
+    "last_name": "Stephenson",
+    "phone_number": "390.204.7156x666",
+    "email": "jesse.stephenson764@brewer.org",
+    "license_number": "AK68153",
+    "vehicle": "Volkswagen Passat 2022",
+    "account_creation_date": "2020-08-05"
+  },
+  {
+    "driver_id": "D000463",
+    "first_name": "Ivan",
+    "last_name": "Erickson",
+    "phone_number": "(973)227-1365x77312",
+    "email": "ivan.erickson179@hoover.com",
+    "license_number": "WY62016",
+    "vehicle": "Volvo S60 2022",
+    "account_creation_date": "2023-04-29"
+  },
+  {
+    "driver_id": "D000464",
+    "first_name": "Andrew",
+    "last_name": "Lester",
+    "phone_number": "790.846.3474x091",
+    "email": "andrew.lester123@moore-bishop.org",
+    "license_number": "ND44670",
+    "vehicle": "Audi A4 2017",
+    "account_creation_date": "2023-07-16"
+  },
+  {
+    "driver_id": "D000465",
+    "first_name": "Michael",
+    "last_name": "Bennett",
+    "phone_number": "(261)525-9869x177",
+    "email": "michael.bennett239@barnett.com",
+    "license_number": "OH35324",
+    "vehicle": "Subaru Legacy 2017",
+    "account_creation_date": "2024-07-02"
+  },
+  {
+    "driver_id": "D000466",
+    "first_name": "Laura",
+    "last_name": "Reed",
+    "phone_number": "729-219-6187x6794",
+    "email": "laura.reed231@murray-melton.com",
+    "license_number": "NH25156",
+    "vehicle": "Honda Civic 2018",
+    "account_creation_date": "2025-03-10"
+  },
+  {
+    "driver_id": "D000467",
+    "first_name": "Sara",
+    "last_name": "Richard",
+    "phone_number": "+1-370-473-3416",
+    "email": "sara.richard476@simmons-fischer.com",
+    "license_number": "MH31243",
+    "vehicle": "Volkswagen Passat 2020",
+    "account_creation_date": "2023-07-01"
+  },
+  {
+    "driver_id": "D000468",
+    "first_name": "Raymond",
+    "last_name": "Farmer",
+    "phone_number": "+1-267-715-0111x887",
+    "email": "raymond.farmer648@howard.com",
+    "license_number": "FM83633",
+    "vehicle": "Subaru Legacy 2023",
+    "account_creation_date": "2022-03-18"
+  },
+  {
+    "driver_id": "D000469",
+    "first_name": "John",
+    "last_name": "Campbell",
+    "phone_number": "(294)399-8153x523",
+    "email": "john.campbell327@kelley.com",
+    "license_number": "GA35836",
+    "vehicle": "Toyota Corolla 2022",
+    "account_creation_date": "2024-05-29"
+  },
+  {
+    "driver_id": "D000470",
+    "first_name": "Albert",
+    "last_name": "Miller",
+    "phone_number": "(830)201-1679x167",
+    "email": "albert.miller650@lewis-walters.biz",
+    "license_number": "OH57126",
+    "vehicle": "Toyota Corolla 2020",
+    "account_creation_date": "2024-08-18"
+  },
+  {
+    "driver_id": "D000471",
+    "first_name": "Ethan",
+    "last_name": "Perkins",
+    "phone_number": "(811)430-6700x0041",
+    "email": "ethan.perkins881@powell.info",
+    "license_number": "MI52618",
+    "vehicle": "Mercedes C-Class 2021",
+    "account_creation_date": "2024-11-06"
+  },
+  {
+    "driver_id": "D000472",
+    "first_name": "David",
+    "last_name": "Mitchell",
+    "phone_number": "+1-887-360-8401x42438",
+    "email": "david.mitchell460@williams-johnson.biz",
+    "license_number": "NJ39660",
+    "vehicle": "Toyota Camry 2022",
+    "account_creation_date": "2023-10-15"
+  },
+  {
+    "driver_id": "D000473",
+    "first_name": "Robert",
+    "last_name": "Floyd",
+    "phone_number": "4944163975",
+    "email": "robert.floyd551@king.com",
+    "license_number": "WI62005",
+    "vehicle": "Hyundai Elantra 2020",
+    "account_creation_date": "2023-09-15"
+  },
+  {
+    "driver_id": "D000474",
+    "first_name": "Laura",
+    "last_name": "Harper",
+    "phone_number": "518-534-7848x6370",
+    "email": "laura.harper791@tate.org",
+    "license_number": "DC46277",
+    "vehicle": "Volkswagen Passat 2018",
+    "account_creation_date": "2024-01-24"
+  },
+  {
+    "driver_id": "D000475",
+    "first_name": "Christopher",
+    "last_name": "Dixon",
+    "phone_number": "943-342-0600",
+    "email": "christopher.dixon861@kidd.com",
+    "license_number": "CA71061",
+    "vehicle": "Lexus ES 2020",
+    "account_creation_date": "2024-11-05"
+  },
+  {
+    "driver_id": "D000476",
+    "first_name": "Dustin",
+    "last_name": "Coleman",
+    "phone_number": "980-766-4059",
+    "email": "dustin.coleman609@choi.com",
+    "license_number": "NJ71189",
+    "vehicle": "Honda Civic 2021",
+    "account_creation_date": "2021-04-24"
+  },
+  {
+    "driver_id": "D000477",
+    "first_name": "Michael",
+    "last_name": "Lara",
+    "phone_number": "(815)820-5289x6817",
+    "email": "michael.lara984@thomas-hodge.com",
+    "license_number": "RI57043",
+    "vehicle": "Lexus ES 2018",
+    "account_creation_date": "2024-11-17"
+  },
+  {
+    "driver_id": "D000478",
+    "first_name": "Judith",
+    "last_name": "Allen",
+    "phone_number": "6428227674",
+    "email": "judith.allen75@henderson.com",
+    "license_number": "AK69345",
+    "vehicle": "Honda Civic 2017",
+    "account_creation_date": "2023-01-01"
+  },
+  {
+    "driver_id": "D000479",
+    "first_name": "Lynn",
+    "last_name": "Marks",
+    "phone_number": "(734)356-3357x70647",
+    "email": "lynn.marks643@anderson-gilbert.biz",
+    "license_number": "NJ46809",
+    "vehicle": "Nissan Sentra 2018",
+    "account_creation_date": "2022-04-28"
+  },
+  {
+    "driver_id": "D000480",
+    "first_name": "David",
+    "last_name": "Sanders",
+    "phone_number": "897.488.2475x7962",
+    "email": "david.sanders944@allen.com",
+    "license_number": "MI53809",
+    "vehicle": "Toyota Corolla 2018",
+    "account_creation_date": "2023-07-27"
+  },
+  {
+    "driver_id": "D000481",
+    "first_name": "Scott",
+    "last_name": "Brown",
+    "phone_number": "(405)384-3131x9944",
+    "email": "scott.brown888@madden.org",
+    "license_number": "WY66956",
+    "vehicle": "Honda Civic 2023",
+    "account_creation_date": "2022-10-24"
+  },
+  {
+    "driver_id": "D000482",
+    "first_name": "Sara",
+    "last_name": "Mason",
+    "phone_number": "5187856144",
+    "email": "sara.mason998@harris.info",
+    "license_number": "AS28618",
+    "vehicle": "Volkswagen Passat 2022",
+    "account_creation_date": "2021-08-12"
+  },
+  {
+    "driver_id": "D000483",
+    "first_name": "Christopher",
+    "last_name": "Rios",
+    "phone_number": "001-532-501-1966",
+    "email": "christopher.rios931@ramsey.com",
+    "license_number": "HI58215",
+    "vehicle": "Nissan Sentra 2019",
+    "account_creation_date": "2023-10-24"
+  },
+  {
+    "driver_id": "D000484",
+    "first_name": "Kathryn",
+    "last_name": "Johnson",
+    "phone_number": "428.705.9454x443",
+    "email": "kathryn.johnson282@krause.org",
+    "license_number": "PA86118",
+    "vehicle": "Honda Civic 2019",
+    "account_creation_date": "2022-10-10"
+  },
+  {
+    "driver_id": "D000485",
+    "first_name": "Cory",
+    "last_name": "Craig",
+    "phone_number": "580.624.2843",
+    "email": "cory.craig542@mays-melendez.com",
+    "license_number": "CA13180",
+    "vehicle": "Honda Civic 2022",
+    "account_creation_date": "2022-05-07"
+  },
+  {
+    "driver_id": "D000486",
+    "first_name": "Phillip",
+    "last_name": "Oliver",
+    "phone_number": "861-811-8663x5513",
+    "email": "phillip.oliver744@williams-curry.net",
+    "license_number": "AZ40317",
+    "vehicle": "Kia Forte 2017",
+    "account_creation_date": "2024-07-09"
+  },
+  {
+    "driver_id": "D000487",
+    "first_name": "Steven",
+    "last_name": "Martinez",
+    "phone_number": "492-678-1964x2460",
+    "email": "steven.martinez99@davis-bradshaw.com",
+    "license_number": "CT35028",
+    "vehicle": "BMW 3 Series 2023",
+    "account_creation_date": "2023-07-06"
+  },
+  {
+    "driver_id": "D000488",
+    "first_name": "Kimberly",
+    "last_name": "Flores",
+    "phone_number": "+1-706-933-7376x6202",
+    "email": "kimberly.flores330@brown.com",
+    "license_number": "AR59178",
+    "vehicle": "Subaru Legacy 2022",
+    "account_creation_date": "2023-10-06"
+  },
+  {
+    "driver_id": "D000489",
+    "first_name": "David",
+    "last_name": "Rodriguez",
+    "phone_number": "919.211.5426x0355",
+    "email": "david.rodriguez418@johnson.biz",
+    "license_number": "MH54383",
+    "vehicle": "Subaru Legacy 2023",
+    "account_creation_date": "2023-06-23"
+  },
+  {
+    "driver_id": "D000490",
+    "first_name": "Kimberly",
+    "last_name": "Smith",
+    "phone_number": "8654686770",
+    "email": "kimberly.smith567@wilson.com",
+    "license_number": "WI32939",
+    "vehicle": "Mazda 6 2017",
+    "account_creation_date": "2024-08-20"
+  },
+  {
+    "driver_id": "D000491",
+    "first_name": "Christopher",
+    "last_name": "Cox",
+    "phone_number": "899.250.1985",
+    "email": "christopher.cox819@williams-mullins.com",
+    "license_number": "MH84565",
+    "vehicle": "Toyota Camry 2019",
+    "account_creation_date": "2024-07-02"
+  },
+  {
+    "driver_id": "D000492",
+    "first_name": "Mary",
+    "last_name": "Cline",
+    "phone_number": "6532723936",
+    "email": "mary.cline268@gonzales.net",
+    "license_number": "PA74884",
+    "vehicle": "BMW 3 Series 2018",
+    "account_creation_date": "2024-10-12"
+  },
+  {
+    "driver_id": "D000493",
+    "first_name": "Kevin",
+    "last_name": "Morse",
+    "phone_number": "001-232-781-6584",
+    "email": "kevin.morse111@hodge-velazquez.biz",
+    "license_number": "DE35868",
+    "vehicle": "Toyota Camry 2019",
+    "account_creation_date": "2024-12-18"
+  },
+  {
+    "driver_id": "D000494",
+    "first_name": "Debra",
+    "last_name": "Taylor",
+    "phone_number": "873.722.3787x828",
+    "email": "debra.taylor134@jones-dixon.net",
+    "license_number": "RI44675",
+    "vehicle": "Nissan Sentra 2019",
+    "account_creation_date": "2023-01-26"
+  },
+  {
+    "driver_id": "D000495",
+    "first_name": "Angela",
+    "last_name": "Sanchez",
+    "phone_number": "9177763051",
+    "email": "angela.sanchez644@miller.com",
+    "license_number": "CA58993",
+    "vehicle": "Kia Forte 2018",
+    "account_creation_date": "2023-07-24"
+  },
+  {
+    "driver_id": "D000496",
+    "first_name": "Marie",
+    "last_name": "Bryant",
+    "phone_number": "834.859.3310x1204",
+    "email": "marie.bryant785@williamson.com",
+    "license_number": "GU36658",
+    "vehicle": "Kia Forte 2019",
+    "account_creation_date": "2023-11-28"
+  },
+  {
+    "driver_id": "D000497",
+    "first_name": "Nathan",
+    "last_name": "Walker",
+    "phone_number": "(732)591-9537",
+    "email": "nathan.walker782@mccarthy.com",
+    "license_number": "WA22739",
+    "vehicle": "Mazda 6 2020",
+    "account_creation_date": "2020-07-24"
+  },
+  {
+    "driver_id": "D000498",
+    "first_name": "Donna",
+    "last_name": "Schmidt",
+    "phone_number": "275-852-3929x13453",
+    "email": "donna.schmidt96@bright-lucas.com",
+    "license_number": "ID49645",
+    "vehicle": "Hyundai Elantra 2022",
+    "account_creation_date": "2024-12-13"
+  },
+  {
+    "driver_id": "D000499",
+    "first_name": "Jacqueline",
+    "last_name": "Church",
+    "phone_number": "001-572-783-8881x55490",
+    "email": "jacqueline.church298@parker.com",
+    "license_number": "WY19977",
+    "vehicle": "Toyota Corolla 2017",
+    "account_creation_date": "2023-11-15"
+  }
+]

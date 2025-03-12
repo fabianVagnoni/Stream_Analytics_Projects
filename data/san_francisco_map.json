@@ -1,0 +1,142 @@
+{
+  "city_name": "San Francisco",
+  "zones": {
+    "downtown": {
+      "name": "Downtown / Financial District",
+      "center": [
+        37.7749,
+        -122.4194
+      ],
+      "radius": 2,
+      "popularity": 0.35,
+      "business_coefficient": 0.8,
+      "nightlife_coefficient": 0.4,
+      "residential_coefficient": 0.2,
+      "address_templates": [
+        "{} Market Street",
+        "{} Montgomery Street",
+        "{} California Street",
+        "{} Mission Street",
+        "{} Bush Street"
+      ]
+    },
+    "airport": {
+      "name": "SFO Airport",
+      "center": [
+        37.6213,
+        -122.379
+      ],
+      "radius": 2,
+      "popularity": 0.15,
+      "business_coefficient": 0.4,
+      "nightlife_coefficient": 0.2,
+      "residential_coefficient": 0.0,
+      "address_templates": [
+        "SFO Terminal {}",
+        "San Francisco International Airport, Terminal {}",
+        "Airport Boulevard, Terminal {}"
+      ]
+    },
+    "marina": {
+      "name": "Marina District",
+      "center": [
+        37.803,
+        -122.437
+      ],
+      "radius": 1.5,
+      "popularity": 0.1,
+      "business_coefficient": 0.3,
+      "nightlife_coefficient": 0.6,
+      "residential_coefficient": 0.6,
+      "address_templates": [
+        "{} Chestnut Street",
+        "{} Lombard Street",
+        "{} Marina Boulevard",
+        "{} Fillmore Street",
+        "{} Union Street"
+      ]
+    },
+    "mission": {
+      "name": "Mission District",
+      "center": [
+        37.7599,
+        -122.4148
+      ],
+      "radius": 1.5,
+      "popularity": 0.15,
+      "business_coefficient": 0.4,
+      "nightlife_coefficient": 0.8,
+      "residential_coefficient": 0.6,
+      "address_templates": [
+        "{} Valencia Street",
+        "{} Mission Street",
+        "{} 16th Street",
+        "{} 24th Street",
+        "{} Dolores Street"
+      ]
+    },
+    "soma": {
+      "name": "SoMa",
+      "center": [
+        37.7785,
+        -122.4056
+      ],
+      "radius": 1.5,
+      "popularity": 0.15,
+      "business_coefficient": 0.7,
+      "nightlife_coefficient": 0.7,
+      "residential_coefficient": 0.4,
+      "address_templates": [
+        "{} Folsom Street",
+        "{} Harrison Street",
+        "{} Townsend Street",
+        "{} Bryant Street",
+        "{} 3rd Street"
+      ]
+    },
+    "richmond": {
+      "name": "Richmond District",
+      "center": [
+        37.7816,
+        -122.4836
+      ],
+      "radius": 2,
+      "popularity": 0.05,
+      "business_coefficient": 0.2,
+      "nightlife_coefficient": 0.2,
+      "residential_coefficient": 0.8,
+      "address_templates": [
+        "{} Geary Boulevard",
+        "{} Clement Street",
+        "{} Fulton Street",
+        "{} California Street",
+        "{} Park Presidio Boulevard"
+      ]
+    },
+    "sunset": {
+      "name": "Sunset District",
+      "center": [
+        37.7504,
+        -122.49
+      ],
+      "radius": 2,
+      "popularity": 0.05,
+      "business_coefficient": 0.2,
+      "nightlife_coefficient": 0.1,
+      "residential_coefficient": 0.8,
+      "address_templates": [
+        "{} Irving Street",
+        "{} Judah Street",
+        "{} Taraval Street",
+        "{} Noriega Street",
+        "{} Sunset Boulevard"
+      ]
+    }
+  },
+  "bounds": {
+    "lat_min": 37.60328198198198,
+    "lat_max": 37.81651351351351,
+    "lng_min": -122.508018018018,
+    "lng_max": -122.360981981982
+  }
+}
