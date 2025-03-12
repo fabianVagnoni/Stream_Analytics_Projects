@@ -39,214 +39,214 @@ class CityMap:
     
     def _create_zones(self):
         """Create a virtual city with different zones and characteristics"""
-        if self.city_name == "San Francisco":
+        if self.city_name == "Madrid":
             return {
                 "downtown": {
-                    "name": "Downtown / Financial District",
-                    "center": (37.7749, -122.4194),
+                    "name": "Centro / Sol",
+                    "center": (40.4168, -3.7038),
                     "radius": 2,  # km
                     "popularity": 0.35,  # 35% of rides start/end here
                     "business_coefficient": 0.8,  # Higher during business hours
-                    "nightlife_coefficient": 0.4,  # Moderate during night hours
-                    "residential_coefficient": 0.2,  # Low residential density
+                    "nightlife_coefficient": 0.7,  # High during night hours
+                    "residential_coefficient": 0.3,  # Moderate residential density
                     "address_templates": [
-                        "{} Market Street",
-                        "{} Montgomery Street",
-                        "{} California Street",
-                        "{} Mission Street",
-                        "{} Bush Street"
+                        "{} Calle Gran Via",
+                        "{} Calle de Alcala",
+                        "{} Calle Mayor",
+                        "{} Plaza del Sol",
+                        "{} Calle de Preciados"
                     ]
                 },
                 "airport": {
-                    "name": "SFO Airport",
-                    "center": (37.6213, -122.3790),
-                    "radius": 2,
+                    "name": "Aeropuerto Madrid-Barajas",
+                    "center": (40.4983, -3.5676),
+                    "radius": 3,
                     "popularity": 0.15,
                     "business_coefficient": 0.4,
                     "nightlife_coefficient": 0.2,
                     "residential_coefficient": 0.0,
                     "address_templates": [
-                        "SFO Terminal {}",
-                        "San Francisco International Airport, Terminal {}",
-                        "Airport Boulevard, Terminal {}"
+                        "Terminal {} - Barajas",
+                        "Aeropuerto Madrid-Barajas, Terminal {}",
+                        "Terminal {} Salidas"
                     ]
                 },
-                "marina": {
-                    "name": "Marina District",
-                    "center": (37.8030, -122.4370),
-                    "radius": 1.5,
-                    "popularity": 0.10,
-                    "business_coefficient": 0.3,
-                    "nightlife_coefficient": 0.6,
-                    "residential_coefficient": 0.6,
-                    "address_templates": [
-                        "{} Chestnut Street",
-                        "{} Lombard Street",
-                        "{} Marina Boulevard",
-                        "{} Fillmore Street",
-                        "{} Union Street"
-                    ]
-                },
-                "mission": {
-                    "name": "Mission District",
-                    "center": (37.7599, -122.4148),
-                    "radius": 1.5,
-                    "popularity": 0.15,
-                    "business_coefficient": 0.4,
-                    "nightlife_coefficient": 0.8,
-                    "residential_coefficient": 0.6,
-                    "address_templates": [
-                        "{} Valencia Street",
-                        "{} Mission Street",
-                        "{} 16th Street",
-                        "{} 24th Street",
-                        "{} Dolores Street"
-                    ]
-                },
-                "soma": {
-                    "name": "SoMa",
-                    "center": (37.7785, -122.4056),
+                "salamanca": {
+                    "name": "Salamanca",
+                    "center": (40.4256, -3.6823),
                     "radius": 1.5,
                     "popularity": 0.15,
                     "business_coefficient": 0.7,
-                    "nightlife_coefficient": 0.7,
-                    "residential_coefficient": 0.4,
+                    "nightlife_coefficient": 0.5,
+                    "residential_coefficient": 0.6,
                     "address_templates": [
-                        "{} Folsom Street",
-                        "{} Harrison Street",
-                        "{} Townsend Street",
-                        "{} Bryant Street",
-                        "{} 3rd Street"
+                        "{} Calle de Serrano",
+                        "{} Calle de Velázquez",
+                        "{} Calle de Goya",
+                        "{} Calle de Ortega y Gasset",
+                        "{} Calle de Claudio Coello"
                     ]
                 },
-                "richmond": {
-                    "name": "Richmond District",
-                    "center": (37.7816, -122.4836),
-                    "radius": 2,
-                    "popularity": 0.05,
-                    "business_coefficient": 0.2,
-                    "nightlife_coefficient": 0.2,
-                    "residential_coefficient": 0.8,
+                "lavapies": {
+                    "name": "Lavapiés",
+                    "center": (40.4085, -3.7024),
+                    "radius": 1.5,
+                    "popularity": 0.10,
+                    "business_coefficient": 0.4,
+                    "nightlife_coefficient": 0.8,
+                    "residential_coefficient": 0.7,
                     "address_templates": [
-                        "{} Geary Boulevard",
-                        "{} Clement Street",
-                        "{} Fulton Street",
-                        "{} California Street",
-                        "{} Park Presidio Boulevard"
+                        "{} Calle de Lavapiés",
+                        "{} Calle de Argumosa",
+                        "{} Calle de Valencia",
+                        "{} Calle del Ave María",
+                        "{} Calle de Embajadores"
                     ]
                 },
-                "sunset": {
-                    "name": "Sunset District",
-                    "center": (37.7504, -122.4900),
+                "chamartin": {
+                    "name": "Chamartín",
+                    "center": (40.4615, -3.6766),
                     "radius": 2,
-                    "popularity": 0.05,
-                    "business_coefficient": 0.2,
-                    "nightlife_coefficient": 0.1,
-                    "residential_coefficient": 0.8,
+                    "popularity": 0.10,
+                    "business_coefficient": 0.7,
+                    "nightlife_coefficient": 0.3,
+                    "residential_coefficient": 0.5,
                     "address_templates": [
-                        "{} Irving Street",
-                        "{} Judah Street",
-                        "{} Taraval Street",
-                        "{} Noriega Street",
-                        "{} Sunset Boulevard"
+                        "{} Paseo de la Castellana",
+                        "{} Calle de Alberto Alcocer",
+                        "{} Calle de Mateo Inurria",
+                        "{} Calle de Doctor Fleming",
+                        "{} Calle de Padre Damián"
+                    ]
+                },
+                "retiro": {
+                    "name": "Retiro",
+                    "center": (40.4146, -3.6868),
+                    "radius": 2,
+                    "popularity": 0.10,
+                    "business_coefficient": 0.3,
+                    "nightlife_coefficient": 0.4,
+                    "residential_coefficient": 0.7,
+                    "address_templates": [
+                        "{} Calle de O'Donnell",
+                        "{} Calle de Menéndez Pelayo",
+                        "{} Calle de Ibiza",
+                        "{} Calle del Alcalde Sainz de Baranda",
+                        "{} Calle de Narváez"
+                    ]
+                },
+                "malasana": {
+                    "name": "Malasaña",
+                    "center": (40.4265, -3.7025),
+                    "radius": 1.5,
+                    "popularity": 0.05,
+                    "business_coefficient": 0.4,
+                    "nightlife_coefficient": 0.9,
+                    "residential_coefficient": 0.6,
+                    "address_templates": [
+                        "{} Calle de Fuencarral",
+                        "{} Calle del Pez",
+                        "{} Calle de San Vicente Ferrer",
+                        "{} Calle de la Palma",
+                        "{} Calle del Espíritu Santo"
                     ]
                 }
             }
         else:
-            # Default generic city if not San Francisco
+            # Default generic city if not Madrid
             return {
                 "downtown": {
-                    "name": "Downtown",
-                    "center": (40.7128, -74.0060),  # NYC coordinates as default
+                    "name": "City Centre",
+                    "center": (51.5074, -0.1278),  # London coordinates as default
                     "radius": 3,
                     "popularity": 0.3,
                     "business_coefficient": 0.7,
                     "nightlife_coefficient": 0.6,
                     "residential_coefficient": 0.3,
                     "address_templates": [
-                        "{} Main Street",
-                        "{} Broadway",
-                        "{} 1st Avenue",
-                        "{} Center Street",
-                        "{} Market Street"
+                        "{} Oxford Street",
+                        "{} Regent Street",
+                        "{} Piccadilly",
+                        "{} Baker Street",
+                        "{} Bond Street"
                     ]
                 },
                 "airport": {
                     "name": "Airport",
-                    "center": (40.6413, -73.7781),
+                    "center": (51.4700, -0.4543),
                     "radius": 2,
                     "popularity": 0.15,
                     "business_coefficient": 0.3,
                     "nightlife_coefficient": 0.1,
                     "residential_coefficient": 0.0,
                     "address_templates": [
-                        "Airport Terminal {}",
                         "Terminal {} Departures",
-                        "Terminal {} Arrivals"
+                        "Terminal {} Arrivals",
+                        "Airport Terminal {}"
                     ]
                 },
                 "residential_north": {
                     "name": "North Residential",
-                    "center": (40.7500, -74.0100),
+                    "center": (51.5500, -0.1000),
                     "radius": 2.5,
                     "popularity": 0.2,
                     "business_coefficient": 0.1,
                     "nightlife_coefficient": 0.2,
                     "residential_coefficient": 0.8,
                     "address_templates": [
-                        "{} Oak Street",
-                        "{} Pine Street",
-                        "{} Cedar Avenue",
-                        "{} Maple Drive",
-                        "{} Park Avenue"
+                        "{} High Street",
+                        "{} Park Road",
+                        "{} Church Street",
+                        "{} Grove Road",
+                        "{} Victoria Road"
                     ]
                 },
                 "shopping_district": {
                     "name": "Shopping District",
-                    "center": (40.7300, -74.0000),
+                    "center": (51.5150, -0.1419),
                     "radius": 2,
                     "popularity": 0.15,
                     "business_coefficient": 0.5,
                     "nightlife_coefficient": 0.3,
                     "residential_coefficient": 0.4,
                     "address_templates": [
-                        "{} Fashion Avenue",
-                        "{} Commerce Street",
-                        "{} Mall Boulevard",
-                        "{} Retail Row",
-                        "{} Market Street"
+                        "{} Market Street",
+                        "{} Shopping Avenue",
+                        "{} Commercial Road",
+                        "{} Retail Street",
+                        "{} Mall Road"
                     ]
                 },
                 "nightlife_area": {
                     "name": "Nightlife District",
-                    "center": (40.7200, -74.0050),
+                    "center": (51.5120, -0.1300),
                     "radius": 1.5,
                     "popularity": 0.1,
                     "business_coefficient": 0.2,
                     "nightlife_coefficient": 0.9,
                     "residential_coefficient": 0.3,
                     "address_templates": [
-                        "{} Club Street",
-                        "{} Party Avenue",
-                        "{} Entertainment Boulevard",
+                        "{} Club Lane",
+                        "{} Entertainment Street",
+                        "{} Theatre Road",
                         "{} Bar Street",
-                        "{} Night Avenue"
+                        "{} Music Avenue"
                     ]
                 },
                 "university": {
                     "name": "University Area",
-                    "center": (40.7400, -74.0250),
+                    "center": (51.5229, -0.1308),
                     "radius": 1.5,
                     "popularity": 0.1,
                     "business_coefficient": 0.4,
                     "nightlife_coefficient": 0.4,
                     "residential_coefficient": 0.5,
                     "address_templates": [
-                        "{} College Avenue",
-                        "{} University Boulevard",
-                        "{} Campus Drive",
-                        "{} Academic Street",
-                        "{} Student Center Road"
+                        "{} University Street",
+                        "{} College Road",
+                        "{} Campus Avenue",
+                        "{} Student Lane",
+                        "{} Academy Road"
                     ]
                 }
             }
@@ -268,6 +268,10 @@ class CityMap:
         is_night = 0 <= hour < 6
         is_morning = 6 <= hour < 8
         is_weekend = current_time.weekday() >= 5
+
+        month = current_time.month
+        is_summer = month >= 6 and month <= 8
+        is_december = month == 12 
         
         weights = {}
         
@@ -331,6 +335,10 @@ class CityMap:
                     0.2 * zone["business_coefficient"] + 
                     0.1 * zone["nightlife_coefficient"]
                 )
+
+            if zone_name == "downtown" and is_summer:
+                # Summer time brings more turist, so turistical zones are more popular
+                weight *= 1.1
             
             # Special case for airport
             if zone_name == "airport":
@@ -339,6 +347,12 @@ class CityMap:
                     weight *= 1.5
                 elif 0 <= hour < 5:  # Very early morning
                     weight *= 0.3
+                if is_summer:
+                    weight *= 1.2
+                elif is_december:
+                    weight *= 1.1
+                else:
+                    weight *= .9
             
             weights[zone_name] = weight
         
