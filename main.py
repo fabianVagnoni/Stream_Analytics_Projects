@@ -19,7 +19,7 @@ from datetime import datetime, timedelta
 # Import module components
 from generate_static_data import generate_users, generate_drivers
 from geographic_model import CityMap
-from temporal_patterns import DemandModel, TrafficModel, generate_us_holidays
+from temporal_patterns import DemandModel, TrafficModel, generate_spanish_holidays
 from ride_simulator import RideSimulator
 from special_events import SpecialEventsGenerator
 from avro_serializer import AvroSerializer, UserDriverSerializer
