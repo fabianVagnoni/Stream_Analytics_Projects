@@ -682,7 +682,7 @@ if __name__ == "__main__":
     
     # Generate holidays for the current year
     current_year = datetime.now().year
-    holidays = generate_us_holidays(current_year)
+    holidays = generate_spanish_holidays(current_year)
     
     # Create models
     demand_model = DemandModel(base_demand=args.base_demand, holidays=holidays)
