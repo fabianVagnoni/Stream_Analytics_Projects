@@ -66,7 +66,7 @@ def parse_arguments():
                         help='Path to user/driver schema')
     
     # City options
-    parser.add_argument('--city', type=str, default='San Francisco',
+    parser.add_argument('--city', type=str, default='Madrid',
                         help='City name for simulation')
     
     # Special events options

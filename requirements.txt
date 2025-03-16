@@ -1,2 +1,4 @@
 fastavro
 faker
+pandas
+numpy
