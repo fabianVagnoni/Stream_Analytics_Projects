@@ -1,0 +1,142 @@
+{
+  "city_name": "Madrid",
+  "zones": {
+    "downtown": {
+      "name": "Centro / Sol",
+      "center": [
+        40.4168,
+        -3.7038
+      ],
+      "radius": 2,
+      "popularity": 0.35,
+      "business_coefficient": 0.8,
+      "nightlife_coefficient": 0.7,
+      "residential_coefficient": 0.3,
+      "address_templates": [
+        "{} Calle Gran Via",
+        "{} Calle de Alcala",
+        "{} Calle Mayor",
+        "{} Plaza del Sol",
+        "{} Calle de Preciados"
+      ]
+    },
+    "airport": {
+      "name": "Aeropuerto Madrid-Barajas",
+      "center": [
+        40.4983,
+        -3.5676
+      ],
+      "radius": 3,
+      "popularity": 0.15,
+      "business_coefficient": 0.4,
+      "nightlife_coefficient": 0.2,
+      "residential_coefficient": 0.0,
+      "address_templates": [
+        "Terminal {} - Barajas",
+        "Aeropuerto Madrid-Barajas, Terminal {}",
+        "Terminal {} Salidas"
+      ]
+    },
+    "salamanca": {
+      "name": "Salamanca",
+      "center": [
+        40.4256,
+        -3.6823
+      ],
+      "radius": 1.5,
+      "popularity": 0.15,
+      "business_coefficient": 0.7,
+      "nightlife_coefficient": 0.5,
+      "residential_coefficient": 0.6,
+      "address_templates": [
+        "{} Calle de Serrano",
+        "{} Calle de Vel\u00e1zquez",
+        "{} Calle de Goya",
+        "{} Calle de Ortega y Gasset",
+        "{} Calle de Claudio Coello"
+      ]
+    },
+    "lavapies": {
+      "name": "Lavapi\u00e9s",
+      "center": [
+        40.4085,
+        -3.7024
+      ],
+      "radius": 1.5,
+      "popularity": 0.1,
+      "business_coefficient": 0.4,
+      "nightlife_coefficient": 0.8,
+      "residential_coefficient": 0.7,
+      "address_templates": [
+        "{} Calle de Lavapi\u00e9s",
+        "{} Calle de Argumosa",
+        "{} Calle de Valencia",
+        "{} Calle del Ave Mar\u00eda",
+        "{} Calle de Embajadores"
+      ]
+    },
+    "chamartin": {
+      "name": "Chamart\u00edn",
+      "center": [
+        40.4615,
+        -3.6766
+      ],
+      "radius": 2,
+      "popularity": 0.1,
+      "business_coefficient": 0.7,
+      "nightlife_coefficient": 0.3,
+      "residential_coefficient": 0.5,
+      "address_templates": [
+        "{} Paseo de la Castellana",
+        "{} Calle de Alberto Alcocer",
+        "{} Calle de Mateo Inurria",
+        "{} Calle de Doctor Fleming",
+        "{} Calle de Padre Dami\u00e1n"
+      ]
+    },
+    "retiro": {
+      "name": "Retiro",
+      "center": [
+        40.4146,
+        -3.6868
+      ],
+      "radius": 2,
+      "popularity": 0.1,
+      "business_coefficient": 0.3,
+      "nightlife_coefficient": 0.4,
+      "residential_coefficient": 0.7,
+      "address_templates": [
+        "{} Calle de O'Donnell",
+        "{} Calle de Men\u00e9ndez Pelayo",
+        "{} Calle de Ibiza",
+        "{} Calle del Alcalde Sainz de Baranda",
+        "{} Calle de Narv\u00e1ez"
+      ]
+    },
+    "malasana": {
+      "name": "Malasa\u00f1a",
+      "center": [
+        40.4265,
+        -3.7025
+      ],
+      "radius": 1.5,
+      "popularity": 0.05,
+      "business_coefficient": 0.4,
+      "nightlife_coefficient": 0.9,
+      "residential_coefficient": 0.6,
+      "address_templates": [
+        "{} Calle de Fuencarral",
+        "{} Calle del Pez",
+        "{} Calle de San Vicente Ferrer",
+        "{} Calle de la Palma",
+        "{} Calle del Esp\u00edritu Santo"
+      ]
+    }
+  },
+  "bounds": {
+    "lat_min": 40.39498648648648,
+    "lat_max": 40.525327027027025,
+    "lng_min": -3.721818018018018,
+    "lng_max": -3.540572972972973
+  }
+}
