@@ -19,7 +19,7 @@ import os
 import argparse
 
 # Initialize faker
-fake = Faker()
+fake = Faker('es_ES')
 
 def generate_drivers(count=500, city="San Francisco"):
     """
@@ -144,7 +144,7 @@ def generate_drivers(count=500, city="San Francisco"):
             "gender": gender,
             "phone_number": fake.phone_number(),
             "email": f"{first_name.lower()}.{last_name.lower()}{random.randint(1, 999)}@{fake.domain_name()}",
-            "license_number": f"{fake.state_abbr()}{random.randint(10000, 99999)}",
+            "license_number": f"ES{random.randint(10000, 99999)}",
             "vehicle": vehicle,
             "vehicle_type": vehicle_category,
             "vehicle_powertrain": powertrain,

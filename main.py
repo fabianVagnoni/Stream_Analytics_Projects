@@ -184,10 +184,10 @@ def generate_simulation_data(args):
     
     # Create demand model with holidays
     current_year = start_date.year
-    holidays = generate_us_holidays(current_year)
+    holidays = generate_spanish_holidays(current_year)
     # Add holidays for next year if simulation crosses year boundary
     if end_date.year > current_year:
-        holidays.extend(generate_us_holidays(current_year + 1))
+        holidays.extend(generate_spanish_holidays(current_year + 1))
     
     demand_model = DemandModel(base_demand=args.base_demand, holidays=holidays)
     traffic_model = TrafficModel(city_name=args.city)
