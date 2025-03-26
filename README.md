@@ -12,19 +12,8 @@ This project is a Python-based synthetic data generator for ride-hailing service
 
 ## Requirements
 - Python 3.6+
-- Required Python packages:
-  - `argparse` (standard library)
-  - `json` (standard library)
-  - `logging` (standard library)
-  - `random` (standard library)
-  - `datetime` (standard library)
-  - `faker`
+- Required Python packages: see `requirements.txt`.
   - Custom modules (included): `generate_static_data`, `geographic_model`, `temporal_patterns`, `ride_simulator`, `special_events`, `avro_serializer`
-
-**Note**: The AVRO output requires an AVRO serialization library (e.g., `fastavro`). Install it using:
-```bash
-pip install fastavro
-```
 
 ## Installation
 1. Clone or download this repository:
@@ -32,11 +21,12 @@ pip install fastavro
    git clone <repository-url>
    cd Stream_Analytics_Projects
    ```
-2. Ensure all dependencies are installed:
+2. Create a virutal environment and add `RIDES_PRIMARY_CONNECTION_STRING` and `SPECIAL_PRIMARY_CONNECTION_STRING` from Azure Event Hubs. 
+3. Ensure all dependencies are installed:
    ```bash
    pip install -r requirements.txt
    ```
-3. Verify the custom modules (`generate_static_data.py`, etc.) are in the same directory as `main.py`.
+4. Verify the custom modules (`generate_static_data.py`, etc.) are in the same directory as `main.py`.
 
 ## Usage
 Run the script using the command line with optional arguments to customize the simulation.
@@ -51,22 +41,24 @@ python3 main.py --output ./data
 python3 main.py \
   --output ./data \
   --start-date 2025-01-01 \
-  --end-date 2025-01-05 \
-  --drivers 500 \
-  --users 1000 \
+  --end-date 2025-01-02 \
+  --drivers 100 \
+  --users 300 \
   --base-demand 100 \
   --city "Madrid" \
   --num-concerts 2 \
   --num-sports 1 \
   --num-weather 1 \
-  --batch-size 5000 \
-  --random-seed 42
+  --batch-size 1000 \
+  --random-seed 42 \
+  --stream-to-eventhubs
 ```
 
 ### Command-Line Arguments
 | Argument              | Type    | Default             | Description                                      |
 |-----------------------|---------|---------------------|--------------------------------------------------|
 | `--output`            | str     | `./data`            | Output directory for generated data             |
+| `--stream-to-eventhubs`| str     | False              | Push events to Azure Events Hub                 |
 | `--json-only`         | flag    | False               | Generate only JSON output (no AVRO)             |
 | `--avro-only`         | flag    | False               | Generate only AVRO output (no JSON)             |
 | `--start-date`        | str     | None                | Start date (YYYY-MM-DD)                         |
@@ -82,7 +74,7 @@ python3 main.py \
 | `--num-concerts`      | int     | 1                   | Number of concert events                        |
 | `--num-sports`        | int     | 1                   | Number of sports events                         |
 | `--num-weather`       | int     | 1                   | Number of weather events                        |
-| `--batch-size`        | int     | 5000                | Batch size for processing/saving events         |
+| `--batch-size`        | int     | 1000, max=1500      | Batch size for processing/saving events         |
 | `--random-seed`       | int     | None                | Random seed for reproducibility                |
 
 ### Example Output
@@ -113,6 +105,10 @@ The script logs progress and errors to the console. Log levels include `INFO` fo
 - Add new special event types in `special_events.py`.
 - Modify demand or traffic patterns in `temporal_patterns.py`.
 - Update schemas in the JSON/AVRO schema files.
+
+## Event Hub Design Choices
+- `Ride Events` topic has 4 partitions due to the rather large volume of events generated.
+- 
 
 ## Troubleshooting
 - **Missing Modules**: Ensure all imported custom modules are available.

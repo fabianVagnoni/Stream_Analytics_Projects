@@ -11,10 +11,16 @@ Usage:
 
 import os
 import json
+import time
 import argparse
 import random
 import logging
 from datetime import datetime, timedelta
+from kafka import KafkaProducer
+import fastavro
+import io
+import ssl
+
 
 # Import module components
 from generate_static_data import generate_users, generate_drivers
@@ -30,6 +36,24 @@ logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
 logger = logging.getLogger(__name__)
+
+# Azure Event Hubs configuration
+EVENT_HUB_NAMESPACE = "iesstsabbadbaa-grp-01-05"
+RIDE_EVENT_HUB_NAME = "grp04-ride-events"  
+SPECIAL_EVENT_HUB = "grp04-special-events"
+RIDES_PRIMARY_CONNECTION_STRING = os.getenv("RIDES_PRIMARY_CONNECTION_STRING")
+SPECIAL_PRIMARY_CONNECTION_STRING = os.getenv("SPECIAL_PRIMARY_CONNECTION_STRING")
+BOOTSTRAP_SERVERS = f"{EVENT_HUB_NAMESPACE}.servicebus.windows.net:9093"
+
+# Get schemas
+with open("./schemas/ride_datafeed_schema.json", 'r') as f:
+            schema = json.load(f)
+PARSED_RIDE_SCHEMA = fastavro.parse_schema(schema)
+
+with open("./schemas/special_events_schema.json", 'r') as f:
+    special_schema = json.load(f)
+PARSED_SPECIAL_SCHEMA = fastavro.parse_schema(special_schema)
+
 
 def parse_arguments():
     """Parse command line arguments"""
@@ -60,9 +84,9 @@ def parse_arguments():
                         help='Base hourly demand for rides')
     
     # Schema options
-    parser.add_argument('--ride-schema', type=str, default='ride_datafeed_schema.json',
+    parser.add_argument('--ride-schema', type=str, default='./schemas/ride_datafeed_schema.json',
                         help='Path to ride event schema')
-    parser.add_argument('--user-driver-schema', type=str, default='riders_drivers_avro-schemas.json',
+    parser.add_argument('--user-driver-schema', type=str, default='./schemas/riders_drivers_avro-schemas.json',
                         help='Path to user/driver schema')
     
     # City options
@@ -85,9 +109,84 @@ def parse_arguments():
     parser.add_argument('--random-seed', type=int, default=None,
                         help='Random seed for reproducibility')
     
+    parser.add_argument('--stream-to-eventhubs', action='store_true', help='Stream ride events to Azure Event Hubs in real time')
+    
     return parser.parse_args()
 
-def generate_simulation_data(args):
+'''
+def create_producer():
+    """Initialize Kafka producer for Azure Event Hubs."""
+    ssl_context = ssl.SSLContext(ssl.PROTOCOL_TLSv1_2)
+    ssl_context.check_hostname = False  # Disable hostname check
+    ssl_context.verify_mode = ssl.CERT_NONE  # Disable certificate verification
+
+    try:
+        producer = KafkaProducer(
+            bootstrap_servers=[BOOTSTRAP_SERVERS],
+            security_protocol="SASL_SSL",
+            sasl_mechanism="PLAIN",
+            sasl_plain_username="$ConnectionString",
+            sasl_plain_password=CONNECTION_STRING,
+            value_serializer=serialize_ride,
+            acks=1,
+            retries=3,
+            client_id="Producer",
+            ssl_context=ssl_context,
+            api_version=(0, 10, 2)
+        )
+        logger.info("Kafka producer initialized for Event Hubs")
+        return producer
+    except Exception as e:
+        logger.error(f"Failed to initialize producer: {e}")
+        raise
+
+def serialize_ride(record):
+    """Serialize a ride event to Avro format."""
+    try:
+        schemaless_bytes_writer = io.BytesIO()
+        fastavro.schemaless_writer(schemaless_bytes_writer, PARSED_RIDE_SCHEMA, record)
+        return schemaless_bytes_writer.getvalue()
+    except Exception as e:
+        logger.error(f"Serialization error: {e}")
+        raise
+'''
+def create_producer(schema, connection_string):
+    """Initialize Kafka producer for Azure Event Hubs with specified schema and connection string."""
+    ssl_context = ssl.SSLContext(ssl.PROTOCOL_TLSv1_2)
+    ssl_context.check_hostname = False
+    ssl_context.verify_mode = ssl.CERT_NONE
+
+    def serialize_event(record):
+        try:
+            schemaless_bytes_writer = io.BytesIO()
+            fastavro.schemaless_writer(schemaless_bytes_writer, schema, record)
+            return schemaless_bytes_writer.getvalue()
+        except Exception as e:
+            logger.error(f"Serialization error: {e}")
+            raise
+
+    try:
+        producer = KafkaProducer(
+            bootstrap_servers=[BOOTSTRAP_SERVERS],
+            security_protocol="SASL_SSL",
+            sasl_mechanism="PLAIN",
+            sasl_plain_username="$ConnectionString",
+            sasl_plain_password=connection_string,  
+            value_serializer=serialize_event,
+            acks=1,
+            retries=3,
+            client_id="SpecialEvents",
+            ssl_context=ssl_context,
+            api_version=(0, 10, 2)
+        )
+        logger.info("Kafka producer initialized for Event Hubs")
+        return producer
+    except Exception as e:
+        logger.error(f"Failed to initialize producer: {e}")
+        raise
+
+
+def generate_simulation_data(args, producer=None, ride_producer=None):
     """
     Generate all data for the ride-hailing simulation.
     
@@ -175,6 +274,7 @@ def generate_simulation_data(args):
         
         logger.info(f"Saved user/driver AVRO data to {args.output}")
     
+
     # 2. Initialize models
     # Create city map
     city_map = CityMap(args.city)
@@ -236,14 +336,17 @@ def generate_simulation_data(args):
             # Generate attendance between 3000-15000
             attendees = random.randint(3000, 15000)
             
-            special_events_generator.create_concert_event(
+            concert_event = special_events_generator.create_concert_event(
                 event_date,
                 venue_zone=venue_zone,
                 attendees=attendees,
                 name=f"Concert Event {i+1}"
             )
             
+            if args.stream_to_eventhubs and producer:
+                producer.send(SPECIAL_EVENT_HUB, value=concert_event)
             logger.info(f"Added concert event on {event_date} at {city_map.zones[venue_zone]['name']}")
+            
         
         # Add sports events
         for i in range(args.num_sports):
@@ -262,11 +365,13 @@ def generate_simulation_data(args):
             # Generate attendance between 10000-40000
             attendees = random.randint(10000, 40000)
             
-            special_events_generator.create_sports_event(
+            sports_event = special_events_generator.create_sports_event(
                 event_date,
                 venue_zone=venue_zone,
                 attendees=attendees
             )
+            if args.stream_to_eventhubs and producer:
+                producer.send(SPECIAL_EVENT_HUB, value=sports_event)
             
             logger.info(f"Added sports event on {event_date} at {city_map.zones[venue_zone]['name']}")
         
@@ -319,7 +424,7 @@ def generate_simulation_data(args):
         logger.info(f"Added system outage on {outage_date} for {duration_minutes} minutes")
         
         # Add fraud patterns
-        fraud_events = special_events_generator.create_fraud_patterns(
+        special_events_generator.create_fraud_patterns(
             start_date,
             end_date,
             num_fraud_users=min(5, max(1, int(args.users * 0.01))),  # At least 1, max 5
@@ -336,22 +441,32 @@ def generate_simulation_data(args):
     # 5. Generate ride events
     logger.info(f"Generating rides from {start_date} to {end_date}")
     rides_json_file = os.path.join(args.output, 'ride_events.json')
-    
-    if not args.avro_only:
-        # Generate JSON directly
-        event_count = ride_simulator.generate_rides(
-            start_date, 
-            end_date, 
-            output_file=rides_json_file,
-            batch_size=args.batch_size
-        )
-        
+    rides_avro_file = os.path.join(args.output, 'ride_events.avro')
+
+    if args.stream_to_eventhubs and ride_producer:
+        event_count = 0
+        for event in ride_simulator.generate_rides(start_date, end_date):
+            time.sleep(0.01) # Increase this if Azure complains
+            ride_producer.send(RIDE_EVENT_HUB_NAME, value=event)
+            event_count += 1
+            if event_count % args.batch_size == 0:
+                time.sleep(2)
+                ride_producer.flush()
+                logger.info(f"Streamed {event_count} ride events to Event Hubs")
+        ride_producer.flush()
+        logger.info(f"Streamed total of {event_count} ride events to Event Hubs")
+    else:
+        event_count = ride_simulator.generate_rides(start_date, end_date, output_file=rides_json_file, batch_size=args.batch_size)
         output_files["json"]["ride_events"] = rides_json_file
         logger.info(f"Generated {event_count} ride events, saved to {rides_json_file}")
-    else:
-        # Generate events in memory for AVRO only
-        events = ride_simulator.generate_rides(start_date, end_date)
-        logger.info(f"Generated {len(events)} ride events in memory")
+
+    if not args.json_only and not args.stream_to_eventhubs:
+        ride_serializer = AvroSerializer(args.ride_schema)
+        with open(rides_json_file, 'r') as f:
+            events = json.load(f)
+        ride_serializer.serialize_to_file(events, rides_avro_file)
+        output_files["avro"]["ride_events"] = rides_avro_file
+        logger.info(f"Serialized ride events to AVRO: {rides_avro_file}")
     
     # 6. Convert to AVRO if needed
     if not args.json_only:
@@ -421,9 +536,18 @@ def main():
     
     logger.info("Starting ride-hailing data generation")
     logger.info(f"Output directory: {args.output}")
+
+    ride_producer = None
+    special_producer = None
+    if args.stream_to_eventhubs:
+        if not RIDES_PRIMARY_CONNECTION_STRING or not SPECIAL_PRIMARY_CONNECTION_STRING:
+            logger.error("Missing connection strings. Set RIDE_PRIMARY_CONNECTION_STRING and SPECIAL_PRIMARY_CONNECTION_STRING environment variables.")
+            return 1
+        ride_producer = create_producer(PARSED_RIDE_SCHEMA, RIDES_PRIMARY_CONNECTION_STRING)
+        special_producer = create_producer(PARSED_SPECIAL_SCHEMA, SPECIAL_PRIMARY_CONNECTION_STRING)
     
     try:
-        output_files = generate_simulation_data(args)
+        output_files = generate_simulation_data(args, producer=special_producer, ride_producer=ride_producer)
         
         logger.info("Data generation completed successfully")
         logger.info(f"Generated files: {list(output_files['json'].keys()) + list(output_files['avro'].keys())}")
@@ -431,7 +555,13 @@ def main():
     except Exception as e:
         logger.error(f"Error generating data: {str(e)}", exc_info=True)
         return 1
-    
+    finally:
+        if ride_producer:
+            ride_producer.close()
+            logger.info("Ride events Kafka producer closed")
+        if special_producer:
+            special_producer.close()
+            logger.info("Special events Kafka producer closed")
     return 0
 
 if __name__ == "__main__":

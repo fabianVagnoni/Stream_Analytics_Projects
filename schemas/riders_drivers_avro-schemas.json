@@ -1,0 +1,64 @@
+{
+  "type": "record",
+  "name": "DriverDynamic",
+  "namespace": "com.ridehailing.schema",
+  "fields": [
+    {"name": "driver_id", "type": "string", "doc": "Unique identifier for the driver"},
+    {"name": "rating", "type": "float", "doc": "Current average rating of the driver"},
+    {"name": "no_of_rides", "type": "int", "doc": "Total number of rides completed by the driver"},
+    {"name": "cancellation_rate", "type": "float", "doc": "Percentage of rides canceled by the driver"},
+    {"name": "money_earned", "type": "float", "doc": "Total money earned by the driver"},
+    {"name": "time_driven", "type": "float", "doc": "Total hours spent driving"},
+    {"name": "last_updated", "type": {"type": "long", "logicalType": "timestamp-millis"}, "doc": "Timestamp of the last update to this record"}
+  ]
+}
+
+{
+  "type": "record",
+  "name": "DriverStatic",
+  "namespace": "com.ridehailing.schema",
+  "fields": [
+    {"name": "driver_id", "type": "string", "doc": "Unique identifier for the driver"},
+    {"name": "first_name", "type": "string", "doc": "Driver's first name"},
+    {"name": "last_name", "type": "string", "doc": "Driver's last name"},
+    {"name": "age", "type": "int", "doc": "Driver's age in years"},
+    {"name": "gender", "type": "string", "doc": "Driver's gender identity"},
+    {"name": "phone_number", "type": "string", "doc": "Driver's contact phone number"},
+    {"name": "email", "type": "string", "doc": "Driver's email address"},
+    {"name": "license_number", "type": "string", "doc": "Driver's license identification number"},
+    {"name": "vehicle", "type": "string", "doc": "Description of driver's vehicle (make, model, year)"},
+    {"name": "account_creation_date", "type": {"type": "string", "logicalType": "date"}, "doc": "Date when the driver account was created"}
+  ]
+}
+
+{
+  "type": "record",
+  "name": "UserDynamic",
+  "namespace": "com.ridehailing.schema",
+  "fields": [
+    {"name": "user_id", "type": "string", "doc": "Unique identifier for the user"},
+    {"name": "rides_taken", "type": "int", "doc": "Total number of rides taken by the user"},
+    {"name": "money_spent", "type": "float", "doc": "Total money spent by the user"},
+    {"name": "avg_rating_given", "type": "float", "doc": "Average rating given by the user to drivers"},
+    {"name": "cancellation_rate", "type": "float", "doc": "Percentage of rides canceled by the user"},
+    {"name": "last_ride_date", "type": {"type": "string", "logicalType": "date"}, "doc": "Date of the user's most recent ride"},
+    {"name": "last_updated", "type": {"type": "long", "logicalType": "timestamp-millis"}, "doc": "Timestamp of the last update to this record"}
+  ]
+}
+
+{
+  "type": "record",
+  "name": "UserStatic",
+  "namespace": "com.ridehailing.schema",
+  "fields": [
+    {"name": "user_id", "type": "string", "doc": "Unique identifier for the user"},
+    {"name": "first_name", "type": "string", "doc": "User's first name"},
+    {"name": "last_name", "type": "string", "doc": "User's last name"},
+    {"name": "age", "type": "int", "doc": "User's age in years"},
+    {"name": "gender", "type": "string", "doc": "User's gender identity"},
+    {"name": "email", "type": "string", "doc": "User's email address"},
+    {"name": "phone_number", "type": "string", "doc": "User's contact phone number"},
+    {"name": "signup_date", "type": {"type": "string", "logicalType": "date"}, "doc": "Date when the user signed up"},
+    {"name": "city", "type": "string", "doc": "User's primary city"}
+  ]
+}

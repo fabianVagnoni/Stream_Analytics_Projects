@@ -1,30 +1,30 @@
 {
   "simulation_period": {
     "start_date": "2025-01-01T00:00:00",
-    "end_date": "2025-01-05T00:00:00",
-    "days": 4
+    "end_date": "2025-01-03T00:00:00",
+    "days": 2
   },
   "users": {
-    "total": 1000,
+    "total": 300,
     "dynamic_stats": {
-      "avg_rides_taken": 602.98,
-      "avg_money_spent": 12114.309779999994,
-      "avg_rating_given": 4.209200000000003,
-      "avg_cancellation_rate": 0.07888700000000003
+      "avg_rides_taken": 597.1133333333333,
+      "avg_money_spent": 11759.578800000001,
+      "avg_rating_given": 4.170333333333333,
+      "avg_cancellation_rate": 0.07826333333333334
     }
   },
   "drivers": {
-    "total": 500,
+    "total": 100,
     "dynamic_stats": {
-      "avg_rides": 1441.02,
-      "avg_rating": 4.327599999999998,
-      "avg_money_earned": 28727.442859999966,
-      "avg_cancellation_rate": 0.09339999999999996
+      "avg_rides": 1407.11,
+      "avg_rating": 4.35,
+      "avg_money_earned": 27968.1685,
+      "avg_cancellation_rate": 0.09693
     }
   },
   "events": {
-    "total": 69106,
-    "per_day": 17276.5,
+    "total": 13929,
+    "per_day": 6964.5,
     "special_events": 6
   },
   "output_files": {
@@ -34,8 +34,7 @@
       "drivers_static": "./data/drivers_static.json",
       "drivers_dynamic": "./data/drivers_dynamic.json",
       "city_map": "./data/madrid_map.json",
-      "special_events": "./data/special_events.json",
-      "ride_events": "./data/ride_events.json"
+      "special_events": "./data/special_events.json"
     },
     "avro": {
       "users_static": "./data/users_static.avro",

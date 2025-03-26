@@ -2,3 +2,6 @@ fastavro
 faker
 pandas
 numpy
+kafka-python
+io
+ssl

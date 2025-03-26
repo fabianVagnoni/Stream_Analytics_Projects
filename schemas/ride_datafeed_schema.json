@@ -1,0 +1,107 @@
+{
+  "type": "record",
+  "name": "RideEvent",
+  "namespace": "com.ridehailing.schema",
+  "doc": "Schema for ride-hailing service events",
+  "fields": [
+    {"name": "event_id", "type": "string", "doc": "Unique identifier for this event"},
+    {"name": "ride_id", "type": "string", "doc": "Unique identifier for the ride"},
+    {"name": "event_type", "type": {"type": "enum", "name": "EventType", "symbols": [
+      "RIDE_REQUESTED", 
+      "DRIVER_ASSIGNED", 
+      "RIDE_STARTED", 
+      "RIDE_COMPLETED", 
+      "RIDE_CANCELED_BY_USER", 
+      "RIDE_CANCELED_BY_DRIVER",
+      "DRIVER_ARRIVED",
+      "PAYMENT_COMPLETED",
+      "USER_RATED_DRIVER",
+      "DRIVER_RATED_USER"
+    ]}, "doc": "Type of the event"},
+    {"name": "timestamp", "type": {"type": "long", "logicalType": "timestamp-millis"}, "doc": "Timestamp when the event occurred"},
+    {"name": "user_id", "type": "string", "doc": "Identifier of the user involved in this ride"},
+    {"name": "driver_id", "type": ["string", "null"], "doc": "Identifier of the driver assigned to this ride (null if not assigned yet)"},
+    
+    {"name": "pickup_location", "type": ["null", {
+      "type": "record",
+      "name": "Location",
+      "fields": [
+        {"name": "latitude", "type": "double", "doc": "Latitude coordinate"},
+        {"name": "longitude", "type": "double", "doc": "Longitude coordinate"},
+        {"name": "address", "type": ["string", "null"], "doc": "Street address of the location (if available)"},
+        {"name": "city", "type": "string", "doc": "City name"}
+      ]
+    }], "default": null, "doc": "Pickup location details"},
+    
+    {"name": "dropoff_location", "type": ["null", "Location"], "default": null, "doc": "Dropoff location details"},
+    
+    {"name": "ride_details", "type": ["null", {
+      "type": "record",
+      "name": "RideDetails",
+      "fields": [
+        {"name": "distance_km", "type": ["float", "null"], "doc": "Distance of the ride in kilometers"},
+        {"name": "estimated_duration_minutes", "type": ["int", "null"], "doc": "Estimated duration in minutes"},
+        {"name": "actual_duration_minutes", "type": ["int", "null"], "doc": "Actual duration in minutes"},
+        {"name": "vehicle_type", "type": ["string", "null"], "doc": "Type of vehicle requested or assigned"},
+        {"name": "base_fare", "type": ["float", "null"], "doc": "Base fare amount"},
+        {"name": "surge_multiplier", "type": ["float", "null"], "default": 1.0, "doc": "Surge pricing multiplier (if applicable)"},
+        {"name": "total_fare", "type": ["float", "null"], "doc": "Total fare amount including surge pricing and fees"}
+      ]
+    }], "default": null, "doc": "Details about the ride itself"},
+    
+    {"name": "payment_info", "type": ["null", {
+      "type": "record",
+      "name": "PaymentInfo",
+      "fields": [
+        {"name": "payment_method", "type": ["string", "null"], "doc": "Method of payment (CARD, CASH, etc.)"},
+        {"name": "payment_status", "type": ["string", "null"], "doc": "Status of payment (PENDING, COMPLETED, FAILED)"},
+        {"name": "payment_id", "type": ["string", "null"], "doc": "Unique identifier for the payment transaction"}
+      ]
+    }], "default": null, "doc": "Payment details for the ride"},
+
+    {"name": "ratings", "type": ["null", {
+      "type": "record",
+      "name": "RatingInfo",
+      "fields": [
+        {"name": "user_to_driver_rating", "type": ["float", "null"], "doc": "Rating given by user to driver (1-5)"},
+        {"name": "driver_to_user_rating", "type": ["float", "null"], "doc": "Rating given by driver to user (1-5)"},
+        {"name": "user_comment", "type": ["string", "null"], "doc": "Comment provided by the user"},
+        {"name": "driver_comment", "type": ["string", "null"], "doc": "Comment provided by the driver"}
+      ]
+    }], "default": null, "doc": "Rating information if applicable to this event"},
+    
+    {"name": "cancellation_info", "type": ["null", {
+      "type": "record",
+      "name": "CancellationInfo",
+      "fields": [
+        {"name": "canceled_by", "type": ["string", "null"], "doc": "Who canceled the ride (USER, DRIVER, SYSTEM)"},
+        {"name": "cancellation_reason", "type": ["string", "null"], "doc": "Reason for cancellation"},
+        {"name": "cancellation_fee", "type": ["float", "null"], "doc": "Fee charged for cancellation, if any"}
+      ]
+    }], "default": null, "doc": "Cancellation details if the ride was canceled"},
+    
+    {"name": "traffic_conditions", "type": ["null", {
+      "type": "record",
+      "name": "TrafficInfo",
+      "fields": [
+        {"name": "traffic_level", "type": ["string", "null"], "doc": "Current traffic level (LOW, MEDIUM, HIGH, SEVERE)"},
+        {"name": "estimated_delay_minutes", "type": ["int", "null"], "doc": "Estimated delay due to traffic in minutes"}
+      ]
+    }], "default": null, "doc": "Traffic information for the ride route"},
+    
+    {"name": "driver_location", "type": ["null", {
+      "type": "record",
+      "name": "DriverLocation",
+      "fields": [
+        {"name": "latitude", "type": "double", "doc": "Latitude coordinate of driver's location"},
+        {"name": "longitude", "type": "double", "doc": "Longitude coordinate of driver's location"},
+        {"name": "heading", "type": ["float", "null"], "doc": "Direction the driver is heading in degrees"},
+        {"name": "speed_kmh", "type": ["float", "null"], "doc": "Current speed in km/h"}
+      ]
+    }], "default": null, "doc": "Current location of the driver during a ride"},
+    
+    {"name": "app_version", "type": "string", "doc": "Version of the mobile app used"},
+    {"name": "platform", "type": "string", "doc": "Operating system/platform (iOS, Android, web)"},
+    {"name": "session_id", "type": "string", "doc": "Session identifier for tracking user interaction with the app"}
+  ]
+}

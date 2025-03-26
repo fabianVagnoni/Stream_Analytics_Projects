@@ -116,12 +116,12 @@ class SpecialEventsGenerator:
             "name": name,
             "venue_zone": venue_zone,
             "venue_location": venue_location,
-            "event_start": event_start,
-            "event_end": event_end,
-            "arrivals_start": arrivals_start,
-            "arrivals_end": arrivals_end,
-            "departures_start": departures_start,
-            "departures_end": departures_end,
+            "event_start": str(event_start),
+            "event_end": str(event_end),
+            "arrivals_start": str(arrivals_start),
+            "arrivals_end": str(arrivals_end),
+            "departures_start": str(departures_start),
+            "departures_end": str(departures_end),
             "arrival_rides": arrival_rides,
             "departure_rides": departure_rides,
             "estimated_attendees": attendees
@@ -207,12 +207,12 @@ class SpecialEventsGenerator:
             "name": name,
             "venue_zone": venue_zone,
             "venue_location": venue_location,
-            "event_start": event_start,
-            "event_end": event_end,
-            "arrivals_start": arrivals_start,
-            "arrivals_end": arrivals_end,
-            "departures_start": departures_start,
-            "departures_end": departures_end,
+            "event_start": str(event_start),
+            "event_end": str(event_end),
+            "arrivals_start": str(arrivals_start),
+            "arrivals_end": str(arrivals_end),
+            "departures_start": str(departures_start),
+            "departures_end": str(departures_end),
             "arrival_rides": arrival_rides,
             "departure_rides": departure_rides,
             "estimated_attendees": attendees
@@ -390,17 +390,25 @@ class SpecialEventsGenerator:
                     "platform": random.choice(["iOS", "Android"])
                 })
         
-        if hasattr(self.ride_simulator, 'drivers') and len(self.ride_simulator.drivers) >= num_fraud_drivers:
+        if hasattr(self.ride_simulator, 'drivers') and len(self.ride_simulator.drivers) >= num_fraud_drivers and num_fraud_drivers > 1:
             fraud_drivers = random.sample(self.ride_simulator.drivers, num_fraud_drivers)
         else:
             # Create fake drivers if simulator doesn't have enough
             fraud_drivers = []
-            for i in range(num_fraud_drivers):
-                fraud_drivers.append({
-                    "driver_id": f"F-D{str(i).zfill(5)}",
-                    "rating": random.uniform(4.0, 4.9),
-                    "cancellation_rate": random.uniform(0.05, 0.15)
-                })
+            if num_fraud_drivers == 1:
+                for i in range(2):
+                    fraud_drivers.append({
+                        "driver_id": f"F-D{str(i).zfill(5)}",
+                        "rating": random.uniform(4.0, 4.9),
+                        "cancellation_rate": random.uniform(0.05, 0.15)
+                    })
+            else:
+                for i in range(num_fraud_drivers):
+                    fraud_drivers.append({
+                        "driver_id": f"F-D{str(i).zfill(5)}",
+                        "rating": random.uniform(4.0, 4.9),
+                        "cancellation_rate": random.uniform(0.05, 0.15)
+                    })
         
         # Store details for later query analysis
         fraud_details = {
@@ -1186,7 +1194,7 @@ class SpecialEventsGenerator:
         num_concerts = max(1, days // 4)      # roughly one concert every 4 days
         num_sports = max(1, days // 15)         # roughly one sports event every 15 days
         num_weather = max(1, days // 10)        # roughly one weather event every 10 days
-        num_fraud_patterns = max(1, days // 7)  # roughly one fraud pattern every 7 days
+        num_fraud_patterns = max(2, days // 7)  # roughly two fraud patterns every 7 days
 
         # 1. Add multiple concert events
         for i in range(num_concerts):

@@ -6,18 +6,18 @@
     "venue_location": {
       "latitude": 40.4146,
       "longitude": -3.6868,
-      "address": "669 Retiro Calle",
+      "address": "795 Retiro Calle",
       "city": "Madrid"
     },
-    "event_start": "2025-01-04T19:00:00",
-    "event_end": "2025-01-04T22:00:00",
-    "arrivals_start": "2025-01-04T16:00:00",
-    "arrivals_end": "2025-01-04T19:15:00",
-    "departures_start": "2025-01-04T21:30:00",
-    "departures_end": "2025-01-05T00:00:00",
-    "arrival_rides": 1151,
-    "departure_rides": 1295,
-    "estimated_attendees": 5035
+    "event_start": "2025-01-02 19:00:00",
+    "event_end": "2025-01-02 22:00:00",
+    "arrivals_start": "2025-01-02 16:00:00",
+    "arrivals_end": "2025-01-02 19:15:00",
+    "departures_start": "2025-01-02 21:30:00",
+    "departures_end": "2025-01-03 00:00:00",
+    "arrival_rides": 1079,
+    "departure_rides": 1214,
+    "estimated_attendees": 5200
   },
   {
     "type": "concert",
@@ -26,45 +26,45 @@
     "venue_location": {
       "latitude": 40.4615,
       "longitude": -3.6766,
-      "address": "281 Chamartin Calle",
+      "address": "664 Chamartin Calle",
       "city": "Madrid"
     },
-    "event_start": "2025-01-03T20:00:00",
-    "event_end": "2025-01-03T23:00:00",
-    "arrivals_start": "2025-01-03T17:00:00",
-    "arrivals_end": "2025-01-03T20:15:00",
-    "departures_start": "2025-01-03T22:30:00",
-    "departures_end": "2025-01-04T01:00:00",
-    "arrival_rides": 3108,
-    "departure_rides": 3496,
-    "estimated_attendees": 13547
+    "event_start": "2025-01-02 19:00:00",
+    "event_end": "2025-01-02 22:00:00",
+    "arrivals_start": "2025-01-02 16:00:00",
+    "arrivals_end": "2025-01-02 19:15:00",
+    "departures_start": "2025-01-02 21:30:00",
+    "departures_end": "2025-01-03 00:00:00",
+    "arrival_rides": 2064,
+    "departure_rides": 2322,
+    "estimated_attendees": 10978
   },
   {
     "type": "sports",
-    "name": "Celta Vigo vs Atl\u00e9tico de Madrid Game",
-    "venue_zone": "lavapies",
+    "name": "Bar\u00e7a vs Rayo Vallecano Game",
+    "venue_zone": "chamartin",
     "venue_location": {
-      "latitude": 40.4085,
-      "longitude": -3.7024,
-      "address": "641 Sports Stadium",
+      "latitude": 40.4615,
+      "longitude": -3.6766,
+      "address": "741 Sports Stadium",
       "city": "Madrid"
     },
-    "event_start": "2025-01-02T15:00:00",
-    "event_end": "2025-01-02T18:00:00",
-    "arrivals_start": "2025-01-02T13:00:00",
-    "arrivals_end": "2025-01-02T15:15:00",
-    "departures_start": "2025-01-02T17:45:00",
-    "departures_end": "2025-01-02T19:30:00",
-    "arrival_rides": 4440,
-    "departure_rides": 5708,
-    "estimated_attendees": 33533
+    "event_start": "2025-01-02 14:00:00",
+    "event_end": "2025-01-02 17:00:00",
+    "arrivals_start": "2025-01-02 12:00:00",
+    "arrivals_end": "2025-01-02 14:15:00",
+    "departures_start": "2025-01-02 16:45:00",
+    "departures_end": "2025-01-02 18:30:00",
+    "arrival_rides": 2221,
+    "departure_rides": 2855,
+    "estimated_attendees": 16436
   },
   {
     "type": "weather",
-    "weather_type": "fog",
-    "severity": "light",
-    "event_start": "2025-01-02T06:00:00",
-    "event_end": "2025-01-02T12:00:00",
+    "weather_type": "rain",
+    "severity": "medium",
+    "event_start": "2025-01-01T09:00:00",
+    "event_end": "2025-01-02T07:00:00",
     "affected_zones": [
       "downtown",
       "airport",
@@ -74,34 +74,31 @@
       "retiro",
       "malasana"
     ],
-    "traffic_factor": 1.2,
-    "demand_factor": 1.3,
-    "cancellation_increase": 0.05
+    "traffic_factor": 1.5,
+    "demand_factor": 1.5,
+    "cancellation_increase": 0.1
   },
   {
     "type": "system_outage",
     "severity": "complete",
-    "event_start": "2025-01-03T11:00:00",
-    "event_end": "2025-01-03T13:43:00",
-    "duration_minutes": 163,
+    "event_start": "2025-01-01T17:00:00",
+    "event_end": "2025-01-01T18:36:00",
+    "duration_minutes": 96,
     "failure_rate": 1.0,
     "cancellation_rate": 1.0
   },
   {
     "type": "fraud_patterns",
     "start_date": "2025-01-01T00:00:00",
-    "end_date": "2025-01-05T00:00:00",
+    "end_date": "2025-01-03T00:00:00",
     "fraud_users": [
-      "U000248",
-      "U000900",
-      "U000429",
-      "U000774",
-      "U000734"
+      "U000114",
+      "U000148",
+      "U000068"
     ],
     "fraud_drivers": [
-      "D000066",
-      "D000188",
-      "D000369"
+      "F-D00000",
+      "F-D00001"
     ],
     "patterns": [
       "circular_rides",
@@ -111,1160 +108,1127 @@
     ],
     "events": [
       {
-        "pattern": "rating_manipulation",
-        "user_id": "U000248",
-        "timestamp": "2025-01-01T15:00:00",
+        "pattern": "impossible_trips",
+        "user_id": "U000114",
+        "timestamp": "2025-01-01T10:00:00",
         "event_ids": [
-          "F-E2923d4d7_1",
-          "F-E2923d4d7_2",
-          "F-E2923d4d7_3",
-          "F-E2923d4d7_4"
+          "F-Ef25f1876_1",
+          "F-Ef25f1876_2",
+          "F-Eca6c6eb1_1",
+          "F-Eca6c6eb1_2"
         ]
       },
       {
-        "pattern": "rating_manipulation",
-        "user_id": "U000248",
-        "timestamp": "2025-01-03T10:00:00",
+        "pattern": "impossible_trips",
+        "user_id": "U000114",
+        "timestamp": "2025-01-01T12:00:00",
         "event_ids": [
-          "F-E7ae16625_1",
-          "F-E7ae16625_2",
-          "F-E7ae16625_3",
-          "F-E7ae16625_4"
+          "F-Ef3a9a558_1",
+          "F-Ef3a9a558_2",
+          "F-E7fa9fbd6_1",
+          "F-E7fa9fbd6_2"
         ]
       },
       {
-        "pattern": "rating_manipulation",
-        "user_id": "U000248",
-        "timestamp": "2025-01-02T22:00:00",
-        "event_ids": [
-          "F-Ea2849ce6_1",
-          "F-Ea2849ce6_2",
-          "F-Ea2849ce6_3",
-          "F-Ea2849ce6_4"
-        ]
-      },
-      {
-        "pattern": "rating_manipulation",
-        "user_id": "U000248",
-        "timestamp": "2025-01-04T22:00:00",
-        "event_ids": [
-          "F-Eb40df95b_1",
-          "F-Eb40df95b_2",
-          "F-Eb40df95b_3",
-          "F-Eb40df95b_4"
-        ]
-      },
-      {
-        "pattern": "rating_manipulation",
-        "user_id": "U000248",
-        "timestamp": "2025-01-02T18:00:00",
-        "event_ids": [
-          "F-E4ebe2ab9_1",
-          "F-E4ebe2ab9_2",
-          "F-E4ebe2ab9_3",
-          "F-E4ebe2ab9_4"
-        ]
-      },
-      {
-        "pattern": "circular_rides",
-        "user_id": "U000248",
-        "timestamp": "2025-01-01T15:00:00",
-        "event_ids": [
-          "F-E81b85285_1",
-          "F-E81b85285_2",
-          "F-E81b85285_3",
-          "F-E81b85285_4"
-        ]
-      },
-      {
-        "pattern": "circular_rides",
-        "user_id": "U000248",
-        "timestamp": "2025-01-04T20:00:00",
-        "event_ids": [
-          "F-Edc16b56d_1",
-          "F-Edc16b56d_2",
-          "F-Edc16b56d_3",
-          "F-Edc16b56d_4"
-        ]
-      },
-      {
-        "pattern": "circular_rides",
-        "user_id": "U000248",
-        "timestamp": "2025-01-02T20:00:00",
-        "event_ids": [
-          "F-Ec4579e44_1",
-          "F-Ec4579e44_2",
-          "F-Ec4579e44_3",
-          "F-Ec4579e44_4"
-        ]
-      },
-      {
-        "pattern": "circular_rides",
-        "user_id": "U000248",
-        "timestamp": "2025-01-01T09:00:00",
-        "event_ids": [
-          "F-Ee0a1d6e4_1",
-          "F-Ee0a1d6e4_2",
-          "F-Ee0a1d6e4_3",
-          "F-Ee0a1d6e4_4"
-        ]
-      },
-      {
-        "pattern": "circular_rides",
-        "user_id": "U000248",
-        "timestamp": "2025-01-02T12:00:00",
-        "event_ids": [
-          "F-Eeb9518c3_1",
-          "F-Eeb9518c3_2",
-          "F-Eeb9518c3_3",
-          "F-Eeb9518c3_4"
-        ]
-      },
-      {
-        "pattern": "circular_rides",
-        "user_id": "U000248",
-        "timestamp": "2025-01-02T08:00:00",
-        "event_ids": [
-          "F-E42ef39b2_1",
-          "F-E42ef39b2_2",
-          "F-E42ef39b2_3",
-          "F-E42ef39b2_4"
-        ]
-      },
-      {
-        "pattern": "circular_rides",
-        "user_id": "U000248",
-        "timestamp": "2025-01-02T16:00:00",
-        "event_ids": [
-          "F-E08fb0ccd_1",
-          "F-E08fb0ccd_2",
-          "F-E08fb0ccd_3",
-          "F-E08fb0ccd_4"
-        ]
-      },
-      {
-        "pattern": "fake_surge",
-        "user_id": "U000248",
-        "timestamp": "2025-01-02T17:00:00",
-        "event_ids": [
-          "F-E5362f62f",
-          "F-E5362f62f_cancel",
-          "F-E2afc09f7",
-          "F-E2afc09f7_cancel",
-          "F-E830118d3"
-        ]
-      },
-      {
-        "pattern": "fake_surge",
-        "user_id": "U000248",
-        "timestamp": "2025-01-03T22:00:00",
-        "event_ids": [
-          "F-Ee687da88",
-          "F-Ee687da88_cancel",
-          "F-Ef370bd3e",
-          "F-Ef370bd3e_cancel",
-          "F-E862b39ff",
-          "F-E862b39ff_cancel",
-          "F-E3de4e00a"
-        ]
-      },
-      {
-        "pattern": "fake_surge",
-        "user_id": "U000248",
-        "timestamp": "2025-01-01T14:00:00",
-        "event_ids": [
-          "F-E817b9d26",
-          "F-E817b9d26_cancel",
-          "F-Eb27cfe40",
-          "F-Eb27cfe40_cancel",
-          "F-E3d28c3b0",
-          "F-E3d28c3b0_cancel",
-          "F-Ea36fdcec"
-        ]
-      },
-      {
-        "pattern": "fake_surge",
-        "user_id": "U000248",
-        "timestamp": "2025-01-02T11:00:00",
-        "event_ids": [
-          "F-Ed1c8f50b",
-          "F-Ed1c8f50b_cancel",
-          "F-Ecd3a475e",
-          "F-Ecd3a475e_cancel",
-          "F-E7259d777",
-          "F-E7259d777_cancel",
-          "F-Ea4853196"
-        ]
-      },
-      {
-        "pattern": "fake_surge",
-        "user_id": "U000248",
-        "timestamp": "2025-01-02T16:00:00",
-        "event_ids": [
-          "F-Ee95a9590",
-          "F-Ee95a9590_cancel",
-          "F-Ec83f5799",
-          "F-Ec83f5799_cancel",
-          "F-E567c9951"
-        ]
-      },
-      {
-        "pattern": "fake_surge",
-        "user_id": "U000248",
-        "timestamp": "2025-01-04T09:00:00",
-        "event_ids": [
-          "F-E26a48860",
-          "F-E26a48860_cancel",
-          "F-E8686247c",
-          "F-E8686247c_cancel",
-          "F-Ecae11198"
-        ]
-      },
-      {
-        "pattern": "fake_surge",
-        "user_id": "U000248",
-        "timestamp": "2025-01-02T09:00:00",
-        "event_ids": [
-          "F-Ed1091c60",
-          "F-Ed1091c60_cancel",
-          "F-E8018e244",
-          "F-E8018e244_cancel",
-          "F-Edc14b27a",
-          "F-Edc14b27a_cancel",
-          "F-E015a62f2",
-          "F-E015a62f2_cancel",
-          "F-Ed2d8fee5"
-        ]
-      },
-      {
-        "pattern": "fake_surge",
-        "user_id": "U000248",
-        "timestamp": "2025-01-01T21:00:00",
-        "event_ids": [
-          "F-E803bb5df",
-          "F-E803bb5df_cancel",
-          "F-E00833be5",
-          "F-E00833be5_cancel",
-          "F-Ea314a41e",
-          "F-Ea314a41e_cancel",
-          "F-E90dac23f",
-          "F-E90dac23f_cancel",
-          "F-Ebd601b7d"
-        ]
-      },
-      {
-        "pattern": "fake_surge",
-        "user_id": "U000248",
-        "timestamp": "2025-01-03T13:00:00",
-        "event_ids": [
-          "F-E9cf01496",
-          "F-E9cf01496_cancel",
-          "F-Ede26e46d",
-          "F-Ede26e46d_cancel",
-          "F-Ef0ea43e9",
-          "F-Ef0ea43e9_cancel",
-          "F-E94e6c0a9",
-          "F-E94e6c0a9_cancel",
-          "F-E96cc1e6b"
-        ]
-      },
-      {
-        "pattern": "fake_surge",
-        "user_id": "U000248",
+        "pattern": "impossible_trips",
+        "user_id": "U000114",
         "timestamp": "2025-01-01T18:00:00",
         "event_ids": [
-          "F-E34056670",
-          "F-E34056670_cancel",
-          "F-Eb2858a5c",
-          "F-Eb2858a5c_cancel",
-          "F-Edc47127a",
-          "F-Edc47127a_cancel",
-          "F-E663c1ba2",
-          "F-E663c1ba2_cancel",
-          "F-E4af381c9"
+          "F-E9f839bc7_1",
+          "F-E9f839bc7_2",
+          "F-E716e2850_1",
+          "F-E716e2850_2"
         ]
       },
       {
         "pattern": "fake_surge",
-        "user_id": "U000248",
+        "user_id": "U000114",
+        "timestamp": "2025-01-02T21:00:00",
+        "event_ids": [
+          "F-E68218f71",
+          "F-E68218f71_cancel",
+          "F-E2ac525a1",
+          "F-E2ac525a1_cancel",
+          "F-E5a155020"
+        ]
+      },
+      {
+        "pattern": "fake_surge",
+        "user_id": "U000114",
+        "timestamp": "2025-01-02T22:00:00",
+        "event_ids": [
+          "F-E2be7a619",
+          "F-E2be7a619_cancel",
+          "F-Ebcba1967",
+          "F-Ebcba1967_cancel",
+          "F-E31d8c72b"
+        ]
+      },
+      {
+        "pattern": "fake_surge",
+        "user_id": "U000114",
+        "timestamp": "2025-01-01T17:00:00",
+        "event_ids": [
+          "F-E8176cf65",
+          "F-E8176cf65_cancel",
+          "F-E08ba5d84",
+          "F-E08ba5d84_cancel",
+          "F-E727268d1",
+          "F-E727268d1_cancel",
+          "F-Ebd3883ce"
+        ]
+      },
+      {
+        "pattern": "fake_surge",
+        "user_id": "U000114",
+        "timestamp": "2025-01-02T22:00:00",
+        "event_ids": [
+          "F-E8651cf62",
+          "F-E8651cf62_cancel",
+          "F-Eaed47e60",
+          "F-Eaed47e60_cancel",
+          "F-Edaaf25cf",
+          "F-Edaaf25cf_cancel",
+          "F-Efa9a5626"
+        ]
+      },
+      {
+        "pattern": "fake_surge",
+        "user_id": "U000114",
+        "timestamp": "2025-01-01T14:00:00",
+        "event_ids": [
+          "F-E9b04e022",
+          "F-E9b04e022_cancel",
+          "F-E183c3a67",
+          "F-E183c3a67_cancel",
+          "F-Eab19b18f",
+          "F-Eab19b18f_cancel",
+          "F-E3566b51f"
+        ]
+      },
+      {
+        "pattern": "fake_surge",
+        "user_id": "U000114",
         "timestamp": "2025-01-01T11:00:00",
         "event_ids": [
-          "F-E9e33d35a",
-          "F-E9e33d35a_cancel",
-          "F-E38511431",
-          "F-E38511431_cancel",
-          "F-E1262e79b",
-          "F-E1262e79b_cancel",
-          "F-Eea3a99b9",
-          "F-Eea3a99b9_cancel",
-          "F-E1856bf59"
+          "F-E0cb187ff",
+          "F-E0cb187ff_cancel",
+          "F-E181579f6",
+          "F-E181579f6_cancel",
+          "F-Ee286224c",
+          "F-Ee286224c_cancel",
+          "F-E45f6bfaa"
         ]
       },
       {
         "pattern": "fake_surge",
-        "user_id": "U000248",
-        "timestamp": "2025-01-01T22:00:00",
-        "event_ids": [
-          "F-E3716e58f",
-          "F-E3716e58f_cancel",
-          "F-E1406d12f",
-          "F-E1406d12f_cancel",
-          "F-E23c01dba"
-        ]
-      },
-      {
-        "pattern": "fake_surge",
-        "user_id": "U000248",
-        "timestamp": "2025-01-03T20:00:00",
-        "event_ids": [
-          "F-E82ac5666",
-          "F-E82ac5666_cancel",
-          "F-Eb3a8015c",
-          "F-Eb3a8015c_cancel",
-          "F-Ed6333440",
-          "F-Ed6333440_cancel",
-          "F-Eafb28b2d",
-          "F-Eafb28b2d_cancel",
-          "F-E32630aa7"
-        ]
-      },
-      {
-        "pattern": "fake_surge",
-        "user_id": "U000248",
-        "timestamp": "2025-01-01T10:00:00",
-        "event_ids": [
-          "F-E2cc646ac",
-          "F-E2cc646ac_cancel",
-          "F-Eab98846d",
-          "F-Eab98846d_cancel",
-          "F-E903c6446",
-          "F-E903c6446_cancel",
-          "F-Efeea9be8",
-          "F-Efeea9be8_cancel",
-          "F-E929447bb"
-        ]
-      },
-      {
-        "pattern": "fake_surge",
-        "user_id": "U000248",
-        "timestamp": "2025-01-03T13:00:00",
-        "event_ids": [
-          "F-Ea6d4d5a0",
-          "F-Ea6d4d5a0_cancel",
-          "F-Edda7f10b",
-          "F-Edda7f10b_cancel",
-          "F-E95d1f986"
-        ]
-      },
-      {
-        "pattern": "fake_surge",
-        "user_id": "U000248",
-        "timestamp": "2025-01-01T10:00:00",
-        "event_ids": [
-          "F-E42d4fff1",
-          "F-E42d4fff1_cancel",
-          "F-E28d2ddae",
-          "F-E28d2ddae_cancel",
-          "F-E939127d7",
-          "F-E939127d7_cancel",
-          "F-Efc431fe9"
-        ]
-      },
-      {
-        "pattern": "fake_surge",
-        "user_id": "U000248",
-        "timestamp": "2025-01-01T13:00:00",
-        "event_ids": [
-          "F-Ec62846b7",
-          "F-Ec62846b7_cancel",
-          "F-E791885b8",
-          "F-E791885b8_cancel",
-          "F-Ed4b0eb4f",
-          "F-Ed4b0eb4f_cancel",
-          "F-E879dff64"
-        ]
-      },
-      {
-        "pattern": "impossible_trips",
-        "user_id": "U000900",
-        "timestamp": "2025-01-03T22:00:00",
-        "event_ids": [
-          "F-Ee1cd58db_1",
-          "F-Ee1cd58db_2",
-          "F-E09cba880_1",
-          "F-E09cba880_2"
-        ]
-      },
-      {
-        "pattern": "impossible_trips",
-        "user_id": "U000900",
-        "timestamp": "2025-01-03T14:00:00",
-        "event_ids": [
-          "F-E7c76de69_1",
-          "F-E7c76de69_2",
-          "F-Ebf9cf763_1",
-          "F-Ebf9cf763_2"
-        ]
-      },
-      {
-        "pattern": "impossible_trips",
-        "user_id": "U000900",
-        "timestamp": "2025-01-02T17:00:00",
-        "event_ids": [
-          "F-E4ebf99f2_1",
-          "F-E4ebf99f2_2",
-          "F-E34a8d010_1",
-          "F-E34a8d010_2"
-        ]
-      },
-      {
-        "pattern": "impossible_trips",
-        "user_id": "U000900",
-        "timestamp": "2025-01-02T17:00:00",
-        "event_ids": [
-          "F-E4fce6d62_1",
-          "F-E4fce6d62_2",
-          "F-E3e6fff40_1",
-          "F-E3e6fff40_2"
-        ]
-      },
-      {
-        "pattern": "impossible_trips",
-        "user_id": "U000900",
-        "timestamp": "2025-01-02T15:00:00",
-        "event_ids": [
-          "F-E5b5d7f78_1",
-          "F-E5b5d7f78_2",
-          "F-Ef84383f6_1",
-          "F-Ef84383f6_2"
-        ]
-      },
-      {
-        "pattern": "fake_surge",
-        "user_id": "U000900",
-        "timestamp": "2025-01-03T13:00:00",
-        "event_ids": [
-          "F-Eabc70ab8",
-          "F-Eabc70ab8_cancel",
-          "F-E2f49ba3f",
-          "F-E2f49ba3f_cancel",
-          "F-E0da525bf"
-        ]
-      },
-      {
-        "pattern": "fake_surge",
-        "user_id": "U000900",
-        "timestamp": "2025-01-03T22:00:00",
-        "event_ids": [
-          "F-Ee86199ec",
-          "F-Ee86199ec_cancel",
-          "F-E7fcaa6c0",
-          "F-E7fcaa6c0_cancel",
-          "F-E0aec0ab3",
-          "F-E0aec0ab3_cancel",
-          "F-E58dad45d",
-          "F-E58dad45d_cancel",
-          "F-E36b8644c"
-        ]
-      },
-      {
-        "pattern": "fake_surge",
-        "user_id": "U000900",
-        "timestamp": "2025-01-02T12:00:00",
-        "event_ids": [
-          "F-E112a6b7d",
-          "F-E112a6b7d_cancel",
-          "F-E3c33779b",
-          "F-E3c33779b_cancel",
-          "F-E42869f60",
-          "F-E42869f60_cancel",
-          "F-E2da15c78",
-          "F-E2da15c78_cancel",
-          "F-Eeb1780a3"
-        ]
-      },
-      {
-        "pattern": "fake_surge",
-        "user_id": "U000900",
-        "timestamp": "2025-01-01T21:00:00",
-        "event_ids": [
-          "F-Ec1a98ecc",
-          "F-Ec1a98ecc_cancel",
-          "F-E4977ab18",
-          "F-E4977ab18_cancel",
-          "F-E12896267"
-        ]
-      },
-      {
-        "pattern": "fake_surge",
-        "user_id": "U000900",
-        "timestamp": "2025-01-01T21:00:00",
-        "event_ids": [
-          "F-Ecbf204eb",
-          "F-Ecbf204eb_cancel",
-          "F-E09c6c25c",
-          "F-E09c6c25c_cancel",
-          "F-Eb8417386",
-          "F-Eb8417386_cancel",
-          "F-E5fb431d9",
-          "F-E5fb431d9_cancel",
-          "F-E5ca694fe"
-        ]
-      },
-      {
-        "pattern": "fake_surge",
-        "user_id": "U000900",
-        "timestamp": "2025-01-04T08:00:00",
-        "event_ids": [
-          "F-Ee094f2e5",
-          "F-Ee094f2e5_cancel",
-          "F-Ef99fab19",
-          "F-Ef99fab19_cancel",
-          "F-E6a60b18a",
-          "F-E6a60b18a_cancel",
-          "F-Ea58144de",
-          "F-Ea58144de_cancel",
-          "F-E24d5c3dc"
-        ]
-      },
-      {
-        "pattern": "fake_surge",
-        "user_id": "U000900",
-        "timestamp": "2025-01-01T12:00:00",
-        "event_ids": [
-          "F-E6c6ada94",
-          "F-E6c6ada94_cancel",
-          "F-E2085a88c",
-          "F-E2085a88c_cancel",
-          "F-E3d1d7ded",
-          "F-E3d1d7ded_cancel",
-          "F-E272496f6",
-          "F-E272496f6_cancel",
-          "F-E0bd319ed"
-        ]
-      },
-      {
-        "pattern": "fake_surge",
-        "user_id": "U000900",
-        "timestamp": "2025-01-03T15:00:00",
-        "event_ids": [
-          "F-Ee14140d6",
-          "F-Ee14140d6_cancel",
-          "F-Ed5386458",
-          "F-Ed5386458_cancel",
-          "F-E3a5a0460"
-        ]
-      },
-      {
-        "pattern": "fake_surge",
-        "user_id": "U000900",
-        "timestamp": "2025-01-02T14:00:00",
-        "event_ids": [
-          "F-E51fe815d",
-          "F-E51fe815d_cancel",
-          "F-E713f4c04",
-          "F-E713f4c04_cancel",
-          "F-Ef0cfde2c",
-          "F-Ef0cfde2c_cancel",
-          "F-Ee03372f0",
-          "F-Ee03372f0_cancel",
-          "F-E850a0c6a"
-        ]
-      },
-      {
-        "pattern": "fake_surge",
-        "user_id": "U000900",
-        "timestamp": "2025-01-03T15:00:00",
-        "event_ids": [
-          "F-Ebe68b391",
-          "F-Ebe68b391_cancel",
-          "F-Ec3f089ff",
-          "F-Ec3f089ff_cancel",
-          "F-Ee341c158",
-          "F-Ee341c158_cancel",
-          "F-Eccc83e2e",
-          "F-Eccc83e2e_cancel",
-          "F-E5b716183"
-        ]
-      },
-      {
-        "pattern": "fake_surge",
-        "user_id": "U000900",
-        "timestamp": "2025-01-04T14:00:00",
-        "event_ids": [
-          "F-Edf38c8c9",
-          "F-Edf38c8c9_cancel",
-          "F-E486e3530",
-          "F-E486e3530_cancel",
-          "F-Ef1b8ffda",
-          "F-Ef1b8ffda_cancel",
-          "F-Ea57b4e18"
-        ]
-      },
-      {
-        "pattern": "fake_surge",
-        "user_id": "U000900",
-        "timestamp": "2025-01-02T18:00:00",
-        "event_ids": [
-          "F-E459dc8ae",
-          "F-E459dc8ae_cancel",
-          "F-Ec6df333a",
-          "F-Ec6df333a_cancel",
-          "F-E97037bec",
-          "F-E97037bec_cancel",
-          "F-E7ea8e41b"
-        ]
-      },
-      {
-        "pattern": "fake_surge",
-        "user_id": "U000900",
-        "timestamp": "2025-01-04T11:00:00",
-        "event_ids": [
-          "F-E5fcc9cd8",
-          "F-E5fcc9cd8_cancel",
-          "F-E8a4473ce",
-          "F-E8a4473ce_cancel",
-          "F-Ef1ef4d0e",
-          "F-Ef1ef4d0e_cancel",
-          "F-Ed63f548e"
-        ]
-      },
-      {
-        "pattern": "impossible_trips",
-        "user_id": "U000429",
-        "timestamp": "2025-01-03T22:00:00",
-        "event_ids": [
-          "F-E5cd3fee7_1",
-          "F-E5cd3fee7_2",
-          "F-Ec97e48b8_1",
-          "F-Ec97e48b8_2"
-        ]
-      },
-      {
-        "pattern": "impossible_trips",
-        "user_id": "U000429",
-        "timestamp": "2025-01-03T09:00:00",
-        "event_ids": [
-          "F-E6dec42e8_1",
-          "F-E6dec42e8_2",
-          "F-E1761259a_1",
-          "F-E1761259a_2"
-        ]
-      },
-      {
-        "pattern": "impossible_trips",
-        "user_id": "U000429",
-        "timestamp": "2025-01-03T08:00:00",
-        "event_ids": [
-          "F-E05c7382a_1",
-          "F-E05c7382a_2",
-          "F-Ea276edc7_1",
-          "F-Ea276edc7_2"
-        ]
-      },
-      {
-        "pattern": "circular_rides",
-        "user_id": "U000774",
-        "timestamp": "2025-01-01T12:00:00",
-        "event_ids": [
-          "F-E9bee19b9_1",
-          "F-E9bee19b9_2",
-          "F-E9bee19b9_3",
-          "F-E9bee19b9_4"
-        ]
-      },
-      {
-        "pattern": "circular_rides",
-        "user_id": "U000774",
-        "timestamp": "2025-01-04T11:00:00",
-        "event_ids": [
-          "F-E6837d566_1",
-          "F-E6837d566_2",
-          "F-E6837d566_3",
-          "F-E6837d566_4"
-        ]
-      },
-      {
-        "pattern": "circular_rides",
-        "user_id": "U000774",
-        "timestamp": "2025-01-03T16:00:00",
-        "event_ids": [
-          "F-E338a9b97_1",
-          "F-E338a9b97_2",
-          "F-E338a9b97_3",
-          "F-E338a9b97_4"
-        ]
-      },
-      {
-        "pattern": "circular_rides",
-        "user_id": "U000774",
-        "timestamp": "2025-01-01T20:00:00",
-        "event_ids": [
-          "F-E7063d2c1_1",
-          "F-E7063d2c1_2",
-          "F-E7063d2c1_3",
-          "F-E7063d2c1_4"
-        ]
-      },
-      {
-        "pattern": "circular_rides",
-        "user_id": "U000774",
-        "timestamp": "2025-01-01T19:00:00",
-        "event_ids": [
-          "F-E2e6ef2f1_1",
-          "F-E2e6ef2f1_2",
-          "F-E2e6ef2f1_3",
-          "F-E2e6ef2f1_4"
-        ]
-      },
-      {
-        "pattern": "circular_rides",
-        "user_id": "U000774",
-        "timestamp": "2025-01-04T11:00:00",
-        "event_ids": [
-          "F-Ef5ef0772_1",
-          "F-Ef5ef0772_2",
-          "F-Ef5ef0772_3",
-          "F-Ef5ef0772_4"
-        ]
-      },
-      {
-        "pattern": "fake_surge",
-        "user_id": "U000774",
-        "timestamp": "2025-01-02T10:00:00",
-        "event_ids": [
-          "F-Ed2e7d0c6",
-          "F-Ed2e7d0c6_cancel",
-          "F-E0d759eb6",
-          "F-E0d759eb6_cancel",
-          "F-Eeab674c9"
-        ]
-      },
-      {
-        "pattern": "fake_surge",
-        "user_id": "U000774",
-        "timestamp": "2025-01-03T14:00:00",
-        "event_ids": [
-          "F-E7a283a02",
-          "F-E7a283a02_cancel",
-          "F-Eb0ce9b9b",
-          "F-Eb0ce9b9b_cancel",
-          "F-E2b5d502b",
-          "F-E2b5d502b_cancel",
-          "F-E9e3fc613"
-        ]
-      },
-      {
-        "pattern": "fake_surge",
-        "user_id": "U000774",
-        "timestamp": "2025-01-04T11:00:00",
-        "event_ids": [
-          "F-Ed0becb8d",
-          "F-Ed0becb8d_cancel",
-          "F-Ebb81ca2c",
-          "F-Ebb81ca2c_cancel",
-          "F-E805aa6c9",
-          "F-E805aa6c9_cancel",
-          "F-E0dfd029a",
-          "F-E0dfd029a_cancel",
-          "F-E00b22935"
-        ]
-      },
-      {
-        "pattern": "fake_surge",
-        "user_id": "U000774",
-        "timestamp": "2025-01-01T09:00:00",
-        "event_ids": [
-          "F-E5e1b568c",
-          "F-E5e1b568c_cancel",
-          "F-E1fa98bf2",
-          "F-E1fa98bf2_cancel",
-          "F-E4a313688",
-          "F-E4a313688_cancel",
-          "F-Ee0d14fe7"
-        ]
-      },
-      {
-        "pattern": "fake_surge",
-        "user_id": "U000774",
-        "timestamp": "2025-01-02T10:00:00",
-        "event_ids": [
-          "F-Eb97fdd80",
-          "F-Eb97fdd80_cancel",
-          "F-E84fefc88",
-          "F-E84fefc88_cancel",
-          "F-E925d3722",
-          "F-E925d3722_cancel",
-          "F-Ea9876e97",
-          "F-Ea9876e97_cancel",
-          "F-Ec54c46e1"
-        ]
-      },
-      {
-        "pattern": "fake_surge",
-        "user_id": "U000774",
-        "timestamp": "2025-01-02T22:00:00",
-        "event_ids": [
-          "F-E5263468b",
-          "F-E5263468b_cancel",
-          "F-E993ab408",
-          "F-E993ab408_cancel",
-          "F-Ea64d4adb",
-          "F-Ea64d4adb_cancel",
-          "F-Ee9d28ee5",
-          "F-Ee9d28ee5_cancel",
-          "F-E6f1e28dd"
-        ]
-      },
-      {
-        "pattern": "fake_surge",
-        "user_id": "U000774",
-        "timestamp": "2025-01-03T12:00:00",
-        "event_ids": [
-          "F-Ef6109e6f",
-          "F-Ef6109e6f_cancel",
-          "F-E7243c19b",
-          "F-E7243c19b_cancel",
-          "F-Ecfe0cee5",
-          "F-Ecfe0cee5_cancel",
-          "F-E21b6c7b6",
-          "F-E21b6c7b6_cancel",
-          "F-Eb6aca67f"
-        ]
-      },
-      {
-        "pattern": "fake_surge",
-        "user_id": "U000774",
-        "timestamp": "2025-01-03T08:00:00",
-        "event_ids": [
-          "F-Ebea53f33",
-          "F-Ebea53f33_cancel",
-          "F-Ea8c9613a",
-          "F-Ea8c9613a_cancel",
-          "F-Ec50456fd",
-          "F-Ec50456fd_cancel",
-          "F-E63402077",
-          "F-E63402077_cancel",
-          "F-E841d3a16"
-        ]
-      },
-      {
-        "pattern": "fake_surge",
-        "user_id": "U000774",
+        "user_id": "U000114",
         "timestamp": "2025-01-01T16:00:00",
         "event_ids": [
-          "F-Ea23949be",
-          "F-Ea23949be_cancel",
-          "F-E557c62d2",
-          "F-E557c62d2_cancel",
-          "F-E984f803c"
+          "F-Ecbc05e14",
+          "F-Ecbc05e14_cancel",
+          "F-Ed938fe75",
+          "F-Ed938fe75_cancel",
+          "F-E01c75358"
         ]
       },
       {
         "pattern": "fake_surge",
-        "user_id": "U000774",
-        "timestamp": "2025-01-04T12:00:00",
+        "user_id": "U000114",
+        "timestamp": "2025-01-02T09:00:00",
         "event_ids": [
-          "F-E239d4342",
-          "F-E239d4342_cancel",
-          "F-E7524a263",
-          "F-E7524a263_cancel",
-          "F-E268fca69",
-          "F-E268fca69_cancel",
-          "F-Ef6dc2526"
+          "F-E240fdf65",
+          "F-E240fdf65_cancel",
+          "F-Ef6eee45a",
+          "F-Ef6eee45a_cancel",
+          "F-Ed4cbc766"
         ]
       },
       {
         "pattern": "fake_surge",
-        "user_id": "U000774",
-        "timestamp": "2025-01-03T22:00:00",
-        "event_ids": [
-          "F-E8aca089e",
-          "F-E8aca089e_cancel",
-          "F-E4b6decd6",
-          "F-E4b6decd6_cancel",
-          "F-Eaa8761b7",
-          "F-Eaa8761b7_cancel",
-          "F-E0b7c18d6"
-        ]
-      },
-      {
-        "pattern": "fake_surge",
-        "user_id": "U000774",
-        "timestamp": "2025-01-04T19:00:00",
-        "event_ids": [
-          "F-E8fcf33f5",
-          "F-E8fcf33f5_cancel",
-          "F-Eec951af3",
-          "F-Eec951af3_cancel",
-          "F-E8f848c3a",
-          "F-E8f848c3a_cancel",
-          "F-E0ac4b262"
-        ]
-      },
-      {
-        "pattern": "fake_surge",
-        "user_id": "U000774",
-        "timestamp": "2025-01-03T08:00:00",
-        "event_ids": [
-          "F-E9b50107e",
-          "F-E9b50107e_cancel",
-          "F-Eb8f72fc0",
-          "F-Eb8f72fc0_cancel",
-          "F-E2aa02547"
-        ]
-      },
-      {
-        "pattern": "fake_surge",
-        "user_id": "U000774",
-        "timestamp": "2025-01-03T10:00:00",
-        "event_ids": [
-          "F-E266102b3",
-          "F-E266102b3_cancel",
-          "F-E7c6fec04",
-          "F-E7c6fec04_cancel",
-          "F-Eeaa80ae9",
-          "F-Eeaa80ae9_cancel",
-          "F-Edb795fe0",
-          "F-Edb795fe0_cancel",
-          "F-Ece5ea6f4"
-        ]
-      },
-      {
-        "pattern": "fake_surge",
-        "user_id": "U000774",
-        "timestamp": "2025-01-04T21:00:00",
-        "event_ids": [
-          "F-E5a8a3a05",
-          "F-E5a8a3a05_cancel",
-          "F-Ee10414f3",
-          "F-Ee10414f3_cancel",
-          "F-Ee7288eba",
-          "F-Ee7288eba_cancel",
-          "F-E482da5be",
-          "F-E482da5be_cancel",
-          "F-Ecd6848a0"
-        ]
-      },
-      {
-        "pattern": "fake_surge",
-        "user_id": "U000774",
-        "timestamp": "2025-01-01T20:00:00",
-        "event_ids": [
-          "F-E6150763c",
-          "F-E6150763c_cancel",
-          "F-Ee7561512",
-          "F-Ee7561512_cancel",
-          "F-Eca5c646f",
-          "F-Eca5c646f_cancel",
-          "F-E10c1d95f",
-          "F-E10c1d95f_cancel",
-          "F-Ea819a921"
-        ]
-      },
-      {
-        "pattern": "fake_surge",
-        "user_id": "U000774",
+        "user_id": "U000114",
         "timestamp": "2025-01-01T09:00:00",
         "event_ids": [
-          "F-E62513294",
-          "F-E62513294_cancel",
-          "F-E430b87d4",
-          "F-E430b87d4_cancel",
-          "F-E84984cd1",
-          "F-E84984cd1_cancel",
-          "F-E5d0574c3"
+          "F-E36fa1391",
+          "F-E36fa1391_cancel",
+          "F-Efa77a0dc",
+          "F-Efa77a0dc_cancel",
+          "F-E981467b0",
+          "F-E981467b0_cancel",
+          "F-E6d6bacb2",
+          "F-E6d6bacb2_cancel",
+          "F-E3dffcd44"
         ]
       },
       {
         "pattern": "fake_surge",
-        "user_id": "U000774",
-        "timestamp": "2025-01-02T22:00:00",
+        "user_id": "U000114",
+        "timestamp": "2025-01-01T21:00:00",
         "event_ids": [
-          "F-Ed2f0c960",
-          "F-Ed2f0c960_cancel",
-          "F-Ed998b875",
-          "F-Ed998b875_cancel",
-          "F-E68f745d2",
-          "F-E68f745d2_cancel",
-          "F-Ea5f7cad5",
-          "F-Ea5f7cad5_cancel",
-          "F-E0e3f755d"
+          "F-E2cbd0ae3",
+          "F-E2cbd0ae3_cancel",
+          "F-E175944f7",
+          "F-E175944f7_cancel",
+          "F-Ed0a713d5",
+          "F-Ed0a713d5_cancel",
+          "F-Eed84d4c0",
+          "F-Eed84d4c0_cancel",
+          "F-Eb05769f7"
         ]
       },
       {
         "pattern": "fake_surge",
-        "user_id": "U000774",
-        "timestamp": "2025-01-04T10:00:00",
+        "user_id": "U000114",
+        "timestamp": "2025-01-02T13:00:00",
         "event_ids": [
-          "F-E69284243",
-          "F-E69284243_cancel",
-          "F-E24ec3e99",
-          "F-E24ec3e99_cancel",
-          "F-E26cb3596"
+          "F-E855349f7",
+          "F-E855349f7_cancel",
+          "F-E21704b57",
+          "F-E21704b57_cancel",
+          "F-E8917e363",
+          "F-E8917e363_cancel",
+          "F-E05781698",
+          "F-E05781698_cancel",
+          "F-E3372c6ec"
         ]
       },
       {
         "pattern": "fake_surge",
-        "user_id": "U000774",
+        "user_id": "U000114",
+        "timestamp": "2025-01-01T18:00:00",
+        "event_ids": [
+          "F-E898bed66",
+          "F-E898bed66_cancel",
+          "F-Eb612a11c",
+          "F-Eb612a11c_cancel",
+          "F-E63c613d0",
+          "F-E63c613d0_cancel",
+          "F-E5cd3c61c",
+          "F-E5cd3c61c_cancel",
+          "F-E0c32f61b"
+        ]
+      },
+      {
+        "pattern": "fake_surge",
+        "user_id": "U000114",
+        "timestamp": "2025-01-01T11:00:00",
+        "event_ids": [
+          "F-E64c682ec",
+          "F-E64c682ec_cancel",
+          "F-E69a86524",
+          "F-E69a86524_cancel",
+          "F-E0ea118dd",
+          "F-E0ea118dd_cancel",
+          "F-E6bf7b0d7",
+          "F-E6bf7b0d7_cancel",
+          "F-E76f43252"
+        ]
+      },
+      {
+        "pattern": "fake_surge",
+        "user_id": "U000114",
         "timestamp": "2025-01-01T22:00:00",
         "event_ids": [
-          "F-E5c265d08",
-          "F-E5c265d08_cancel",
-          "F-E3cd58d18",
-          "F-E3cd58d18_cancel",
-          "F-E0a0d4352",
-          "F-E0a0d4352_cancel",
-          "F-E80a574ad",
-          "F-E80a574ad_cancel",
-          "F-Ef23b4c67"
+          "F-E84439ada",
+          "F-E84439ada_cancel",
+          "F-Ed593f769",
+          "F-Ed593f769_cancel",
+          "F-Ef105728f"
         ]
       },
       {
         "pattern": "fake_surge",
-        "user_id": "U000774",
-        "timestamp": "2025-01-03T13:00:00",
-        "event_ids": [
-          "F-E283d4ccd",
-          "F-E283d4ccd_cancel",
-          "F-E059d2ec4",
-          "F-E059d2ec4_cancel",
-          "F-E37c30324"
-        ]
-      },
-      {
-        "pattern": "fake_surge",
-        "user_id": "U000774",
-        "timestamp": "2025-01-01T20:00:00",
-        "event_ids": [
-          "F-E15b79bf9",
-          "F-E15b79bf9_cancel",
-          "F-E29b5f8be",
-          "F-E29b5f8be_cancel",
-          "F-E24cd3090",
-          "F-E24cd3090_cancel",
-          "F-Eebb1de3d"
-        ]
-      },
-      {
-        "pattern": "rating_manipulation",
-        "user_id": "U000774",
-        "timestamp": "2025-01-02T22:00:00",
-        "event_ids": [
-          "F-E6921029d_1",
-          "F-E6921029d_2",
-          "F-E6921029d_3",
-          "F-E6921029d_4"
-        ]
-      },
-      {
-        "pattern": "rating_manipulation",
-        "user_id": "U000774",
-        "timestamp": "2025-01-02T17:00:00",
-        "event_ids": [
-          "F-E59cd4ac3_1",
-          "F-E59cd4ac3_2",
-          "F-E59cd4ac3_3",
-          "F-E59cd4ac3_4"
-        ]
-      },
-      {
-        "pattern": "rating_manipulation",
-        "user_id": "U000774",
-        "timestamp": "2025-01-02T10:00:00",
-        "event_ids": [
-          "F-E8081c5cd_1",
-          "F-E8081c5cd_2",
-          "F-E8081c5cd_3",
-          "F-E8081c5cd_4"
-        ]
-      },
-      {
-        "pattern": "rating_manipulation",
-        "user_id": "U000774",
+        "user_id": "U000114",
         "timestamp": "2025-01-02T20:00:00",
         "event_ids": [
-          "F-E160b07bb_1",
-          "F-E160b07bb_2",
-          "F-E160b07bb_3",
-          "F-E160b07bb_4"
+          "F-Ec06ee9a1",
+          "F-Ec06ee9a1_cancel",
+          "F-E6ee8f990",
+          "F-E6ee8f990_cancel",
+          "F-E5968afe2",
+          "F-E5968afe2_cancel",
+          "F-E18555d0c",
+          "F-E18555d0c_cancel",
+          "F-Ec00f80b1"
         ]
       },
       {
-        "pattern": "rating_manipulation",
-        "user_id": "U000774",
-        "timestamp": "2025-01-03T21:00:00",
-        "event_ids": [
-          "F-E6ccee8fe_1",
-          "F-E6ccee8fe_2",
-          "F-E6ccee8fe_3",
-          "F-E6ccee8fe_4"
-        ]
-      },
-      {
-        "pattern": "rating_manipulation",
-        "user_id": "U000774",
-        "timestamp": "2025-01-03T22:00:00",
-        "event_ids": [
-          "F-E869447a1_1",
-          "F-E869447a1_2",
-          "F-E869447a1_3",
-          "F-E869447a1_4"
-        ]
-      },
-      {
-        "pattern": "circular_rides",
-        "user_id": "U000734",
-        "timestamp": "2025-01-02T22:00:00",
-        "event_ids": [
-          "F-E52f8c9ef_1",
-          "F-E52f8c9ef_2",
-          "F-E52f8c9ef_3",
-          "F-E52f8c9ef_4"
-        ]
-      },
-      {
-        "pattern": "circular_rides",
-        "user_id": "U000734",
-        "timestamp": "2025-01-03T11:00:00",
-        "event_ids": [
-          "F-Eb80c6ddc_1",
-          "F-Eb80c6ddc_2",
-          "F-Eb80c6ddc_3",
-          "F-Eb80c6ddc_4"
-        ]
-      },
-      {
-        "pattern": "circular_rides",
-        "user_id": "U000734",
-        "timestamp": "2025-01-03T15:00:00",
-        "event_ids": [
-          "F-E20f223f0_1",
-          "F-E20f223f0_2",
-          "F-E20f223f0_3",
-          "F-E20f223f0_4"
-        ]
-      },
-      {
-        "pattern": "circular_rides",
-        "user_id": "U000734",
+        "pattern": "fake_surge",
+        "user_id": "U000114",
         "timestamp": "2025-01-01T10:00:00",
         "event_ids": [
-          "F-Ec81e5cdc_1",
-          "F-Ec81e5cdc_2",
-          "F-Ec81e5cdc_3",
-          "F-Ec81e5cdc_4"
+          "F-E1ad873e6",
+          "F-E1ad873e6_cancel",
+          "F-E344a1268",
+          "F-E344a1268_cancel",
+          "F-E898f2ea8",
+          "F-E898f2ea8_cancel",
+          "F-E2ae5b3fd",
+          "F-E2ae5b3fd_cancel",
+          "F-Ed355d9b2"
+        ]
+      },
+      {
+        "pattern": "fake_surge",
+        "user_id": "U000114",
+        "timestamp": "2025-01-02T13:00:00",
+        "event_ids": [
+          "F-E14fbde1c",
+          "F-E14fbde1c_cancel",
+          "F-E9926a92e",
+          "F-E9926a92e_cancel",
+          "F-E942890b8"
+        ]
+      },
+      {
+        "pattern": "fake_surge",
+        "user_id": "U000114",
+        "timestamp": "2025-01-01T10:00:00",
+        "event_ids": [
+          "F-Ec59bb8fd",
+          "F-Ec59bb8fd_cancel",
+          "F-E3c9d3cdf",
+          "F-E3c9d3cdf_cancel",
+          "F-Ec1bc00d9",
+          "F-Ec1bc00d9_cancel",
+          "F-E0a16f2a4"
+        ]
+      },
+      {
+        "pattern": "fake_surge",
+        "user_id": "U000114",
+        "timestamp": "2025-01-01T13:00:00",
+        "event_ids": [
+          "F-E18785817",
+          "F-E18785817_cancel",
+          "F-E5d95ec39",
+          "F-E5d95ec39_cancel",
+          "F-E34a0f17b",
+          "F-E34a0f17b_cancel",
+          "F-E0f3a2e94"
+        ]
+      },
+      {
+        "pattern": "fake_surge",
+        "user_id": "U000114",
+        "timestamp": "2025-01-02T10:00:00",
+        "event_ids": [
+          "F-Ea4f65b33",
+          "F-Ea4f65b33_cancel",
+          "F-Ee1697d4e",
+          "F-Ee1697d4e_cancel",
+          "F-E98b962de",
+          "F-E98b962de_cancel",
+          "F-E1c1a83e3"
         ]
       },
       {
         "pattern": "circular_rides",
-        "user_id": "U000734",
+        "user_id": "U000114",
+        "timestamp": "2025-01-02T22:00:00",
+        "event_ids": [
+          "F-Ead560bef_1",
+          "F-Ead560bef_2",
+          "F-Ead560bef_3",
+          "F-Ead560bef_4"
+        ]
+      },
+      {
+        "pattern": "circular_rides",
+        "user_id": "U000114",
+        "timestamp": "2025-01-01T21:00:00",
+        "event_ids": [
+          "F-E33f02270_1",
+          "F-E33f02270_2",
+          "F-E33f02270_3",
+          "F-E33f02270_4"
+        ]
+      },
+      {
+        "pattern": "circular_rides",
+        "user_id": "U000114",
+        "timestamp": "2025-01-01T17:00:00",
+        "event_ids": [
+          "F-Ed4c1cf52_1",
+          "F-Ed4c1cf52_2",
+          "F-Ed4c1cf52_3",
+          "F-Ed4c1cf52_4"
+        ]
+      },
+      {
+        "pattern": "circular_rides",
+        "user_id": "U000114",
+        "timestamp": "2025-01-01T19:00:00",
+        "event_ids": [
+          "F-Ed081aa39_1",
+          "F-Ed081aa39_2",
+          "F-Ed081aa39_3",
+          "F-Ed081aa39_4"
+        ]
+      },
+      {
+        "pattern": "circular_rides",
+        "user_id": "U000114",
+        "timestamp": "2025-01-02T10:00:00",
+        "event_ids": [
+          "F-Eeb530145_1",
+          "F-Eeb530145_2",
+          "F-Eeb530145_3",
+          "F-Eeb530145_4"
+        ]
+      },
+      {
+        "pattern": "circular_rides",
+        "user_id": "U000114",
+        "timestamp": "2025-01-02T16:00:00",
+        "event_ids": [
+          "F-Edc889887_1",
+          "F-Edc889887_2",
+          "F-Edc889887_3",
+          "F-Edc889887_4"
+        ]
+      },
+      {
+        "pattern": "circular_rides",
+        "user_id": "U000114",
+        "timestamp": "2025-01-01T17:00:00",
+        "event_ids": [
+          "F-Efc2b8ff3_1",
+          "F-Efc2b8ff3_2",
+          "F-Efc2b8ff3_3",
+          "F-Efc2b8ff3_4"
+        ]
+      },
+      {
+        "pattern": "impossible_trips",
+        "user_id": "U000148",
+        "timestamp": "2025-01-02T08:00:00",
+        "event_ids": [
+          "F-Ef7201a8e_1",
+          "F-Ef7201a8e_2",
+          "F-E6f85fed9_1",
+          "F-E6f85fed9_2"
+        ]
+      },
+      {
+        "pattern": "impossible_trips",
+        "user_id": "U000148",
+        "timestamp": "2025-01-02T20:00:00",
+        "event_ids": [
+          "F-Ea63a8c78_1",
+          "F-Ea63a8c78_2",
+          "F-E318b4926_1",
+          "F-E318b4926_2"
+        ]
+      },
+      {
+        "pattern": "impossible_trips",
+        "user_id": "U000148",
+        "timestamp": "2025-01-01T13:00:00",
+        "event_ids": [
+          "F-E200dbabe_1",
+          "F-E200dbabe_2",
+          "F-E4916a1f5_1",
+          "F-E4916a1f5_2"
+        ]
+      },
+      {
+        "pattern": "rating_manipulation",
+        "user_id": "U000068",
+        "timestamp": "2025-01-02T09:00:00",
+        "event_ids": [
+          "F-Ea17a1e3d_1",
+          "F-Ea17a1e3d_2",
+          "F-Ea17a1e3d_3",
+          "F-Ea17a1e3d_4"
+        ]
+      },
+      {
+        "pattern": "rating_manipulation",
+        "user_id": "U000068",
+        "timestamp": "2025-01-02T17:00:00",
+        "event_ids": [
+          "F-E8f218c66_1",
+          "F-E8f218c66_2",
+          "F-E8f218c66_3",
+          "F-E8f218c66_4"
+        ]
+      },
+      {
+        "pattern": "rating_manipulation",
+        "user_id": "U000068",
+        "timestamp": "2025-01-02T14:00:00",
+        "event_ids": [
+          "F-E8b1d7e28_1",
+          "F-E8b1d7e28_2",
+          "F-E8b1d7e28_3",
+          "F-E8b1d7e28_4"
+        ]
+      },
+      {
+        "pattern": "rating_manipulation",
+        "user_id": "U000068",
+        "timestamp": "2025-01-02T14:00:00",
+        "event_ids": [
+          "F-E17040687_1",
+          "F-E17040687_2",
+          "F-E17040687_3",
+          "F-E17040687_4"
+        ]
+      },
+      {
+        "pattern": "rating_manipulation",
+        "user_id": "U000068",
+        "timestamp": "2025-01-02T13:00:00",
+        "event_ids": [
+          "F-Efe5585ae_1",
+          "F-Efe5585ae_2",
+          "F-Efe5585ae_3",
+          "F-Efe5585ae_4"
+        ]
+      },
+      {
+        "pattern": "rating_manipulation",
+        "user_id": "U000068",
+        "timestamp": "2025-01-02T11:00:00",
+        "event_ids": [
+          "F-E6a2d12ba_1",
+          "F-E6a2d12ba_2",
+          "F-E6a2d12ba_3",
+          "F-E6a2d12ba_4"
+        ]
+      },
+      {
+        "pattern": "rating_manipulation",
+        "user_id": "U000068",
+        "timestamp": "2025-01-02T22:00:00",
+        "event_ids": [
+          "F-E21e9e8a3_1",
+          "F-E21e9e8a3_2",
+          "F-E21e9e8a3_3",
+          "F-E21e9e8a3_4"
+        ]
+      },
+      {
+        "pattern": "rating_manipulation",
+        "user_id": "U000068",
+        "timestamp": "2025-01-01T09:00:00",
+        "event_ids": [
+          "F-E7eadd324_1",
+          "F-E7eadd324_2",
+          "F-E7eadd324_3",
+          "F-E7eadd324_4"
+        ]
+      },
+      {
+        "pattern": "rating_manipulation",
+        "user_id": "U000068",
+        "timestamp": "2025-01-01T09:00:00",
+        "event_ids": [
+          "F-Ee0505b0d_1",
+          "F-Ee0505b0d_2",
+          "F-Ee0505b0d_3",
+          "F-Ee0505b0d_4"
+        ]
+      },
+      {
+        "pattern": "rating_manipulation",
+        "user_id": "U000068",
+        "timestamp": "2025-01-02T19:00:00",
+        "event_ids": [
+          "F-E9d6fb1c0_1",
+          "F-E9d6fb1c0_2",
+          "F-E9d6fb1c0_3",
+          "F-E9d6fb1c0_4"
+        ]
+      },
+      {
+        "pattern": "rating_manipulation",
+        "user_id": "U000068",
+        "timestamp": "2025-01-02T12:00:00",
+        "event_ids": [
+          "F-E05f7f7fc_1",
+          "F-E05f7f7fc_2",
+          "F-E05f7f7fc_3",
+          "F-E05f7f7fc_4"
+        ]
+      },
+      {
+        "pattern": "rating_manipulation",
+        "user_id": "U000068",
+        "timestamp": "2025-01-01T11:00:00",
+        "event_ids": [
+          "F-E968b217f_1",
+          "F-E968b217f_2",
+          "F-E968b217f_3",
+          "F-E968b217f_4"
+        ]
+      },
+      {
+        "pattern": "rating_manipulation",
+        "user_id": "U000068",
+        "timestamp": "2025-01-01T18:00:00",
+        "event_ids": [
+          "F-Ece1b159c_1",
+          "F-Ece1b159c_2",
+          "F-Ece1b159c_3",
+          "F-Ece1b159c_4"
+        ]
+      },
+      {
+        "pattern": "rating_manipulation",
+        "user_id": "U000068",
+        "timestamp": "2025-01-01T11:00:00",
+        "event_ids": [
+          "F-E02aa3204_1",
+          "F-E02aa3204_2",
+          "F-E02aa3204_3",
+          "F-E02aa3204_4"
+        ]
+      },
+      {
+        "pattern": "rating_manipulation",
+        "user_id": "U000068",
         "timestamp": "2025-01-01T22:00:00",
         "event_ids": [
-          "F-Ee5090965_1",
-          "F-Ee5090965_2",
-          "F-Ee5090965_3",
-          "F-Ee5090965_4"
+          "F-E19a030ec_1",
+          "F-E19a030ec_2",
+          "F-E19a030ec_3",
+          "F-E19a030ec_4"
+        ]
+      },
+      {
+        "pattern": "rating_manipulation",
+        "user_id": "U000068",
+        "timestamp": "2025-01-01T17:00:00",
+        "event_ids": [
+          "F-Eec1ee116_1",
+          "F-Eec1ee116_2",
+          "F-Eec1ee116_3",
+          "F-Eec1ee116_4"
+        ]
+      },
+      {
+        "pattern": "rating_manipulation",
+        "user_id": "U000068",
+        "timestamp": "2025-01-02T13:00:00",
+        "event_ids": [
+          "F-Ea1868220_1",
+          "F-Ea1868220_2",
+          "F-Ea1868220_3",
+          "F-Ea1868220_4"
+        ]
+      },
+      {
+        "pattern": "fake_surge",
+        "user_id": "U000068",
+        "timestamp": "2025-01-02T19:00:00",
+        "event_ids": [
+          "F-Ee5cc3799",
+          "F-Ee5cc3799_cancel",
+          "F-E4e58b0c0",
+          "F-E4e58b0c0_cancel",
+          "F-E3865f529",
+          "F-E3865f529_cancel",
+          "F-E38f0729a",
+          "F-E38f0729a_cancel",
+          "F-E1a2d99d1"
+        ]
+      },
+      {
+        "pattern": "fake_surge",
+        "user_id": "U000068",
+        "timestamp": "2025-01-02T15:00:00",
+        "event_ids": [
+          "F-Ec2275a8c",
+          "F-Ec2275a8c_cancel",
+          "F-E6ce277c8",
+          "F-E6ce277c8_cancel",
+          "F-E8e94d879",
+          "F-E8e94d879_cancel",
+          "F-Ed13febf7",
+          "F-Ed13febf7_cancel",
+          "F-E7d0382fe"
+        ]
+      },
+      {
+        "pattern": "fake_surge",
+        "user_id": "U000068",
+        "timestamp": "2025-01-02T14:00:00",
+        "event_ids": [
+          "F-E3e00377d",
+          "F-E3e00377d_cancel",
+          "F-Ec58e78a1",
+          "F-Ec58e78a1_cancel",
+          "F-E62491f32",
+          "F-E62491f32_cancel",
+          "F-E9aa7da13"
+        ]
+      },
+      {
+        "pattern": "fake_surge",
+        "user_id": "U000068",
+        "timestamp": "2025-01-01T18:00:00",
+        "event_ids": [
+          "F-E62d56656",
+          "F-E62d56656_cancel",
+          "F-E57d1730d",
+          "F-E57d1730d_cancel",
+          "F-E8c2ae647",
+          "F-E8c2ae647_cancel",
+          "F-Ec0377973"
+        ]
+      },
+      {
+        "pattern": "fake_surge",
+        "user_id": "U000068",
+        "timestamp": "2025-01-02T11:00:00",
+        "event_ids": [
+          "F-E1fcb4dee",
+          "F-E1fcb4dee_cancel",
+          "F-E3a293d6f",
+          "F-E3a293d6f_cancel",
+          "F-E38f0e052",
+          "F-E38f0e052_cancel",
+          "F-E6fa57f8d"
+        ]
+      },
+      {
+        "pattern": "fake_surge",
+        "user_id": "U000068",
+        "timestamp": "2025-01-01T17:00:00",
+        "event_ids": [
+          "F-E3f564270",
+          "F-E3f564270_cancel",
+          "F-E67d88b5e",
+          "F-E67d88b5e_cancel",
+          "F-E7056b0eb"
+        ]
+      },
+      {
+        "pattern": "fake_surge",
+        "user_id": "U000068",
+        "timestamp": "2025-01-02T17:00:00",
+        "event_ids": [
+          "F-E6a8c1f1d",
+          "F-E6a8c1f1d_cancel",
+          "F-Ecac40a19",
+          "F-Ecac40a19_cancel",
+          "F-E7f7f4402"
+        ]
+      },
+      {
+        "pattern": "fake_surge",
+        "user_id": "U000068",
+        "timestamp": "2025-01-01T19:00:00",
+        "event_ids": [
+          "F-E950a322f",
+          "F-E950a322f_cancel",
+          "F-Ef26e3f04",
+          "F-Ef26e3f04_cancel",
+          "F-E921072fa",
+          "F-E921072fa_cancel",
+          "F-E52870d63"
+        ]
+      },
+      {
+        "pattern": "fake_surge",
+        "user_id": "U000068",
+        "timestamp": "2025-01-02T21:00:00",
+        "event_ids": [
+          "F-E994f40a6",
+          "F-E994f40a6_cancel",
+          "F-E0aab9e2d",
+          "F-E0aab9e2d_cancel",
+          "F-E33d5c4f0",
+          "F-E33d5c4f0_cancel",
+          "F-E507a4f3b",
+          "F-E507a4f3b_cancel",
+          "F-E0e80da63"
+        ]
+      },
+      {
+        "pattern": "fake_surge",
+        "user_id": "U000068",
+        "timestamp": "2025-01-01T15:00:00",
+        "event_ids": [
+          "F-E7b6ed92c",
+          "F-E7b6ed92c_cancel",
+          "F-E3bd27bbc",
+          "F-E3bd27bbc_cancel",
+          "F-E1651f212"
+        ]
+      },
+      {
+        "pattern": "fake_surge",
+        "user_id": "U000068",
+        "timestamp": "2025-01-01T14:00:00",
+        "event_ids": [
+          "F-E884bd19e",
+          "F-E884bd19e_cancel",
+          "F-E8a5277cc",
+          "F-E8a5277cc_cancel",
+          "F-Edef8470a",
+          "F-Edef8470a_cancel",
+          "F-Ed4ae75bc"
+        ]
+      },
+      {
+        "pattern": "fake_surge",
+        "user_id": "U000068",
+        "timestamp": "2025-01-02T16:00:00",
+        "event_ids": [
+          "F-E2fa42f2a",
+          "F-E2fa42f2a_cancel",
+          "F-Ea0be0f10",
+          "F-Ea0be0f10_cancel",
+          "F-E69426b02"
+        ]
+      },
+      {
+        "pattern": "fake_surge",
+        "user_id": "U000068",
+        "timestamp": "2025-01-01T16:00:00",
+        "event_ids": [
+          "F-Ec12f66c0",
+          "F-Ec12f66c0_cancel",
+          "F-E6bdbb0c1",
+          "F-E6bdbb0c1_cancel",
+          "F-Efd37f879",
+          "F-Efd37f879_cancel",
+          "F-Ea518e7ec",
+          "F-Ea518e7ec_cancel",
+          "F-Ebaccee31"
+        ]
+      },
+      {
+        "pattern": "fake_surge",
+        "user_id": "U000068",
+        "timestamp": "2025-01-01T10:00:00",
+        "event_ids": [
+          "F-E08e16cad",
+          "F-E08e16cad_cancel",
+          "F-E10706113",
+          "F-E10706113_cancel",
+          "F-Eec8a970b",
+          "F-Eec8a970b_cancel",
+          "F-Eb815429d",
+          "F-Eb815429d_cancel",
+          "F-Eefc4be6f"
+        ]
+      },
+      {
+        "pattern": "fake_surge",
+        "user_id": "U000068",
+        "timestamp": "2025-01-01T22:00:00",
+        "event_ids": [
+          "F-Ed49a8221",
+          "F-Ed49a8221_cancel",
+          "F-E15157396",
+          "F-E15157396_cancel",
+          "F-Ea49fe1f1",
+          "F-Ea49fe1f1_cancel",
+          "F-Ec00b090e",
+          "F-Ec00b090e_cancel",
+          "F-Ec4eba781"
+        ]
+      },
+      {
+        "pattern": "fake_surge",
+        "user_id": "U000068",
+        "timestamp": "2025-01-02T12:00:00",
+        "event_ids": [
+          "F-Ed9912093",
+          "F-Ed9912093_cancel",
+          "F-Ec99eefbb",
+          "F-Ec99eefbb_cancel",
+          "F-Ef6883a5b",
+          "F-Ef6883a5b_cancel",
+          "F-Ecea0b048",
+          "F-Ecea0b048_cancel",
+          "F-E9270ea52"
+        ]
+      },
+      {
+        "pattern": "fake_surge",
+        "user_id": "U000068",
+        "timestamp": "2025-01-02T08:00:00",
+        "event_ids": [
+          "F-E401777a1",
+          "F-E401777a1_cancel",
+          "F-Ec5bc340a",
+          "F-Ec5bc340a_cancel",
+          "F-E76d827aa",
+          "F-E76d827aa_cancel",
+          "F-Ef2c23a9d",
+          "F-Ef2c23a9d_cancel",
+          "F-Ea6fe1ea1"
+        ]
+      },
+      {
+        "pattern": "fake_surge",
+        "user_id": "U000068",
+        "timestamp": "2025-01-01T16:00:00",
+        "event_ids": [
+          "F-Ec9ed7642",
+          "F-Ec9ed7642_cancel",
+          "F-E85f842f2",
+          "F-E85f842f2_cancel",
+          "F-E3f857b1b"
+        ]
+      },
+      {
+        "pattern": "fake_surge",
+        "user_id": "U000068",
+        "timestamp": "2025-01-02T12:00:00",
+        "event_ids": [
+          "F-Eb007ae52",
+          "F-Eb007ae52_cancel",
+          "F-Ec469ebcb",
+          "F-Ec469ebcb_cancel",
+          "F-E3615b0d2",
+          "F-E3615b0d2_cancel",
+          "F-Eceda260a"
+        ]
+      },
+      {
+        "pattern": "fake_surge",
+        "user_id": "U000068",
+        "timestamp": "2025-01-01T11:00:00",
+        "event_ids": [
+          "F-E3690b335",
+          "F-E3690b335_cancel",
+          "F-E95c885c2",
+          "F-E95c885c2_cancel",
+          "F-Ef84bf5fa",
+          "F-Ef84bf5fa_cancel",
+          "F-E342297f7"
+        ]
+      },
+      {
+        "pattern": "fake_surge",
+        "user_id": "U000068",
+        "timestamp": "2025-01-01T16:00:00",
+        "event_ids": [
+          "F-E7eec1cb5",
+          "F-E7eec1cb5_cancel",
+          "F-E62442f40",
+          "F-E62442f40_cancel",
+          "F-E80458284",
+          "F-E80458284_cancel",
+          "F-E2c48be86"
+        ]
+      },
+      {
+        "pattern": "fake_surge",
+        "user_id": "U000068",
+        "timestamp": "2025-01-02T19:00:00",
+        "event_ids": [
+          "F-Ef976c0d9",
+          "F-Ef976c0d9_cancel",
+          "F-E8bc99a95",
+          "F-E8bc99a95_cancel",
+          "F-E62c30547",
+          "F-E62c30547_cancel",
+          "F-Efbddcc6e"
+        ]
+      },
+      {
+        "pattern": "fake_surge",
+        "user_id": "U000068",
+        "timestamp": "2025-01-02T08:00:00",
+        "event_ids": [
+          "F-E9ca04d04",
+          "F-E9ca04d04_cancel",
+          "F-Ed902a154",
+          "F-Ed902a154_cancel",
+          "F-E0357702f"
+        ]
+      },
+      {
+        "pattern": "fake_surge",
+        "user_id": "U000068",
+        "timestamp": "2025-01-02T10:00:00",
+        "event_ids": [
+          "F-E74eb255f",
+          "F-E74eb255f_cancel",
+          "F-E8d3529cf",
+          "F-E8d3529cf_cancel",
+          "F-Eee56eaa2",
+          "F-Eee56eaa2_cancel",
+          "F-Ea59ac725",
+          "F-Ea59ac725_cancel",
+          "F-E7d90a672"
+        ]
+      },
+      {
+        "pattern": "fake_surge",
+        "user_id": "U000068",
+        "timestamp": "2025-01-02T21:00:00",
+        "event_ids": [
+          "F-E18646913",
+          "F-E18646913_cancel",
+          "F-E8446cf16",
+          "F-E8446cf16_cancel",
+          "F-Ec33a1e89",
+          "F-Ec33a1e89_cancel",
+          "F-Ea819e079",
+          "F-Ea819e079_cancel",
+          "F-Ef3bc8735"
+        ]
+      },
+      {
+        "pattern": "fake_surge",
+        "user_id": "U000068",
+        "timestamp": "2025-01-01T20:00:00",
+        "event_ids": [
+          "F-Ee0cbe012",
+          "F-Ee0cbe012_cancel",
+          "F-E25e4ce9a",
+          "F-E25e4ce9a_cancel",
+          "F-E94c1de97",
+          "F-E94c1de97_cancel",
+          "F-E2868c767",
+          "F-E2868c767_cancel",
+          "F-Eae1690d6"
+        ]
+      },
+      {
+        "pattern": "fake_surge",
+        "user_id": "U000068",
+        "timestamp": "2025-01-01T09:00:00",
+        "event_ids": [
+          "F-Ed70097e7",
+          "F-Ed70097e7_cancel",
+          "F-Ec1d79e59",
+          "F-Ec1d79e59_cancel",
+          "F-E4765a6fa",
+          "F-E4765a6fa_cancel",
+          "F-E90325d63"
+        ]
+      },
+      {
+        "pattern": "fake_surge",
+        "user_id": "U000068",
+        "timestamp": "2025-01-01T22:00:00",
+        "event_ids": [
+          "F-Ee777ea52",
+          "F-Ee777ea52_cancel",
+          "F-E7cace57a",
+          "F-E7cace57a_cancel",
+          "F-E577f1170",
+          "F-E577f1170_cancel",
+          "F-Ead118cd5",
+          "F-Ead118cd5_cancel",
+          "F-Ec0464ed0"
+        ]
+      },
+      {
+        "pattern": "fake_surge",
+        "user_id": "U000068",
+        "timestamp": "2025-01-02T10:00:00",
+        "event_ids": [
+          "F-E8547a279",
+          "F-E8547a279_cancel",
+          "F-Ecba2fd5d",
+          "F-Ecba2fd5d_cancel",
+          "F-E553de775"
+        ]
+      },
+      {
+        "pattern": "fake_surge",
+        "user_id": "U000068",
+        "timestamp": "2025-01-01T22:00:00",
+        "event_ids": [
+          "F-Eb22a01a9",
+          "F-Eb22a01a9_cancel",
+          "F-E09b0c043",
+          "F-E09b0c043_cancel",
+          "F-E920b93a2",
+          "F-E920b93a2_cancel",
+          "F-Ebd653aca",
+          "F-Ebd653aca_cancel",
+          "F-E1dbe24ab"
+        ]
+      },
+      {
+        "pattern": "fake_surge",
+        "user_id": "U000068",
+        "timestamp": "2025-01-02T13:00:00",
+        "event_ids": [
+          "F-E52f0eb46",
+          "F-E52f0eb46_cancel",
+          "F-E8618d0b0",
+          "F-E8618d0b0_cancel",
+          "F-Ed8f2db7b"
+        ]
+      },
+      {
+        "pattern": "fake_surge",
+        "user_id": "U000068",
+        "timestamp": "2025-01-01T20:00:00",
+        "event_ids": [
+          "F-Ef7540126",
+          "F-Ef7540126_cancel",
+          "F-Ed9fe91cd",
+          "F-Ed9fe91cd_cancel",
+          "F-E2c15d9cb",
+          "F-E2c15d9cb_cancel",
+          "F-Eba02c069"
+        ]
+      },
+      {
+        "pattern": "fake_surge",
+        "user_id": "U000068",
+        "timestamp": "2025-01-01T20:00:00",
+        "event_ids": [
+          "F-E0250719e",
+          "F-E0250719e_cancel",
+          "F-E634c14ff",
+          "F-E634c14ff_cancel",
+          "F-E0a8a2adb",
+          "F-E0a8a2adb_cancel",
+          "F-Ec0907c93"
+        ]
+      },
+      {
+        "pattern": "fake_surge",
+        "user_id": "U000068",
+        "timestamp": "2025-01-01T21:00:00",
+        "event_ids": [
+          "F-Eb2f460d7",
+          "F-Eb2f460d7_cancel",
+          "F-E551c4fbc",
+          "F-E551c4fbc_cancel",
+          "F-Ea9ad6c56"
+        ]
+      },
+      {
+        "pattern": "fake_surge",
+        "user_id": "U000068",
+        "timestamp": "2025-01-02T16:00:00",
+        "event_ids": [
+          "F-Edc08bdef",
+          "F-Edc08bdef_cancel",
+          "F-Ee50ae9cf",
+          "F-Ee50ae9cf_cancel",
+          "F-Eda61fdf4",
+          "F-Eda61fdf4_cancel",
+          "F-E80a6822e"
+        ]
+      },
+      {
+        "pattern": "fake_surge",
+        "user_id": "U000068",
+        "timestamp": "2025-01-01T16:00:00",
+        "event_ids": [
+          "F-E9e387177",
+          "F-E9e387177_cancel",
+          "F-E32bc1d4a",
+          "F-E32bc1d4a_cancel",
+          "F-E2f893bef",
+          "F-E2f893bef_cancel",
+          "F-E010e0669"
         ]
       }
     ]
