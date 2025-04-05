@@ -2,6 +2,6 @@ fastavro
 faker
 pandas
 numpy
-kafka-python
+confluent-kafka
 io
 ssl
