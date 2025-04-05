@@ -16,7 +16,7 @@ import argparse
 import random
 import logging
 from datetime import datetime, timedelta
-from kafka import KafkaProducer
+from confluent_kafka import Producer
 import fastavro
 import io
 import ssl
@@ -113,72 +113,48 @@ def parse_arguments():
     
     return parser.parse_args()
 
-'''
-def create_producer():
-    """Initialize Kafka producer for Azure Event Hubs."""
-    ssl_context = ssl.SSLContext(ssl.PROTOCOL_TLSv1_2)
-    ssl_context.check_hostname = False  # Disable hostname check
-    ssl_context.verify_mode = ssl.CERT_NONE  # Disable certificate verification
+def delivery_report(err, msg):
+    if err is not None:
+        print(f"Delivery failed: {err}")
+    else:
+        print(f"Delivered to {msg.topic()} [{msg.partition()}] at offset {msg.offset()}")
 
+def serialize_event(schema, record):
+    '''
     try:
-        producer = KafkaProducer(
-            bootstrap_servers=[BOOTSTRAP_SERVERS],
-            security_protocol="SASL_SSL",
-            sasl_mechanism="PLAIN",
-            sasl_plain_username="$ConnectionString",
-            sasl_plain_password=CONNECTION_STRING,
-            value_serializer=serialize_ride,
-            acks=1,
-            retries=3,
-            client_id="Producer",
-            ssl_context=ssl_context,
-            api_version=(0, 10, 2)
-        )
-        logger.info("Kafka producer initialized for Event Hubs")
-        return producer
-    except Exception as e:
-        logger.error(f"Failed to initialize producer: {e}")
-        raise
-
-def serialize_ride(record):
-    """Serialize a ride event to Avro format."""
-    try:
-        schemaless_bytes_writer = io.BytesIO()
-        fastavro.schemaless_writer(schemaless_bytes_writer, PARSED_RIDE_SCHEMA, record)
-        return schemaless_bytes_writer.getvalue()
+        # Convert the record (a dict) into a JSON string and then encode to bytes
+        return json.dumps(record).encode('utf-8')
     except Exception as e:
         logger.error(f"Serialization error: {e}")
         raise
-'''
-def create_producer(schema, connection_string):
-    """Initialize Kafka producer for Azure Event Hubs with specified schema and connection string."""
-    ssl_context = ssl.SSLContext(ssl.PROTOCOL_TLSv1_2)
-    ssl_context.check_hostname = False
-    ssl_context.verify_mode = ssl.CERT_NONE
+    '''
+    try:
+        with io.BytesIO() as buf:
+            fastavro.schemaless_writer(buf, schema, record)
+            return buf.getvalue()
 
-    def serialize_event(record):
-        try:
-            schemaless_bytes_writer = io.BytesIO()
-            fastavro.schemaless_writer(schemaless_bytes_writer, schema, record)
-            return schemaless_bytes_writer.getvalue()
-        except Exception as e:
-            logger.error(f"Serialization error: {e}")
-            raise
+    except Exception as e:
+        logger.error(f"Serialization error: {e}")
+        raise
+
+def create_producer(connection_string):
+    """Initialize Kafka producer for Azure Event Hubs with specified schema and connection string."""
+    #ssl_context = ssl.SSLContext(ssl.PROTOCOL_TLSv1_2)
+    #ssl_context.check_hostname = False
+    #ssl_context.verify_mode = ssl.CERT_NONE
 
     try:
-        producer = KafkaProducer(
-            bootstrap_servers=[BOOTSTRAP_SERVERS],
-            security_protocol="SASL_SSL",
-            sasl_mechanism="PLAIN",
-            sasl_plain_username="$ConnectionString",
-            sasl_plain_password=connection_string,  
-            value_serializer=serialize_event,
-            acks=1,
-            retries=3,
-            client_id="SpecialEvents",
-            ssl_context=ssl_context,
-            api_version=(0, 10, 2)
-        )
+        conf = {'bootstrap.servers': BOOTSTRAP_SERVERS,
+            'security.protocol':'SASL_SSL',
+            'sasl.mechanisms': 'PLAIN',
+            'sasl.username': '$ConnectionString',
+            'sasl.password': connection_string,  
+            'client.id': 'Events-Producer',
+            #ssl_context=ssl_context,
+            #api_version=(0, 10, 2)}
+        }
+
+        producer = Producer(**conf)
         logger.info("Kafka producer initialized for Event Hubs")
         return producer
     except Exception as e:
@@ -186,7 +162,7 @@ def create_producer(schema, connection_string):
         raise
 
 
-def generate_simulation_data(args, producer=None, ride_producer=None):
+def generate_simulation_data(args, special_producer=None, ride_producer=None):
     """
     Generate all data for the ride-hailing simulation.
     
@@ -343,8 +319,11 @@ def generate_simulation_data(args, producer=None, ride_producer=None):
                 name=f"Concert Event {i+1}"
             )
             
-            if args.stream_to_eventhubs and producer:
-                producer.send(SPECIAL_EVENT_HUB, value=concert_event)
+            if args.stream_to_eventhubs and special_producer:
+                avro_bytes = serialize_event(PARSED_SPECIAL_SCHEMA, concert_event)
+                special_producer.produce(topic=SPECIAL_EVENT_HUB, value=avro_bytes, callback=delivery_report)
+                special_producer.poll(0)
+                special_producer.flush()
             logger.info(f"Added concert event on {event_date} at {city_map.zones[venue_zone]['name']}")
             
         
@@ -370,8 +349,11 @@ def generate_simulation_data(args, producer=None, ride_producer=None):
                 venue_zone=venue_zone,
                 attendees=attendees
             )
-            if args.stream_to_eventhubs and producer:
-                producer.send(SPECIAL_EVENT_HUB, value=sports_event)
+            if args.stream_to_eventhubs and special_producer:
+                avro_bytes = serialize_event(PARSED_SPECIAL_SCHEMA, sports_event)
+                special_producer.produce(topic=SPECIAL_EVENT_HUB, value=avro_bytes, callback=delivery_report)
+                special_producer.poll(0)
+                special_producer.flush()
             
             logger.info(f"Added sports event on {event_date} at {city_map.zones[venue_zone]['name']}")
         
@@ -445,9 +427,10 @@ def generate_simulation_data(args, producer=None, ride_producer=None):
 
     if args.stream_to_eventhubs and ride_producer:
         event_count = 0
-        for event in ride_simulator.generate_rides(start_date, end_date):
+        for event in ride_simulator.generate_rides(start_date, end_date): #[:200]
             time.sleep(0.01) # Increase this if Azure complains
-            ride_producer.send(RIDE_EVENT_HUB_NAME, value=event)
+            avro_bytes = serialize_event(PARSED_RIDE_SCHEMA, event)
+            ride_producer.produce(topic=RIDE_EVENT_HUB_NAME, value=avro_bytes)
             event_count += 1
             if event_count % args.batch_size == 0:
                 time.sleep(2)
@@ -543,11 +526,11 @@ def main():
         if not RIDES_PRIMARY_CONNECTION_STRING or not SPECIAL_PRIMARY_CONNECTION_STRING:
             logger.error("Missing connection strings. Set RIDE_PRIMARY_CONNECTION_STRING and SPECIAL_PRIMARY_CONNECTION_STRING environment variables.")
             return 1
-        ride_producer = create_producer(PARSED_RIDE_SCHEMA, RIDES_PRIMARY_CONNECTION_STRING)
-        special_producer = create_producer(PARSED_SPECIAL_SCHEMA, SPECIAL_PRIMARY_CONNECTION_STRING)
+        ride_producer = create_producer(RIDES_PRIMARY_CONNECTION_STRING)
+        special_producer = create_producer(SPECIAL_PRIMARY_CONNECTION_STRING)
     
     try:
-        output_files = generate_simulation_data(args, producer=special_producer, ride_producer=ride_producer)
+        output_files = generate_simulation_data(args, special_producer=special_producer, ride_producer=ride_producer)
         
         logger.info("Data generation completed successfully")
         logger.info(f"Generated files: {list(output_files['json'].keys()) + list(output_files['avro'].keys())}")
@@ -555,13 +538,6 @@ def main():
     except Exception as e:
         logger.error(f"Error generating data: {str(e)}", exc_info=True)
         return 1
-    finally:
-        if ride_producer:
-            ride_producer.close()
-            logger.info("Ride events Kafka producer closed")
-        if special_producer:
-            special_producer.close()
-            logger.info("Special events Kafka producer closed")
     return 0
 
 if __name__ == "__main__":
