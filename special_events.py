@@ -65,7 +65,7 @@ class SpecialEventsGenerator:
         venue_location = {
             "latitude": self.city_map.zones[venue_zone]["center"][0],
             "longitude": self.city_map.zones[venue_zone]["center"][1],
-            "address": f"{random.randint(100, 999)} {venue_zone.title()} Avenue",
+            "address": f"{random.randint(100, 999)} {venue_zone.title()} Calle",
             "city": self.city_map.city_name
         }
         
@@ -76,7 +76,7 @@ class SpecialEventsGenerator:
         # Calculate demand pattern
         # Pre-event arrivals gradually increase
         arrivals_start = event_start - timedelta(hours=pre_event_hours)
-        arrivals_end = event_start + timedelta(minutes=30)  # Most arrive by 30 mins after start
+        arrivals_end = event_start + timedelta(minutes=15)  # Most arrive by 15 mins after start
         
         # Departures concentrated after event
         departures_start = event_end - timedelta(minutes=30)  # Some leave a bit early
@@ -88,8 +88,8 @@ class SpecialEventsGenerator:
         avg_people_per_ride = random.uniform(2, 3)
         
         total_rides = int(attendees * ride_percent / avg_people_per_ride)
-        arrival_rides = int(total_rides * 0.8)  # 80% use service to arrive
-        departure_rides = int(total_rides * 0.9)  # 90% use service to depart (more at once)
+        arrival_rides = int(total_rides * 0.8)  # 70% use service to arrive
+        departure_rides = int(total_rides * 0.9)  # 80% use service to depart (more at once)
         
         # Register event with demand and traffic models
         # Demand impact around venue
@@ -116,12 +116,12 @@ class SpecialEventsGenerator:
             "name": name,
             "venue_zone": venue_zone,
             "venue_location": venue_location,
-            "event_start": event_start,
-            "event_end": event_end,
-            "arrivals_start": arrivals_start,
-            "arrivals_end": arrivals_end,
-            "departures_start": departures_start,
-            "departures_end": departures_end,
+            "event_start": str(event_start),
+            "event_end": str(event_end),
+            "arrivals_start": str(arrivals_start),
+            "arrivals_end": str(arrivals_end),
+            "departures_start": str(departures_start),
+            "departures_end": str(departures_end),
             "arrival_rides": arrival_rides,
             "departure_rides": departure_rides,
             "estimated_attendees": attendees
@@ -149,7 +149,7 @@ class SpecialEventsGenerator:
         # Similar implementation to concert but with more concentrated patterns
         # Set default name if none provided
         if name is None:
-            teams = ["Lions", "Tigers", "Bears", "Eagles", "Bulls", "Sharks", "Giants"]
+            teams = ["Real Madrid", "Atlético de Madrid", "Barça", "Getafe FC", "Sevilla FC", "Rayo Vallecano", "Celta Vigo"]
             name = f"{random.choice(teams)} vs {random.choice(teams)} Game"
         
         # Get venue details
@@ -167,16 +167,16 @@ class SpecialEventsGenerator:
         # Calculate demand pattern - more concentrated than concerts
         # Pre-event arrivals gradually increase
         arrivals_start = event_start - timedelta(hours=pre_event_hours)
-        arrivals_end = event_start + timedelta(minutes=15)  # Most arrive earlier than concerts
+        arrivals_end = event_start + timedelta(minutes=15) 
         
         # Departures very concentrated after event
         departures_start = event_end - timedelta(minutes=15)  # Some leave a bit early
         departures_end = event_end + timedelta(hours=post_event_hours)
         
         # Calculate ride volume
-        # Assume 40-60% of attendees use the service, with 2.5-3.5 people per ride
+        # Assume 40-60% of attendees use the service, with 2-4 people per ride
         ride_percent = random.uniform(0.4, 0.6)
-        avg_people_per_ride = random.uniform(2.5, 3.5)
+        avg_people_per_ride = random.uniform(2, 4)
         
         total_rides = int(attendees * ride_percent / avg_people_per_ride)
         arrival_rides = int(total_rides * 0.7)  # 70% use service to arrive
@@ -207,12 +207,12 @@ class SpecialEventsGenerator:
             "name": name,
             "venue_zone": venue_zone,
             "venue_location": venue_location,
-            "event_start": event_start,
-            "event_end": event_end,
-            "arrivals_start": arrivals_start,
-            "arrivals_end": arrivals_end,
-            "departures_start": departures_start,
-            "departures_end": departures_end,
+            "event_start": str(event_start),
+            "event_end": str(event_end),
+            "arrivals_start": str(arrivals_start),
+            "arrivals_end": str(arrivals_end),
+            "departures_start": str(departures_start),
+            "departures_end": str(departures_end),
             "arrival_rides": arrival_rides,
             "departure_rides": departure_rides,
             "estimated_attendees": attendees
@@ -361,11 +361,6 @@ class SpecialEventsGenerator:
                 "avg_rides_per_user": random.randint(3, 8)
             },
             {
-                "name": "collusion",
-                "description": "Same user and driver repeatedly matched",
-                "avg_rides_per_user": random.randint(5, 12)
-            },
-            {
                 "name": "impossible_trips",
                 "description": "Sequential rides with impossible timing",
                 "avg_rides_per_user": random.randint(2, 5)
@@ -395,17 +390,25 @@ class SpecialEventsGenerator:
                     "platform": random.choice(["iOS", "Android"])
                 })
         
-        if hasattr(self.ride_simulator, 'drivers') and len(self.ride_simulator.drivers) >= num_fraud_drivers:
+        if hasattr(self.ride_simulator, 'drivers') and len(self.ride_simulator.drivers) >= num_fraud_drivers and num_fraud_drivers > 1:
             fraud_drivers = random.sample(self.ride_simulator.drivers, num_fraud_drivers)
         else:
             # Create fake drivers if simulator doesn't have enough
             fraud_drivers = []
-            for i in range(num_fraud_drivers):
-                fraud_drivers.append({
-                    "driver_id": f"F-D{str(i).zfill(5)}",
-                    "rating": random.uniform(4.0, 4.9),
-                    "cancellation_rate": random.uniform(0.05, 0.15)
-                })
+            if num_fraud_drivers == 1:
+                for i in range(2):
+                    fraud_drivers.append({
+                        "driver_id": f"F-D{str(i).zfill(5)}",
+                        "rating": random.uniform(4.0, 4.9),
+                        "cancellation_rate": random.uniform(0.05, 0.15)
+                    })
+            else:
+                for i in range(num_fraud_drivers):
+                    fraud_drivers.append({
+                        "driver_id": f"F-D{str(i).zfill(5)}",
+                        "rating": random.uniform(4.0, 4.9),
+                        "cancellation_rate": random.uniform(0.05, 0.15)
+                    })
         
         # Store details for later query analysis
         fraud_details = {
@@ -1184,73 +1187,71 @@ class SpecialEventsGenerator:
         Returns:
             list: All generated special events
         """
-        all_events = []
-        
-        # Calculate total days
+        # Calculate total days in the simulation period
         days = (end_date - start_date).days
-        
-        # 1. Add a major concert event
-        concert_day = start_date + timedelta(days=random.randint(int(days * 0.3), int(days * 0.7)))
-        concert_time = datetime.combine(concert_day.date(), datetime.strptime("19:00", "%H:%M").time())
-        
-        concert = self.create_concert_event(
-            concert_time,
-            venue_zone=random.choice(list(self.city_map.zones.keys())),
-            attendees=random.randint(3000, 8000)
-        )
-        
-        print(f"Added concert event: {concert['name']} on {concert_time}")
-        
-        # 2. Add a sports event
-        sports_day = start_date + timedelta(days=random.randint(int(days * 0.2), int(days * 0.8)))
-        # Make sure it's not too close to concert
-        if abs((sports_day - concert_day).days) < 2:
-            sports_day = sports_day + timedelta(days=3)
-        
-        sports_time = datetime.combine(sports_day.date(), datetime.strptime("15:00", "%H:%M").time())
-        
-        sports = self.create_sports_event(
-            sports_time,
-            venue_zone=random.choice(list(self.city_map.zones.keys())),
-            attendees=random.randint(15000, 30000)
-        )
-        
-        print(f"Added sports event: {sports['name']} on {sports_time}")
-        
-        # 3. Add a weather event
-        weather_day = start_date + timedelta(days=random.randint(int(days * 0.4), int(days * 0.9)))
-        weather_time = datetime.combine(weather_day.date(), datetime.strptime("08:00", "%H:%M").time())
-        
-        weather = self.create_weather_event(
-            weather_time,
-            duration_hours=random.randint(6, 12),
-            severity=random.choice(["medium", "severe"])
-        )
-        
-        print(f"Added weather event: {weather['weather_type']} on {weather_time}")
-        
-        # 4. Add a system outage
-        outage_day = start_date + timedelta(days=random.randint(int(days * 0.1), int(days * 0.9)))
-        # Avoid outage during special events
-        if abs((outage_day - concert_day).days) < 1 or abs((outage_day - sports_day).days) < 1:
-            outage_day = outage_day + timedelta(days=2)
-        
+
+        # Determine number of events based on realistic frequencies for a 3-month period in Madrid
+        num_concerts = max(1, days // 4)      # roughly one concert every 4 days
+        num_sports = max(1, days // 15)         # roughly one sports event every 15 days
+        num_weather = max(1, days // 10)        # roughly one weather event every 10 days
+        num_fraud_patterns = max(2, days // 7)  # roughly two fraud patterns every 7 days
+
+        # 1. Add multiple concert events
+        for i in range(num_concerts):
+            event_day = start_date + timedelta(days=random.randint(0, days - 1))
+            event_time = datetime.combine(event_day.date(), datetime.strptime("19:00", "%H:%M").time())
+            concert = self.create_concert_event(
+                event_time,
+                venue_zone=random.choice(list(self.city_map.zones.keys())),
+                attendees=random.randint(3000, 8000),
+                name=f"Concert Event {i+1}"
+            )
+            print(f"Added concert event: {concert['name']} on {event_time}")
+
+        # 2. Add multiple sports events
+        for i in range(num_sports):
+            event_day = start_date + timedelta(days=random.randint(0, days - 1))
+            event_time = datetime.combine(event_day.date(), datetime.strptime("15:00", "%H:%M").time())
+            sports = self.create_sports_event(
+                event_time,
+                venue_zone=random.choice(list(self.city_map.zones.keys())),
+                attendees=random.randint(15000, 30000),
+                name=f"Sports Event {i+1}"
+            )
+            print(f"Added sports event: {sports['name']} on {event_time}")
+
+        # 3. Add multiple weather events
+        for i in range(num_weather):
+            event_day = start_date + timedelta(days=random.randint(0, days - 1))
+            event_time = datetime.combine(event_day.date(), datetime.strptime("08:00", "%H:%M").time())
+            weather = self.create_weather_event(
+                event_time,
+                duration_hours=random.randint(6, 12),
+                severity=random.choice(["medium", "severe"])
+            )
+            print(f"Added weather event: {weather['weather_type']} on {event_time}")
+
+        # 4. Add a single system outage of partial type
+        outage_day = start_date + timedelta(days=random.randint(0, days - 1))
         outage_time = datetime.combine(outage_day.date(), datetime.strptime(f"{random.randint(10, 18)}:00", "%H:%M").time())
-        
         outage = self.create_system_outage(
             outage_time,
-            duration_minutes=random.randint(30, 180)
+            duration_minutes=random.randint(30, 180),
+            severity="partial"
         )
-        
         print(f"Added system outage on {outage_time} for {outage['duration_minutes']} minutes")
-        
+
         # 5. Add fraud patterns
-        fraud_events = self.create_fraud_patterns(start_date, end_date)
-        
+        # Here we call create_fraud_patterns with the number of fraud users and drivers based on our calculated frequency.
+        fraud_events = self.create_fraud_patterns(
+            start_date,
+            end_date,
+            num_fraud_users=num_fraud_patterns,
+            num_fraud_drivers=num_fraud_patterns
+        )
         print(f"Added {len(fraud_events)} fraudulent ride events")
-        
-        # Combine all events
-        # For demonstration, just return the special event metadata
+
+        # Return all special event metadata (for demonstration)
         return self.special_events
     
     def save_to_json(self, filename):

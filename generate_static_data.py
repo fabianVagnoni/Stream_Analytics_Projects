@@ -19,7 +19,7 @@ import os
 import argparse
 
 # Initialize faker
-fake = Faker()
+fake = Faker('es_ES')
 
 def generate_drivers(count=500, city="San Francisco"):
     """
@@ -38,23 +38,56 @@ def generate_drivers(count=500, city="San Francisco"):
     # Define driver archetypes with distinct behavioral patterns
     archetypes = [
         {"name": "Full-time pro", "weight": 0.3, "hours_per_week": (35, 50), "experience_years": (1, 5),
-         "cancellation_rate": (0.02, 0.05), "rating": (4.2, 4.9)},
+         "cancellation_rate": (0.02, 0.05), "rating": (4.2, 4.9), "age_range": (30, 55),
+         "gender_dist": {"Male": 0.75, "Female": 0.23, "Non-binary": 0.02}},
         {"name": "Part-time evening", "weight": 0.25, "hours_per_week": (15, 25), "experience_years": (0.5, 3),
-         "cancellation_rate": (0.05, 0.1), "rating": (4.0, 4.8)},
+         "cancellation_rate": (0.05, 0.1), "rating": (4.0, 4.8), "age_range": (25, 45),
+         "gender_dist": {"Male": 0.65, "Female": 0.30, "Non-binary": 0.05}},
         {"name": "Weekend warrior", "weight": 0.2, "hours_per_week": (8, 16), "experience_years": (0.2, 2),
-         "cancellation_rate": (0.08, 0.15), "rating": (3.9, 4.7)},
+         "cancellation_rate": (0.08, 0.15), "rating": (3.9, 4.7), "age_range": (21, 35),
+         "gender_dist": {"Male": 0.60, "Female": 0.35, "Non-binary": 0.05}},
         {"name": "Newbie", "weight": 0.15, "hours_per_week": (10, 30), "experience_years": (0, 0.5),
-         "cancellation_rate": (0.1, 0.2), "rating": (3.5, 4.5)},
+         "cancellation_rate": (0.1, 0.2), "rating": (3.5, 4.5), "age_range": (21, 40),
+         "gender_dist": {"Male": 0.55, "Female": 0.40, "Non-binary": 0.05}},
         {"name": "Inconsistent", "weight": 0.1, "hours_per_week": (5, 20), "experience_years": (0.1, 4),
-         "cancellation_rate": (0.15, 0.25), "rating": (3.2, 4.6)},
+         "cancellation_rate": (0.15, 0.25), "rating": (3.2, 4.6), "age_range": (21, 50),
+         "gender_dist": {"Male": 0.60, "Female": 0.35, "Non-binary": 0.05}}
     ]
     
     # Vehicle types with realistic distributions
     vehicle_types = [
-        ("Economy", 0.6, ["Toyota Corolla", "Honda Civic", "Hyundai Elantra", "Nissan Sentra", "Kia Forte"]),
-        ("Comfort", 0.25, ["Mazda 6", "Volkswagen Passat", "Subaru Legacy", "Honda Accord", "Toyota Camry"]),
-        ("Premium", 0.1, ["BMW 3 Series", "Mercedes C-Class", "Audi A4", "Lexus ES", "Volvo S60"]),
-        ("XL", 0.05, ["Toyota Sienna", "Honda Odyssey", "Ford Explorer", "Chevrolet Suburban", "GMC Yukon"])
+        ("Economy", 0.6, {
+            "models": {
+                "gas": ["Toyota Corolla", "Honda Civic", "Hyundai Elantra", "Nissan Sentra", "Kia Forte"],
+                "hybrid": ["Toyota Corolla Hybrid", "Honda Insight", "Hyundai Elantra Hybrid"],
+                "electric": ["Chevrolet Bolt", "Nissan Leaf", "Hyundai Kona Electric"]
+            },
+            "powertrain_dist": {"gas": 0.70, "hybrid": 0.20, "electric": 0.10}
+        }),
+        ("Comfort", 0.25, {
+            "models": {
+                "gas": ["Mazda 6", "Volkswagen Passat", "Subaru Legacy", "Honda Accord", "Toyota Camry"],
+                "hybrid": ["Toyota Camry Hybrid", "Honda Accord Hybrid", "Hyundai Sonata Hybrid"],
+                "electric": ["Tesla Model 3", "Polestar 2", "BMW i4"]
+            },
+            "powertrain_dist": {"gas": 0.60, "hybrid": 0.25, "electric": 0.15}
+        }),
+        ("Premium", 0.1, {
+            "models": {
+                "gas": ["BMW 3 Series", "Mercedes C-Class", "Audi A4", "Lexus ES", "Volvo S60"],
+                "hybrid": ["Lexus ES Hybrid", "BMW 330e", "Volvo S60 Recharge"],
+                "electric": ["Tesla Model S", "Porsche Taycan", "Audi e-tron GT"]
+            },
+            "powertrain_dist": {"gas": 0.50, "hybrid": 0.30, "electric": 0.20}
+        }),
+        ("XL", 0.05, {
+            "models": {
+                "gas": ["Toyota Sienna", "Honda Pilot", "Ford Explorer", "Chevrolet Suburban", "GMC Yukon"],
+                "hybrid": ["Toyota Sienna Hybrid", "Ford Explorer Hybrid", "Lexus RX Hybrid"],
+                "electric": ["Tesla Model X", "Rivian R1S", "BMW iX"]
+            },
+            "powertrain_dist": {"gas": 0.65, "hybrid": 0.25, "electric": 0.10}
+        })
     ]
     
     archetype_weights = [a["weight"] for a in archetypes]
@@ -70,28 +103,51 @@ def generate_drivers(count=500, city="San Francisco"):
         first_name = fake.first_name()
         last_name = fake.last_name()
         
+        # Generate age based on archetype
+        age = random.randint(*archetype["age_range"])
+        
+        # Generate gender based on archetype distribution
+        gender = random.choices(
+            list(archetype["gender_dist"].keys()),
+            weights=list(archetype["gender_dist"].values()),
+            k=1
+        )[0]
+        
         # Experience affects creation date
         experience_years = random.uniform(*archetype["experience_years"])
         days_since_signup = int(experience_years * 365)
         account_creation_date = (datetime.now() - timedelta(days=days_since_signup)).strftime("%Y-%m-%d")
         
         # Select vehicle type and specific model
-        vehicle_type, _, models = random.choices(vehicle_types, 
+        vehicle_category, weight, vehicle_info = random.choices(vehicle_types, 
                                             weights=[vt[1] for vt in vehicle_types], 
                                             k=1)[0]
+        
+        # Select powertrain type based on distribution
+        powertrain = random.choices(
+            list(vehicle_info["powertrain_dist"].keys()),
+            weights=list(vehicle_info["powertrain_dist"].values()),
+            k=1
+        )[0]
+        
+        # Select specific model from the powertrain category
+        vehicle_model = random.choice(vehicle_info["models"][powertrain])
         vehicle_year = 2017 + random.randint(0, 6)
-        vehicle_model = random.choice(models)
-        vehicle = f"{vehicle_model} {vehicle_year}"
+        vehicle = f"{vehicle_model} {vehicle_year} ({powertrain.capitalize()})"
         
         # Static driver data
         driver_static = {
             "driver_id": driver_id,
             "first_name": first_name,
             "last_name": last_name,
+            "age": age,
+            "gender": gender,
             "phone_number": fake.phone_number(),
             "email": f"{first_name.lower()}.{last_name.lower()}{random.randint(1, 999)}@{fake.domain_name()}",
-            "license_number": f"{fake.state_abbr()}{random.randint(10000, 99999)}",
+            "license_number": f"ES{random.randint(10000, 99999)}",
             "vehicle": vehicle,
+            "vehicle_type": vehicle_category,
+            "vehicle_powertrain": powertrain,
             "account_creation_date": account_creation_date
         }
         
@@ -160,16 +216,20 @@ def generate_users(count=1000, city="San Francisco"):
     archetypes = [
         {"name": "Daily commuter", "weight": 0.4, "rides_per_month": (40, 60), 
          "cancellation_rate": (0.01, 0.05), "avg_rating_given": (4.0, 4.8),
-         "experience_years": (0.5, 3)},
+         "experience_years": (0.5, 3), "age_range": (25, 55),
+         "gender_dist": {"Male": 0.48, "Female": 0.48, "Non-binary": 0.04}},
         {"name": "Business traveler", "weight": 0.15, "rides_per_month": (15, 30),
          "cancellation_rate": (0.05, 0.1), "avg_rating_given": (3.8, 4.5),
-         "experience_years": (1, 4)},
+         "experience_years": (1, 4), "age_range": (30, 60),
+         "gender_dist": {"Male": 0.55, "Female": 0.42, "Non-binary": 0.03}},
         {"name": "Weekend socialite", "weight": 0.25, "rides_per_month": (10, 20),
          "cancellation_rate": (0.05, 0.15), "avg_rating_given": (3.5, 4.6),
-         "experience_years": (0.5, 2)},
+         "experience_years": (0.5, 2), "age_range": (21, 35),
+         "gender_dist": {"Male": 0.45, "Female": 0.50, "Non-binary": 0.05}},
         {"name": "Occasional user", "weight": 0.2, "rides_per_month": (2, 8),
          "cancellation_rate": (0.1, 0.2), "avg_rating_given": (3.2, 4.9),
-         "experience_years": (0.1, 5)}
+         "experience_years": (0.1, 5), "age_range": (18, 70),
+         "gender_dist": {"Male": 0.47, "Female": 0.48, "Non-binary": 0.05}}
     ]
     
     # Platform distribution
@@ -194,6 +254,16 @@ def generate_users(count=1000, city="San Francisco"):
         first_name = fake.first_name()
         last_name = fake.last_name()
         
+        # Generate age based on archetype
+        age = random.randint(*archetype["age_range"])
+        
+        # Generate gender based on archetype distribution
+        gender = random.choices(
+            list(archetype["gender_dist"].keys()),
+            weights=list(archetype["gender_dist"].values()),
+            k=1
+        )[0]
+        
         # Experience affects signup date
         experience_years = random.uniform(*archetype["experience_years"])
         days_since_signup = int(experience_years * 365)
@@ -207,6 +277,8 @@ def generate_users(count=1000, city="San Francisco"):
             "user_id": user_id,
             "first_name": first_name,
             "last_name": last_name,
+            "age": age,
+            "gender": gender,
             "email": f"{first_name.lower()}.{last_name.lower()}{random.randint(1, 999)}@{fake.domain_name()}",
             "phone_number": fake.phone_number(),
             "signup_date": signup_date,

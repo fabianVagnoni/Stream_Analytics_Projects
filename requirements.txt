@@ -1,0 +1,7 @@
+fastavro
+faker
+pandas
+numpy
+confluent-kafka
+io
+ssl
