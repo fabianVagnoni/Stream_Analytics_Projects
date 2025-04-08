@@ -117,31 +117,31 @@ if is_windows:
     os.environ["PATH"] = os.environ["PATH"] + os.pathsep + hadoop_bin_dir
     
     # Download winutils.exe and hadoop.dll if they don't exist
-    # files_to_download = [
-    #     {
-    #         "name": "winutils.exe",
-    #         "path": winutils_path,
-    #         "url": "https://github.com/cdarlint/winutils/raw/master/hadoop-3.2.2/bin/winutils.exe"
-    #     },
-    #     {
-    #         "name": "hadoop.dll",
-    #         "path": hadoop_dll_path,
-    #         "url": "https://github.com/cdarlint/winutils/raw/master/hadoop-3.2.2/bin/hadoop.dll"
-    #     }
-    # ]
+    files_to_download = [
+        {
+            "name": "winutils.exe",
+            "path": winutils_path,
+            "url": "https://github.com/cdarlint/winutils/raw/master/hadoop-3.2.2/bin/winutils.exe"
+        },
+        {
+            "name": "hadoop.dll",
+            "path": hadoop_dll_path,
+            "url": "https://github.com/cdarlint/winutils/raw/master/hadoop-3.2.2/bin/hadoop.dll"
+        }
+    ]
     
-    # for file_info in files_to_download:
-    #     if not os.path.exists(file_info["path"]):
-    #         try:
-    #             print(f"Downloading {file_info['name']}...")
-    #             download_cmd = f'powershell -Command "Invoke-WebRequest -Uri \'{file_info["url"]}\' -OutFile \'{file_info["path"]}\'"'
-    #             subprocess.run(download_cmd, shell=True, check=True)
-    #             print(f"Downloaded {file_info['name']} to {file_info['path']}")
-    #         except Exception as e:
-    #             print(f"Error downloading {file_info['name']}: {e}")
-    #             print(f"Please download {file_info['name']} manually and place it in hadoop/bin directory")
-    #     else:
-    #         print(f"{file_info['name']} already exists at {file_info['path']}")
+    for file_info in files_to_download:
+        if not os.path.exists(file_info["path"]):
+            try:
+                print(f"Downloading {file_info['name']}...")
+                download_cmd = f'powershell -Command "Invoke-WebRequest -Uri \'{file_info["url"]}\' -OutFile \'{file_info["path"]}\'"'
+                subprocess.run(download_cmd, shell=True, check=True)
+                print(f"Downloaded {file_info['name']} to {file_info['path']}")
+            except Exception as e:
+                print(f"Error downloading {file_info['name']}: {e}")
+                print(f"Please download {file_info['name']} manually and place it in hadoop/bin directory")
+        else:
+            print(f"{file_info['name']} already exists at {file_info['path']}")
     
     # Check if Spark is already downloaded and extracted
     if os.path.exists(spark_home_dir) and os.path.isdir(spark_home_dir):
