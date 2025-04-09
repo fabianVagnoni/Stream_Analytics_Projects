@@ -383,6 +383,8 @@ df_specials = df_specials.select(
 
 # Create checkpoint directory
 os.makedirs("checkpoint", exist_ok=True)
+os.makedirs("checkpoint/rides", exist_ok=True)
+os.makedirs("checkpoint/parquet", exist_ok=True)
 spark.conf.set("spark.sql.streaming.checkpointLocation", "checkpoint")
 
 print("Starting memory stream query...")
@@ -392,6 +394,8 @@ query=df_rides.writeStream \
     .outputMode("update") \
     .format("memory") \
     .queryName(query_name) \
+    .option("checkpointLocation", "checkpoint/rides") \
+    .option("failOnDataLoss", "false") \
     .start()
 
 print(f"Memory stream query '{query_name}' started successfully")
@@ -408,6 +412,8 @@ print("\nChecking for available data...")
 try:
     count_df = spark.sql(f'SELECT count(*) as record_count FROM {query_name}')
     count = count_df.collect()[0]['record_count']
+    columns = spark.sql(f'SELECT * FROM {query_name}').columns
+    print(f"Columns: {columns}")
     print(f"Number of records received: {count}")
     
     if count > 0:
@@ -427,8 +433,9 @@ os.makedirs("output", exist_ok=True)
 query_name='parquet'
 query_parquet = df_rides.writeStream \
         .format("parquet") \
-        .option("checkpointLocation","checkpoint2") \
+        .option("checkpointLocation","checkpoint/parquet") \
         .option("path", "output") \
+        .option("failOnDataLoss", "false") \
         .queryName(query_name) \
         .trigger(processingTime='20 seconds') \
         .start()
