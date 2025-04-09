@@ -210,79 +210,101 @@ print(f"Specials Event Hub Name: {specials_eventhub_name}")
 print(f"Specials Consumer Event Hub Connection String: {specials_consumer_eventhub_connection_str}\n")
 
 # Define the schema (from github)
-with open("schemas/ride_datafeed_schema.json") as f:
-    schema = f.read()
+print("Loading schema files...")
+try:
+    with open("schemas/ride_datafeed_schema.json") as f:
+        schema = f.read()
+        print("Successfully loaded ride schema")
+except Exception as e:
+    print(f"Error loading ride schema: {e}")
+    raise
 
-with open("schemas/special_events_schema.json") as e:
-    special_schema = e.read()
+try:
+    with open("schemas/special_events_schema.json") as e:
+        special_schema = e.read()
+        print("Successfully loaded special events schema")
+except Exception as e:
+    print(f"Error loading special events schema: {e}")
+    raise
 
 # Create a Spark session
+print("Creating Spark session...")
 spark = SparkSession \
     .builder \
     .appName("StreamingAVROFromKafka") \
     .config("spark.streaming.stopGracefullyOnShutdown", True) \
     .config('spark.jars.packages', 'org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.0,org.apache.spark:spark-avro_2.12:3.5.0') \
     .config("spark.sql.shuffle.partitions", 4) \
+    .config("spark.driver.host", "localhost") \
+    .config("spark.driver.bindAddress", "localhost") \
+    .config("spark.executor.instances", 1) \
+    .config("spark.executor.memory", "1g") \
+    .config("spark.driver.memory", "1g") \
     .master("local[*]") \
     .getOrCreate()
+print("Spark session created successfully")
 
-
+print("Setting up Kafka configurations...")
 kafkaConf_rides = {
     "kafka.bootstrap.servers": f"{event_hub_namespace}.servicebus.windows.net:9093",
-    # Below settins required if kafka is secured, for example when connecting to Azure Event Hubs:
     "kafka.sasl.mechanism": "PLAIN",
     "kafka.security.protocol": "SASL_SSL",
     "kafka.sasl.jaas.config": f'org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="{rides_consumer_eventhub_connection_str}";',
-
     "subscribe": rides_eventhub_name,
-    "startingOffsets": "earliest", # "latest", "earliest", (by choosing earliest, you will consume all the data on the event hub immediately)
-        # by choosing "latest", you will consume only newly arriving data.
-
-
-
-    "enable.auto.commit": "true ",
+    "startingOffsets": "earliest",
+    "kafka.request.timeout.ms": "60000",
+    "kafka.session.timeout.ms": "60000",
+    "failOnDataLoss": "false",
+    "enable.auto.commit": "true",
     "groupIdPrefix": "Stream_Analytics_",
     "auto.commit.interval.ms": "5000"
 }
 
 kafkaConf_specials = {
     "kafka.bootstrap.servers": f"{event_hub_namespace}.servicebus.windows.net:9093",
-    # Below settins required if kafka is secured, for example when connecting to Azure Event Hubs:
     "kafka.sasl.mechanism": "PLAIN",
     "kafka.security.protocol": "SASL_SSL",
     "kafka.sasl.jaas.config": f'org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="{specials_consumer_eventhub_connection_str}";',
-
     "subscribe": specials_eventhub_name,
-    "startingOffsets": "earliest", # "latest", "earliest", (by choosing earliest, you will consume all the data on the event hub immediately)
-        # by choosing "latest", you will consume only newly arriving data.
-
-
-
-    "enable.auto.commit": "true ",
+    "startingOffsets": "earliest",
+    "kafka.request.timeout.ms": "60000",
+    "kafka.session.timeout.ms": "60000",
+    "failOnDataLoss": "false",
+    "enable.auto.commit": "true",
     "groupIdPrefix": "Stream_Analytics_",
     "auto.commit.interval.ms": "5000"
 }
-
-
-# Read from Event Hub using Kafka
-df_rides = spark \
-    .readStream \
-    .format("kafka") \
-    .options(**kafkaConf_rides) \
-    .load()
-
-# Deserialize the AVRO messages from the value column
-df_rides = df_rides.select(from_avro(df_rides.value, schema).alias("ride_events"))
+print("Kafka configurations set up successfully")
 
 # Read from Event Hub using Kafka
-df_specials = spark \
-    .readStream \
-    .format("kafka") \
-    .options(**kafkaConf_specials) \
-    .load()
-
-# Deserialize the AVRO messages from the value column
-df_specials = df_specials.select(from_avro(df_specials.value, special_schema).alias("special_event"))
+print("Starting to read from Event Hubs...")
+try:
+    print("Reading from Rides Event Hub...")
+    df_rides = spark \
+        .readStream \
+        .format("kafka") \
+        .options(**kafkaConf_rides) \
+        .load()
+    print("Successfully connected to Rides Event Hub")
+    
+    # Deserialize the AVRO messages from the value column
+    df_rides = df_rides.select(from_avro(df_rides.value, schema).alias("ride_events"))
+    print("Successfully deserialized Rides data")
+    
+    print("Reading from Special Events Event Hub...")
+    df_specials = spark \
+        .readStream \
+        .format("kafka") \
+        .options(**kafkaConf_specials) \
+        .load()
+    print("Successfully connected to Special Events Event Hub")
+    
+    # Deserialize the AVRO messages from the value column
+    df_specials = df_specials.select(from_avro(df_specials.value, special_schema).alias("special_event"))
+    print("Successfully deserialized Special Events data")
+except Exception as e:
+    print(f"Error connecting to Event Hubs: {e}")
+    raise
 
 # Flatten the schemas
 df_rides = df_rides.select(
@@ -359,8 +381,11 @@ df_specials = df_specials.select(
     col("special_event.estimated_attendees").alias("estimated_attendees")
 )
 
+# Create checkpoint directory
+os.makedirs("checkpoint", exist_ok=True)
 spark.conf.set("spark.sql.streaming.checkpointLocation", "checkpoint")
 
+print("Starting memory stream query...")
 # If offset:Latest, send new events after running this cell.
 query_name='all_rides'
 query=df_rides.writeStream \
@@ -369,17 +394,35 @@ query=df_rides.writeStream \
     .queryName(query_name) \
     .start()
 
-    # If you run this locally and change .format, you can enable checkpointing. THis will allow you to resume in case spark crashes.
-    # .option("checkpointLocation", "checkpoint") \  # Checkpoint not valid for memory
-    #.option("path", "/checkpoint/") \
+print(f"Memory stream query '{query_name}' started successfully")
 
-spark.sql('show tables').show()
+# Wait a few seconds for data to arrive
+print("Waiting for data to arrive (10 seconds)...")
+time.sleep(10)
 
 # Status either "Processing new data" or "Getting offsets from..."
-print(query.status)
-print(spark.sql(f'SELECT count(*) as record_count FROM {query_name}').show(20, truncate=True))
-print(spark.sql(f'SELECT * FROM {query_name}').show(20, truncate=True))
+print("\nQuery status:", query.status)
 
+# Check if any data is available
+print("\nChecking for available data...")
+try:
+    count_df = spark.sql(f'SELECT count(*) as record_count FROM {query_name}')
+    count = count_df.collect()[0]['record_count']
+    print(f"Number of records received: {count}")
+    
+    if count > 0:
+        print("\nShowing sample data:")
+        spark.sql(f'SELECT * FROM {query_name}').show(5, truncate=True)
+    else:
+        print("No data received yet. This could be because:")
+        print("1. No events are being published to the Event Hub")
+        print("2. There might be authentication issues with the Event Hub connection")
+        print("3. The consumer group might not have access to the events")
+        print("4. The Event Hub name or connection strings might be incorrect")
+except Exception as e:
+    print(f"Error querying data: {e}")
+
+print("\nStarting Parquet stream query...")
 os.makedirs("output", exist_ok=True)
 query_name='parquet'
 query_parquet = df_rides.writeStream \
@@ -389,22 +432,41 @@ query_parquet = df_rides.writeStream \
         .queryName(query_name) \
         .trigger(processingTime='20 seconds') \
         .start()
-# Wait a few seconds for parquet files to build up
-time.sleep(20)
-print(os.listdir("output"))
-# Set to True and run cell when you want to stop your queries and Spark job.
-if True:
-  # Get the list of active streaming queries
-  active_queries = spark.streams.active
 
-# Print details about each active query
-  for query in active_queries:
-      query.stop()
-      print(f"Query Name: {query.name}")
-      print(f"Query ID: {query.id}")
-      print(f"Query Status: {query.status}")
-      print(f"Is Query Active: {query.isActive}")
-      print("-" * 50)
-  spark.stop()
-  spark.sparkContext.stop()
+print(f"Parquet stream query '{query_name}' started successfully")
+
+# Wait a few seconds for parquet files to build up
+print("Waiting for Parquet files to be created (20 seconds)...")
+time.sleep(20)
+
+# List output files
+output_files = os.listdir("output")
+print(f"\nFiles in output directory: {len(output_files)}")
+if output_files:
+    print("Sample files:", output_files[:5])
+else:
+    print("No output files created yet")
+
+print("\n" + "="*50)
+print("STREAMING QUERIES ARE NOW RUNNING")
+print("="*50)
+print("Active queries:")
+for q in spark.streams.active:
+    print(f"  - {q.name} (ID: {q.id})")
+print("\nThe script will continue running, leave it open to collect data.")
+print("To stop the queries, uncomment the 'stop_queries = True' line below and run this cell again.")
+
+# Uncomment the line below to stop all queries
+# stop_queries = True
+stop_queries = False
+
+if stop_queries:
+    print("Stopping all streaming queries...")
+    for q in spark.streams.active:
+        print(f"Stopping {q.name}...")
+        q.stop()
+    
+    print("Stopping Spark session...")
+    spark.stop()
+    print("All queries and Spark session stopped.")
 
