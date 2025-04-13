@@ -385,6 +385,8 @@ df_specials = df_specials.select(
 os.makedirs("checkpoint", exist_ok=True)
 os.makedirs("checkpoint/rides", exist_ok=True)
 os.makedirs("checkpoint/parquet", exist_ok=True)
+os.makedirs("checkpoint/parquet/rides", exist_ok=True)
+os.makedirs("checkpoint/parquet/specials", exist_ok=True)
 spark.conf.set("spark.sql.streaming.checkpointLocation", "checkpoint")
 
 print("Starting memory stream query...")
@@ -430,29 +432,55 @@ except Exception as e:
 
 print("\nStarting Parquet stream query...")
 os.makedirs("output", exist_ok=True)
-query_name='parquet'
-query_parquet = df_rides.writeStream \
+os.makedirs("output/rides", exist_ok=True)
+os.makedirs("output/specials", exist_ok=True)
+
+# Save rides data to parquet
+rides_query_name = 'rides_parquet'
+rides_query_parquet = df_rides.writeStream \
         .format("parquet") \
-        .option("checkpointLocation","checkpoint/parquet") \
-        .option("path", "output") \
+        .option("checkpointLocation","checkpoint/parquet/rides") \
+        .option("path", "output/rides") \
         .option("failOnDataLoss", "false") \
-        .queryName(query_name) \
+        .queryName(rides_query_name) \
+        .outputMode("append") \
         .trigger(processingTime='20 seconds') \
         .start()
 
-print(f"Parquet stream query '{query_name}' started successfully")
+print(f"Rides Parquet stream query '{rides_query_name}' started successfully")
+
+# Save special events data to parquet
+specials_query_name = 'specials_parquet'
+specials_query_parquet = df_specials.writeStream \
+        .format("parquet") \
+        .option("checkpointLocation","checkpoint/parquet/specials") \
+        .option("path", "output/specials") \
+        .option("failOnDataLoss", "false") \
+        .queryName(specials_query_name) \
+        .outputMode("append") \
+        .trigger(processingTime='20 seconds') \
+        .start()
+
+print(f"Special Events Parquet stream query '{specials_query_name}' started successfully")
 
 # Wait a few seconds for parquet files to build up
 print("Waiting for Parquet files to be created (20 seconds)...")
 time.sleep(20)
 
 # List output files
-output_files = os.listdir("output")
-print(f"\nFiles in output directory: {len(output_files)}")
-if output_files:
-    print("Sample files:", output_files[:5])
+rides_output_files = os.listdir("output/rides")
+specials_output_files = os.listdir("output/specials")
+print(f"\nFiles in rides output directory: {len(rides_output_files)}")
+if rides_output_files:
+    print("Sample rides files:", rides_output_files[:5])
 else:
-    print("No output files created yet")
+    print("No rides output files created yet")
+
+print(f"\nFiles in specials output directory: {len(specials_output_files)}")
+if specials_output_files:
+    print("Sample special events files:", specials_output_files[:5])
+else:
+    print("No special events output files created yet")
 
 print("\n" + "="*50)
 print("STREAMING QUERIES ARE NOW RUNNING")
@@ -476,4 +504,8 @@ if stop_queries:
     print("Stopping Spark session...")
     spark.stop()
     print("All queries and Spark session stopped.")
+    
+    print("\nData saved to:")
+    print(f"  - Rides data: {os.path.abspath('output/rides')}")
+    print(f"  - Special events data: {os.path.abspath('output/specials')}")
 

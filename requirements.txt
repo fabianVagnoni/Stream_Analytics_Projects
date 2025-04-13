@@ -3,8 +3,11 @@ faker
 pandas
 numpy
 confluent-kafka
-io
-ssl
 pyspark
 findspark
 requests
+pyarrow
+matplotlib
+seaborn
+fastparquet
+scikit-learn
