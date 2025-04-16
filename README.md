@@ -120,3 +120,68 @@ This project is unlicensed and provided as-is for educational or testing purpose
 
 ## Contact
 For questions or contributions, please open an issue or contact the maintainers.
+
+## Stream Analytics Projects
+
+This repository contains a stream analytics application that processes ride and special events data from Azure Event Hubs.
+
+### Project Structure
+
+The project now follows a modular structure:
+
+```
+.
+├── consumer.py              # Original consumer script
+├── modular_consumer.py      # Modularized version of consumer.py 
+├── stream_processing/       # Package containing modular components
+│   ├── __init__.py
+│   ├── aggregation.py       # Data aggregation functions
+│   ├── config.py            # Configuration settings
+│   ├── enrichment.py        # Data enrichment functions
+│   ├── schema_utils.py      # Schema handling utilities
+│   ├── setup.py             # Environment setup
+│   ├── spark_session.py     # Spark session creation
+│   ├── stream_readers.py    # Stream reading functions
+│   └── stream_writers.py    # Stream writing functions
+├── schemas/                 # Schema definitions
+│   ├── ride_datafeed_schema.json
+│   └── special_events_schema.json
+├── output/                  # Output directory for parquet files
+└── checkpoint/              # Checkpoint directory for streams
+```
+
+### Usage
+
+You can run the application using either of these methods:
+
+1. Original consumer script:
+```bash
+python consumer.py
+```
+
+2. Modularized version:
+```bash
+python modular_consumer.py
+```
+
+Both scripts provide the same functionality, but the modular version is better organized and easier to maintain.
+
+### Functionality
+
+The application:
+1. Connects to Azure Event Hubs
+2. Reads ride events and special events
+3. Deserializes AVRO messages
+4. Processes and enriches the data
+5. Performs aggregations for user profile creation
+6. Writes results to memory, parquet files, and console
+
+### Dependencies
+
+See requirements.txt for the full list of dependencies.
+
+### Future Improvements
+
+- Add more documentation
+- Implement unit tests
+- Add more advanced analytics components
