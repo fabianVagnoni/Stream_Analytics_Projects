@@ -6,6 +6,14 @@ import time
 import requests
 import re
 from packaging import version
+from pyspark.sql.types import StringType
+from pyspark.sql.functions import udf, lit
+from pyspark.sql.functions import window, avg, max, count, variance, expr, when, lit, collect_list
+from pyspark.sql.window import Window
+from pyspark.sql.functions import year, month, dayofmonth, dayofweek, dayofyear, hour
+from pyspark.sql.types import StringType, IntegerType, DoubleType, FloatType, BooleanType
+from pyspark.sql.functions import count, sum, avg, max, variance, expr, when, col
+
 
 # Check if running on Windows or Linux
 is_windows = os.name == 'nt'
@@ -73,7 +81,9 @@ if is_windows:
         response = requests.get("https://downloads.apache.org/spark/")
         matches = re.findall(r'spark-3\.\d+\.\d+', response.text)
         if matches:
-            spark_version = max(matches, key=lambda x: version.parse(x.replace('spark-', '')))
+            # spark_version = max(matches, key=lambda x: version.parse(x.replace('spark-', '')))
+            sorted_versions = sorted(matches, key=lambda x: version.parse(x.replace('spark-', '')))
+            spark_version = sorted_versions[-1] if sorted_versions else "spark-3.5.1"
         else:
             spark_version = "spark-3.5.1"  # Fallback version
     except Exception as e:
@@ -238,8 +248,12 @@ spark = SparkSession \
     .config("spark.driver.host", "localhost") \
     .config("spark.driver.bindAddress", "localhost") \
     .config("spark.executor.instances", 1) \
-    .config("spark.executor.memory", "1g") \
-    .config("spark.driver.memory", "1g") \
+    .config("spark.executor.memory", "4g") \
+    .config("spark.driver.memory", "4g") \
+    .config("spark.executor.cores", "2") \
+    .config("spark.task.cpus", "1") \
+    .config("spark.kafka.consumer.cache.timeout", "60s") \
+    .config("spark.kafka.consumer.max.poll.records", "500") \
     .master("local[*]") \
     .getOrCreate()
 print("Spark session created successfully")
@@ -381,12 +395,17 @@ df_specials = df_specials.select(
     col("special_event.estimated_attendees").alias("estimated_attendees")
 )
 
+
+# Prepare rides data with special events info for user profile creation
+print("Preparing data for user profile vectors...")
+
 # Create checkpoint directory
 os.makedirs("checkpoint", exist_ok=True)
 os.makedirs("checkpoint/rides", exist_ok=True)
 os.makedirs("checkpoint/parquet", exist_ok=True)
 os.makedirs("checkpoint/parquet/rides", exist_ok=True)
 os.makedirs("checkpoint/parquet/specials", exist_ok=True)
+os.makedirs("checkpoint/parquet/user_vectors", exist_ok=True)
 spark.conf.set("spark.sql.streaming.checkpointLocation", "checkpoint")
 
 print("Starting memory stream query...")
@@ -413,12 +432,12 @@ print("\nQuery status:", query.status)
 print("\nChecking for available data...")
 try:
     count_df = spark.sql(f'SELECT count(*) as record_count FROM {query_name}')
-    count = count_df.collect()[0]['record_count']
+    count_rides = count_df.collect()[0]['record_count']
     columns = spark.sql(f'SELECT * FROM {query_name}').columns
     print(f"Columns: {columns}")
-    print(f"Number of records received: {count}")
+    print(f"Number of records received: {count_rides}")
     
-    if count > 0:
+    if count_rides > 0:
         print("\nShowing sample data:")
         spark.sql(f'SELECT * FROM {query_name}').show(5, truncate=True)
     else:
@@ -434,6 +453,7 @@ print("\nStarting Parquet stream query...")
 os.makedirs("output", exist_ok=True)
 os.makedirs("output/rides", exist_ok=True)
 os.makedirs("output/specials", exist_ok=True)
+os.makedirs("output/user_vectors", exist_ok=True)
 
 # Save rides data to parquet
 rides_query_name = 'rides_parquet'
@@ -463,9 +483,177 @@ specials_query_parquet = df_specials.writeStream \
 
 print(f"Special Events Parquet stream query '{specials_query_name}' started successfully")
 
-# Wait a few seconds for parquet files to build up
-print("Waiting for Parquet files to be created (20 seconds)...")
-time.sleep(20)
+# Create a view of the special events data for joining in the foreachBatch
+df_specials.writeStream \
+    .format("memory") \
+    .queryName("specials_table") \
+    .outputMode("append") \
+    .start()
+
+# Generate user profile vectors - using a simpler approach without foreachBatch
+# First prepare a stream with time components
+df_rides_with_time = df_rides.select(
+    "*",
+    month("timestamp").alias("month"),
+    dayofmonth("timestamp").alias("day"),
+    hour("timestamp").alias("hour"),
+    dayofweek("timestamp").alias("day_of_week"),
+    dayofyear("timestamp").alias("day_of_year")
+)
+
+# Add watermark to the stream before creating the view
+df_rides_with_time = df_rides_with_time.withWatermark("timestamp", "10 seconds")
+
+def is_within_area(lat, lon, lat_min, lat_max, lon_min, lon_max):
+    return (lat_min <= lat <= lat_max and 
+            lon_min <= lon <= lon_max)
+
+# Define UDF for determining ride relation to events
+@udf(returnType=StringType())
+def determine_event_relation(pickup_lat, pickup_lon, dropoff_lat, dropoff_lon, venue_lat, venue_lon):
+    if (pickup_lat is None or pickup_lon is None or 
+        dropoff_lat is None or dropoff_lon is None or 
+        venue_lat is None or venue_lon is None):
+        return "none"
+    
+    # Constants for latitude/longitude adjustments (0.5 km distance threshold)
+    distance_km = 0.5
+    latitude_adjustment = 0.009898 * distance_km
+    longitude_adjustment = 0.00118 * distance_km
+
+    # Define intervals around the venue
+    lat_min = venue_lat - latitude_adjustment
+    lat_max = venue_lat + latitude_adjustment
+    lon_min = venue_lon - longitude_adjustment
+    lon_max = venue_lon + longitude_adjustment
+
+    # Check if pickup/dropoff locations are within the event area
+    pickup_in_area = is_within_area(pickup_lat, pickup_lon, lat_min, lat_max, lon_min, lon_max)
+    dropoff_in_area = is_within_area(dropoff_lat, dropoff_lon, lat_min, lat_max, lon_min, lon_max)
+
+    if pickup_in_area and not dropoff_in_area:
+        return "from_event"
+    elif not pickup_in_area and dropoff_in_area:
+        return "to_event"
+    else:
+        return "none"
+
+# Create a memory view of the rides stream
+df_rides_with_time.writeStream \
+    .format("memory") \
+    .queryName("rides_stream") \
+    .outputMode("append") \
+    .start()
+
+# First, add the needed columns for event analysis
+enriched_df = df_rides_with_time.withColumn(
+    "is_weekend", 
+    when((col("day_of_week") == 1) | (col("day_of_week") == 7), 1).otherwise(0)
+)
+
+# Initialize default values for event fields
+enriched_df = enriched_df.withColumn("event_relation", lit("none").cast(StringType()))
+enriched_df = enriched_df.withColumn("event_name", lit("none").cast(StringType()))
+
+# Process special events if available
+try:
+    # Check if there are special events available from the specials_table memory view
+    specials_df = spark.sql("SELECT * FROM specials_table")
+    
+    if not specials_df.rdd.isEmpty():
+        # For each special event, apply the UDF to determine the ride relation to that event
+        for event in specials_df.collect():
+            # Extract event info
+            event_name = event.event_name
+            venue_lat = event.venue_latitude
+            venue_lon = event.venue_longitude
+            
+            # Create a temporary column using the UDF.
+            # Note: We pass constant venue values using lit()
+            enriched_df = enriched_df.withColumn(
+                "temp_relation",
+                determine_event_relation(
+                    col("pickup_latitude"), 
+                    col("pickup_longitude"), 
+                    col("dropoff_latitude"), 
+                    col("dropoff_longitude"), 
+                    lit(venue_lat), 
+                    lit(venue_lon)
+                )
+            )
+            
+            # Update event_relation and event_name only for rows where the temp_relation is not "none"
+            enriched_df = enriched_df.withColumn(
+                "event_relation",
+                when(col("temp_relation") != "none", col("temp_relation")).otherwise(col("event_relation"))
+            )
+            enriched_df = enriched_df.withColumn(
+                "event_name",
+                when(col("temp_relation") != "none", lit(event_name)).otherwise(col("event_name"))
+            )
+            
+            # Remove the temporary column
+            enriched_df = enriched_df.drop("temp_relation")
+except Exception as e:
+    print(f"Error processing special events: {e}")
+    # Continue with default event relation values
+
+
+
+enriched_df.writeStream \
+    .format("memory") \
+    .queryName("enriched_table") \
+    .outputMode("append") \
+    .start()
+
+enriched_df.createOrReplaceTempView("enriched_table")
+
+# Run a Spark SQL query to perform complex transformations
+# (Here we aggregate metrics by user_id, but you can adapt the query as needed)
+aggregated_df = spark.sql("""
+    SELECT
+        user_id,
+        window(timestamp, "10 seconds") AS time_window,
+        COUNT(*) AS total_rides,
+        AVG(distance_km) AS avg_distance_km,
+        MAX(distance_km) AS max_distance_km,
+        AVG(pickup_latitude) AS avg_pickup_latitude,
+        AVG(pickup_longitude) AS avg_pickup_longitude,
+        AVG(dropoff_latitude) AS avg_dropoff_latitude,
+        AVG(dropoff_longitude) AS avg_dropoff_longitude,
+        CAST(SUM(CASE WHEN day_of_week IN (5, 6) THEN 1 ELSE 0 END) AS DOUBLE)/COUNT(*) AS weekend_ride_ratio,
+        CAST(SUM(CASE WHEN event_relation = 'to_event' THEN 1 ELSE 0 END) AS DOUBLE)/COUNT(*) AS to_event_ratio,
+        CAST(SUM(CASE WHEN event_relation = 'from_event' THEN 1 ELSE 0 END) AS DOUBLE)/COUNT(*) AS from_event_ratio,
+        approx_count_distinct(event_name) AS unique_events_count,
+        VARIANCE(distance_km) AS distance_variance,
+        VARIANCE(hour) AS hour_variance
+    FROM enriched_table
+    GROUP BY user_id, window(timestamp, "10 seconds")
+""")
+
+# Write the aggregated result as a streaming query in append mode to Parquet
+aggregated_query = aggregated_df.writeStream \
+    .format("parquet") \
+    .option("checkpointLocation", "checkpoint/parquet/aggregated") \
+    .option("path", "output/aggregated") \
+    .outputMode("append") \
+    .trigger(processingTime='10 seconds') \
+    .start()
+
+print("Aggregated Query Status 1:", aggregated_query.status)
+
+
+# Wait longer for parquet files to build up
+print("Waiting for Parquet files to be created (60 seconds)...")
+time.sleep(210)  # Increased from 20 to 60 seconds
+
+print("Aggregated Query Status 2:", aggregated_query.status)
+
+test_query = aggregated_df.writeStream \
+    .format("console") \
+    .outputMode("append") \
+    .trigger(processingTime='10 seconds') \
+    .start()
 
 # List output files
 rides_output_files = os.listdir("output/rides")
@@ -481,6 +669,43 @@ if specials_output_files:
     print("Sample special events files:", specials_output_files[:5])
 else:
     print("No special events output files created yet")
+
+# Check for user vectors files too
+try:
+    user_vectors_output_files = os.listdir("output/user_vectors")
+    print(f"\nFiles in user vectors output directory: {len(user_vectors_output_files)}")
+    if user_vectors_output_files:
+        print("Sample user vectors files:", user_vectors_output_files[:5])
+    else:
+        print("No user vectors output files created yet")
+except Exception as e:
+    print(f"Error checking user vectors directory: {e}")
+
+# Display consolidated user vectors
+print("\nChecking consolidated user vectors:")
+try:
+    if aggregated_query:
+        consolidated_count = spark.sql("SELECT COUNT(*) as user_count FROM user_vectors_latest").collect()[0]['user_count']
+        print(f"Number of users with profiles: {consolidated_count}")
+        
+        if consolidated_count > 0:
+            print("\nSample user profiles:")
+            spark.sql("""
+                SELECT user_id, total_rides, avg_distance_km, max_distance_km, 
+                      most_common_hour, most_common_day_of_week, 
+                      weekend_ride_ratio, to_event_ratio, from_event_ratio,
+                      most_common_event
+                FROM user_vectors_latest
+                LIMIT 5
+            """).show(truncate=False)
+            
+            # Save a snapshot of the consolidated vectors to a file
+            spark.sql("SELECT * FROM user_vectors_latest").write.mode("overwrite").parquet("output/consolidated_user_vectors")
+            print("Saved consolidated user vectors to output/consolidated_user_vectors")
+    else:
+        print("No user vectors table exists yet. Waiting for data to be processed.")
+except Exception as e:
+    print(f"Error displaying consolidated user vectors: {e}")
 
 print("\n" + "="*50)
 print("STREAMING QUERIES ARE NOW RUNNING")
@@ -508,4 +733,5 @@ if stop_queries:
     print("\nData saved to:")
     print(f"  - Rides data: {os.path.abspath('output/rides')}")
     print(f"  - Special events data: {os.path.abspath('output/specials')}")
+    print(f"  - User profiles data: {os.path.abspath('output/user_vectors')}")
 
