@@ -1,452 +1,902 @@
 [
   {
     "driver_id": "D000000",
-    "rating": 4.8,
-    "no_of_rides": 564,
-    "cancellation_rate": 0.112,
-    "money_earned": 13326.44,
-    "time_driven": 1305.3,
-    "last_updated": 1743841347359
+    "rating": 4.1,
+    "no_of_rides": 553,
+    "cancellation_rate": 0.093,
+    "money_earned": 9699.91,
+    "time_driven": 1135.1,
+    "last_updated": 1744822165479
   },
   {
     "driver_id": "D000001",
-    "rating": 4.3,
-    "no_of_rides": 374,
-    "cancellation_rate": 0.114,
-    "money_earned": 6839.14,
-    "time_driven": 861.1,
-    "last_updated": 1743841347359
+    "rating": 4.0,
+    "no_of_rides": 905,
+    "cancellation_rate": 0.171,
+    "money_earned": 14347.44,
+    "time_driven": 1904.8,
+    "last_updated": 1744822165479
   },
   {
     "driver_id": "D000002",
-    "rating": 4.2,
-    "no_of_rides": 294,
-    "cancellation_rate": 0.081,
-    "money_earned": 4755.07,
-    "time_driven": 627.3,
-    "last_updated": 1743841347359
+    "rating": 4.4,
+    "no_of_rides": 360,
+    "cancellation_rate": 0.143,
+    "money_earned": 6164.72,
+    "time_driven": 926.5,
+    "last_updated": 1744822165479
   },
   {
     "driver_id": "D000003",
-    "rating": 4.0,
-    "no_of_rides": 88,
-    "cancellation_rate": 0.106,
-    "money_earned": 1446.7,
-    "time_driven": 208.7,
-    "last_updated": 1743841347359
+    "rating": 4.6,
+    "no_of_rides": 1038,
+    "cancellation_rate": 0.082,
+    "money_earned": 20958.82,
+    "time_driven": 2039.0,
+    "last_updated": 1744822165479
   },
   {
     "driver_id": "D000004",
-    "rating": 3.7,
-    "no_of_rides": 138,
-    "cancellation_rate": 0.177,
-    "money_earned": 1616.6,
-    "time_driven": 381.7,
-    "last_updated": 1743841347359
+    "rating": 4.5,
+    "no_of_rides": 7025,
+    "cancellation_rate": 0.041,
+    "money_earned": 146143.8,
+    "time_driven": 12208.2,
+    "last_updated": 1744822165479
   },
   {
     "driver_id": "D000005",
-    "rating": 4.1,
-    "no_of_rides": 106,
-    "cancellation_rate": 0.137,
-    "money_earned": 1805.85,
-    "time_driven": 315.5,
-    "last_updated": 1743841347359
+    "rating": 4.3,
+    "no_of_rides": 764,
+    "cancellation_rate": 0.086,
+    "money_earned": 13179.03,
+    "time_driven": 1983.1,
+    "last_updated": 1744822165479
   },
   {
     "driver_id": "D000006",
-    "rating": 3.9,
-    "no_of_rides": 183,
-    "cancellation_rate": 0.198,
-    "money_earned": 2538.25,
-    "time_driven": 528.4,
-    "last_updated": 1743841347359
+    "rating": 4.3,
+    "no_of_rides": 78,
+    "cancellation_rate": 0.131,
+    "money_earned": 1389.84,
+    "time_driven": 232.9,
+    "last_updated": 1744822165479
   },
   {
     "driver_id": "D000007",
-    "rating": 4.5,
-    "no_of_rides": 398,
-    "cancellation_rate": 0.099,
-    "money_earned": 7609.35,
-    "time_driven": 787.9,
-    "last_updated": 1743841347359
+    "rating": 4.3,
+    "no_of_rides": 1339,
+    "cancellation_rate": 0.061,
+    "money_earned": 25675.31,
+    "time_driven": 2509.7,
+    "last_updated": 1744822165479
   },
   {
     "driver_id": "D000008",
-    "rating": 4.3,
-    "no_of_rides": 474,
-    "cancellation_rate": 0.126,
-    "money_earned": 8002.69,
-    "time_driven": 1080.1,
-    "last_updated": 1743841347359
+    "rating": 4.4,
+    "no_of_rides": 496,
+    "cancellation_rate": 0.118,
+    "money_earned": 10348.83,
+    "time_driven": 1215.3,
+    "last_updated": 1744822165479
   },
   {
     "driver_id": "D000009",
-    "rating": 4.7,
-    "no_of_rides": 2433,
-    "cancellation_rate": 0.026,
-    "money_earned": 50370.17,
-    "time_driven": 4789.8,
-    "last_updated": 1743841347359
+    "rating": 4.3,
+    "no_of_rides": 2589,
+    "cancellation_rate": 0.029,
+    "money_earned": 49220.66,
+    "time_driven": 6172.7,
+    "last_updated": 1744822165479
   },
   {
     "driver_id": "D000010",
-    "rating": 3.9,
-    "no_of_rides": 25,
-    "cancellation_rate": 0.198,
-    "money_earned": 325.13,
-    "time_driven": 56.5,
-    "last_updated": 1743841347359
+    "rating": 4.5,
+    "no_of_rides": 1813,
+    "cancellation_rate": 0.03,
+    "money_earned": 39178.9,
+    "time_driven": 4572.2,
+    "last_updated": 1744822165479
   },
   {
     "driver_id": "D000011",
-    "rating": 4.3,
-    "no_of_rides": 1164,
-    "cancellation_rate": 0.025,
-    "money_earned": 19968.8,
-    "time_driven": 3281.5,
-    "last_updated": 1743841347359
+    "rating": 4.4,
+    "no_of_rides": 1391,
+    "cancellation_rate": 0.085,
+    "money_earned": 26408.52,
+    "time_driven": 2631.9,
+    "last_updated": 1744822165479
   },
   {
     "driver_id": "D000012",
-    "rating": 4.6,
-    "no_of_rides": 5584,
-    "cancellation_rate": 0.03,
-    "money_earned": 106554.63,
-    "time_driven": 8813.6,
-    "last_updated": 1743841347359
+    "rating": 4.2,
+    "no_of_rides": 513,
+    "cancellation_rate": 0.068,
+    "money_earned": 8719.07,
+    "time_driven": 1141.3,
+    "last_updated": 1744822165479
   },
   {
     "driver_id": "D000013",
-    "rating": 4.0,
-    "no_of_rides": 153,
-    "cancellation_rate": 0.181,
-    "money_earned": 2099.23,
-    "time_driven": 331.3,
-    "last_updated": 1743841347359
+    "rating": 3.8,
+    "no_of_rides": 87,
+    "cancellation_rate": 0.148,
+    "money_earned": 1194.77,
+    "time_driven": 188.4,
+    "last_updated": 1744822165479
   },
   {
     "driver_id": "D000014",
-    "rating": 4.5,
-    "no_of_rides": 1368,
-    "cancellation_rate": 0.035,
-    "money_earned": 26978.05,
-    "time_driven": 3084.8,
-    "last_updated": 1743841347359
+    "rating": 4.4,
+    "no_of_rides": 526,
+    "cancellation_rate": 0.066,
+    "money_earned": 10615.01,
+    "time_driven": 1483.2,
+    "last_updated": 1744822165479
   },
   {
     "driver_id": "D000015",
-    "rating": 3.5,
-    "no_of_rides": 138,
-    "cancellation_rate": 0.101,
-    "money_earned": 1352.05,
-    "time_driven": 309.3,
-    "last_updated": 1743841347359
+    "rating": 4.4,
+    "no_of_rides": 3201,
+    "cancellation_rate": 0.033,
+    "money_earned": 64361.55,
+    "time_driven": 6260.7,
+    "last_updated": 1744822165479
   },
   {
     "driver_id": "D000016",
-    "rating": 4.3,
-    "no_of_rides": 233,
-    "cancellation_rate": 0.117,
-    "money_earned": 4394.3,
-    "time_driven": 635.4,
-    "last_updated": 1743841347359
+    "rating": 4.4,
+    "no_of_rides": 123,
+    "cancellation_rate": 0.132,
+    "money_earned": 2480.12,
+    "time_driven": 291.1,
+    "last_updated": 1744822165479
   },
   {
     "driver_id": "D000017",
-    "rating": 3.8,
-    "no_of_rides": 280,
-    "cancellation_rate": 0.133,
-    "money_earned": 3942.73,
-    "time_driven": 716.9,
-    "last_updated": 1743841347359
+    "rating": 4.4,
+    "no_of_rides": 555,
+    "cancellation_rate": 0.112,
+    "money_earned": 11537.05,
+    "time_driven": 1120.3,
+    "last_updated": 1744822165479
   },
   {
     "driver_id": "D000018",
-    "rating": 4.7,
-    "no_of_rides": 2457,
-    "cancellation_rate": 0.031,
-    "money_earned": 49890.6,
-    "time_driven": 5037.2,
-    "last_updated": 1743841347359
+    "rating": 4.4,
+    "no_of_rides": 331,
+    "cancellation_rate": 0.084,
+    "money_earned": 5824.23,
+    "time_driven": 912.4,
+    "last_updated": 1744822165479
   },
   {
     "driver_id": "D000019",
-    "rating": 4.5,
-    "no_of_rides": 5224,
-    "cancellation_rate": 0.029,
-    "money_earned": 111364.41,
-    "time_driven": 8062.4,
-    "last_updated": 1743841347359
+    "rating": 4.1,
+    "no_of_rides": 731,
+    "cancellation_rate": 0.082,
+    "money_earned": 11400.3,
+    "time_driven": 1364.5,
+    "last_updated": 1744822165479
   },
   {
     "driver_id": "D000020",
-    "rating": 4.7,
-    "no_of_rides": 4225,
-    "cancellation_rate": 0.033,
-    "money_earned": 97429.61,
-    "time_driven": 9446.7,
-    "last_updated": 1743841347359
+    "rating": 4.4,
+    "no_of_rides": 663,
+    "cancellation_rate": 0.21,
+    "money_earned": 11776.19,
+    "time_driven": 1425.7,
+    "last_updated": 1744822165479
   },
   {
     "driver_id": "D000021",
-    "rating": 4.5,
-    "no_of_rides": 351,
-    "cancellation_rate": 0.222,
-    "money_earned": 6437.28,
-    "time_driven": 813.1,
-    "last_updated": 1743841347359
+    "rating": 3.9,
+    "no_of_rides": 469,
+    "cancellation_rate": 0.171,
+    "money_earned": 7155.35,
+    "time_driven": 896.0,
+    "last_updated": 1744822165479
   },
   {
     "driver_id": "D000022",
-    "rating": 4.3,
-    "no_of_rides": 980,
-    "cancellation_rate": 0.035,
-    "money_earned": 17683.56,
-    "time_driven": 2569.6,
-    "last_updated": 1743841347359
+    "rating": 3.7,
+    "no_of_rides": 694,
+    "cancellation_rate": 0.194,
+    "money_earned": 9055.35,
+    "time_driven": 1342.8,
+    "last_updated": 1744822165479
   },
   {
     "driver_id": "D000023",
-    "rating": 4.3,
-    "no_of_rides": 734,
-    "cancellation_rate": 0.096,
-    "money_earned": 14388.72,
-    "time_driven": 1775.6,
-    "last_updated": 1743841347359
+    "rating": 4.8,
+    "no_of_rides": 3044,
+    "cancellation_rate": 0.029,
+    "money_earned": 69264.69,
+    "time_driven": 5534.8,
+    "last_updated": 1744822165479
   },
   {
     "driver_id": "D000024",
-    "rating": 3.9,
-    "no_of_rides": 27,
-    "cancellation_rate": 0.139,
-    "money_earned": 401.15,
-    "time_driven": 62.4,
-    "last_updated": 1743841347359
+    "rating": 4.8,
+    "no_of_rides": 3405,
+    "cancellation_rate": 0.041,
+    "money_earned": 78206.64,
+    "time_driven": 6187.1,
+    "last_updated": 1744822165479
   },
   {
     "driver_id": "D000025",
-    "rating": 4.8,
-    "no_of_rides": 1050,
-    "cancellation_rate": 0.036,
-    "money_earned": 22291.29,
-    "time_driven": 2551.3,
-    "last_updated": 1743841347359
+    "rating": 4.3,
+    "no_of_rides": 1209,
+    "cancellation_rate": 0.074,
+    "money_earned": 19673.19,
+    "time_driven": 3075.1,
+    "last_updated": 1744822165479
   },
   {
     "driver_id": "D000026",
-    "rating": 4.6,
-    "no_of_rides": 5671,
-    "cancellation_rate": 0.041,
-    "money_earned": 119661.74,
-    "time_driven": 9627.8,
-    "last_updated": 1743841347359
+    "rating": 4.7,
+    "no_of_rides": 2261,
+    "cancellation_rate": 0.029,
+    "money_earned": 51776.49,
+    "time_driven": 4349.8,
+    "last_updated": 1744822165479
   },
   {
     "driver_id": "D000027",
-    "rating": 4.1,
-    "no_of_rides": 526,
-    "cancellation_rate": 0.078,
-    "money_earned": 8798.72,
-    "time_driven": 1318.6,
-    "last_updated": 1743841347359
+    "rating": 4.5,
+    "no_of_rides": 1682,
+    "cancellation_rate": 0.05,
+    "money_earned": 32060.7,
+    "time_driven": 3147.9,
+    "last_updated": 1744822165481
   },
   {
     "driver_id": "D000028",
-    "rating": 4.3,
-    "no_of_rides": 32,
-    "cancellation_rate": 0.184,
-    "money_earned": 605.94,
-    "time_driven": 75.7,
-    "last_updated": 1743841347359
+    "rating": 4.6,
+    "no_of_rides": 2652,
+    "cancellation_rate": 0.041,
+    "money_earned": 57085.31,
+    "time_driven": 4856.1,
+    "last_updated": 1744822165481
   },
   {
     "driver_id": "D000029",
-    "rating": 4.4,
-    "no_of_rides": 1594,
-    "cancellation_rate": 0.061,
-    "money_earned": 32080.93,
-    "time_driven": 3037.0,
-    "last_updated": 1743841347359
+    "rating": 4.0,
+    "no_of_rides": 462,
+    "cancellation_rate": 0.085,
+    "money_earned": 6604.3,
+    "time_driven": 950.2,
+    "last_updated": 1744822165481
   },
   {
     "driver_id": "D000030",
-    "rating": 4.4,
-    "no_of_rides": 211,
-    "cancellation_rate": 0.094,
-    "money_earned": 3979.1,
-    "time_driven": 509.8,
-    "last_updated": 1743841347359
+    "rating": 4.1,
+    "no_of_rides": 376,
+    "cancellation_rate": 0.125,
+    "money_earned": 5488.56,
+    "time_driven": 915.1,
+    "last_updated": 1744822165481
   },
   {
     "driver_id": "D000031",
-    "rating": 4.8,
-    "no_of_rides": 79,
-    "cancellation_rate": 0.15,
-    "money_earned": 1799.02,
-    "time_driven": 171.0,
-    "last_updated": 1743841347359
+    "rating": 3.8,
+    "no_of_rides": 105,
+    "cancellation_rate": 0.142,
+    "money_earned": 1342.79,
+    "time_driven": 239.7,
+    "last_updated": 1744822165481
   },
   {
     "driver_id": "D000032",
-    "rating": 3.5,
-    "no_of_rides": 17,
-    "cancellation_rate": 0.143,
-    "money_earned": 184.21,
-    "time_driven": 48.7,
-    "last_updated": 1743841347359
+    "rating": 4.6,
+    "no_of_rides": 595,
+    "cancellation_rate": 0.084,
+    "money_earned": 12795.56,
+    "time_driven": 1302.8,
+    "last_updated": 1744822165481
   },
   {
     "driver_id": "D000033",
-    "rating": 4.4,
-    "no_of_rides": 227,
-    "cancellation_rate": 0.09,
-    "money_earned": 4616.26,
-    "time_driven": 618.9,
-    "last_updated": 1743841347359
+    "rating": 4.3,
+    "no_of_rides": 5510,
+    "cancellation_rate": 0.033,
+    "money_earned": 93267.27,
+    "time_driven": 9022.3,
+    "last_updated": 1744822165481
   },
   {
     "driver_id": "D000034",
-    "rating": 3.8,
-    "no_of_rides": 472,
-    "cancellation_rate": 0.222,
-    "money_earned": 6252.63,
-    "time_driven": 1126.8,
-    "last_updated": 1743841347359
+    "rating": 4.1,
+    "no_of_rides": 43,
+    "cancellation_rate": 0.174,
+    "money_earned": 657.21,
+    "time_driven": 120.3,
+    "last_updated": 1744822165481
   },
   {
     "driver_id": "D000035",
-    "rating": 3.5,
-    "no_of_rides": 705,
-    "cancellation_rate": 0.161,
-    "money_earned": 6856.26,
-    "time_driven": 1540.3,
-    "last_updated": 1743841347360
+    "rating": 4.2,
+    "no_of_rides": 1143,
+    "cancellation_rate": 0.09,
+    "money_earned": 21139.57,
+    "time_driven": 2234.0,
+    "last_updated": 1744822165481
   },
   {
     "driver_id": "D000036",
-    "rating": 4.3,
-    "no_of_rides": 4949,
-    "cancellation_rate": 0.044,
-    "money_earned": 93333.78,
-    "time_driven": 9007.2,
-    "last_updated": 1743841347360
+    "rating": 4.1,
+    "no_of_rides": 1068,
+    "cancellation_rate": 0.2,
+    "money_earned": 15507.24,
+    "time_driven": 2021.3,
+    "last_updated": 1744822165481
   },
   {
     "driver_id": "D000037",
-    "rating": 4.2,
-    "no_of_rides": 985,
-    "cancellation_rate": 0.073,
-    "money_earned": 16536.27,
-    "time_driven": 2455.5,
-    "last_updated": 1743841347360
+    "rating": 4.6,
+    "no_of_rides": 5514,
+    "cancellation_rate": 0.035,
+    "money_earned": 124988.77,
+    "time_driven": 8942.1,
+    "last_updated": 1744822165481
   },
   {
     "driver_id": "D000038",
-    "rating": 4.3,
-    "no_of_rides": 1338,
-    "cancellation_rate": 0.09,
-    "money_earned": 26029.86,
-    "time_driven": 2598.2,
-    "last_updated": 1743841347360
+    "rating": 4.7,
+    "no_of_rides": 2229,
+    "cancellation_rate": 0.039,
+    "money_earned": 51725.59,
+    "time_driven": 4358.1,
+    "last_updated": 1744822165481
   },
   {
     "driver_id": "D000039",
-    "rating": 4.5,
-    "no_of_rides": 8226,
-    "cancellation_rate": 0.034,
-    "money_earned": 174432.63,
-    "time_driven": 12708.3,
-    "last_updated": 1743841347360
+    "rating": 4.2,
+    "no_of_rides": 414,
+    "cancellation_rate": 0.065,
+    "money_earned": 7059.49,
+    "time_driven": 890.2,
+    "last_updated": 1744822165481
   },
   {
     "driver_id": "D000040",
-    "rating": 4.6,
-    "no_of_rides": 3278,
-    "cancellation_rate": 0.049,
-    "money_earned": 65709.88,
-    "time_driven": 5968.5,
-    "last_updated": 1743841347360
+    "rating": 4.4,
+    "no_of_rides": 2793,
+    "cancellation_rate": 0.051,
+    "money_earned": 48371.92,
+    "time_driven": 6540.8,
+    "last_updated": 1744822165481
   },
   {
     "driver_id": "D000041",
-    "rating": 4.1,
-    "no_of_rides": 99,
-    "cancellation_rate": 0.226,
-    "money_earned": 1547.94,
-    "time_driven": 260.5,
-    "last_updated": 1743841347360
+    "rating": 4.6,
+    "no_of_rides": 4279,
+    "cancellation_rate": 0.043,
+    "money_earned": 89657.48,
+    "time_driven": 8978.6,
+    "last_updated": 1744822165481
   },
   {
     "driver_id": "D000042",
-    "rating": 4.5,
-    "no_of_rides": 6707,
-    "cancellation_rate": 0.035,
-    "money_earned": 143023.03,
-    "time_driven": 11976.3,
-    "last_updated": 1743841347360
+    "rating": 4.7,
+    "no_of_rides": 532,
+    "cancellation_rate": 0.095,
+    "money_earned": 10914.93,
+    "time_driven": 1275.8,
+    "last_updated": 1744822165481
   },
   {
     "driver_id": "D000043",
-    "rating": 3.7,
-    "no_of_rides": 0,
-    "cancellation_rate": 0.179,
-    "money_earned": 0.0,
-    "time_driven": 2.8,
-    "last_updated": 1743841347360
+    "rating": 4.3,
+    "no_of_rides": 291,
+    "cancellation_rate": 0.136,
+    "money_earned": 5392.39,
+    "time_driven": 573.0,
+    "last_updated": 1744822165481
   },
   {
     "driver_id": "D000044",
-    "rating": 4.1,
-    "no_of_rides": 1114,
-    "cancellation_rate": 0.082,
-    "money_earned": 18603.07,
-    "time_driven": 2325.2,
-    "last_updated": 1743841347360
+    "rating": 4.3,
+    "no_of_rides": 505,
+    "cancellation_rate": 0.12,
+    "money_earned": 9015.46,
+    "time_driven": 1021.1,
+    "last_updated": 1744822165481
   },
   {
     "driver_id": "D000045",
     "rating": 4.7,
-    "no_of_rides": 1708,
-    "cancellation_rate": 0.02,
-    "money_earned": 37631.07,
-    "time_driven": 3674.9,
-    "last_updated": 1743841347360
+    "no_of_rides": 5535,
+    "cancellation_rate": 0.035,
+    "money_earned": 116477.31,
+    "time_driven": 9702.9,
+    "last_updated": 1744822165481
   },
   {
     "driver_id": "D000046",
-    "rating": 4.0,
-    "no_of_rides": 811,
-    "cancellation_rate": 0.218,
-    "money_earned": 11535.16,
-    "time_driven": 1888.1,
-    "last_updated": 1743841347360
+    "rating": 4.3,
+    "no_of_rides": 423,
+    "cancellation_rate": 0.099,
+    "money_earned": 8018.26,
+    "time_driven": 1069.3,
+    "last_updated": 1744822165481
   },
   {
     "driver_id": "D000047",
     "rating": 4.4,
-    "no_of_rides": 366,
-    "cancellation_rate": 0.074,
-    "money_earned": 6904.8,
-    "time_driven": 744.7,
-    "last_updated": 1743841347360
+    "no_of_rides": 64,
+    "cancellation_rate": 0.139,
+    "money_earned": 1236.19,
+    "time_driven": 150.3,
+    "last_updated": 1744822165481
   },
   {
     "driver_id": "D000048",
-    "rating": 4.1,
-    "no_of_rides": 152,
-    "cancellation_rate": 0.129,
-    "money_earned": 2342.31,
-    "time_driven": 329.9,
-    "last_updated": 1743841347360
+    "rating": 3.5,
+    "no_of_rides": 625,
+    "cancellation_rate": 0.184,
+    "money_earned": 6447.02,
+    "time_driven": 1449.6,
+    "last_updated": 1744822165481
   },
   {
     "driver_id": "D000049",
+    "rating": 4.8,
+    "no_of_rides": 105,
+    "cancellation_rate": 0.137,
+    "money_earned": 2281.37,
+    "time_driven": 296.2,
+    "last_updated": 1744822165481
+  },
+  {
+    "driver_id": "D000050",
+    "rating": 4.1,
+    "no_of_rides": 85,
+    "cancellation_rate": 0.179,
+    "money_earned": 1243.37,
+    "time_driven": 186.7,
+    "last_updated": 1744822165481
+  },
+  {
+    "driver_id": "D000051",
+    "rating": 4.2,
+    "no_of_rides": 131,
+    "cancellation_rate": 0.161,
+    "money_earned": 2408.11,
+    "time_driven": 321.8,
+    "last_updated": 1744822165481
+  },
+  {
+    "driver_id": "D000052",
+    "rating": 4.2,
+    "no_of_rides": 284,
+    "cancellation_rate": 0.101,
+    "money_earned": 5080.21,
+    "time_driven": 744.0,
+    "last_updated": 1744822165481
+  },
+  {
+    "driver_id": "D000053",
+    "rating": 4.3,
+    "no_of_rides": 4808,
+    "cancellation_rate": 0.045,
+    "money_earned": 77970.42,
+    "time_driven": 8922.0,
+    "last_updated": 1744822165481
+  },
+  {
+    "driver_id": "D000054",
+    "rating": 4.0,
+    "no_of_rides": 1382,
+    "cancellation_rate": 0.074,
+    "money_earned": 22292.98,
+    "time_driven": 3170.8,
+    "last_updated": 1744822165481
+  },
+  {
+    "driver_id": "D000055",
+    "rating": 4.3,
+    "no_of_rides": 925,
+    "cancellation_rate": 0.07,
+    "money_earned": 17941.95,
+    "time_driven": 2149.3,
+    "last_updated": 1744822165481
+  },
+  {
+    "driver_id": "D000056",
+    "rating": 4.5,
+    "no_of_rides": 655,
+    "cancellation_rate": 0.209,
+    "money_earned": 13713.28,
+    "time_driven": 1664.1,
+    "last_updated": 1744822165481
+  },
+  {
+    "driver_id": "D000057",
     "rating": 4.4,
-    "no_of_rides": 972,
-    "cancellation_rate": 0.087,
-    "money_earned": 17080.96,
-    "time_driven": 2285.2,
-    "last_updated": 1743841347360
+    "no_of_rides": 341,
+    "cancellation_rate": 0.107,
+    "money_earned": 6688.88,
+    "time_driven": 645.6,
+    "last_updated": 1744822165481
+  },
+  {
+    "driver_id": "D000058",
+    "rating": 4.3,
+    "no_of_rides": 88,
+    "cancellation_rate": 0.119,
+    "money_earned": 1428.55,
+    "time_driven": 204.8,
+    "last_updated": 1744822165481
+  },
+  {
+    "driver_id": "D000059",
+    "rating": 4.4,
+    "no_of_rides": 359,
+    "cancellation_rate": 0.075,
+    "money_earned": 6283.86,
+    "time_driven": 988.4,
+    "last_updated": 1744822165481
+  },
+  {
+    "driver_id": "D000060",
+    "rating": 4.3,
+    "no_of_rides": 6236,
+    "cancellation_rate": 0.032,
+    "money_earned": 116473.1,
+    "time_driven": 9722.9,
+    "last_updated": 1744822165481
+  },
+  {
+    "driver_id": "D000061",
+    "rating": 4.2,
+    "no_of_rides": 1004,
+    "cancellation_rate": 0.078,
+    "money_earned": 17831.2,
+    "time_driven": 2583.0,
+    "last_updated": 1744822165481
+  },
+  {
+    "driver_id": "D000062",
+    "rating": 3.8,
+    "no_of_rides": 1853,
+    "cancellation_rate": 0.196,
+    "money_earned": 24940.63,
+    "time_driven": 3658.1,
+    "last_updated": 1744822165481
+  },
+  {
+    "driver_id": "D000063",
+    "rating": 4.4,
+    "no_of_rides": 1075,
+    "cancellation_rate": 0.081,
+    "money_earned": 20922.58,
+    "time_driven": 2313.9,
+    "last_updated": 1744822165481
+  },
+  {
+    "driver_id": "D000064",
+    "rating": 4.0,
+    "no_of_rides": 82,
+    "cancellation_rate": 0.125,
+    "money_earned": 1210.75,
+    "time_driven": 212.1,
+    "last_updated": 1744822165481
+  },
+  {
+    "driver_id": "D000065",
+    "rating": 4.2,
+    "no_of_rides": 145,
+    "cancellation_rate": 0.154,
+    "money_earned": 2434.51,
+    "time_driven": 355.7,
+    "last_updated": 1744822165481
+  },
+  {
+    "driver_id": "D000066",
+    "rating": 4.2,
+    "no_of_rides": 44,
+    "cancellation_rate": 0.106,
+    "money_earned": 680.08,
+    "time_driven": 116.6,
+    "last_updated": 1744822165481
+  },
+  {
+    "driver_id": "D000067",
+    "rating": 4.2,
+    "no_of_rides": 6275,
+    "cancellation_rate": 0.038,
+    "money_earned": 110691.14,
+    "time_driven": 11188.0,
+    "last_updated": 1744822165481
+  },
+  {
+    "driver_id": "D000068",
+    "rating": 4.3,
+    "no_of_rides": 218,
+    "cancellation_rate": 0.13,
+    "money_earned": 3540.74,
+    "time_driven": 509.6,
+    "last_updated": 1744822165481
+  },
+  {
+    "driver_id": "D000069",
+    "rating": 3.8,
+    "no_of_rides": 1473,
+    "cancellation_rate": 0.193,
+    "money_earned": 18087.02,
+    "time_driven": 3479.5,
+    "last_updated": 1744822165481
+  },
+  {
+    "driver_id": "D000070",
+    "rating": 4.0,
+    "no_of_rides": 88,
+    "cancellation_rate": 0.11,
+    "money_earned": 1384.74,
+    "time_driven": 187.2,
+    "last_updated": 1744822165483
+  },
+  {
+    "driver_id": "D000071",
+    "rating": 4.7,
+    "no_of_rides": 4233,
+    "cancellation_rate": 0.029,
+    "money_earned": 96005.38,
+    "time_driven": 8117.4,
+    "last_updated": 1744822165483
+  },
+  {
+    "driver_id": "D000072",
+    "rating": 4.6,
+    "no_of_rides": 283,
+    "cancellation_rate": 0.085,
+    "money_earned": 6199.63,
+    "time_driven": 652.2,
+    "last_updated": 1744822165483
+  },
+  {
+    "driver_id": "D000073",
+    "rating": 4.4,
+    "no_of_rides": 827,
+    "cancellation_rate": 0.038,
+    "money_earned": 14657.57,
+    "time_driven": 2388.4,
+    "last_updated": 1744822165483
+  },
+  {
+    "driver_id": "D000074",
+    "rating": 4.4,
+    "no_of_rides": 3103,
+    "cancellation_rate": 0.041,
+    "money_earned": 61513.23,
+    "time_driven": 5739.1,
+    "last_updated": 1744822165483
+  },
+  {
+    "driver_id": "D000075",
+    "rating": 4.7,
+    "no_of_rides": 4028,
+    "cancellation_rate": 0.045,
+    "money_earned": 88595.24,
+    "time_driven": 9065.0,
+    "last_updated": 1744822165483
+  },
+  {
+    "driver_id": "D000076",
+    "rating": 4.2,
+    "no_of_rides": 695,
+    "cancellation_rate": 0.094,
+    "money_earned": 11548.94,
+    "time_driven": 1834.9,
+    "last_updated": 1744822165483
+  },
+  {
+    "driver_id": "D000077",
+    "rating": 4.2,
+    "no_of_rides": 651,
+    "cancellation_rate": 0.123,
+    "money_earned": 10255.51,
+    "time_driven": 1464.4,
+    "last_updated": 1744822165483
+  },
+  {
+    "driver_id": "D000078",
+    "rating": 4.2,
+    "no_of_rides": 1025,
+    "cancellation_rate": 0.081,
+    "money_earned": 18075.34,
+    "time_driven": 2003.7,
+    "last_updated": 1744822165483
+  },
+  {
+    "driver_id": "D000079",
+    "rating": 3.3,
+    "no_of_rides": 924,
+    "cancellation_rate": 0.207,
+    "money_earned": 8046.45,
+    "time_driven": 1841.0,
+    "last_updated": 1744822165483
+  },
+  {
+    "driver_id": "D000080",
+    "rating": 4.2,
+    "no_of_rides": 364,
+    "cancellation_rate": 0.138,
+    "money_earned": 5639.25,
+    "time_driven": 984.9,
+    "last_updated": 1744822165483
+  },
+  {
+    "driver_id": "D000081",
+    "rating": 4.3,
+    "no_of_rides": 1962,
+    "cancellation_rate": 0.047,
+    "money_earned": 37534.03,
+    "time_driven": 5168.3,
+    "last_updated": 1744822165483
+  },
+  {
+    "driver_id": "D000082",
+    "rating": 4.5,
+    "no_of_rides": 4793,
+    "cancellation_rate": 0.023,
+    "money_earned": 93589.7,
+    "time_driven": 10526.3,
+    "last_updated": 1744822165483
+  },
+  {
+    "driver_id": "D000083",
+    "rating": 4.8,
+    "no_of_rides": 315,
+    "cancellation_rate": 0.078,
+    "money_earned": 7614.65,
+    "time_driven": 727.4,
+    "last_updated": 1744822165483
+  },
+  {
+    "driver_id": "D000084",
+    "rating": 4.6,
+    "no_of_rides": 1078,
+    "cancellation_rate": 0.049,
+    "money_earned": 20558.18,
+    "time_driven": 2687.4,
+    "last_updated": 1744822165483
+  },
+  {
+    "driver_id": "D000085",
+    "rating": 4.4,
+    "no_of_rides": 4338,
+    "cancellation_rate": 0.043,
+    "money_earned": 84488.59,
+    "time_driven": 7624.5,
+    "last_updated": 1744822165483
+  },
+  {
+    "driver_id": "D000086",
+    "rating": 3.9,
+    "no_of_rides": 134,
+    "cancellation_rate": 0.171,
+    "money_earned": 1748.2,
+    "time_driven": 303.9,
+    "last_updated": 1744822165483
+  },
+  {
+    "driver_id": "D000087",
+    "rating": 4.5,
+    "no_of_rides": 566,
+    "cancellation_rate": 0.088,
+    "money_earned": 12052.83,
+    "time_driven": 1111.8,
+    "last_updated": 1744822165483
+  },
+  {
+    "driver_id": "D000088",
+    "rating": 4.4,
+    "no_of_rides": 469,
+    "cancellation_rate": 0.203,
+    "money_earned": 9652.27,
+    "time_driven": 1148.5,
+    "last_updated": 1744822165483
+  },
+  {
+    "driver_id": "D000089",
+    "rating": 3.7,
+    "no_of_rides": 721,
+    "cancellation_rate": 0.214,
+    "money_earned": 9341.19,
+    "time_driven": 1776.1,
+    "last_updated": 1744822165483
+  },
+  {
+    "driver_id": "D000090",
+    "rating": 4.4,
+    "no_of_rides": 1264,
+    "cancellation_rate": 0.024,
+    "money_earned": 22638.32,
+    "time_driven": 2746.1,
+    "last_updated": 1744822165483
+  },
+  {
+    "driver_id": "D000091",
+    "rating": 4.2,
+    "no_of_rides": 314,
+    "cancellation_rate": 0.118,
+    "money_earned": 5294.47,
+    "time_driven": 848.8,
+    "last_updated": 1744822165483
+  },
+  {
+    "driver_id": "D000092",
+    "rating": 4.4,
+    "no_of_rides": 388,
+    "cancellation_rate": 0.074,
+    "money_earned": 7101.31,
+    "time_driven": 958.8,
+    "last_updated": 1744822165483
+  },
+  {
+    "driver_id": "D000093",
+    "rating": 4.8,
+    "no_of_rides": 947,
+    "cancellation_rate": 0.078,
+    "money_earned": 20865.49,
+    "time_driven": 2032.0,
+    "last_updated": 1744822165483
+  },
+  {
+    "driver_id": "D000094",
+    "rating": 4.5,
+    "no_of_rides": 391,
+    "cancellation_rate": 0.112,
+    "money_earned": 8284.15,
+    "time_driven": 800.5,
+    "last_updated": 1744822165483
+  },
+  {
+    "driver_id": "D000095",
+    "rating": 4.5,
+    "no_of_rides": 31,
+    "cancellation_rate": 0.149,
+    "money_earned": 573.28,
+    "time_driven": 78.9,
+    "last_updated": 1744822165483
+  },
+  {
+    "driver_id": "D000096",
+    "rating": 4.5,
+    "no_of_rides": 3445,
+    "cancellation_rate": 0.036,
+    "money_earned": 64545.42,
+    "time_driven": 7924.7,
+    "last_updated": 1744822165483
+  },
+  {
+    "driver_id": "D000097",
+    "rating": 4.3,
+    "no_of_rides": 101,
+    "cancellation_rate": 0.139,
+    "money_earned": 1727.35,
+    "time_driven": 235.0,
+    "last_updated": 1744822165483
+  },
+  {
+    "driver_id": "D000098",
+    "rating": 4.4,
+    "no_of_rides": 2574,
+    "cancellation_rate": 0.011,
+    "money_earned": 48423.26,
+    "time_driven": 5859.8,
+    "last_updated": 1744822165483
+  },
+  {
+    "driver_id": "D000099",
+    "rating": 4.0,
+    "no_of_rides": 88,
+    "cancellation_rate": 0.11,
+    "money_earned": 1383.31,
+    "time_driven": 245.9,
+    "last_updated": 1744822165483
   }
 ]
