@@ -12,3 +12,7 @@ seaborn
 fastparquet
 scikit-learn
 shap
+azure-storage-blob
+azure-eventhub
+dotenv
+

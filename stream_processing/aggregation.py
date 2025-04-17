@@ -27,10 +27,6 @@ def create_user_aggregations(spark, enriched_table_name="enriched_table"):
             AVG(pickup_longitude) AS avg_pickup_longitude,
             AVG(dropoff_latitude) AS avg_dropoff_latitude,
             AVG(dropoff_longitude) AS avg_dropoff_longitude,
-            CAST(SUM(CASE WHEN day_of_week IN (5, 6) THEN 1 ELSE 0 END) AS DOUBLE)/COUNT(*) AS weekend_ride_ratio,
-            CAST(SUM(CASE WHEN event_relation = 'to_event' THEN 1 ELSE 0 END) AS DOUBLE)/COUNT(*) AS to_event_ratio,
-            CAST(SUM(CASE WHEN event_relation = 'from_event' THEN 1 ELSE 0 END) AS DOUBLE)/COUNT(*) AS from_event_ratio,
-            approx_count_distinct(event_name) AS unique_events_count,
             VARIANCE(distance_km) AS distance_variance,
             VARIANCE(hour) AS hour_variance
         FROM {enriched_table_name}

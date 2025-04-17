@@ -17,6 +17,7 @@ from stream_processing.config import (
     SPECIALS_EVENTHUB_NAME, SPECIALS_CONSUMER_EVENTHUB_CONNECTION_STR,
     RIDE_SCHEMA_PATH, SPECIAL_SCHEMA_PATH,
     QUERY_CONFIGS, OUTPUT_DIRS, CHECKPOINT_DIRS,
+    AZURE_STORAGE_CONNECTION_STRING, AZURE_BLOB_CONTAINER_NAME,
     get_kafka_config
 )
 from stream_processing.schema_utils import load_schema
@@ -38,10 +39,15 @@ from stream_processing.aggregation import (
 from stream_processing.stream_writers import (
     write_stream_to_memory,
     write_stream_to_parquet,
+    write_stream_to_parquet_and_blob,
     write_stream_to_console,
     list_active_queries,
     stop_all_queries
 )
+# from stream_processing.storage_sender import (
+#     storage_connection_str,
+#     blob_container_name
+# )
 
 def main():
     """Main function to run the stream analytics application"""
@@ -113,21 +119,27 @@ def main():
         QUERY_CONFIGS["rides_memory"]["checkpoint_location"]
     )
     
-    # Write rides to parquet
-    rides_parquet_query = write_stream_to_parquet(
+    # Write rides to parquet and Azure Blob Storage
+    rides_parquet_query = write_stream_to_parquet_and_blob(
         df_rides,
         QUERY_CONFIGS["rides_parquet"]["name"],
         OUTPUT_DIRS["rides"],
         CHECKPOINT_DIRS["parquet_rides"],
+        AZURE_STORAGE_CONNECTION_STRING,
+        AZURE_BLOB_CONTAINER_NAME,
+        "rides",
         QUERY_CONFIGS["rides_parquet"]["trigger_interval"]
     )
     
-    # Write special events to parquet
-    specials_parquet_query = write_stream_to_parquet(
+    # Write special events to parquet and Azure Blob Storage
+    specials_parquet_query = write_stream_to_parquet_and_blob(
         df_specials,
         QUERY_CONFIGS["specials_parquet"]["name"],
         OUTPUT_DIRS["specials"],
         CHECKPOINT_DIRS["parquet_specials"],
+        AZURE_STORAGE_CONNECTION_STRING,
+        AZURE_BLOB_CONTAINER_NAME,
+        "specials",
         QUERY_CONFIGS["specials_parquet"]["trigger_interval"]
     )
     
@@ -193,20 +205,16 @@ def main():
     # Create user aggregations
     aggregated_df = create_user_aggregations(spark)
     
-    # Write aggregated data to parquet
-    aggregated_query = write_stream_to_parquet(
+    # Write aggregated data to parquet and Azure Blob Storage
+    aggregated_query = write_stream_to_parquet_and_blob(
         aggregated_df,
         QUERY_CONFIGS["aggregated_parquet"]["name"],
         OUTPUT_DIRS["aggregated"],
         CHECKPOINT_DIRS["parquet_aggregated"],
+        AZURE_STORAGE_CONNECTION_STRING,
+        AZURE_BLOB_CONTAINER_NAME,
+        "user_vectors",
         QUERY_CONFIGS["aggregated_parquet"]["trigger_interval"]
-    )
-    
-    # Write test data to console
-    test_query = write_stream_to_console(
-        aggregated_df,
-        QUERY_CONFIGS["test_console"]["name"],
-        QUERY_CONFIGS["test_console"]["trigger_interval"]
     )
     
     # Wait for parquet files to build up

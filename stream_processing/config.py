@@ -1,6 +1,11 @@
 """
 Configuration module for storing constant variables and settings
 """
+import os
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 # Define Azure credentials
 EVENT_HUB_NAMESPACE = 'iesstsabbadbaa-grp-01-05'
@@ -10,6 +15,12 @@ RIDES_CONSUMER_EVENTHUB_CONNECTION_STR = 'Endpoint=sb://iesstsabbadbaa-grp-01-05
 
 SPECIALS_EVENTHUB_NAME = 'grp04-special-events'
 SPECIALS_CONSUMER_EVENTHUB_CONNECTION_STR = 'Endpoint=sb://iesstsabbadbaa-grp-01-05.servicebus.windows.net/;SharedAccessKeyName=Consumer;SharedAccessKey=tJYUHSWabtnBVNOhc5TgJMHz1vtPw1NqC+AEhH6h8V4=;EntityPath=grp04-special-events'
+
+# Azure Storage credentials
+AZURE_STORAGE_ACCOUNT_NAME = os.getenv('AZURE_STORAGE_ACCOUNT_NAME')
+AZURE_STORAGE_ACCOUNT_KEY = os.getenv('AZURE_STORAGE_ACCOUNT_KEY')
+AZURE_STORAGE_CONNECTION_STRING = f"DefaultEndpointsProtocol=https;AccountName={AZURE_STORAGE_ACCOUNT_NAME};AccountKey={AZURE_STORAGE_ACCOUNT_KEY};EndpointSuffix=core.windows.net"
+AZURE_BLOB_CONTAINER_NAME = os.getenv('AZURE_BLOB_CONTAINER_NAME')
 
 # Schema file paths
 RIDE_SCHEMA_PATH = "schemas/ride_datafeed_schema.json"
