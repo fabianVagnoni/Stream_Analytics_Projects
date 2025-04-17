@@ -202,8 +202,11 @@ def main():
     # Create view for SQL queries
     enriched_df.createOrReplaceTempView("enriched_table")
     
+    # Define the path to the users static data file
+    users_static_path = "data/users_static.json"
+    
     # Create user aggregations
-    aggregated_df = create_user_aggregations(spark)
+    aggregated_df = create_user_aggregations(spark, "enriched_table", users_static_path)
     
     # Write aggregated data to parquet and Azure Blob Storage
     aggregated_query = write_stream_to_parquet_and_blob(
