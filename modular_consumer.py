@@ -209,7 +209,7 @@ def main():
     aggregated_query = write_stream_to_parquet_and_blob(
         aggregated_df,
         QUERY_CONFIGS["aggregated_parquet"]["name"],
-        OUTPUT_DIRS["aggregated"],
+        OUTPUT_DIRS["user_vectors"],
         CHECKPOINT_DIRS["parquet_aggregated"],
         AZURE_STORAGE_CONNECTION_STRING,
         AZURE_BLOB_CONTAINER_NAME,

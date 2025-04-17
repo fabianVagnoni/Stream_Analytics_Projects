@@ -59,8 +59,8 @@ def display_user_vectors(spark, user_vectors_table="user_vectors_latest"):
             """).show(truncate=False)
             
             # Save a snapshot of the consolidated vectors to a file
-            spark.sql(f"SELECT * FROM {user_vectors_table}").write.mode("overwrite").parquet("output/consolidated_user_vectors")
-            print("Saved consolidated user vectors to output/consolidated_user_vectors")
+            spark.sql(f"SELECT * FROM {user_vectors_table}").write.mode("overwrite").parquet("output/user_vectors/consolidated")
+            print("Saved consolidated user vectors to output/user_vectors/consolidated")
     except Exception as e:
         print(f"Error displaying consolidated user vectors: {e}")
         print("No user vectors table exists yet. Waiting for data to be processed.") 

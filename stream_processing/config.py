@@ -67,7 +67,7 @@ OUTPUT_DIRS = {
     "rides": "output/rides",
     "specials": "output/specials", 
     "user_vectors": "output/user_vectors",
-    "aggregated": "output/aggregated"
+    "aggregated": "output/user_vectors"
 }
 
 # Checkpoint directories
@@ -118,7 +118,7 @@ QUERY_CONFIGS = {
         "output_mode": "append",
         "format": "parquet",
         "checkpoint_location": "checkpoint/parquet/aggregated",
-        "path": "output/aggregated",
+        "path": "output/user_vectors",
         "trigger_interval": "10 seconds"
     },
     "test_console": {
