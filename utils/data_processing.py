@@ -52,6 +52,188 @@ def aggregate_hourly_rides(df: pd.DataFrame) -> pd.DataFrame:
     
     return hourly_df
 
+def calculate_ride_metrics(df: pd.DataFrame) -> Dict[str, Any]:
+    """
+    Calculate key metrics for ride operations.
+    
+    Args:
+        df: DataFrame containing ride events data
+        
+    Returns:
+        Dictionary containing calculated metrics
+    """
+    # Count events by type
+    event_counts = df['event_type'].value_counts()
+    
+    # Total number of requested rides
+    requested = event_counts.get('RIDE_REQUESTED', 0)
+    
+    # Total number of completed rides
+    completed = event_counts.get('RIDE_COMPLETED', 0)
+    
+    # Total number of canceled rides
+    canceled_by_user = event_counts.get('RIDE_CANCELED_BY_USER', 0)
+    canceled_by_driver = event_counts.get('RIDE_CANCELED_BY_DRIVER', 0)
+    total_canceled = canceled_by_user + canceled_by_driver
+    
+    # Calculate cancellation rate
+    cancellation_rate = (total_canceled / requested) * 100 if requested > 0 else 0
+    
+    # Calculate acceptance ratio
+    acceptance_ratio = ((requested - total_canceled) / requested) * 100 if requested > 0 else 0
+    
+    # Calculate active rides (rides in progress)
+    active_rides = df[df['event_type'].isin(['RIDE_STARTED', 'DRIVER_ARRIVED', 'DRIVER_ASSIGNED'])]['ride_id'].nunique()
+    
+    # Calculate average ratings
+    avg_user_rating = df['driver_to_user_rating'].mean()
+    avg_driver_rating = df['user_to_driver_rating'].mean()
+    
+    # Calculate average ride duration and distance
+    avg_duration = df[df['event_type'] == 'RIDE_COMPLETED']['actual_duration_minutes'].mean()
+    avg_distance = df[df['event_type'] == 'RIDE_COMPLETED']['distance_km'].mean()
+    
+    # Calculate average wait time (time between request and pickup)
+    ride_events = df.copy()
+    ride_events = ride_events.sort_values(['ride_id', 'timestamp'])
+    
+    # Create a dictionary to store request and pickup times
+    request_times = {}
+    pickup_times = {}
+    wait_times = []
+    
+    for _, row in ride_events.iterrows():
+        ride_id = row['ride_id']
+        if row['event_type'] == 'RIDE_REQUESTED':
+            request_times[ride_id] = row['timestamp']
+        elif row['event_type'] == 'RIDE_STARTED' and ride_id in request_times:
+            pickup_times[ride_id] = row['timestamp']
+            wait_time = (pickup_times[ride_id] - request_times[ride_id]).total_seconds() / 60
+            wait_times.append(wait_time)
+    
+    avg_wait_time = np.mean(wait_times) if wait_times else 0
+    
+    return {
+        'active_rides': active_rides,
+        'requested_rides': requested,
+        'completed_rides': completed,
+        'canceled_rides': total_canceled,
+        'cancellation_rate': cancellation_rate,
+        'acceptance_ratio': acceptance_ratio,
+        'avg_user_rating': avg_user_rating,
+        'avg_driver_rating': avg_driver_rating,
+        'avg_duration': avg_duration,
+        'avg_distance': avg_distance,
+        'avg_wait_time': avg_wait_time
+    }
+
+def categorize_drivers(drivers_df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Categorize drivers into Gold, Silver, and Bronze tiers based on their performance.
+    
+    Args:
+        drivers_df: DataFrame containing driver data
+        
+    Returns:
+        DataFrame with added driver category
+    """
+    # Make a copy to avoid modifying the original
+    drivers = drivers_df.copy()
+    
+    # Define category thresholds (these can be adjusted based on business rules)
+    rating_threshold_gold = 4.5
+    rating_threshold_silver = 4.0
+    rides_threshold_gold = 1000
+    rides_threshold_silver = 500
+    cancellation_threshold_gold = 0.05
+    cancellation_threshold_silver = 0.1
+    
+    # Create a function to assign categories
+    def assign_category(row):
+        if (row['rating'] >= rating_threshold_gold and 
+            row['no_of_rides'] >= rides_threshold_gold and 
+            row['cancellation_rate'] <= cancellation_threshold_gold):
+            return 'Gold'
+        elif (row['rating'] >= rating_threshold_silver and 
+             row['no_of_rides'] >= rides_threshold_silver and 
+             row['cancellation_rate'] <= cancellation_threshold_silver):
+            return 'Silver'
+        else:
+            return 'Bronze'
+    
+    # Apply the function to create a new category column
+    drivers['category'] = drivers.apply(assign_category, axis=1)
+    
+    return drivers
+
+def calculate_emissions(rides_df: pd.DataFrame, drivers_static_df: pd.DataFrame = None) -> pd.DataFrame:
+    """
+    Calculate CO2 emissions for each ride based on vehicle type and distance.
+    
+    Args:
+        rides_df: DataFrame containing ride events data
+        drivers_static_df: Optional DataFrame with driver static information including vehicle type
+        
+    Returns:
+        DataFrame with added emissions column
+    """
+    # Make a copy to avoid modifying the original
+    rides = rides_df.copy()
+    
+    # Define emission factors (kg CO2 per km) for different vehicle types
+    emission_factors = {
+        'Economy': {
+            'gas': 0.15,
+            'hybrid': 0.1,
+            'electric': 0.05
+        },
+        'Comfort': {
+            'gas': 0.2,
+            'hybrid': 0.15,
+            'electric': 0.08
+        },
+        'XL': {
+            'gas': 0.3,
+            'hybrid': 0.22,
+            'electric': 0.12
+        },
+        'Luxury': {
+            'gas': 0.35,
+            'hybrid': 0.25,
+            'electric': 0.15
+        }
+    }
+    
+    # If driver static information is available, use it to get vehicle powertrain
+    if drivers_static_df is not None:
+        # Create a mapping of driver_id to vehicle_powertrain
+        driver_powertrains = drivers_static_df.set_index('driver_id')['vehicle_powertrain'].to_dict()
+        
+        # Add powertrain column to rides DataFrame
+        rides['powertrain'] = rides['driver_id'].map(driver_powertrains)
+    else:
+        # Default to gas powertrain if no static information is available
+        rides['powertrain'] = 'gas'
+    
+    # Calculate emissions for each ride
+    def calculate_ride_emissions(row):
+        if pd.isna(row['distance_km']) or pd.isna(row['vehicle_type']) or pd.isna(row['powertrain']):
+            return 0
+        
+        vehicle_type = row['vehicle_type']
+        powertrain = row['powertrain']
+        distance = row['distance_km']
+        
+        # Use default emissions if vehicle type or powertrain not in our factors
+        vehicle_factors = emission_factors.get(vehicle_type, emission_factors['Economy'])
+        factor = vehicle_factors.get(powertrain, vehicle_factors['gas'])
+        
+        return distance * factor
+    
+    # Apply the function to calculate emissions
+    rides['emissions_kg_co2'] = rides.apply(calculate_ride_emissions, axis=1)
+    
+    return rides
 
 def detect_outliers(df: pd.DataFrame, column: str, method: str = 'iqr', threshold: float = 1.5) -> pd.DataFrame:
     """
