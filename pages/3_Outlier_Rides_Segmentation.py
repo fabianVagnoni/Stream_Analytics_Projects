@@ -7,13 +7,10 @@ This page analyzes outlier rides and segments customers based on their behavior.
 import streamlit as st
 import pandas as pd
 import numpy as np
-import plotly.express as px
 import plotly.graph_objects as go
 import datetime
-import squarify
 from utils.data_loader import load_data, load_local_data, load_data_from_azure
 from utils.data_processing import preprocess_ride_events, detect_outliers, segment_customers, analyze_rides_for_all_events
-from utils.visualizations import create_metric_card, plot_pie_chart, plot_gauge
 from sklearn.ensemble import IsolationForest
 from sklearn.preprocessing import StandardScaler
 from sklearn.cluster import KMeans
@@ -56,7 +53,6 @@ def load_advanced_models():
         except Exception as e:
             st.warning(f"Could not load outlier_scaler: {str(e)}")
             # Create a fallback scaler
-            from sklearn.preprocessing import StandardScaler
             models['outlier_scaler'] = StandardScaler()
         
         try:
@@ -71,8 +67,6 @@ def load_advanced_models():
             st.success("Successfully loaded user_clustering_model")
         except Exception as e:
             st.warning(f"Could not load user_clustering_model: {str(e)}")
-            # Create a fallback clustering model
-            from sklearn.cluster import KMeans
             models['user_clustering_model'] = KMeans(n_clusters=4, random_state=42)
         
         try:
