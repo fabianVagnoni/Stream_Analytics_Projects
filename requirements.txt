@@ -15,4 +15,10 @@ shap
 azure-storage-blob
 azure-eventhub
 dotenv
+streamlit
+plotly
+squarify
+altair
+watchdog
+joblib
 
