@@ -177,9 +177,9 @@ with col1:
 
 with col2:
     create_metric_card(
-        "Rides Requested",
-        metrics['requested_rides'],
-        help_text="Total number of ride requests"
+        "Average Rating",
+        f"{metrics.get('avg_rating', 0):.2f}",
+        help_text="Average rating across all completed rides"
     )
     
 with col3:
@@ -196,18 +196,48 @@ with col4:
         help_text="Percentage of ride requests that were canceled"
     )
 
-# Display a sample chart
-st.header("Hourly Ride Activity")
+# Display charts
+st.header("Ride Analytics")
 
-# Create a DataFrame with hourly ride counts
-hourly_rides = processed_ride_events.groupby(processed_ride_events['timestamp'].dt.hour).size().reset_index()
-hourly_rides.columns = ['hour', 'count']
+# Create tabs for different visualizations
+tab1, tab2 = st.tabs(["Hourly Activity", "Rating Distribution"])
 
-# Plot the hourly ride counts
-plot_time_series(
-    hourly_rides,
-    'hour',
-    'count',
-    'Hourly Ride Requests',
-    show_events=False
-)
+with tab1:
+    # Convert timestamp to datetime if it's not already
+    processed_ride_events['hour'] = pd.to_datetime(processed_ride_events['timestamp']).dt.hour
+    
+    # Create hourly ride counts
+    hourly_rides = processed_ride_events.groupby('hour').size().reset_index()
+    hourly_rides.columns = ['hour', 'count']
+    
+    # Plot hourly ride activity
+    st.subheader("Hourly Ride Activity")
+    plot_time_series(
+        hourly_rides,
+        'hour',
+        'count',
+        'Number of Rides by Hour of Day',
+        show_events=False
+    )
+
+with tab2:
+    # Create rating distribution
+    st.subheader("Rating Distribution")
+    
+    # Filter for completed rides with ratings
+    rated_rides = processed_ride_events[processed_ride_events['user_to_driver_rating'].notna()]
+    
+    # Create rating distribution chart
+    rating_dist = rated_rides['user_to_driver_rating'].value_counts().sort_index()
+    st.bar_chart(rating_dist)
+    
+    # Show average ratings
+    col1, col2 = st.columns(2)
+    with col1:
+        avg_user_to_driver = rated_rides['user_to_driver_rating'].mean()
+        st.metric("Average User to Driver Rating", f"{avg_user_to_driver:.2f}")
+    
+    with col2:
+        driver_rated_rides = processed_ride_events[processed_ride_events['driver_to_user_rating'].notna()]
+        avg_driver_to_user = driver_rated_rides['driver_to_user_rating'].mean()
+        st.metric("Average Driver to User Rating", f"{avg_driver_to_user:.2f}")
