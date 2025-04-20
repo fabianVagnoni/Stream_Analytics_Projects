@@ -8,8 +8,10 @@ ride patterns, driver performance, and service metrics.
 import streamlit as st
 import pandas as pd
 import numpy as np
-from utils.data_loader import load_data, load_data_from_azure
+from utils.data_loader import load_data, load_data_from_azure, load_local_data
 from utils.visualizations import create_metric_card, plot_time_series, plot_treemap
+import plotly.graph_objects as go
+import json
 
 # Set page configuration
 st.set_page_config(
@@ -27,26 +29,48 @@ st.markdown("### Use Case 1: Real-time Ride Operations Monitoring")
 def load_ride_data():
     """Load ride data from Azure Blob Storage"""
     try:
-        # Load ride events data
+        # Try loading from Azure first
         ride_events_df = load_data_from_azure("rides/*.snappy.parquet")
         
         if ride_events_df is None:
-            st.error("Failed to load data from Azure. Check your connection and container configuration.")
-            return None
+            # Fall back to local data if Azure fails
+            ride_events_df = load_local_data("data/ride_events.json")
             
-        # Debug: Print column names and sample data
-        st.write("Available columns:", ride_events_df.columns.tolist())
-        st.write("Sample data:", ride_events_df.head())
+        if ride_events_df is None:
+            st.error("Failed to load ride events data from both Azure and local storage.")
+            return None
             
         return ride_events_df
     except Exception as e:
-        st.error(f"Error loading data: {str(e)}")
+        st.error(f"Error loading ride events data: {str(e)}")
+        return None
+
+@st.cache_data(ttl=3600)
+def load_drivers_data():
+    """Load drivers data from Azure Blob Storage or local file"""
+    try:
+        # Try loading from Azure first
+        drivers_df = load_data_from_azure("drivers/*.snappy.parquet")
+        
+        if drivers_df is None:
+            # Fall back to local data if Azure fails
+            drivers_df = load_local_data("data/drivers_dynamic.json")
+            
+        if drivers_df is None:
+            st.error("Failed to load drivers data from both Azure and local storage.")
+            return None
+            
+        return drivers_df
+    except Exception as e:
+        st.error(f"Error loading drivers data: {str(e)}")
         return None
 
 # Load and process data
-with st.spinner("Loading ride data..."):
+with st.spinner("Loading data..."):
     ride_events_df = load_ride_data()
-    if ride_events_df is None:
+    drivers_dynamic_df = load_drivers_data()
+    
+    if ride_events_df is None or drivers_dynamic_df is None:
         st.stop()
 
 # Calculate KPIs
@@ -146,17 +170,18 @@ st.header("Ride Patterns Over Time")
 
 # Prepare data for time series plots
 ride_events_df['timestamp'] = pd.to_datetime(ride_events_df['timestamp'])
-hourly_rides = ride_events_df[ride_events_df['event_type'] == 'RIDE_REQUESTED'].groupby(ride_events_df['timestamp'].dt.hour).size().reset_index()
+
+# Calculate hourly ride requests
+hourly_rides = ride_events_df[ride_events_df['event_type'] == 'RIDE_REQUESTED'].groupby(
+    ride_events_df['timestamp'].dt.hour
+).size().reset_index()
 hourly_rides.columns = ['hour', 'count']
 
-# Calculate ride efficiency
-completed_rides = ride_events_df[ride_events_df['event_type'] == 'RIDE_COMPLETED']
-if not completed_rides.empty and 'ride_details' in completed_rides.columns:
-    completed_rides['efficiency_index'] = completed_rides['ride_details'].apply(
-        lambda x: x['actual_duration_minutes'] / x['estimated_duration_minutes'] if x and x['actual_duration_minutes'] and x['estimated_duration_minutes'] else None
-    )
-    hourly_efficiency = completed_rides.groupby(completed_rides['timestamp'].dt.hour)['efficiency_index'].mean().reset_index()
-    hourly_efficiency.columns = ['hour', 'efficiency_index']
+# Calculate hourly cancellations
+cancelled_rides = ride_events_df[
+    ride_events_df['event_type'].isin(['RIDE_CANCELED_BY_USER', 'RIDE_CANCELED_BY_DRIVER'])
+].groupby(ride_events_df['timestamp'].dt.hour).size().reset_index()
+cancelled_rides.columns = ['hour', 'count']
 
 # Create two columns for the time series plots
 col1, col2 = st.columns(2)
@@ -171,82 +196,94 @@ with col1:
     )
 
 with col2:
-    if 'efficiency_index' in completed_rides.columns:
-        plot_time_series(
-            hourly_efficiency,
-            'hour',
-            'efficiency_index',
-            'Ride Efficiency Index',
-            color='#2ca02c'
-        )
+    plot_time_series(
+        cancelled_rides,
+        'hour',
+        'count',
+        'Hourly Ride Cancellations',
+        color='#e74c3c'
+    )
 
 # Driver Category Distribution
 st.header("Driver Performance Categories")
 
 # Calculate driver categories based on ratings
-rating_events = ride_events_df[ride_events_df['event_type'] == 'USER_RATED_DRIVER']
-if not rating_events.empty and 'ratings' in rating_events.columns:
-    driver_metrics = rating_events.groupby('driver_id').agg({
-        'ratings': lambda x: x.apply(lambda y: y['user_to_driver_rating'] if y else None).mean(),
-        'ride_id': 'count'
-    }).reset_index()
+if not drivers_dynamic_df.empty:
+    # Add category to drivers data
+    def categorize_driver(rating):
+        if rating >= 4.5:
+            return 'Gold'
+        elif rating >= 4.0:
+            return 'Silver'
+        else:
+            return 'Bronze'
     
-    # Categorize drivers based on rating
-    driver_metrics['category'] = pd.cut(
-        driver_metrics['ratings'],
-        bins=[0, 3, 4, 5],
-        labels=['Bronze', 'Silver', 'Gold']
-    )
+    # Create a copy to avoid modifying the original dataframe
+    drivers_data = drivers_dynamic_df.copy()
+    drivers_data['category'] = drivers_data['rating'].apply(categorize_driver)
     
-    category_counts = driver_metrics['category'].value_counts().reset_index()
-    category_counts.columns = ['category', 'count']
+    # Count drivers in each category
+    category_counts = drivers_data['category'].value_counts()
     
-    # Calculate growth percentage (placeholder - in real implementation, compare with previous period)
-    category_counts['growth'] = [5, 2, -1]  # Example values
+    # Create color mapping for the bar chart
+    colors = {'Gold': '#FFD700', 'Silver': '#C0C0C0', 'Bronze': '#CD7F32'}
     
-    # Display treemap
-    plot_treemap(
-        category_counts,
-        ['category'],
-        'count',
-        'Driver Category Distribution'
-    )
-
-# Service Speed Metrics
-st.header("Service Speed Metrics")
-
-# Calculate average metrics
-completed_rides = ride_events_df[ride_events_df['event_type'] == 'RIDE_COMPLETED']
-if not completed_rides.empty and 'ride_details' in completed_rides.columns:
-    avg_duration = completed_rides['ride_details'].apply(
-        lambda x: x['actual_duration_minutes'] if x else None
-    ).mean()
+    # Create a bar chart using Streamlit
+    st.bar_chart(category_counts)
     
-    # Calculate response time (time between RIDE_REQUESTED and DRIVER_ASSIGNED)
-    ride_requests = ride_events_df[ride_events_df['event_type'] == 'RIDE_REQUESTED']
-    driver_assignments = ride_events_df[ride_events_df['event_type'] == 'DRIVER_ASSIGNED']
-    
-    response_times = []
-    for _, request in ride_requests.iterrows():
-        assignment = driver_assignments[driver_assignments['ride_id'] == request['ride_id']]
-        if not assignment.empty:
-            response_time = (assignment['timestamp'].iloc[0] - request['timestamp']).total_seconds()
-            response_times.append(response_time)
-    
-    avg_response_time = np.mean(response_times) if response_times else 0
-    
-    col1, col2 = st.columns(2)
+    # Show some statistics
+    total_drivers = len(drivers_data)
+    col1, col2, col3 = st.columns(3)
     
     with col1:
-        create_metric_card(
-            "Average Ride Duration",
-            f"{avg_duration:.1f} min",
-            help_text="Average time taken for completed rides"
-        )
-    
+        gold_count = category_counts.get('Gold', 0)
+        gold_percent = (gold_count / total_drivers) * 100
+        st.metric("Gold Drivers", f"{gold_count} ({gold_percent:.1f}%)")
+        
     with col2:
-        create_metric_card(
-            "Average Response Time",
-            f"{avg_response_time:.1f} sec",
-            help_text="Average time taken by drivers to accept rides"
-        )
+        silver_count = category_counts.get('Silver', 0)
+        silver_percent = (silver_count / total_drivers) * 100
+        st.metric("Silver Drivers", f"{silver_count} ({silver_percent:.1f}%)")
+        
+    with col3:
+        bronze_count = category_counts.get('Bronze', 0)
+        bronze_percent = (bronze_count / total_drivers) * 100
+        st.metric("Bronze Drivers", f"{bronze_count} ({bronze_percent:.1f}%)")
+else:
+    st.info("No driver data available for categorization.")
+
+# Ride Operations and Customer Analytics
+st.header("Ride Operations and Customer Analytics")
+
+# Calculate event type distribution
+event_counts = ride_events_df['event_type'].value_counts()
+
+# Create a color map for different event types
+color_map = {
+    'RIDE_REQUESTED': '#2ecc71',      # Green for requests
+    'RIDE_COMPLETED': '#3498db',      # Blue for completions
+    'DRIVER_ASSIGNED': '#f1c40f',     # Yellow for assignments
+    'RIDE_CANCELED_BY_USER': '#e74c3c',    # Red for cancellations
+    'RIDE_CANCELED_BY_DRIVER': '#c0392b',  # Dark red for driver cancellations
+    'RIDE_STARTED': '#27ae60',        # Dark green for started rides
+    'DRIVER_ARRIVED': '#2980b9'       # Dark blue for arrivals
+}
+
+# Create bar chart
+fig = go.Figure(data=[
+    go.Bar(
+        x=event_counts.index,
+        y=event_counts.values,
+        marker_color=[color_map.get(event, '#95a5a6') for event in event_counts.index]
+    )
+])
+
+fig.update_layout(
+    title="Distribution of Ride Events",
+    xaxis_title="Event Type",
+    yaxis_title="Number of Events",
+    xaxis_tickangle=45,
+    showlegend=False
+)
+
+st.plotly_chart(fig)
