@@ -18,6 +18,7 @@ import joblib
 import os
 import matplotlib.pyplot as plt
 import warnings
+import shap
 
 # Suppress warnings to keep the output clean
 warnings.filterwarnings('ignore')
@@ -55,11 +56,52 @@ def load_advanced_models():
             # Create a fallback scaler
             models['outlier_scaler'] = StandardScaler()
         
+        # Initialize outlier_explainer to None
+        models['outlier_explainer'] = None
+        
+        # Try to load or create the SHAP explainer with improved error handling
         try:
-            models['outlier_explainer'] = None
-            st.success("Successfully loaded outlier_explainer model")
+            # Try to load the pre-trained explainer if it exists
+            outlier_explainer_path = os.path.join(models_dir, "outlier_explainer.joblib")
+            if os.path.exists(outlier_explainer_path):
+                try:
+                    models['outlier_explainer'] = joblib.load(outlier_explainer_path)
+                    st.success("Successfully loaded outlier_explainer model")
+                except Exception as e:
+                    st.warning(f"Could not load saved outlier_explainer: {str(e)}")
+                    # Will try creating a new one below
+            
+            # If loading failed or file doesn't exist, try to create a new explainer
+            if models['outlier_explainer'] is None and 'outlier_detector' in models and models['outlier_detector'] is not None:
+                try:
+                    # Try the simplest form first (most compatible across versions)
+                    models['outlier_explainer'] = shap.TreeExplainer(models['outlier_detector'])
+                    st.success("Created new outlier_explainer with default parameters")
+                except Exception as e1:
+                    st.warning(f"Error creating basic TreeExplainer: {str(e1)}")
+                    try:
+                        # Try with data=None parameter (works in newer SHAP versions)
+                        models['outlier_explainer'] = shap.TreeExplainer(
+                            model=models['outlier_detector'],
+                            data=None,
+                            feature_perturbation="interventional"
+                        )
+                        st.success("Created new outlier_explainer with explicit parameters")
+                    except Exception as e2:
+                        st.warning(f"Error creating TreeExplainer with explicit parameters: {str(e2)}")
+                        # Last resort: create a KernelExplainer instead
+                        try:
+                            # Generate a small dummy dataset for the background
+                            n_features = 10  # Adjust based on your model's expected features
+                            background_data = pd.DataFrame(np.zeros((1, n_features)))
+                            predict_fn = lambda x: models['outlier_detector'].decision_function(x)
+                            models['outlier_explainer'] = shap.KernelExplainer(predict_fn, background_data)
+                            st.success("Created KernelExplainer as fallback")
+                        except Exception as e3:
+                            st.warning(f"Failed to create any SHAP explainer: {str(e3)}")
+                            models['outlier_explainer'] = None
         except Exception as e:
-            st.warning(f"Could not load outlier_explainer: {str(e)}")
+            st.warning(f"Could not setup outlier_explainer: {str(e)}")
             models['outlier_explainer'] = None
         
         try:
@@ -120,7 +162,7 @@ def load_segment_data():
             st.info(f"Ride events columns: {list(ride_events_df.columns)}")
             if users_static_df is not None:
                 st.info(f"User static columns: {list(users_static_df.columns)}")
-                
+            
             # Step 1: Analyze rides for events (just like in the notebook)
             processed_ride_events = ride_events_df.copy()
             
@@ -662,7 +704,14 @@ def load_segment_data():
                 'ride_events': ride_events_df,
                 'processed_ride_events': processed_ride_events,
                 'users_static': users_static_df,
-                'segmented_users': complete_user_features
+                'segmented_users': complete_user_features,
+                'use_advanced_models': use_advanced_models,
+                'models': models,
+                'rides_outlier_subset': rides_outlier_subset if 'rides_outlier_subset' in locals() else None,
+                # Add prepared SHAP data if available
+                'outlier_data': {
+                    'outlier_indices': [idx for idx in processed_ride_events.index if processed_ride_events.loc[idx, 'is_outlier']] if 'is_outlier' in processed_ride_events.columns else []
+                } 
             }
             
     except Exception as e:
@@ -783,6 +832,211 @@ st.plotly_chart(fig, use_container_width=True)
 
 # Add annotation about current value
 st.markdown(f"**Current Value: {avg_outlier_percent:.1f}%**")
+
+# Add SHAP Explainer for Outliers
+st.markdown("## Outlier Explanations")
+st.markdown("These plots explain what factors contributed to specific outlier predictions")
+
+# Extract the needed variables from the data dictionary
+use_advanced_models = data.get('use_advanced_models', False)
+models = data.get('models', {})
+rides_outlier_subset = data.get('rides_outlier_subset', None)
+outlier_indices = data.get('outlier_data', {}).get('outlier_indices', [])
+
+# Limit to top 3 outliers for visualization
+if len(outlier_indices) > 3:
+    outlier_indices = outlier_indices[:3]
+
+if 'is_outlier' in processed_ride_events.columns and processed_ride_events['is_outlier'].any():
+    # Only show SHAP plots if we have outliers and advanced models were used
+    if use_advanced_models and models and 'outlier_detector' in models and models['outlier_detector'] is not None:
+        try:
+            # Get outlier data
+            outlier_data = processed_ride_events[processed_ride_events['is_outlier']].head(3)
+            
+            # Create more informative tab names when we have outlier data
+            tab_titles = []
+            for i in range(min(len(outlier_data), 3)):
+                # Create a descriptive title using user_id and distance if available
+                title = "Outlier "
+                if 'user_id' in outlier_data.columns:
+                    title += f"(User {outlier_data.iloc[i]['user_id'][:5]})"
+                if 'distance_km' in outlier_data.columns:
+                    title += f" {outlier_data.iloc[i]['distance_km']:.1f}km"
+                else:
+                    title += f" #{i+1}"
+                tab_titles.append(title)
+            
+            # Fill remaining tabs if needed
+            while len(tab_titles) < 3:
+                tab_titles.append(f"Outlier Example {len(tab_titles)+1}")
+            
+            # Create tabs for different outlier examples
+            st.markdown("### Top 3 Most Significant Outliers")
+            shap_tabs = st.tabs(tab_titles)
+            
+            # Check if rides_outlier_subset is available
+            if rides_outlier_subset is not None and len(outlier_indices) > 0:
+                try:
+                    # Get features for outliers
+                    outlier_features = rides_outlier_subset.loc[outlier_indices]
+                    
+                    # Get explainer from models
+                    if 'outlier_explainer' in models and models['outlier_explainer'] is not None:
+                        explainer = models['outlier_explainer']
+                        
+                        # Calculate SHAP values
+                        try:
+                            # Different SHAP explainers have different APIs for getting SHAP values
+                            if hasattr(explainer, 'shap_values'):
+                                try:
+                                    # For TreeExplainer
+                                    shap_values = explainer.shap_values(outlier_features)
+                                    
+                                    # Handle both single and multi-output case
+                                    if isinstance(shap_values, list) and len(shap_values) > 1:
+                                        # For multi-output, use the first output
+                                        shap_values = shap_values[0]
+                                except Exception as e:
+                                    st.warning(f"Error using explainer.shap_values: {str(e)}")
+                                    # Try with explainer directly
+                                    shap_values = explainer(outlier_features).values
+                            else:
+                                # For newer SHAP explainers like Explainer class
+                                shap_values = explainer(outlier_features).values
+                            
+                            # Display for each tab
+                            for i, tab in enumerate(shap_tabs):
+                                if i < len(outlier_indices) and i < len(outlier_features):
+                                    with tab:
+                                        try:
+                                            # Create matplotlib figure
+                                            fig, ax = plt.subplots(figsize=(10, 6))
+                                            
+                                            try:
+                                                # Match the notebook implementation exactly
+                                                plt.figure(figsize=(10, 6))
+                                                
+                                                # Handle expected_value correctly - ensure it's a scalar
+                                                if hasattr(explainer, 'expected_value'):
+                                                    if isinstance(explainer.expected_value, list) or isinstance(explainer.expected_value, np.ndarray):
+                                                        expected_val = explainer.expected_value[0]
+                                                        # If still an array, take the first element
+                                                        if isinstance(expected_val, (list, np.ndarray)):
+                                                            expected_val = expected_val[0]
+                                                    else:
+                                                        expected_val = explainer.expected_value
+                                                        # If still an array, take the first element
+                                                        if isinstance(expected_val, (list, np.ndarray)):
+                                                            expected_val = expected_val[0]
+                                                else:
+                                                    expected_val = 0  # Fallback
+                                                
+                                                # Ensure shap_values is also handled correctly
+                                                current_shap_values = shap_values[i]
+                                                if isinstance(current_shap_values, list) and len(current_shap_values) > 0:
+                                                    current_shap_values = current_shap_values[0]
+                                                
+                                                # Now call waterfall_legacy with explicitly scalar expected_value
+                                                shap.plots._waterfall.waterfall_legacy(
+                                                    expected_val,
+                                                    current_shap_values,
+                                                    feature_names=list(outlier_features.columns)
+                                                )
+                                                st.pyplot(plt.gcf())
+                                            except Exception as e:
+                                                st.warning(f"Error with waterfall_legacy: {str(e)}")
+                                                # Fallback to a simpler plot
+                                                if isinstance(shap_values, np.ndarray):
+                                                    # Create a simple bar chart of feature importance
+                                                    feature_importance = pd.Series(
+                                                        np.abs(shap_values[i]) if len(shap_values.shape) > 1 else np.abs(shap_values),
+                                                        index=outlier_features.columns
+                                                    ).sort_values(ascending=False)
+                                                    plt.figure(figsize=(10, 6))
+                                                    plt.barh(feature_importance.index[:10], feature_importance.values[:10])
+                                                    plt.xlabel('SHAP value (impact on outlier detection)')
+                                                    plt.title('Feature Impact on Outlier Detection')
+                                                    st.pyplot(plt.gcf())
+                                            
+                                            # Display outlier details
+                                            col1, col2 = st.columns(2)
+                                            with col1:
+                                                st.markdown("**Outlier Details**")
+                                                for col in ['user_id', 'timestamp', 'distance_km', 'actual_duration_minutes', 'total_fare']:
+                                                    if col in outlier_data.columns and i < len(outlier_data):
+                                                        st.markdown(f"**{col}:** {outlier_data.iloc[i][col]}")
+                                            
+                                            with col2:
+                                                st.markdown("**Key Factors**")
+                                                # Get feature importance in a more robust way
+                                                if isinstance(shap_values, np.ndarray):
+                                                    if len(shap_values.shape) > 1:
+                                                        feature_importance = np.abs(shap_values[i])
+                                                    else:
+                                                        feature_importance = np.abs(shap_values)
+                                                    
+                                                    # Get top features
+                                                    if len(feature_importance) == len(outlier_features.columns):
+                                                        top_indices = np.argsort(feature_importance)[-3:]
+                                                        top_features = [outlier_features.columns[j] for j in top_indices]
+                                                        
+                                                        for feature in top_features:
+                                                            if i < len(outlier_features) and feature in outlier_features.columns:
+                                                                st.markdown(f"- **{feature}**: {outlier_features.iloc[i][feature]}")
+                                        except Exception as e:
+                                            st.warning(f"Error displaying SHAP plot: {str(e)}")
+                                            # Show simple bar chart instead
+                                            if isinstance(shap_values, np.ndarray) and i < len(shap_values):
+                                                feature_importance = pd.Series(
+                                                    np.abs(shap_values[i]) if len(shap_values.shape) > 1 else np.abs(shap_values),
+                                                    index=outlier_features.columns
+                                                ).sort_values(ascending=False)
+                                                st.bar_chart(feature_importance.head(5))
+                        except Exception as e:
+                            st.warning(f"Error calculating SHAP values: {str(e)}")
+                            # Use feature importances as fallback
+                            if hasattr(models['outlier_detector'], 'feature_importances_'):
+                                st.markdown("### Feature Importance (from model)")
+                                importance = pd.Series(
+                                    models['outlier_detector'].feature_importances_,
+                                    index=outlier_features.columns
+                                ).sort_values(ascending=False)
+                                st.bar_chart(importance)
+                    else:
+                        st.info("No SHAP explainer available in the models")
+                except Exception as e:
+                    st.warning(f"Error accessing outlier features: {str(e)}")
+            else:
+                st.info("No outlier subset available for SHAP analysis")
+        except Exception as e:
+            st.warning(f"Could not generate SHAP explanations: {str(e)}")
+            st.info("Using example visualizations instead")
+            
+            # Show example SHAP visualizations
+            col1, col2 = st.columns(2)
+            with col1:
+                st.markdown("### Time-based Feature Impact")
+                st.image("https://raw.githubusercontent.com/slundberg/shap/master/docs/artwork/waterfall_plot.png", 
+                         caption="Example SHAP waterfall plot showing feature contributions")
+            with col2:
+                st.markdown("### Location-based Feature Impact")
+                st.image("https://raw.githubusercontent.com/slundberg/shap/master/docs/artwork/waterfall_plot.png", 
+                         caption="Example SHAP waterfall plot showing feature contributions")
+    else:
+        st.info("Advanced models not available or not used for outlier detection")
+        # Show example SHAP plots
+        col1, col2 = st.columns(2)
+        with col1:
+            st.markdown("### Example: Time-based Outlier Factors")
+            st.image("https://raw.githubusercontent.com/slundberg/shap/master/docs/artwork/waterfall_plot.png", 
+                     caption="Example SHAP plot showing how hour and time features impact outlier detection")
+        with col2:
+            st.markdown("### Example: Location-based Outlier Factors")
+            st.image("https://raw.githubusercontent.com/slundberg/shap/master/docs/artwork/waterfall_plot.png", 
+                     caption="Example SHAP plot showing how location features impact outlier detection")
+else:
+    st.info("No outliers detected in the dataset")
 
 # Display Customer Segments
 st.markdown("## Customer Segments in the System")
