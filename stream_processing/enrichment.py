@@ -21,7 +21,7 @@ def add_time_components(df):
         hour("timestamp").alias("hour"),
         dayofweek("timestamp").alias("day_of_week"),
         dayofyear("timestamp").alias("day_of_year")
-    ).withWatermark("timestamp", "10 seconds")
+    ).withWatermark("timestamp", "20 seconds")
 
 def is_within_area(lat, lon, lat_min, lat_max, lon_min, lon_max):
     """Check if a point is within a rectangular area"""
