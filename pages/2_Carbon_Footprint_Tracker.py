@@ -18,6 +18,7 @@ import seaborn as sns
 import folium
 from folium.plugins import HeatMap
 from streamlit_folium import st_folium
+from streamlit_autorefresh import st_autorefresh
 
 # Set page configuration
 st.set_page_config(
@@ -30,8 +31,10 @@ st.set_page_config(
 st.title("🌱 Carbon Footprint Tracker")
 st.markdown("### Use Case 2: Carbon Footprint Analysis and Offset Tracking")
 
+# Auto-refresh the page every 30 seconds
+st_autorefresh(interval=30000, key="carbon_refresher")
+
 # Load data
-@st.cache_data(ttl=3600)
 def load_ride_data():
     """Load ride data from Azure Blob Storage"""
     try:
@@ -51,7 +54,6 @@ def load_ride_data():
         st.error(f"Error loading ride events data: {str(e)}")
         return None
 
-@st.cache_data(ttl=3600)
 def load_drivers_data():
     """Load drivers data from Azure Blob Storage or local file"""
     try:

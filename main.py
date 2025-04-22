@@ -19,8 +19,17 @@ from datetime import datetime, timedelta
 from confluent_kafka import Producer
 import fastavro
 import io
+from dotenv import load_dotenv
 import ssl
+import pandas as pd
+import pyarrow
+from azure.storage.blob import BlobServiceClient
+from stream_processing.config import (
+    AZURE_STORAGE_CONNECTION_STRING,
+    AZURE_BLOB_CONTAINER_NAME
+)
 
+load_dotenv()
 
 # Import module components
 from generate_static_data import generate_users, generate_drivers
@@ -44,6 +53,7 @@ SPECIAL_EVENT_HUB = "grp04-special-events"
 RIDES_PRIMARY_CONNECTION_STRING = os.getenv("RIDES_PRIMARY_CONNECTION_STRING")
 SPECIAL_PRIMARY_CONNECTION_STRING = os.getenv("SPECIAL_PRIMARY_CONNECTION_STRING")
 BOOTSTRAP_SERVERS = f"{EVENT_HUB_NAMESPACE}.servicebus.windows.net:9093"
+
 
 # Get schemas
 with open("./schemas/ride_datafeed_schema.json", 'r') as f:
@@ -250,6 +260,46 @@ def generate_simulation_data(args, special_producer=None, ride_producer=None):
         
         logger.info(f"Saved user/driver AVRO data to {args.output}")
     
+    # Save drivers_static as Snappy Parquet and upload to Azure Blob Storage
+    if AZURE_STORAGE_CONNECTION_STRING and AZURE_BLOB_CONTAINER_NAME:
+        try:
+            # Convert to DataFrame
+            drivers_static_df = pd.DataFrame(drivers_static)
+            
+            # Define local parquet file path
+            local_parquet_file = os.path.join(args.output, 'drivers_static.snappy.parquet')
+            
+            # Save as Snappy Parquet
+            drivers_static_df.to_parquet(local_parquet_file, compression='snappy', index=False)
+            logger.info(f"Saved drivers_static data to local Parquet file: {local_parquet_file}")
+            
+            # Define blob path
+            blob_name = "drivers/drivers_static.snappy.parquet" 
+            
+            # Initialize BlobServiceClient
+            blob_service_client = BlobServiceClient.from_connection_string(AZURE_STORAGE_CONNECTION_STRING)
+            blob_client = blob_service_client.get_blob_client(container=AZURE_BLOB_CONTAINER_NAME, blob=blob_name)
+            
+            # Upload the file
+            with open(local_parquet_file, "rb") as data:
+                blob_client.upload_blob(data, overwrite=True)
+            logger.info(f"Uploaded {local_parquet_file} to Azure Blob Storage at {AZURE_BLOB_CONTAINER_NAME}/{blob_name}")
+            
+            # Clean up local file
+            os.remove(local_parquet_file)
+            logger.info(f"Removed local Parquet file: {local_parquet_file}")
+            
+            # Add to output files tracking if needed (optional)
+            if "parquet" not in output_files:
+                 output_files["parquet"] = {}
+            output_files["parquet"]["drivers_static_blob"] = f"{AZURE_BLOB_CONTAINER_NAME}/{blob_name}"
+            
+        except ImportError:
+             logger.warning("Could not save/upload drivers_static parquet. Ensure 'pandas', 'pyarrow', and 'azure-storage-blob' are installed.")
+        except Exception as e:
+            logger.error(f"Failed to save drivers_static to Parquet or upload to Azure Blob Storage: {e}")
+    else:
+         logger.warning("Azure Storage credentials (AZURE_STORAGE_CONNECTION_STRING, AZURE_BLOB_CONTAINER_NAME) not found in environment variables. Skipping Parquet upload for drivers_static.")
 
     # 2. Initialize models
     # Create city map

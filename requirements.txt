@@ -5,6 +5,7 @@ numpy
 confluent-kafka
 pyspark
 findspark
+folium
 requests
 pyarrow
 matplotlib
@@ -22,4 +23,5 @@ squarify
 altair
 watchdog
 joblib
+streamlit_folium
 
