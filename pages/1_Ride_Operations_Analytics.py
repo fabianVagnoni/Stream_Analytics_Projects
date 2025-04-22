@@ -12,6 +12,7 @@ from utils.data_loader import load_data, load_data_from_azure, load_local_data
 from utils.visualizations import create_metric_card, plot_time_series, plot_treemap
 import plotly.graph_objects as go
 import json
+from streamlit_autorefresh import st_autorefresh
 
 # Set page configuration
 st.set_page_config(
@@ -24,8 +25,11 @@ st.set_page_config(
 st.title("🚗 Ride Operations Analytics")
 st.markdown("### Use Case 1: Real-time Ride Operations Monitoring")
 
+# Auto-refresh the page every 30 seconds
+st_autorefresh(interval=30000, key="ops_refresher")
+
 # Load data
-@st.cache_data(ttl=3600)
+# @st.cache_data(ttl=3600) # Removed caching to allow refresh
 def load_ride_data():
     """Load ride data from Azure Blob Storage"""
     try:
@@ -45,7 +49,7 @@ def load_ride_data():
         st.error(f"Error loading ride events data: {str(e)}")
         return None
 
-@st.cache_data(ttl=3600)
+# @st.cache_data(ttl=3600) # Removed caching to allow refresh
 def load_drivers_data():
     """Load drivers data from Azure Blob Storage or local file"""
     try:

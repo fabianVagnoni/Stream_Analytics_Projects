@@ -16,6 +16,7 @@ azure-storage-blob
 azure-eventhub
 dotenv
 streamlit
+streamlit-autorefresh
 plotly
 squarify
 altair

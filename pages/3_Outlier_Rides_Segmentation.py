@@ -19,6 +19,11 @@ import os
 import matplotlib.pyplot as plt
 import warnings
 import shap
+from streamlit_autorefresh import st_autorefresh
+import logging
+
+# Configure logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # Suppress warnings to keep the output clean
 warnings.filterwarnings('ignore')
@@ -128,8 +133,11 @@ def load_advanced_models():
 st.title("👥 Outlier Rides & Customer Segmentation")
 st.markdown("### Use Case 3: Identifying Outlier Patterns and Customer Segments")
 
+# Auto-refresh the page every 60 seconds
+st_autorefresh(interval=60000, key="seg_refresher")
+
 # Load data (try from Azure first, fall back to local)
-@st.cache_data(ttl=3600)
+# @st.cache_data(ttl=3600) # Removed caching to allow refresh
 def load_segment_data():
     """Load user and ride data, detect outliers, and segment customers"""
     try:
@@ -146,12 +154,24 @@ def load_segment_data():
         
         # Load user data from user_vectors folder (contains demographic and potentially ride metrics)
         users_static_df = load_data_from_azure("user_vectors/*.snappy.parquet")
+        if users_static_df is not None:
+            logging.info(f"Loaded user static data from Azure. Shape: {users_static_df.shape}")
+        else:
+            logging.warning("Failed to load user static data from Azure.")
         
         # Load ride events data from rides folder
         ride_events_df = load_data_from_azure("rides/*.snappy.parquet")
+        if ride_events_df is not None:
+            logging.info(f"Loaded ride events data from Azure. Shape: {ride_events_df.shape}")
+        else:
+            logging.warning("Failed to load ride events data from Azure.")
         
         # Load special events data (if available)
         special_events_df = load_data_from_azure("specials/*.snappy.parquet")
+        if special_events_df is not None:
+            logging.info(f"Loaded special events data from Azure. Shape: {special_events_df.shape}")
+        else:
+            logging.info("No special events data found or loaded from Azure.")
         
         if users_static_df is None or ride_events_df is None:
             st.error("Failed to load data from Azure. Check your connection and container configuration.")
