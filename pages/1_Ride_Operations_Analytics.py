@@ -244,96 +244,6 @@ with col2:
         color='#e74c3c'
     )
 
-# Driver Category Distribution
-st.header("Driver Performance Categories")
-
-# Calculate driver categories based on ratings
-if not drivers_dynamic_df.empty and 'rating' in drivers_dynamic_df.columns:
-    # Add category to drivers data
-    def categorize_driver(rating):
-        if rating >= 4.5:
-            return 'Gold'
-        elif rating >= 4.0:
-            return 'Silver'
-        else:
-            return 'Bronze'
-    
-    # Create a copy to avoid modifying the original dataframe
-    drivers_data = drivers_dynamic_df.copy()
-    
-    # Ensure rating column is numeric
-    drivers_data['rating'] = pd.to_numeric(drivers_data['rating'], errors='coerce')
-    
-    # Only categorize drivers with valid ratings
-    drivers_data = drivers_data.dropna(subset=['rating'])
-    drivers_data['category'] = drivers_data['rating'].apply(categorize_driver)
-    
-    # Count drivers in each category
-    category_counts = drivers_data['category'].value_counts()
-    
-    # Create color mapping for the bar chart
-    colors = {'Gold': '#FFD700', 'Silver': '#C0C0C0', 'Bronze': '#CD7F32'}
-    
-    # Create a bar chart using Streamlit
-    st.bar_chart(category_counts)
-    
-    # Show some statistics
-    total_drivers = len(drivers_data)
-    col1, col2, col3 = st.columns(3)
-    
-    with col1:
-        gold_count = category_counts.get('Gold', 0)
-        gold_percent = (gold_count / total_drivers) * 100
-        st.metric("Gold Drivers", f"{gold_count} ({gold_percent:.1f}%)")
-        
-    with col2:
-        silver_count = category_counts.get('Silver', 0)
-        silver_percent = (silver_count / total_drivers) * 100
-        st.metric("Silver Drivers", f"{silver_count} ({silver_percent:.1f}%)")
-        
-    with col3:
-        bronze_count = category_counts.get('Bronze', 0)
-        bronze_percent = (bronze_count / total_drivers) * 100
-        st.metric("Bronze Drivers", f"{bronze_count} ({bronze_percent:.1f}%)")
-else:
-    st.info("No rating data available for driver categorization.")
-
-# Ride Operations and Customer Analytics
-st.header("Ride Operations and Customer Analytics")
-
-# Calculate event type distribution
-event_counts = ride_events_df['event_type'].value_counts()
-
-# Create a color map for different event types
-color_map = {
-    'RIDE_REQUESTED': '#2ecc71',      # Green for requests
-    'RIDE_COMPLETED': '#3498db',      # Blue for completions
-    'DRIVER_ASSIGNED': '#f1c40f',     # Yellow for assignments
-    'RIDE_CANCELED_BY_USER': '#e74c3c',    # Red for cancellations
-    'RIDE_CANCELED_BY_DRIVER': '#c0392b',  # Dark red for driver cancellations
-    'RIDE_STARTED': '#27ae60',        # Dark green for started rides
-    'DRIVER_ARRIVED': '#2980b9'       # Dark blue for arrivals
-}
-
-# Create bar chart
-fig = go.Figure(data=[
-    go.Bar(
-        x=event_counts.index,
-        y=event_counts.values,
-        marker_color=[color_map.get(event, '#95a5a6') for event in event_counts.index]
-    )
-])
-
-fig.update_layout(
-    title="Distribution of Ride Events",
-    xaxis_title="Event Type",
-    yaxis_title="Number of Events",
-    xaxis_tickangle=45,
-    showlegend=False
-)
-
-st.plotly_chart(fig)
-
 # Ride Status Count Analysis
 st.header("Operational Overview: Ride Status Count")
 
@@ -389,100 +299,6 @@ fig.update_layout(
 )
 
 st.plotly_chart(fig, use_container_width=True)
-
-# Speed of Service Analysis
-st.header("Operational Overview: Speed of Service")
-
-# Ensure timestamp is in datetime format
-ride_events_df['timestamp'] = pd.to_datetime(ride_events_df['timestamp'])
-
-# 1. Driver Response Time Analysis
-# Filter events for RIDE_REQUESTED and DRIVER_ASSIGNED
-requested_df = ride_events_df[ride_events_df['event_type'] == 'RIDE_REQUESTED'][['ride_id', 'timestamp']]
-assigned_df = ride_events_df[ride_events_df['event_type'] == 'DRIVER_ASSIGNED'][['ride_id', 'timestamp']]
-
-# Merge and calculate response time
-response_df = pd.merge(requested_df, assigned_df, on='ride_id', suffixes=('_requested', '_assigned'))
-response_df['response_time_sec'] = (response_df['timestamp_assigned'] - response_df['timestamp_requested']).dt.total_seconds()
-avg_response_time_sec = response_df['response_time_sec'].mean()
-
-# 2. Ride Duration Analysis
-# Filter events for RIDE_STARTED and RIDE_COMPLETED
-started_df = ride_events_df[ride_events_df['event_type'] == 'RIDE_STARTED'][['ride_id', 'timestamp']]
-completed_df = ride_events_df[ride_events_df['event_type'] == 'RIDE_COMPLETED'][['ride_id', 'timestamp']]
-
-# Merge and calculate duration
-duration_df = pd.merge(started_df, completed_df, on='ride_id', suffixes=('_started', '_completed'))
-duration_df['ride_duration_sec'] = (duration_df['timestamp_completed'] - duration_df['timestamp_started']).dt.total_seconds()
-duration_df['ride_duration_min'] = duration_df['ride_duration_sec'] / 60.0
-avg_ride_duration_min = duration_df['ride_duration_min'].mean()
-
-# Display metrics in columns
-col1, col2 = st.columns(2)
-
-with col1:
-    create_metric_card(
-        "Average Response Time",
-        f"{avg_response_time_sec:.1f} sec",
-        help_text="Average time between ride request and driver assignment"
-    )
-
-with col2:
-    create_metric_card(
-        "Average Ride Duration",
-        f"{avg_ride_duration_min:.1f} min",
-        help_text="Average time between ride start and completion"
-    )
-
-# Create time series plots for response times and durations
-st.subheader("Response Time Distribution")
-fig_response = go.Figure(data=[
-    go.Histogram(
-        x=response_df['response_time_sec'],
-        nbinsx=30,
-        name="Response Time",
-        marker_color='#2ecc71'
-    )
-])
-fig_response.update_layout(
-    xaxis_title="Response Time (seconds)",
-    yaxis_title="Number of Rides",
-    showlegend=False
-)
-st.plotly_chart(fig_response, use_container_width=True)
-
-st.subheader("Ride Duration Distribution")
-fig_duration = go.Figure(data=[
-    go.Histogram(
-        x=duration_df['ride_duration_min'],
-        nbinsx=30,
-        name="Ride Duration",
-        marker_color='#3498db'
-    )
-])
-fig_duration.update_layout(
-    xaxis_title="Ride Duration (minutes)",
-    yaxis_title="Number of Rides",
-    showlegend=False
-)
-st.plotly_chart(fig_duration, use_container_width=True)
-
-# Display summary metrics in columns
-col1, col2 = st.columns(2)
-
-with col1:
-    response_percentiles = np.percentile(response_df['response_time_sec'], [25, 50, 75])
-    st.markdown("**Response Time Statistics**")
-    st.write(f"- 25th percentile: {response_percentiles[0]:.1f} sec")
-    st.write(f"- Median: {response_percentiles[1]:.1f} sec")
-    st.write(f"- 75th percentile: {response_percentiles[2]:.1f} sec")
-
-with col2:
-    duration_percentiles = np.percentile(duration_df['ride_duration_min'], [25, 50, 75])
-    st.markdown("**Ride Duration Statistics**")
-    st.write(f"- 25th percentile: {duration_percentiles[0]:.1f} min")
-    st.write(f"- Median: {duration_percentiles[1]:.1f} min")
-    st.write(f"- 75th percentile: {duration_percentiles[2]:.1f} min")
 
 # Real-Time Trends Analysis
 st.header("Real-Time Trends")
@@ -621,7 +437,33 @@ st.write("**Busiest Days for Ride Requests:**")
 for _, row in busiest_days.iterrows():
     st.write(f"- {row['day']}: {row['request_count']} requests")
 
+# -----------------------------------------------------------------------------
+# Speed of Service Calculations (for REI Analysis)
+# -----------------------------------------------------------------------------
+# Calculate response time metrics
+requested_df_sos = ride_events_df[ride_events_df['event_type'] == 'RIDE_REQUESTED'][['ride_id', 'timestamp']]
+assigned_df_sos = ride_events_df[ride_events_df['event_type'] == 'DRIVER_ASSIGNED'][['ride_id', 'timestamp']]
+
+# Merge and calculate response time
+response_df_sos = pd.merge(requested_df_sos, assigned_df_sos, on='ride_id', suffixes=('_requested', '_assigned'))
+response_df_sos['response_time_sec'] = (pd.to_datetime(response_df_sos['timestamp_assigned']) - 
+                                      pd.to_datetime(response_df_sos['timestamp_requested'])).dt.total_seconds()
+avg_response_time_sec = response_df_sos['response_time_sec'].mean()
+
+# Calculate ride duration metrics
+started_df_sos = ride_events_df[ride_events_df['event_type'] == 'RIDE_STARTED'][['ride_id', 'timestamp']]
+completed_df_sos = ride_events_df[ride_events_df['event_type'] == 'RIDE_COMPLETED'][['ride_id', 'timestamp']]
+
+# Merge and calculate duration
+duration_df_sos = pd.merge(started_df_sos, completed_df_sos, on='ride_id', suffixes=('_started', '_completed'))
+duration_df_sos['ride_duration_sec'] = (pd.to_datetime(duration_df_sos['timestamp_completed']) - 
+                                      pd.to_datetime(duration_df_sos['timestamp_started'])).dt.total_seconds()
+duration_df_sos['ride_duration_min'] = duration_df_sos['ride_duration_sec'] / 60.0
+avg_ride_duration_min = duration_df_sos['ride_duration_min'].mean()
+
+# -----------------------------------------------------------------------------
 # Ride Efficiency Index (REI) Analysis
+# -----------------------------------------------------------------------------
 st.subheader("Ride Efficiency Index (REI) Analysis")
 st.markdown("""
 The Ride Efficiency Index (REI) is a composite metric that measures overall ride service efficiency.
@@ -635,12 +477,14 @@ completed_rides = len(ride_events_df[ride_events_df['event_type'] == 'RIDE_COMPL
 completion_rate = (completed_rides / total_requests) if total_requests > 0 else 0
 
 # 2. Average Response Time Score (inverse, because lower is better)
-avg_response_time = response_df['response_time_sec'].mean()
+# Use response_df_sos instead of response_df
+avg_response_time = response_df_sos['response_time_sec'].mean()
 max_acceptable_response_time = 300  # 5 minutes
 response_time_score = 1 - min(avg_response_time / max_acceptable_response_time, 1)
 
 # 3. Driver Utilization Rate
-active_time = duration_df['ride_duration_sec'].sum()
+# Use duration_df_sos instead of duration_df
+active_time = duration_df_sos['ride_duration_sec'].sum()
 total_time_window = (ride_events_df['timestamp'].max() - ride_events_df['timestamp'].min()).total_seconds()
 total_drivers = len(ride_events_df['driver_id'].unique())
 if total_time_window > 0 and total_drivers > 0:
@@ -716,9 +560,6 @@ with col3:
 # Component Trends
 st.subheader("REI Component Trends")
 
-# Ensure timestamp is in datetime format
-ride_events_df['timestamp'] = pd.to_datetime(ride_events_df['timestamp'])
-
 # Create hourly time buckets
 hourly_timestamps = pd.date_range(
     start=ride_events_df['timestamp'].min(),
@@ -741,17 +582,17 @@ for start_time in hourly_timestamps[:-1]:  # Exclude the last timestamp as it's 
     completion_rate = hour_completions / hour_requests if hour_requests > 0 else 0
     
     # Calculate response time score
-    hour_response = response_df[
-        (response_df['timestamp_requested'] >= start_time) & 
-        (response_df['timestamp_requested'] < end_time)
+    hour_response = response_df_sos[
+        (pd.to_datetime(response_df_sos['timestamp_requested']) >= start_time) & 
+        (pd.to_datetime(response_df_sos['timestamp_requested']) < end_time)
     ]
     avg_response_time = hour_response['response_time_sec'].mean() if not hour_response.empty else max_acceptable_response_time
     response_score = 1 - min(avg_response_time / max_acceptable_response_time, 1)
     
     # Calculate utilization rate
-    hour_duration = duration_df[
-        (duration_df['timestamp_started'] >= start_time) & 
-        (duration_df['timestamp_started'] < end_time)
+    hour_duration = duration_df_sos[
+        (pd.to_datetime(duration_df_sos['timestamp_started']) >= start_time) & 
+        (pd.to_datetime(duration_df_sos['timestamp_started']) < end_time)
     ]
     active_time = hour_duration['ride_duration_sec'].sum() if not hour_duration.empty else 0
     hour_drivers = len(hour_events['driver_id'].unique())
@@ -766,6 +607,11 @@ for start_time in hourly_timestamps[:-1]:  # Exclude the last timestamp as it's 
 
 # Convert to DataFrame
 hourly_metrics_df = pd.DataFrame(hourly_metrics)
+
+# -----------------------------------------------------------------------------
+# REI Analysis Plot
+# -----------------------------------------------------------------------------
+st.header("REI Analysis")
 
 # Create the plot
 fig_components = go.Figure()
@@ -801,35 +647,6 @@ fig_components.update_layout(
 )
 
 st.plotly_chart(fig_components, use_container_width=True)
-
-# Insights
-st.markdown("### Key Insights")
-st.markdown("""
-- The REI provides a holistic view of service efficiency by combining multiple performance indicators
-- Components are weighted based on their relative importance to overall service quality
-- Trends help identify periods of high and low efficiency for targeted improvements
-""")
-
-# Recommendations based on REI
-st.markdown("### Recommendations")
-if rei_score < 60:
-    st.error("⚠️ Low REI Score - Priority Areas for Improvement:")
-    if completion_rate < 0.7:
-        st.write("- Focus on increasing ride completion rate through better matching algorithms")
-    if response_time_score < 0.7:
-        st.write("- Improve driver response time through better dispatch system")
-    if utilization_rate < 0.5:
-        st.write("- Optimize driver allocation to increase utilization")
-elif rei_score < 80:
-    st.warning("🔄 Moderate REI Score - Areas for Optimization:")
-    st.write("- Fine-tune dispatch algorithms")
-    st.write("- Consider dynamic pricing during peak hours")
-    st.write("- Implement driver incentive programs")
-else:
-    st.success("✅ High REI Score - Maintenance Recommendations:")
-    st.write("- Monitor for sustained performance")
-    st.write("- Consider expanding service area")
-    st.write("- Share best practices across regions")
 
 # Final Values Display
 st.header("Final Values Summary")
@@ -971,3 +788,171 @@ fig.update_layout(
 )
 
 st.plotly_chart(fig, use_container_width=True)
+
+# -----------------------------------------------------------------------------
+# Speed of Service Display
+# -----------------------------------------------------------------------------
+st.header("Operational Overview: Speed of Service")
+
+# Display metrics in columns
+col1, col2 = st.columns(2)
+
+with col1:
+    create_metric_card(
+        "Average Response Time",
+        f"{avg_response_time_sec:.1f} sec",
+        help_text="Average time between ride request and driver assignment"
+    )
+
+with col2:
+    create_metric_card(
+        "Average Ride Duration",
+        f"{avg_ride_duration_min:.1f} min",
+        help_text="Average time between ride start and completion"
+    )
+
+# Create time series plots for response times and durations
+st.subheader("Response Time Distribution")
+fig_response = go.Figure(data=[
+    go.Histogram(
+        x=response_df_sos['response_time_sec'],
+        nbinsx=30,
+        name="Response Time",
+        marker_color='#2ecc71'
+    )
+])
+fig_response.update_layout(
+    xaxis_title="Response Time (seconds)",
+    yaxis_title="Number of Rides",
+    showlegend=False
+)
+st.plotly_chart(fig_response, use_container_width=True)
+
+st.subheader("Ride Duration Distribution")
+fig_duration = go.Figure(data=[
+    go.Histogram(
+        x=duration_df_sos['ride_duration_min'],
+        nbinsx=30,
+        name="Ride Duration",
+        marker_color='#3498db'
+    )
+])
+fig_duration.update_layout(
+    xaxis_title="Ride Duration (minutes)",
+    yaxis_title="Number of Rides",
+    showlegend=False
+)
+st.plotly_chart(fig_duration, use_container_width=True)
+
+# Display summary metrics in columns
+col1, col2 = st.columns(2)
+
+with col1:
+    response_percentiles = np.percentile(response_df_sos['response_time_sec'], [25, 50, 75])
+    st.markdown("**Response Time Statistics**")
+    st.write(f"- 25th percentile: {response_percentiles[0]:.1f} sec")
+    st.write(f"- Median: {response_percentiles[1]:.1f} sec")
+    st.write(f"- 75th percentile: {response_percentiles[2]:.1f} sec")
+
+with col2:
+    duration_percentiles = np.percentile(duration_df_sos['ride_duration_min'], [25, 50, 75])
+    st.markdown("**Ride Duration Statistics**")
+    st.write(f"- 25th percentile: {duration_percentiles[0]:.1f} min")
+    st.write(f"- Median: {duration_percentiles[1]:.1f} min")
+    st.write(f"- 75th percentile: {duration_percentiles[2]:.1f} min")
+
+# -----------------------------------------------------------------------------
+# REI Analysis from Basic Notebook
+# -----------------------------------------------------------------------------
+st.header("Ride Efficiency Index (REI) from Basic Notebook")
+st.markdown("""
+This analysis evaluates the efficiency of completed rides by comparing actual versus estimated durations.
+- Ratio > 1.0: Rides taking longer than estimated
+- Ratio < 1.0: Rides completing faster than estimated
+- Ratio = 1.0: Perfect estimation accuracy
+""")
+
+# Preprocessing: filter completed rides
+completed_rides = ride_events_df[ride_events_df['event_type'] == 'RIDE_COMPLETED'].copy()
+
+# Make sure we remove cases where estimated_duration_minutes might be zero (avoid division by zero) and NaN
+completed_rides = completed_rides[completed_rides['estimated_duration_minutes'].notna()]
+completed_rides = completed_rides[completed_rides['estimated_duration_minutes'] > 0]
+
+# Compute the Ride Efficiency Ratio (REI) for each completed ride
+# REI is defined as the ratio of actual to estimated duration
+completed_rides['efficiency_ratio'] = completed_rides['actual_duration_minutes'] / completed_rides['estimated_duration_minutes']
+
+# Set event_time for time-based operations
+completed_rides['event_time'] = pd.to_datetime(completed_rides['timestamp'])
+
+# Set event_time as index and resample into 1-minute buckets
+completed_rides_indexed = completed_rides.set_index('event_time')
+
+# Resample to 1-minute intervals. For each minute, compute the mean efficiency ratio
+efficiency_per_minute = completed_rides_indexed['efficiency_ratio'].resample('1T').mean()
+
+# Create a sliding window: Rolling average efficiency ratio over a 15-minute window
+rolling_efficiency = efficiency_per_minute.rolling(window=15, min_periods=1).mean()
+
+# Plot the Ride Efficiency Index over time
+fig = go.Figure()
+
+fig.add_trace(go.Scatter(
+    x=rolling_efficiency.index,
+    y=rolling_efficiency.values,
+    mode='lines+markers',
+    name='15-min Rolling Avg REI',
+    line=dict(color='blue', width=2),
+    marker=dict(size=5)
+))
+
+fig.add_shape(
+    type="line",
+    x0=rolling_efficiency.index.min(),
+    y0=1.0,
+    x1=rolling_efficiency.index.max(),
+    y1=1.0,
+    line=dict(color="red", width=2, dash="dash"),
+)
+
+fig.add_annotation(
+    x=rolling_efficiency.index.min(),
+    y=1.0,
+    text="Ideal Efficiency (Ratio=1)",
+    showarrow=False,
+    yshift=10,
+    font=dict(color="red")
+)
+
+fig.update_layout(
+    title="Real-Time Ride Efficiency Index (REI)",
+    xaxis_title="Time",
+    yaxis_title="Ride Efficiency Ratio (Actual / Estimated Duration)",
+    height=500,
+    showlegend=True,
+    hovermode='x unified'
+)
+
+st.plotly_chart(fig, use_container_width=True)
+
+# Display statistics
+col1, col2 = st.columns(2)
+
+with col1:
+    avg_efficiency = completed_rides['efficiency_ratio'].mean()
+    create_metric_card(
+        "Average Efficiency Ratio",
+        f"{avg_efficiency:.2f}",
+        help_text="Average of actual/estimated duration (lower is better)"
+    )
+
+with col2:
+    ideal_rides = len(completed_rides[completed_rides['efficiency_ratio'] <= 1.0])
+    total_rides = len(completed_rides)
+    ideal_percentage = (ideal_rides / total_rides) * 100 if total_rides > 0 else 0
+    create_metric_card(
+        "Rides Faster Than Expected",
+        f"{ideal_percentage:.1f}%",
+        help_text="Percentage of rides with efficiency ratio ≤ 1.0"
+    )
