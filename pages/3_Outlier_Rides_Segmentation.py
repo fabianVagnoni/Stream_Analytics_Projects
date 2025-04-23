@@ -19,11 +19,7 @@ import os
 import matplotlib.pyplot as plt
 import warnings
 import shap
-from streamlit_autorefresh import st_autorefresh
-import logging
-
-# Configure logging
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+import plotly.express as px
 
 # Suppress warnings to keep the output clean
 warnings.filterwarnings('ignore')
@@ -133,11 +129,8 @@ def load_advanced_models():
 st.title("👥 Outlier Rides & Customer Segmentation")
 st.markdown("### Use Case 3: Identifying Outlier Patterns and Customer Segments")
 
-# Auto-refresh the page every 60 seconds
-st_autorefresh(interval=60000, key="seg_refresher")
-
 # Load data (try from Azure first, fall back to local)
-# @st.cache_data(ttl=3600) # Removed caching to allow refresh
+@st.cache_data(ttl=3600)
 def load_segment_data():
     """Load user and ride data, detect outliers, and segment customers"""
     try:
@@ -154,24 +147,12 @@ def load_segment_data():
         
         # Load user data from user_vectors folder (contains demographic and potentially ride metrics)
         users_static_df = load_data_from_azure("user_vectors/*.snappy.parquet")
-        if users_static_df is not None:
-            logging.info(f"Loaded user static data from Azure. Shape: {users_static_df.shape}")
-        else:
-            logging.warning("Failed to load user static data from Azure.")
         
         # Load ride events data from rides folder
         ride_events_df = load_data_from_azure("rides/*.snappy.parquet")
-        if ride_events_df is not None:
-            logging.info(f"Loaded ride events data from Azure. Shape: {ride_events_df.shape}")
-        else:
-            logging.warning("Failed to load ride events data from Azure.")
         
         # Load special events data (if available)
         special_events_df = load_data_from_azure("specials/*.snappy.parquet")
-        if special_events_df is not None:
-            logging.info(f"Loaded special events data from Azure. Shape: {special_events_df.shape}")
-        else:
-            logging.info("No special events data found or loaded from Azure.")
         
         if users_static_df is None or ride_events_df is None:
             st.error("Failed to load data from Azure. Check your connection and container configuration.")
@@ -750,547 +731,254 @@ ride_events = data['ride_events']
 users_static = data['users_static']
 processed_ride_events = data['processed_ride_events']
 segmented_users = data['segmented_users']
+use_advanced_models = data.get('use_advanced_models', False)
+models = data.get('models', {})
+rides_outlier_subset = data.get('rides_outlier_subset', None)
+outlier_indices = data.get('outlier_data', {}).get('outlier_indices', [])
 
-# Display Variation Clusters
-st.markdown("## Variation Clusters")
+st.markdown("---")
 
-# Calculate actual variation in metrics by cluster
-if 'cluster' in segmented_users.columns:
-    # Create a row for variation clusters
-    col1, col2, col3 = st.columns(3)
-    
-    # Get unique clusters (up to 3)
-    unique_clusters = segmented_users['cluster'].unique()
-    
-    # Ensure we only process up to 3 clusters
-    unique_clusters = unique_clusters[:min(3, len(unique_clusters))]
-    
-    # Calculate percentage changes for each cluster compared to overall average
-    overall_avg_dist = segmented_users['avg_distance_km'].mean()
+# --- Clustering Section ---
+st.header("Customer Clustering Analysis")
+
+# Display Variation Clusters Metrics
+st.markdown("#### Variation Clusters (vs. Average)")
+
+if 'cluster' in segmented_users.columns and not segmented_users.empty:
+    # Calculate overall averages first
+    overall_avg_dist = segmented_users['avg_distance_km'].mean() if 'avg_distance_km' in segmented_users.columns else 0
     overall_avg_dur = segmented_users['avg_ride_duration'].mean() if 'avg_ride_duration' in segmented_users.columns else 0
     overall_avg_fare = segmented_users['avg_fare_amount'].mean() if 'avg_fare_amount' in segmented_users.columns else 0
-    
-    # Display each cluster's variation
-    for i, cluster_id in enumerate(unique_clusters):
-        cluster_data = segmented_users[segmented_users['cluster'] == cluster_id]
+
+    cluster_cols = st.columns(min(3, len(segmented_users['cluster'].unique())))
+    processed_clusters = 0
+    for cluster_id, cluster_data in segmented_users.groupby('cluster'):
+        if processed_clusters >= len(cluster_cols): break
+        if cluster_data.empty: continue # Skip empty clusters
+
         segment_name = cluster_data['segment'].iloc[0] if 'segment' in cluster_data.columns else f"Cluster {cluster_id}"
-        
+
+        # Calculate cluster averages
+        cluster_avg_dist = cluster_data['avg_distance_km'].mean() if 'avg_distance_km' in cluster_data.columns else 0
+        cluster_avg_dur = cluster_data['avg_ride_duration'].mean() if 'avg_ride_duration' in cluster_data.columns else 0
+        cluster_avg_fare = cluster_data['avg_fare_amount'].mean() if 'avg_fare_amount' in cluster_data.columns else 0
+
         # Calculate percentage differences
-        dist_change = ((cluster_data['avg_distance_km'].mean() / overall_avg_dist) - 1) * 100 if overall_avg_dist != 0 else 0
-        dur_change = ((cluster_data['avg_ride_duration'].mean() / overall_avg_dur) - 1) * 100 if 'avg_ride_duration' in cluster_data.columns and overall_avg_dur != 0 else 0
-        fare_change = ((cluster_data['avg_fare_amount'].mean() / overall_avg_fare) - 1) * 100 if 'avg_fare_amount' in cluster_data.columns and overall_avg_fare != 0 else 0
-        
-        # Use the average of the changes that we could calculate
-        valid_changes = [c for c in [dist_change, dur_change, fare_change] if c != 0]
+        dist_change = ((cluster_avg_dist / overall_avg_dist) - 1) * 100 if overall_avg_dist != 0 else 0
+        dur_change = ((cluster_avg_dur / overall_avg_dur) - 1) * 100 if overall_avg_dur != 0 else 0
+        fare_change = ((cluster_avg_fare / overall_avg_fare) - 1) * 100 if overall_avg_fare != 0 else 0
+
+        # Calculate overall change (average of non-zero changes)
+        valid_changes = [c for c in [dist_change, dur_change, fare_change] if not pd.isna(c)] # Consider only valid numbers
         overall_change = sum(valid_changes) / len(valid_changes) if valid_changes else 0
-        
-        # Display in the appropriate column
-        col = [col1, col2, col3][i]
-        with col:
-            # Variation Cluster with segment name
-            st.markdown(f"### {segment_name}:")
-            
-            # Display with color-coded value
-            st.markdown(f"<span style='color:{'red' if overall_change < 0 else 'green'}'>{overall_change:.1f}%</span>", unsafe_allow_html=True)
+
+        with cluster_cols[processed_clusters]:
+            st.metric(f"{segment_name}", f"{overall_change:.1f}%", help="Avg. % deviation in key metrics")
+        processed_clusters += 1
 else:
-    # Fallback to sample values if no cluster data
-    col1, col2, col3 = st.columns(3)
-    
-    with col1:
-        st.markdown("### Occasional Riders:")
-        st.markdown(f"<span style='color:{'red'}'>{-2}%</span>", unsafe_allow_html=True)
-    
-    with col2:
-        st.markdown("### Regular Commuters:")
-        st.markdown(f"<span style='color:{'green'}'>5%</span>", unsafe_allow_html=True)
-    
-    with col3:
-        st.markdown("### Long-distance Travelers:")
-        st.markdown(f"<span style='color:{'green'}'>8%</span>", unsafe_allow_html=True)
+     st.info("Cluster information not available for variation metrics.")
 
-# Display Outlier Percentage
-st.markdown("## Percentage of Outliers")
 
-# Calculate outlier percentages
-duration_outlier_percent = processed_ride_events['ride_duration_outlier'].mean() * 100
-distance_outlier_percent = processed_ride_events['ride_distance_outlier'].mean() * 100
-fare_outlier_percent = processed_ride_events['fare_amount_outlier'].mean() * 100
+st.markdown("&nbsp;") # Add some vertical space
 
-# Take average of outlier percentages (simplified for demonstration)
-avg_outlier_percent = (duration_outlier_percent + distance_outlier_percent + fare_outlier_percent) / 3
+# --- Donut Chart and Descriptions --- 
 
-# Create a gauge chart for outlier percentage
-fig = go.Figure(go.Indicator(
-    mode="gauge+number",
-    value=avg_outlier_percent,
+# Display Donut Chart using Plotly
+st.markdown("#### Segment Distribution")
+segment_counts_df = segmented_users['segment'].value_counts().reset_index()
+segment_counts_df.columns = ['segment', 'count']
+
+if not segment_counts_df.empty:
+    fig_donut = px.pie(
+        segment_counts_df,
+        values='count',
+        names='segment',
+        title='User Segments Distribution',
+        hole=0.4, # Creates the donut effect
+        color_discrete_sequence=px.colors.qualitative.Pastel # Use a pleasant color scheme
+    )
+    fig_donut.update_traces(textposition='inside', textinfo='percent+label')
+    fig_donut.update_layout(
+        showlegend=True,
+        title_x=0.5,
+        legend_title_text='Segments',
+        margin=dict(t=50, b=0, l=0, r=0), # Adjust margins
+        height=400 # Adjust height if needed
+    )
+    st.plotly_chart(fig_donut, use_container_width=True)
+else:
+    st.info("No segment data available for distribution chart.")
+
+
+# Display Quick Segment Descriptions (Moved Here)
+st.markdown("#### Segment Descriptions")
+segment_unique_quick = segmented_users['segment'].unique().tolist() if 'segment' in segmented_users.columns else []
+descriptions = {
+    "Occasional Riders": "Infrequent usage, variable patterns.",
+    "Regular Commuters": "Frequent, short, consistent rides, often during peak hours.",
+    "Long-distance Travelers": "Infrequent, longer rides, higher fares.",
+    "Business Travelers": "Weekday/business hour usage.",
+    "Average Users": "Moderate frequency, mixed patterns."
+    # Add descriptions for any other segments generated by your model
+}
+
+if segment_unique_quick:
+    # Use columns for better layout if many segments
+    num_desc_cols = min(len(segment_unique_quick), 3) # Max 3 columns
+    desc_cols = st.columns(num_desc_cols)
+    for i, segment_name in enumerate(segment_unique_quick):
+        with desc_cols[i % num_desc_cols]:
+            st.markdown(f"**{segment_name}:**")
+            st.markdown(f"> {descriptions.get(segment_name, 'Unique travel patterns.')}")
+            if (i + 1) % num_desc_cols != 0: # Add space between columns
+                 st.markdown("&nbsp;")
+
+else:
+    st.markdown("_No segment descriptions available._")
+
+
+st.markdown("---")
+
+# --- Outlier Section ---
+st.header("Outlier Ride Analysis")
+
+# Percentage of Outliers (Gauge Plot) - Moved here
+st.markdown("#### Percentage of Outliers")
+# Calculate outlier percentages (ensure columns exist)
+duration_outlier_percent = processed_ride_events['ride_duration_outlier'].mean() * 100 if 'ride_duration_outlier' in processed_ride_events.columns else 0
+distance_outlier_percent = processed_ride_events['ride_distance_outlier'].mean() * 100 if 'ride_distance_outlier' in processed_ride_events.columns else 0
+fare_outlier_percent = processed_ride_events['fare_amount_outlier'].mean() * 100 if 'fare_amount_outlier' in processed_ride_events.columns else 0
+avg_outlier_percent = np.mean([p for p in [duration_outlier_percent, distance_outlier_percent, fare_outlier_percent] if p > 0]) if any(p > 0 for p in [duration_outlier_percent, distance_outlier_percent, fare_outlier_percent]) else 0
+
+# Create gauge chart (adjust range dynamically)
+max_gauge = max(10, avg_outlier_percent * 1.5) # Ensure gauge shows value
+fig_gauge = go.Figure(go.Indicator(
+    mode="gauge+number", value=avg_outlier_percent,
+    number={'suffix': '%'},
     domain={'x': [0, 1], 'y': [0, 1]},
-    title={'text': "% of Outliers"},
+    title={'text': "% Rides Flagged as Outliers"},
     gauge={
-        'axis': {'range': [None, 5], 'tickwidth': 1, 'tickcolor': "darkblue"},
+        'axis': {'range': [0, max_gauge], 'tickwidth': 1, 'tickcolor': "darkblue"},
         'bar': {'color': "royalblue"},
         'bgcolor': "white",
         'borderwidth': 2,
         'bordercolor': "gray",
         'steps': [
             {'range': [0, 1.5], 'color': 'lightblue'},
-            {'range': [1.5, 5], 'color': 'lightgray'}
+            {'range': [1.5, 5], 'color': 'lightgray'},
+            {'range': [5, max_gauge], 'color': 'darkgray'} # Add another step
         ],
-        'threshold': {
-            'line': {'color': "red", 'width': 4},
-            'thickness': 0.75,
-            'value': 1.5
-        }
-    }
+        'threshold': {'line': {'color': "red", 'width': 4}, 'thickness': 0.75, 'value': 1.5}}
 ))
+fig_gauge.update_layout(height=250, margin={'t': 70, 'b': 30, 'l':30, 'r':30})
+st.plotly_chart(fig_gauge, use_container_width=True)
 
-fig.update_layout(
-    height=300,
-    font={'color': "darkblue", 'family': "Arial"}
-)
 
-st.plotly_chart(fig, use_container_width=True)
+st.markdown("&nbsp;") # Add space
 
-# Add annotation about current value
-st.markdown(f"**Current Value: {avg_outlier_percent:.1f}%**")
+# --- Interactive SHAP and Table --- 
 
-# Add SHAP Explainer for Outliers
-st.markdown("## Outlier Explanations")
-st.markdown("These plots explain what factors contributed to specific outlier predictions")
-
-# Extract the needed variables from the data dictionary
-use_advanced_models = data.get('use_advanced_models', False)
-models = data.get('models', {})
-rides_outlier_subset = data.get('rides_outlier_subset', None)
-outlier_indices = data.get('outlier_data', {}).get('outlier_indices', [])
-
-# Limit to top 3 outliers for visualization
-if len(outlier_indices) > 3:
-    outlier_indices = outlier_indices[:3]
+# Prepare outlier data for selection and display
+selected_ride_id = None # Initialize
+outlier_rides_df = pd.DataFrame() # Initialize as empty
 
 if 'is_outlier' in processed_ride_events.columns and processed_ride_events['is_outlier'].any():
-    # Only show SHAP plots if we have outliers and advanced models were used
-    if use_advanced_models and models and 'outlier_detector' in models and models['outlier_detector'] is not None:
+    outlier_rides_df = processed_ride_events[processed_ride_events['is_outlier']].copy()
+    # Ensure ride_id is present for selection
+    if 'ride_id' in outlier_rides_df.columns and not outlier_rides_df.empty:
+        outlier_ride_ids = outlier_rides_df['ride_id'].tolist()
+
+        # --- Selection Widget --- 
+        selected_ride_id = st.selectbox(
+            "Select Outlier Ride ID for SHAP Explanation:",
+            options=outlier_ride_ids,
+            index=0, # Default to the first one
+            key="shap_ride_selector", # Add a key for stability
+            help="Choose an outlier ride from the table below to see its specific SHAP analysis."
+        )
+    else:
+         st.warning("Outlier ride IDs are not available for selection.")
+else:
+    st.info("No outliers detected in the dataset.")
+
+# --- SHAP Plot and Outliers Table Row --- 
+col1, col2 = st.columns([2, 3]) # Give SHAP plot a bit more relative space
+
+with col1:
+    st.markdown("#### Outlier Explanation (SHAP)")
+    # Condition rendering on having necessary components and a selection
+    if selected_ride_id and not outlier_rides_df.empty and use_advanced_models and models and 'outlier_explainer' in models and rides_outlier_subset is not None:
         try:
-            # Get outlier data
-            outlier_data = processed_ride_events[processed_ride_events['is_outlier']].head(3)
+            # Find the index corresponding to the selected ride_id in the *outlier* dataframe
+            # This index should map correctly to rides_outlier_subset if it was created via .loc
+            selected_index_row = outlier_rides_df[outlier_rides_df['ride_id'] == selected_ride_id]
             
-            # Create more informative tab names when we have outlier data
-            tab_titles = []
-            for i in range(min(len(outlier_data), 3)):
-                # Create a descriptive title using user_id and distance if available
-                title = "Outlier "
-                if 'user_id' in outlier_data.columns:
-                    title += f"(User {outlier_data.iloc[i]['user_id'][:5]})"
-                if 'distance_km' in outlier_data.columns:
-                    title += f" {outlier_data.iloc[i]['distance_km']:.1f}km"
-                else:
-                    title += f" #{i+1}"
-                tab_titles.append(title)
-            
-            # Fill remaining tabs if needed
-            while len(tab_titles) < 3:
-                tab_titles.append(f"Outlier Example {len(tab_titles)+1}")
-            
-            # Create tabs for different outlier examples
-            st.markdown("### Top 3 Most Significant Outliers")
-            shap_tabs = st.tabs(tab_titles)
-            
-            # Check if rides_outlier_subset is available
-            if rides_outlier_subset is not None and len(outlier_indices) > 0:
-                try:
-                    # Get features for outliers
-                    outlier_features = rides_outlier_subset.loc[outlier_indices]
+            if not selected_index_row.empty:
+                selected_index = selected_index_row.index[0]
+                
+                # Check if this index exists in the subset used for SHAP
+                if selected_index in rides_outlier_subset.index:
+                    explainer = models['outlier_explainer']
+                    outlier_features_single = rides_outlier_subset.loc[[selected_index]] # Get the specific row
+
+                    # Calculate SHAP values for the single instance
+                    shap_values_single = None
+                    if hasattr(explainer, 'shap_values'):
+                        shap_values_all = explainer.shap_values(outlier_features_single)
+                        if isinstance(shap_values_all, list):
+                             shap_values_single = shap_values_all[0][0] # Get the first output, first instance
+                        else:
+                             shap_values_single = shap_values_all[0] # First instance if single output
+                    elif callable(explainer):
+                         shap_values_single = explainer(outlier_features_single).values[0]
                     
-                    # Get explainer from models
-                    if 'outlier_explainer' in models and models['outlier_explainer'] is not None:
-                        explainer = models['outlier_explainer']
-                        
-                        # Calculate SHAP values
-                        try:
-                            # Different SHAP explainers have different APIs for getting SHAP values
-                            if hasattr(explainer, 'shap_values'):
-                                try:
-                                    # For TreeExplainer
-                                    shap_values = explainer.shap_values(outlier_features)
-                                    
-                                    # Handle both single and multi-output case
-                                    if isinstance(shap_values, list) and len(shap_values) > 1:
-                                        # For multi-output, use the first output
-                                        shap_values = shap_values[0]
-                                except Exception as e:
-                                    st.warning(f"Error using explainer.shap_values: {str(e)}")
-                                    # Try with explainer directly
-                                    shap_values = explainer(outlier_features).values
-                            else:
-                                # For newer SHAP explainers like Explainer class
-                                shap_values = explainer(outlier_features).values
-                            
-                            # Display for each tab
-                            for i, tab in enumerate(shap_tabs):
-                                if i < len(outlier_indices) and i < len(outlier_features):
-                                    with tab:
-                                        try:
-                                            # Create matplotlib figure
-                                            fig, ax = plt.subplots(figsize=(10, 6))
-                                            
-                                            try:
-                                                # Match the notebook implementation exactly
-                                                plt.figure(figsize=(10, 6))
-                                                
-                                                # Handle expected_value correctly - ensure it's a scalar
-                                                if hasattr(explainer, 'expected_value'):
-                                                    if isinstance(explainer.expected_value, list) or isinstance(explainer.expected_value, np.ndarray):
-                                                        expected_val = explainer.expected_value[0]
-                                                        # If still an array, take the first element
-                                                        if isinstance(expected_val, (list, np.ndarray)):
-                                                            expected_val = expected_val[0]
-                                                    else:
-                                                        expected_val = explainer.expected_value
-                                                        # If still an array, take the first element
-                                                        if isinstance(expected_val, (list, np.ndarray)):
-                                                            expected_val = expected_val[0]
-                                                else:
-                                                    expected_val = 0  # Fallback
-                                                
-                                                # Ensure shap_values is also handled correctly
-                                                current_shap_values = shap_values[i]
-                                                if isinstance(current_shap_values, list) and len(current_shap_values) > 0:
-                                                    current_shap_values = current_shap_values[0]
-                                                
-                                                # Now call waterfall_legacy with explicitly scalar expected_value
-                                                shap.plots._waterfall.waterfall_legacy(
-                                                    expected_val,
-                                                    current_shap_values,
-                                                    feature_names=list(outlier_features.columns)
-                                                )
-                                                st.pyplot(plt.gcf())
-                                            except Exception as e:
-                                                st.warning(f"Error with waterfall_legacy: {str(e)}")
-                                                # Fallback to a simpler plot
-                                                if isinstance(shap_values, np.ndarray):
-                                                    # Create a simple bar chart of feature importance
-                                                    feature_importance = pd.Series(
-                                                        np.abs(shap_values[i]) if len(shap_values.shape) > 1 else np.abs(shap_values),
-                                                        index=outlier_features.columns
-                                                    ).sort_values(ascending=False)
-                                                    plt.figure(figsize=(10, 6))
-                                                    plt.barh(feature_importance.index[:10], feature_importance.values[:10])
-                                                    plt.xlabel('SHAP value (impact on outlier detection)')
-                                                    plt.title('Feature Impact on Outlier Detection')
-                                                    st.pyplot(plt.gcf())
-                                            
-                                            # Display outlier details
-                                            col1, col2 = st.columns(2)
-                                            with col1:
-                                                st.markdown("**Outlier Details**")
-                                                for col in ['user_id', 'timestamp', 'distance_km', 'actual_duration_minutes', 'total_fare']:
-                                                    if col in outlier_data.columns and i < len(outlier_data):
-                                                        st.markdown(f"**{col}:** {outlier_data.iloc[i][col]}")
-                                            
-                                            with col2:
-                                                st.markdown("**Key Factors**")
-                                                # Get feature importance in a more robust way
-                                                if isinstance(shap_values, np.ndarray):
-                                                    if len(shap_values.shape) > 1:
-                                                        feature_importance = np.abs(shap_values[i])
-                                                    else:
-                                                        feature_importance = np.abs(shap_values)
-                                                    
-                                                    # Get top features
-                                                    if len(feature_importance) == len(outlier_features.columns):
-                                                        top_indices = np.argsort(feature_importance)[-3:]
-                                                        top_features = [outlier_features.columns[j] for j in top_indices]
-                                                        
-                                                        for feature in top_features:
-                                                            if i < len(outlier_features) and feature in outlier_features.columns:
-                                                                st.markdown(f"- **{feature}**: {outlier_features.iloc[i][feature]}")
-                                        except Exception as e:
-                                            st.warning(f"Error displaying SHAP plot: {str(e)}")
-                                            # Show simple bar chart instead
-                                            if isinstance(shap_values, np.ndarray) and i < len(shap_values):
-                                                feature_importance = pd.Series(
-                                                    np.abs(shap_values[i]) if len(shap_values.shape) > 1 else np.abs(shap_values),
-                                                    index=outlier_features.columns
-                                                ).sort_values(ascending=False)
-                                                st.bar_chart(feature_importance.head(5))
-                        except Exception as e:
-                            st.warning(f"Error calculating SHAP values: {str(e)}")
-                            # Use feature importances as fallback
-                            if hasattr(models['outlier_detector'], 'feature_importances_'):
-                                st.markdown("### Feature Importance (from model)")
-                                importance = pd.Series(
-                                    models['outlier_detector'].feature_importances_,
-                                    index=outlier_features.columns
-                                ).sort_values(ascending=False)
-                                st.bar_chart(importance)
+                    if shap_values_single is not None:
+                        # Extract expected value (handle potential list/array)
+                        expected_value = explainer.expected_value
+                        if isinstance(expected_value, (list, np.ndarray)):
+                            expected_value = expected_value[0]
+
+                        # Display SHAP waterfall plot
+                        fig_shap, ax_shap = plt.subplots(figsize=(6, 4)) # Smaller figure
+                        shap.plots.waterfall(shap.Explanation(values=shap_values_single, 
+                                                               base_values=expected_value, 
+                                                               data=outlier_features_single.iloc[0], 
+                                                               feature_names=rides_outlier_subset.columns), 
+                                             max_display=10, show=False)
+                        plt.tight_layout()
+                        st.pyplot(fig_shap)
+                        st.caption(f"Showing SHAP explanation for outlier ride: {selected_ride_id}")
                     else:
-                        st.info("No SHAP explainer available in the models")
-                except Exception as e:
-                    st.warning(f"Error accessing outlier features: {str(e)}")
-            else:
-                st.info("No outlier subset available for SHAP analysis")
-        except Exception as e:
-            st.warning(f"Could not generate SHAP explanations: {str(e)}")
-            st.info("Using example visualizations instead")
-            
-            # Show example SHAP visualizations
-            col1, col2 = st.columns(2)
-            with col1:
-                st.markdown("### Time-based Feature Impact")
-                st.image("https://raw.githubusercontent.com/slundberg/shap/master/docs/artwork/waterfall_plot.png", 
-                         caption="Example SHAP waterfall plot showing feature contributions")
-            with col2:
-                st.markdown("### Location-based Feature Impact")
-                st.image("https://raw.githubusercontent.com/slundberg/shap/master/docs/artwork/waterfall_plot.png", 
-                         caption="Example SHAP waterfall plot showing feature contributions")
-    else:
-        st.info("Advanced models not available or not used for outlier detection")
-        # Show example SHAP plots
-        col1, col2 = st.columns(2)
-        with col1:
-            st.markdown("### Example: Time-based Outlier Factors")
-            st.image("https://raw.githubusercontent.com/slundberg/shap/master/docs/artwork/waterfall_plot.png", 
-                     caption="Example SHAP plot showing how hour and time features impact outlier detection")
-        with col2:
-            st.markdown("### Example: Location-based Outlier Factors")
-            st.image("https://raw.githubusercontent.com/slundberg/shap/master/docs/artwork/waterfall_plot.png", 
-                     caption="Example SHAP plot showing how location features impact outlier detection")
-else:
-    st.info("No outliers detected in the dataset")
-
-# Display Customer Segments
-st.markdown("## Customer Segments in the System")
-
-
-# Count users by cluster rather than segment
-cluster_counts = segmented_users['cluster'].value_counts().to_dict() if 'cluster' in segmented_users.columns else segmented_users['segment'].value_counts().to_dict()
-
-# Create a figure with matplotlib
-fig, ax = plt.subplots(figsize=(8, 5), subplot_kw=dict(aspect="equal"))
-
-# Create a donut chart
-wedges, texts = ax.pie(cluster_counts.values(), wedgeprops=dict(width=0.5), startangle=-40)
-
-# Setup styling for the annotations
-bbox_props = dict(boxstyle="square,pad=0.3", fc="w", ec="k", lw=0.72)
-kw = dict(arrowprops=dict(arrowstyle="-"),
-         bbox=bbox_props, zorder=0, va="center")
-
-# Add annotations with arrows pointing to each segment
-for i, p in enumerate(wedges):
-    ang = (p.theta2 - p.theta1)/2. + p.theta1
-    y = np.sin(np.deg2rad(ang))
-    x = np.cos(np.deg2rad(ang))
-    horizontalalignment = {-1: "right", 1: "left"}[int(np.sign(x))]
-    connectionstyle = f"angle,angleA=0,angleB={ang}"
-    kw["arrowprops"].update({"connectionstyle": connectionstyle})
-    
-    # Get the cluster name/number and percentage
-    cluster_id = list(cluster_counts.keys())[i]
-    segment_name = segmented_users[segmented_users['cluster'] == cluster_id]['segment'].iloc[0] if 'cluster' in segmented_users.columns else list(cluster_counts.keys())[i]
-    percentage = 100 * list(cluster_counts.values())[i] / sum(cluster_counts.values())
-    
-    # Show cluster ID with percentage
-    label = f"{segment_name}\n{percentage:.1f}%"
-    
-    ax.annotate(label, xy=(x, y), xytext=(1.35*np.sign(x), 1.4*y),
-               horizontalalignment=horizontalalignment, **kw)
-
-# Set background color and remove axes
-ax.set_facecolor('none')
-fig.patch.set_alpha(0.0)
-plt.axis('off')
-
-# Add "Segments" text in the center
-plt.annotate('Clusters', xy=(0, 0), ha='center', va='center', fontsize=16)
-
-# Display the matplotlib figure in Streamlit
-st.pyplot(fig)
-
-# Display segment characteristics
-st.markdown("## Segment Characteristics")
-
-# Create a dynamic layout based on available segments
-segment_unique = segmented_users['segment'].unique().tolist()
-num_segments = len(segment_unique)
-cols_per_row = 3
-num_rows = (num_segments + cols_per_row - 1) // cols_per_row  # Ceiling division
-
-for row in range(num_rows):
-    # Create columns for this row
-    cols = st.columns(cols_per_row)
-    
-    # Fill columns with segment descriptions
-    for col_idx in range(cols_per_row):
-        segment_idx = row * cols_per_row + col_idx
-        
-        if segment_idx < num_segments:
-            segment_name = segment_unique[segment_idx]
-            
-            with cols[col_idx]:
-                st.markdown(f"### {segment_name}")
-                
-                # Display segment characteristics based on the segment name
-                if "Commuter" in segment_name:
-                    st.markdown("* Frequent short-distance rides")
-                    st.markdown("* Consistent travel patterns")
-                    st.markdown("* Typically during rush hours")
-                    
-                elif "Long-distance" in segment_name:
-                    st.markdown("* Longer than average rides")
-                    st.markdown("* Higher fare amounts")
-                    st.markdown("* Less frequent usage")
-                    
-                elif "Business" in segment_name:
-                    st.markdown("* Weekday usage")
-                    st.markdown("* Business hour rides")
-                    st.markdown("* Professional occupation")
-                    
-                elif "Occasional" in segment_name:
-                    st.markdown("* Infrequent app usage")
-                    st.markdown("* Variable ride patterns")
-                    st.markdown("* Less predictable behavior")
-                    
-                elif "Average" in segment_name:
-                    st.markdown("* Moderate usage frequency")
-                    st.markdown("* Mixed ride patterns")
-                    st.markdown("* Standard fare amounts")
-                
+                         st.warning("Could not compute SHAP values for the selected ride.")
                 else:
-                    # Generic description for other segments
-                    st.markdown("* Unique travel patterns")
-                    st.markdown("* Segment-specific behaviors")
-                    st.markdown("* Targeted service opportunities")
+                    st.warning(f"Selected ride index ({selected_index}) not found in SHAP feature data.")
+            else:
+                st.warning(f"Could not find selected ride ID ({selected_ride_id}) in outlier details.")
 
-# Display Outlier Rides Table
-st.markdown("## Outlier Rides (As a Table)")
-
-# Create a combined outliers dataframe
-combined_outliers = pd.DataFrame({
-    'ride_id': processed_ride_events['ride_id'] if 'ride_id' in processed_ride_events.columns else ['unknown'],
-    'duration_outlier': processed_ride_events['ride_duration_outlier'] if 'ride_duration_outlier' in processed_ride_events.columns else [False],
-    'distance_outlier': processed_ride_events['ride_distance_outlier'] if 'ride_distance_outlier' in processed_ride_events.columns else [False],
-    'fare_outlier': processed_ride_events['fare_amount_outlier'] if 'fare_amount_outlier' in processed_ride_events.columns else [False]
-})
-
-# Flag rides that are outliers in at least one dimension
-combined_outliers['is_any_outlier'] = (combined_outliers['duration_outlier'] | 
-                                      combined_outliers['distance_outlier'] | 
-                                      combined_outliers['fare_outlier'])
-
-# Filter to only show outliers
-outlier_rides = combined_outliers[combined_outliers['is_any_outlier']]
-
-# Get additional information for these rides if we have outliers
-if len(outlier_rides) > 0:
-    # Get additional information for these rides
-    outlier_details = ride_events[ride_events['ride_id'].isin(outlier_rides['ride_id'])]
-    
-    # Initialize display columns with columns we know exist
-    display_columns = []
-    
-    # Add columns only if they exist in outlier_details
-    for col in ['ride_id', 'user_id', 'driver_id', 'timestamp']:
-        if col in outlier_details.columns:
-            display_columns.append(col)
-    
-    # Add distance column (use either distance_km or ride_distance)
-    if 'distance_km' in outlier_details.columns:
-        display_columns.append('distance_km')
-    elif 'ride_distance' in outlier_details.columns:
-        display_columns.append('ride_distance')
-    
-    # Add duration column (use either actual_duration_minutes or ride_duration)
-    if 'actual_duration_minutes' in outlier_details.columns:
-        display_columns.append('actual_duration_minutes')
-    elif 'ride_duration' in outlier_details.columns:
-        display_columns.append('ride_duration')
-    
-    # Add fare column (use either total_fare or fare_amount)
-    if 'total_fare' in outlier_details.columns:
-        display_columns.append('total_fare') 
-    elif 'fare_amount' in outlier_details.columns:
-        display_columns.append('fare_amount')
-    
-    # Filter to completed rides if that info is available
-    if 'event_type' in outlier_details.columns:
-        outlier_details = outlier_details[outlier_details['event_type'] == 'RIDE_COMPLETED']
-    
-    # Make sure display_columns only includes columns that exist
-    display_columns = [col for col in display_columns if col in outlier_details.columns]
-    
-    # Create the table with available columns
-    if len(display_columns) > 0 and len(outlier_details) > 0:
-        outlier_table = outlier_details[display_columns]
-        
-        # Display the table with a limit on rows
-        st.dataframe(outlier_table.head(10))
-        
-        # Add a "See More" button
-        if len(outlier_table) > 10:
-            if st.button("See More Outliers"):
-                st.dataframe(outlier_table)
+        except Exception as e:
+            st.error(f"Error generating SHAP plot: {e}")
+            import traceback
+            st.error(traceback.format_exc()) # Show full traceback for debugging
+            
+    elif not selected_ride_id:
+        st.info("Select a Ride ID above to see its SHAP explanation.")
+    elif not use_advanced_models:
+        st.info("SHAP explanations require the advanced ML model to be active.")
     else:
-        st.warning("No outlier details available to display")
-else:
-    st.info("No outliers detected in the dataset")
+         st.info("SHAP analysis components not available.")
 
-# Dashboard Controls in Sidebar
-st.sidebar.title("Dashboard Controls")
 
-st.sidebar.header("Time Range")
-date_range = st.sidebar.date_input(
-    "Select Date Range",
-    value=(datetime.date(2025, 1, 1), datetime.date(2025, 1, 2)),
-    min_value=datetime.date(2025, 1, 1),
-    max_value=datetime.date(2025, 1, 2)
-)
+with col2:
+    st.markdown("#### Outlier Rides Table")
+    if not outlier_rides_df.empty:
+        display_cols = ['ride_id', 'user_id', 'distance_km', 'actual_duration_minutes', 'total_fare', 'outlier_score']
+        available_display_cols = [col for col in display_cols if col in outlier_rides_df.columns]
 
-st.sidebar.header("Outlier Detection")
-outlier_detection_method = st.sidebar.selectbox(
-    "Detection Method",
-    options=["Advanced ML (Isolation Forest)", "Simple IQR", "Z-Score"],
-    index=0
-)
-
-# Add explanation for the selected method
-if outlier_detection_method == "Advanced ML (Isolation Forest)":
-    st.sidebar.markdown("""
-    **Isolation Forest** is an algorithm that efficiently detects outliers by isolating observations.
-    It works well for high-dimensional data and is less affected by local density patterns.
-    """)
-elif outlier_detection_method == "Simple IQR":
-    st.sidebar.markdown("""
-    **IQR (Interquartile Range)** method flags data points that fall below Q1-1.5*IQR or above Q3+1.5*IQR.
-    Simple but effective for univariate outlier detection.
-    """)
-else:  # Z-Score
-    st.sidebar.markdown("""
-    **Z-Score** method flags data points that are a certain number of standard deviations away from the mean.
-    Assumes normal distribution of the data.
-    """)
-
-outlier_threshold = st.sidebar.slider(
-    "Outlier Sensitivity",
-    min_value=0.1,
-    max_value=3.0,
-    value=1.5,
-    step=0.1,
-    help="Lower values detect more outliers, higher values are more conservative"
-)
-
-st.sidebar.header("Customer Segments")
-selected_segments = st.sidebar.multiselect(
-    "Customer Segments",
-    options=segmented_users['segment'].unique().tolist(),
-    default=segmented_users['segment'].unique().tolist()[:3]  # Default to first 3 segments
-)
-
-# Add download button for the data
-st.sidebar.header("Export Data")
-st.sidebar.download_button(
-    label="Download Outlier Rides CSV",
-    data=outlier_table.to_csv(index=False).encode('utf-8'),
-    file_name='outlier_rides.csv',
-    mime='text/csv',
-) 
+        if available_display_cols:
+             st.dataframe(outlier_rides_df[available_display_cols].head(10), height=450) # Adjust height to match SHAP plot area better
+             if len(outlier_rides_df) > 10:
+                 st.caption(f"Showing first 10 of {len(outlier_rides_df)} outliers.")
+        else:
+             st.info("No relevant columns available to display in the outlier table.")
+    else:
+        st.info("No outlier details to display (none detected or data missing).")

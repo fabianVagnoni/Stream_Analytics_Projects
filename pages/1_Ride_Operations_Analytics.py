@@ -26,7 +26,7 @@ st.title("🚗 Ride Operations Analytics")
 st.markdown("### Use Case 1: Real-time Ride Operations Monitoring")
 
 # Auto-refresh the page every 30 seconds
-st_autorefresh(interval=30000, key="ops_refresher")
+st_autorefresh(interval=60000, key="ops_refresher")
 
 # Load data
 # @st.cache_data(ttl=3600) # Removed caching to allow refresh
