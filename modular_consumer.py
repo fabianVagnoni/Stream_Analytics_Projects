@@ -44,10 +44,31 @@ from stream_processing.stream_writers import (
     list_active_queries,
     stop_all_queries
 )
-# from stream_processing.storage_sender import (
-#     storage_connection_str,
-#     blob_container_name
-# )
+from azure.storage.blob import BlobServiceClient
+
+# Helper function to delete blobs with a specific prefix
+def delete_blob_prefix(connection_str, container_name, prefix):
+    """Deletes blobs in a container that start with a given prefix."""
+    print(f"Attempting to delete blobs with prefix '{prefix}' in container '{container_name}'...")
+    try:
+        blob_service_client = BlobServiceClient.from_connection_string(connection_str)
+        container_client = blob_service_client.get_container_client(container_name)
+        
+        blobs_to_delete = container_client.list_blobs(name_starts_with=prefix)
+        deleted_count = 0
+        for blob in blobs_to_delete:
+            print(f"Deleting blob: {blob.name}")
+            container_client.delete_blob(blob.name)
+            deleted_count += 1
+        
+        if deleted_count > 0:
+            print(f"Successfully deleted {deleted_count} blobs with prefix '{prefix}'.")
+        else:
+            print(f"No blobs found with prefix '{prefix}' to delete.")
+            
+    except Exception as e:
+        print(f"Error deleting blobs with prefix '{prefix}': {e}")
+        print("Please ensure the container exists and the connection string is correct.")
 
 def main():
     """Main function to run the stream analytics application"""
@@ -58,6 +79,15 @@ def main():
     
     # Initialize directories
     initialize_directories()
+    
+    # Delete previous blob data before starting
+    print("\nCleaning up previous data in Azure Blob Storage...")
+    if AZURE_STORAGE_CONNECTION_STRING and AZURE_BLOB_CONTAINER_NAME:
+        delete_blob_prefix(AZURE_STORAGE_CONNECTION_STRING, AZURE_BLOB_CONTAINER_NAME, "rides/")
+        delete_blob_prefix(AZURE_STORAGE_CONNECTION_STRING, AZURE_BLOB_CONTAINER_NAME, "specials/")
+        delete_blob_prefix(AZURE_STORAGE_CONNECTION_STRING, AZURE_BLOB_CONTAINER_NAME, "user_vectors/")
+    else:
+        print("Azure Storage connection string or container name not configured. Skipping blob cleanup.")
     
     # Print connection information
     print(f"\nEvent Hub Namespace: {EVENT_HUB_NAMESPACE}")
