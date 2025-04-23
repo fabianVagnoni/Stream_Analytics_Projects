@@ -61,6 +61,7 @@
   },
   {
     "type": "weather",
+    "name": "Weather Event",
     "weather_type": "hail",
     "severity": "severe",
     "event_start": "2025-01-01T05:00:00",
@@ -80,6 +81,7 @@
   },
   {
     "type": "system_outage",
+    "name": "System Outage Event",
     "severity": "partial",
     "event_start": "2025-01-01T15:00:00",
     "event_end": "2025-01-01T16:24:00",
@@ -89,6 +91,7 @@
   },
   {
     "type": "fraud_patterns",
+    "name": "Fraud Event",
     "start_date": "2025-01-01T00:00:00",
     "end_date": "2025-01-02T00:00:00",
     "fraud_users": [

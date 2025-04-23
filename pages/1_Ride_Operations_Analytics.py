@@ -69,19 +69,20 @@ def load_drivers_data():
         st.error(f"Error loading drivers data: {str(e)}")
         return None
 
-# First, I'll add a function to load special events data in the data loading section
+# @st.cache_data(ttl=3600) # Removed caching to allow refresh
 def load_special_events_data():
-    """Load special events data from local file"""
+    """Load special events data from JSON file"""
     try:
+        # Try loading from local file
         special_events_df = load_local_data("data/special_events.json")
         
         if special_events_df is None:
-            st.error("Failed to load special events data from local storage.")
+            st.warning("Failed to load special events data from local storage.")
             return None
             
         return special_events_df
     except Exception as e:
-        st.error(f"Error loading special events data: {str(e)}")
+        st.warning(f"Error loading special events data: {str(e)}")
         return None
 
 # Load and process data
@@ -255,90 +256,96 @@ fig.update_layout(
 
 st.plotly_chart(fig, use_container_width=True)
 
-# Load Special Events Data
-special_events_df = load_special_events_data()
-
-# Check if data is loaded successfully
-if special_events_df is not None:
-    # Count event types
-    event_type_counts = special_events_df['type'].value_counts().reset_index()
-    event_type_counts.columns = ['event_type', 'count']
-    
-    # Define colors for different event types
-    event_colors = {
-        "concert": "#9B59B6",    # Purple
-        "sports": "#3498DB",     # Blue
-        "weather": "#F39C12",    # Orange
-        "system_outage": "#E74C3C",  # Red
-        "fraud_patterns": "#1ABC9C"   # Teal
-    }
-    
-    # Create bar chart
-    fig_events = go.Figure(data=[
-        go.Bar(
-            x=event_type_counts['event_type'],
-            y=event_type_counts['count'],
-            marker_color=[event_colors.get(event, "#95a5a6") for event in event_type_counts['event_type']],
-            text=event_type_counts['count'],
-            textposition='auto'
-        )
-    ])
-    
-    fig_events.update_layout(
-        title="Special Events Distribution",
-        xaxis_title="Event Type",
-        yaxis_title="Number of Events",
-        showlegend=False,
-        height=400
-    )
-    
-    st.plotly_chart(fig_events, use_container_width=True)
-    
-    # Show additional details for interesting event types
-    if 'weather' in event_type_counts['event_type'].values:
-        weather_events = special_events_df[special_events_df['type'] == 'weather']
-        st.subheader("Weather Events")
-        col1, col2 = st.columns(2)
-        
-        with col1:
-            weather_types = weather_events['weather_type'].value_counts().reset_index()
-            weather_types.columns = ['weather_type', 'count']
-            st.write("Weather Types:")
-            for _, row in weather_types.iterrows():
-                st.write(f"- {row['weather_type'].title()}: {row['count']} events")
-        
-        with col2:
-            severity = weather_events['severity'].value_counts().reset_index()
-            severity.columns = ['severity', 'count']
-            st.write("Severity Levels:")
-            for _, row in severity.iterrows():
-                st.write(f"- {row['severity'].title()}: {row['count']} events")
-    
-    if 'fraud_patterns' in event_type_counts['event_type'].values:
-        fraud_events = special_events_df[special_events_df['type'] == 'fraud_patterns']
-        if 'patterns' in fraud_events.columns:
-            # Extract all patterns from the lists
-            all_patterns = []
-            for patterns in fraud_events['patterns']:
-                if isinstance(patterns, list):
-                    all_patterns.extend(patterns)
-            
-            if all_patterns:
-                pattern_counts = pd.Series(all_patterns).value_counts().reset_index()
-                pattern_counts.columns = ['pattern', 'count']
-                
-                st.subheader("Fraud Patterns")
-                for _, row in pattern_counts.iterrows():
-                    pattern_name = row['pattern'].replace('_', ' ').title()
-                    st.write(f"- {pattern_name}: {row['count']} occurrences")
-
 # Real-Time Trends Analysis
 st.header("Real-Time Trends")
 st.markdown("### Time-Based Ride Request Analysis")
 
+# -----------------------------------------------------------------------------
+# Matplotlib-based Time Series Plot with Events
+# -----------------------------------------------------------------------------
 # Ensure timestamp is in datetime format (if not already done)
 ride_events_df['timestamp'] = pd.to_datetime(ride_events_df['timestamp'])
 
+# Load special events data
+special_events_df = load_special_events_data()
+
+# Prepare data for Matplotlib visualization
+requested_rides_matplotlib = ride_events_df[ride_events_df['event_type'] == 'RIDE_REQUESTED'].copy()
+requested_rides_matplotlib['event_time'] = pd.to_datetime(requested_rides_matplotlib['timestamp'])
+requested_rides_matplotlib.set_index('event_time', inplace=True)
+rides_per_hour_matplotlib = requested_rides_matplotlib['ride_id'].resample('H').nunique()
+
+# Convert special event times to datetime
+if special_events_df is not None:
+    # Use ISO 8601 format for parsing timestamps and handle errors
+    try:
+        special_events_df['event_start_dt'] = pd.to_datetime(special_events_df['event_start'], format='ISO8601', errors='coerce')
+        if 'event_end' in special_events_df.columns:
+            special_events_df['event_end_dt'] = pd.to_datetime(special_events_df['event_end'], format='ISO8601', errors='coerce')
+        
+        # Filter out rows with invalid dates (NaT values)
+        special_events_df = special_events_df.dropna(subset=['event_start_dt'])
+        
+        # Check if we have any valid events left
+        if len(special_events_df) == 0:
+            st.warning("No valid event timestamps found in special events data.")
+            special_events_df = None
+    except Exception as e:
+        st.warning(f"Error processing special events timestamps: {str(e)}")
+        special_events_df = None
+
+# Create Matplotlib figure
+import matplotlib.pyplot as plt
+import matplotlib.dates as mdates
+from matplotlib.figure import Figure
+
+# Create a figure using Matplotlib
+fig = Figure(figsize=(12, 6))
+ax = fig.add_subplot(111)
+
+# Plot ride requests per hour
+ax.plot(rides_per_hour_matplotlib.index, rides_per_hour_matplotlib.values, 
+        marker='o', linestyle='-', color='#3498db', label='Rides per Hour')
+
+# Add vertical lines for special events
+if special_events_df is not None:
+    max_y = rides_per_hour_matplotlib.max() * 0.95
+    
+    for _, event in special_events_df.iterrows():
+        # Add start time line
+        ax.axvline(event['event_start_dt'], color='red', linestyle='--', linewidth=1)
+        
+        # Add end time line if available
+        if 'event_end_dt' in event:
+            ax.axvline(event['event_end_dt'], color='red', linestyle='--', linewidth=1)
+        
+        # Add text label for event
+        event_name = event.get('name', event['type'])
+        ax.text(event['event_start_dt'], max_y, event_name,
+                rotation=90, verticalalignment='top', horizontalalignment='right', 
+                color='red', fontsize=8)
+
+# Format x-axis to show dates and times clearly
+ax.set_xlabel('Time')
+ax.set_ylabel('Number of Ride Requests')
+ax.set_title('Hourly Ride Requests with Event Boundaries')
+ax.legend()
+
+# Set up date formatting for x-axis
+ax.xaxis.set_major_locator(mdates.HourLocator(interval=4))  # Show tick every 4 hours
+ax.xaxis.set_major_formatter(mdates.DateFormatter('%m-%d %H:%M'))
+fig.autofmt_xdate()  # Auto-format dates to prevent overlap
+
+# Set the x-axis limits to focus on the first few days of January 2025
+ax.set_xlim(pd.Timestamp('2025-01-01'), pd.Timestamp('2025-01-02'))
+
+# Add grid for better readability
+ax.grid(True, linestyle='--', alpha=0.7)
+
+# Display the Matplotlib figure in Streamlit
+st.pyplot(fig)
+
+# Original Plotly visualization (hourly ride requests)
 # 1. Prepare data: Filter for RIDE_REQUESTED events and sort by timestamp
 requested_rides = ride_events_df[ride_events_df['event_type'] == 'RIDE_REQUESTED'].copy()
 requested_rides = requested_rides.sort_values('timestamp')
@@ -358,7 +365,7 @@ fig_hourly.add_trace(
         y=hourly_request_counts['request_count'],
         mode='lines+markers',
         name='Hourly Requests',
-        line=dict(color='#2ecc71', width=2),
+        line=dict(color='#3498db', width=2),
         marker=dict(size=6)
     )
 )
@@ -568,13 +575,25 @@ category_summary = driver_metrics.groupby('driver_category').agg(
 # Count drivers in each category
 driver_category_counts = driver_category_df['driver_category'].value_counts()
 
+# Create color mapping that ensures each category gets its corresponding color
+category_colors = {
+    'Gold': 'gold',
+    'Silver': 'silver',
+    'Bronze': 'saddlebrown'
+}
+
+# Order the categories and create corresponding color list
+ordered_categories = ['Gold', 'Silver', 'Bronze']
+ordered_counts = [driver_category_counts.get(cat, 0) for cat in ordered_categories]
+ordered_colors = [category_colors[cat] for cat in ordered_categories]
+
 # Create pie chart for category distribution
 fig = go.Figure(data=[
     go.Pie(
-        labels=driver_category_counts.index,
-        values=driver_category_counts.values,
+        labels=ordered_categories,
+        values=ordered_counts,
         hole=0.4,
-        marker_colors=['gold', 'silver', 'saddlebrown']
+        marker_colors=ordered_colors
     )
 ])
 
